@@ -25,39 +25,96 @@ class _LandingPageState extends State<LandingPage> {
       child: Scaffold(
         extendBody: false,
         drawer: Padding(
-          padding: const EdgeInsets.only(top: 0.0),
-          child: SizedBox(height: 140, width: 100,
+          padding: const EdgeInsets.only(top: 56.0),
+          child:
+          SizedBox(height: 278, width: 150,
             child: Drawer(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.end,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed:(){},
-                            icon: Icon(Icons.home_outlined, size: 20, color: Colors.grey,),),
-                        Text('Home', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 0.0, bottom: 50),
+                      child: Row(
+                        children: [
+                          SizedBox(height: 26, width: 150,
+                            child: ElevatedButton(
+                                onPressed:(){
+                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+                                  },
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.home_outlined, size: 20, color: Colors.grey,),
+                                    Text('Home', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
+                                  ],
+                                )
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed:(){},
-                          icon: Icon(Icons.perm_device_info_outlined, size: 20, color: Colors.white,),),
-                        Text('About', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),)
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
+                      child: Row(
+                        children: [
+                          SizedBox(height: 26, width: 150,
+                            child: ElevatedButton(
+                                onPressed:(){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => SearchOptions(),));
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.medication_outlined, size: 20, color: Colors.black,),
+                                    Text('Search', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+                                  ],
+                                )
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed:(){},
-                          icon: Icon(Icons.medication_outlined, size: 20, color: Colors.white,),),
-                        Text('Search', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),)
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, bottom:50.0 ),
+                      child: Row(
+                        children: [
+                          SizedBox(height: 26, width: 150,
+                            child: ElevatedButton(
+                                onPressed:(){
+                                  Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.request_page_outlined, size: 20, color: Colors.black,),
+                                    Text('Request Drug', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+                                  ],
+                                )
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, bottom:0.0),
+                      child: Row(
+                        children: [
+                          SizedBox(height: 26, width: 150,
+                            child: ElevatedButton(
+                                onPressed:(){
+                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.perm_device_info_outlined, size: 20, color: Colors.black,),
+                                    Text('About', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+                                  ],
+                                )
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                backgroundColor: Colors.black.withOpacity(.2),
-                shape: OutlineInputBorder(gapPadding: Checkbox.width,
+                backgroundColor: Colors.black,
+                shape: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
                     borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(50),
