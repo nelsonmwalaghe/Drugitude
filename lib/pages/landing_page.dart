@@ -25,45 +25,52 @@ class _LandingPageState extends State<LandingPage> {
       child: Scaffold(
         extendBody: false,
         drawer: Padding(
-          padding: const EdgeInsets.only(top: 56.0),
-          child: Drawer(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
+          padding: const EdgeInsets.only(top: 0.0),
+          child: SizedBox(height: 140, width: 100,
+            child: Drawer(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed:(){},
+                            icon: Icon(Icons.home_outlined, size: 20, color: Colors.grey,),),
+                        Text('Home', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
                           onPressed:(){},
-                          icon: Icon(Icons.home_outlined, size: 30, color: Colors.purpleAccent,),),
-                      Text('Home', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),)
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed:(){},
-                        icon: Icon(Icons.perm_device_info_outlined, size: 30, color: Colors.purpleAccent,),),
-                      Text('About', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),)
-                    ],
-                  ),
-                  IconButton(
-                    onPressed:(){},
-                    icon: Icon(Icons.home_outlined, size: 30, color: Colors.purpleAccent,),),
-                ],
-              ),
-              backgroundColor: Colors.black87,
-              shape: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(50),
-                    topRight: Radius.circular(50),
-                  ))),
+                          icon: Icon(Icons.perm_device_info_outlined, size: 20, color: Colors.white,),),
+                        Text('About', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),)
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed:(){},
+                          icon: Icon(Icons.medication_outlined, size: 20, color: Colors.white,),),
+                        Text('Search', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),)
+                      ],
+                    ),
+                  ],
+                ),
+                backgroundColor: Colors.black.withOpacity(.2),
+                shape: OutlineInputBorder(gapPadding: Checkbox.width,
+                    borderSide: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    ))),
+          ),
         ),
 
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
           elevation: 8,
-          shadowColor: Colors.red.withOpacity(.1),
+          // shadowColor: Colors.red.withOpacity(.1),
           shape: OutlineInputBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(5),
@@ -73,7 +80,7 @@ class _LandingPageState extends State<LandingPage> {
                   color: Colors.white,
                   strokeAlign:
                       BouncingScrollSimulation.maxSpringTransferVelocity)),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.black87,
           title: Padding(
             padding: const EdgeInsets.only(left: 0, right: 20),
             child: Row(
@@ -130,7 +137,7 @@ class _LandingPageState extends State<LandingPage> {
                 itemCount: 1,
                 // data_DayDrug!.length,
                 itemBuilder: (context, index) {
-                  return Card(color: Colors.black,
+                  return Card(color: Colors.black87,
                       shape: OutlineInputBorder(
                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
                     borderSide: BorderSide(color: Colors.transparent)
