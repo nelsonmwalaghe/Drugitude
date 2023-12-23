@@ -3,7 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../api_service_models/day_drug_api_model.dart';
 import '../drugList_call_model/drug_of_the_day_input_model.dart';
 import 'search_options_page.dart';
-import 'package:intl/date_symbol_data_custom.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -178,7 +177,8 @@ class _LandingPageState extends State<LandingPage> {
           ),
         ),
         backgroundColor: Colors.black,
-        body: FutureBuilder<List<DayDrug>>(
+        body:
+        FutureBuilder<List<DayDrug>>(
           future: _daydrugList.getDayDrug(query),
           builder: (context, snapshot) {
             var data_DayDrug = snapshot.data;
@@ -191,8 +191,7 @@ class _LandingPageState extends State<LandingPage> {
               );
             }
             return ListView.builder(
-                itemCount: 1,
-                // data_DayDrug!.length,
+                itemCount: data_DayDrug!.length,
                 itemBuilder: (context, index) {
                   return Card(color: Colors.black87,
                       shape: OutlineInputBorder(
@@ -219,7 +218,7 @@ class _LandingPageState extends State<LandingPage> {
                                         decorationThickness: BouncingScrollSimulation.maxSpringTransferVelocity,
                                         fontSize: 20, color: Colors.white38)),
                                       ),
-                                      Text('${data_DayDrug?[index].medicineName}',
+                                      Text('${data_DayDrug[index].medicineName}',
                                         style: TextStyle(color: Colors.white, fontSize: 70, fontWeight: FontWeight.bold)),
 
                                   Padding(
@@ -230,7 +229,7 @@ class _LandingPageState extends State<LandingPage> {
                                       // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
                                   Padding(
                                     padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                    child: Text('${data_DayDrug?[index].innName}',
+                                    child: Text('${data_DayDrug[index].innName}',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
                                   ),
@@ -239,7 +238,7 @@ class _LandingPageState extends State<LandingPage> {
                                     child: Text('Therapuetic Area',
                                       style: TextStyle(color: Colors.white54,fontSize: 12),),
                                   ),
-                                      Text('${data_DayDrug?[index].therapeuticArea}',
+                                      Text('${data_DayDrug[index].therapeuticArea}',
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontWeight: FontWeight.bold),),
@@ -248,14 +247,14 @@ class _LandingPageState extends State<LandingPage> {
                                     child: Text('Pharmacotherpuetic Group',
                                         style: TextStyle(color: Colors.white54, fontSize: 12)),
                                   ),
-                                      Text('${data_DayDrug?[index].humanPharmacotherapeuticGroup}',
+                                      Text('${data_DayDrug[index].humanPharmacotherapeuticGroup}',
                                           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                     child: Text('Authorization Status',
                                         style: TextStyle(color: Colors.white54, fontSize: 12)),
                                   ),
-                                      Text('${data_DayDrug?[index].authorisationStatus}',
+                                      Text('${data_DayDrug[index].authorisationStatus}',
                                           style: TextStyle(
                                               color: Colors.white, fontWeight: FontWeight.bold)),
                                       Padding(
@@ -265,7 +264,7 @@ class _LandingPageState extends State<LandingPage> {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                        child: Text('${data_DayDrug?[index].marketingAuthorisationHolderorCompanyName}',
+                                        child: Text('${data_DayDrug[index].marketingAuthorisationHolderorCompanyName}',
                                             style: TextStyle(color: Colors.white, fontSize: 12)
                                         ),
                                       ),
@@ -274,7 +273,7 @@ class _LandingPageState extends State<LandingPage> {
                                     child: Text('Indication and Use',
                                       style: TextStyle(color: Colors.white54, fontSize: 12)),
                                   ),
-                                  Text('${data_DayDrug?[index].conditionOrIndication}',
+                                  Text('${data_DayDrug[index].conditionOrIndication}',
                                    overflow: TextOverflow.fade,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(fontSize: 12,

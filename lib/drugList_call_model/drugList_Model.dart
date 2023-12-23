@@ -36,7 +36,7 @@ class DrugList {
   String conditionOrIndication;
   String firstPublished;
   String revisionDate;
-  DateTime url;
+  String url;
 
   DrugList({
     required this.category,
@@ -97,7 +97,7 @@ class DrugList {
     conditionOrIndication: json["conditionOrIndication"],
     firstPublished: json["firstPublished"],
     revisionDate: json["revisionDate"],
-    url: DateTime.parse(json["url"]),
+    url: json["url"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -128,7 +128,7 @@ class DrugList {
     "conditionOrIndication": conditionOrIndication,
     "firstPublished": firstPublished,
     "revisionDate": revisionDate,
-    "url": url.toIso8601String(),
+    "url": url,
   };
 }
 

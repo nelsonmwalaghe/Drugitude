@@ -28,7 +28,7 @@ class FetchDrug_DayDrug {
         data_DayDrug = json.decode(response.body);
         results_DayDrug = data_DayDrug.map((e) => DayDrug.fromJson(e)).toList();
         if(query != null){
-          results_DayDrug = results_DayDrug.where((element) => element.drugDaydate.toIso8601String().contains(DateTime.now() as Pattern)).toList();
+          results_DayDrug = results_DayDrug.where((element) => element.medicineName.toLowerCase().contains(query.toLowerCase())).toList();
         }
       } else {
         print('api error');

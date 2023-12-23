@@ -37,7 +37,6 @@ class DayDrug {
   DateTime firstPublished;
   DateTime revisionDate;
   String url;
-  DateTime drugDaydate;
 
   DayDrug({
     required this.category,
@@ -68,7 +67,6 @@ class DayDrug {
     required this.firstPublished,
     required this.revisionDate,
     required this.url,
-    required this.drugDaydate,
   });
 
   factory DayDrug.fromJson(Map<String, dynamic> json) => DayDrug(
@@ -100,7 +98,6 @@ class DayDrug {
     firstPublished: DateTime.parse(json["firstPublished"]),
     revisionDate: DateTime.parse(json["revisionDate"]),
     url: json["url"],
-    drugDaydate: DateTime.parse(json["drugDaydate"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -132,6 +129,5 @@ class DayDrug {
     "firstPublished": firstPublished.toIso8601String(),
     "revisionDate": revisionDate.toIso8601String(),
     "url": url,
-    "drugDaydate": drugDaydate.toIso8601String(),
   };
 }

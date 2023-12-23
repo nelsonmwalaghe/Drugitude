@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:drugitudeleviosa/drugList_call_model/drugList_pharmaceutical_group_model.dart';
 import 'package:drugitudeleviosa/drugList_call_model/drugList_therapueticArea_Model.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:intl/date_symbol_data_http_request.dart';
 // import '../drugList_call_model/drugList_Model.dart';
 // import '../drugList_call_model/drugList_brandName_model.dart';
 // // Note This is innName
