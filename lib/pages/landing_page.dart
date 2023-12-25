@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../api_service_models/day_drug_api_model.dart';
 import '../drugList_call_model/drug_of_the_day_input_model.dart';
+import 'about_dragitude.dart';
+import 'drug_request_page.dart';
 import 'search_options_page.dart';
 
 class LandingPage extends StatefulWidget {
@@ -77,7 +79,7 @@ class _LandingPageState extends State<LandingPage> {
                           SizedBox(height: 26, width: 150,
                             child: ElevatedButton(
                                 onPressed:(){
-                                  Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => DrugRequestPage(),));
                                 },
                                 child: Row(
                                   children: [
@@ -97,7 +99,7 @@ class _LandingPageState extends State<LandingPage> {
                           SizedBox(height: 26, width: 150,
                             child: ElevatedButton(
                                 onPressed:(){
-                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage(),));
                                 },
                                 child: Row(
                                   children: [
@@ -191,7 +193,7 @@ class _LandingPageState extends State<LandingPage> {
               );
             }
             return ListView.builder(
-                itemCount: data_DayDrug!.length,
+                itemCount: data_DayDrug!.length = 1,
                 itemBuilder: (context, index) {
                   return Card(color: Colors.black87,
                       shape: OutlineInputBorder(

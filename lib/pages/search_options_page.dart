@@ -5,6 +5,8 @@ import '../search_models/brandName_search.dart';
 import '../search_models/innName_search.dart';
 import '../search_models/pharmaceutical_group_search.dart';
 import '../search_models/therapuetic_area_search.dart';
+import 'about_dragitude.dart';
+import 'drug_request_page.dart';
 
 class SearchOptions extends StatelessWidget {
   const SearchOptions({super.key});
@@ -68,7 +70,7 @@ class SearchOptions extends StatelessWidget {
                           SizedBox(height: 26, width: 150,
                             child: ElevatedButton(
                                 onPressed:(){
-                                  Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => DrugRequestPage(),));
                                   },
                                 child: Row(
                                   children: [
@@ -88,7 +90,7 @@ class SearchOptions extends StatelessWidget {
                           SizedBox(height: 26, width: 150,
                             child: ElevatedButton(
                                 onPressed:(){
-                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage(),));
                                   },
                                 child: Row(
                                   children: [

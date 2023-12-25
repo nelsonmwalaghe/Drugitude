@@ -1,14 +1,12 @@
-
-import 'package:drugitudeleviosa/pages/parmaceutical_group_model.dart';
-import 'package:drugitudeleviosa/search_models/drug_day_search_automated.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/brandName_mode.dart';
-import 'pages/dictionary_mode.dart';
+import 'drug_request_model/drug_request_sheets_api.dart';
+import 'pages/drug_request_page.dart';
 import 'pages/landing_page.dart';
-import 'search_models/brandName_search.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await DrugRequestSheetsApi.init();
   runApp(const MyApp());
 }
 
