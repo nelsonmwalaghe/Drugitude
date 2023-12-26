@@ -111,13 +111,7 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
                 ],
               );
             });
-        // Fluttertoast.showToast(msg: 'Request Successfully submited. Thank you',
-        //     toastLength: Toast.LENGTH_LONG,
-        //     gravity: ToastGravity.BOTTOM,
-        //     timeInSecForIosWeb: 5,
-        //     backgroundColor: Colors.green,
-        //     textColor: Colors.white,
-        //     fontSize: 16.0);
+
         if(isValid){
           final drugsrequestedentry = DrugRequestedEntry(
               brandName: controllerBrandName.text,
