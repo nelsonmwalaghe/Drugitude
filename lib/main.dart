@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'drug_request_model/drug_request_sheets_api.dart';
-import 'pages/drug_request_page.dart';
-import 'pages/landing_page.dart';
+import 'drug_request_model/drugrequestsheets_api.dart';
+import 'pages/landingpage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,11 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Drugitude',
       theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white70),
         useMaterial3: true,
       ),
-      home: LandingPage(),
+      home: const LandingPage(),
     );
   }
 }

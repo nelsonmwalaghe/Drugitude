@@ -1,11 +1,11 @@
-import 'package:drugitudeleviosa/drug_request_model/drug_request_fields.dart';
+import 'package:drugitudeleviosa/drug_request_model/drugrequestfields.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
 
 class DrugRequestFormWidget extends StatefulWidget {
   final ValueChanged<DrugRequestedEntry> onSavedDrugRequestedEntry;
-  const DrugRequestFormWidget({Key? key,
-  required this.onSavedDrugRequestedEntry}): super(key: key);
+  const DrugRequestFormWidget({super.key,
+  required this.onSavedDrugRequestedEntry});
 
 
 
@@ -30,7 +30,7 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
     controllerBrandName = TextEditingController();
     controllerGenericName = TextEditingController();
     controllerEmail = TextEditingController();
-    this.shouldwecontactyou = true;
+    shouldwecontactyou = true;
   }
 
 
@@ -41,13 +41,13 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
       mainAxisSize: MainAxisSize.min,
       children: [
         buildDrugBrandName(),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         buildDrugGenericName(),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         buildEmail(),
-        SizedBox(height: 16,),
+        const SizedBox(height: 16,),
         buildShouldwecontactyou(),
-        SizedBox(height: 16,),
+        const SizedBox(height: 16,),
         buildDrugReqSubmit(),
       ],
     ),
@@ -55,9 +55,9 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
 
   Widget buildDrugBrandName() => TextFormField(
     controller: controllerBrandName,
-    style: TextStyle(color: Colors.white),
+    style: const TextStyle(color: Colors.white),
     decoration:
-    InputDecoration(
+    const InputDecoration(
       labelText: 'Brand Name',
       border: OutlineInputBorder(),
     ),
@@ -66,8 +66,8 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
 
   Widget buildDrugGenericName() => TextFormField(
     controller: controllerGenericName,
-    style: TextStyle(color: Colors.white),
-    decoration: InputDecoration(
+    style: const TextStyle(color: Colors.white),
+    decoration: const InputDecoration(
     labelText: 'Generic Name',
     border: OutlineInputBorder(),
   ),
@@ -76,8 +76,8 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
 
   Widget buildEmail() => TextFormField(
     controller: controllerEmail,
-    style: TextStyle(color: Colors.white),
-    decoration: InputDecoration(
+    style: const TextStyle(color: Colors.white),
+    decoration: const InputDecoration(
       labelText: 'Email Address',
       border: OutlineInputBorder(),
     ),
@@ -89,7 +89,7 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
     contentPadding: EdgeInsets.zero,
       controlAffinity: ListTileControlAffinity.leading,
       value: shouldwecontactyou,
-      title: Text('Should we contact you after drug addition?',
+      title: const Text('Should we contact you after drug addition?',
         style: TextStyle(color: Colors.white),),
       onChanged: (value) {setState(() {
         shouldwecontactyou = value;
@@ -100,18 +100,6 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
         final form = formKey.currentState!;
         final isValid = form.validate();
 
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('Request Successfully Submitted'),
-                actions: [
-                  TextButton(onPressed: () => Navigator.of(context).pop(),
-                      child: Text('Okay'))
-                ],
-              );
-            });
-
         if(isValid){
           final drugsrequestedentry = DrugRequestedEntry(
               brandName: controllerBrandName.text,
@@ -120,10 +108,21 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
               shouldwecontactyou: shouldwecontactyou,
           );
           widget.onSavedDrugRequestedEntry(drugsrequestedentry);
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: const Text('Request Successfully Submitted'),
+                  actions: [
+                    TextButton(onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('Okay'))
+                  ],
+                );
+              });
         }
       },
-      style: ButtonStyle(fixedSize: MaterialStatePropertyAll(Size(170, 30)),),
-      child: Row(
+      style: const ButtonStyle(fixedSize: MaterialStatePropertyAll(Size(170, 30)),),
+      child: const Row(
         children: [
           Icon(Icons.mail_lock_outlined, size: 20,color: Colors.black),
           Text('SUBMIT REQUEST', style: TextStyle(color: Colors.black, fontSize: 12),),

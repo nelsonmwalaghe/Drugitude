@@ -1,20 +1,23 @@
 
-import 'package:drugitudeleviosa/drugList_call_model/drugList_therapueticArea_Model.dart';
-import 'package:drugitudeleviosa/search_models/therapuetic_area_search.dart';
+
+
 import 'package:flutter/material.dart';
-import '../api_service_models/therapureticArea_api_model.dart';
-import '../drugList_call_model/drugList_brandName_model.dart';
+
+import '../apiServiceModels/pharmaceuticalGroupApiModel.dart';
+import '../drugListCallModel/drugListPharmaceuticalGroupModel.dart';
+import '../searchModels/pharmaceuticalgroupsearch.dart';
 
 
-class TherapueticArea extends StatefulWidget {
-  const TherapueticArea({super.key});
+
+class PhramGroup extends StatefulWidget {
+  const PhramGroup({super.key});
 
   @override
-  State<TherapueticArea> createState() => _TherapueticAreaState();
+  State<PhramGroup> createState() => _PhramGroupState();
 }
 
-class _TherapueticAreaState extends State<TherapueticArea> {
-  final FetchDrug_therapueticArea _drugList_therapueticArea = FetchDrug_therapueticArea();
+class _PhramGroupState extends State<PhramGroup> {
+  final FetchDrugphramGroup _drugListphramGroup = FetchDrugphramGroup();
 
   String? get query => null;
 
@@ -30,7 +33,7 @@ class _TherapueticAreaState extends State<TherapueticArea> {
 
         appBar: AppBar(
           backgroundColor: Colors.purple,
-          title: Row(
+          title: const Row(
             children: [
               Text('A ', style: TextStyle(color: Colors.white, fontSize: 20), ),
               Text(' - ',style: TextStyle(color: Colors.red, fontSize: 20),),
@@ -41,7 +44,7 @@ class _TherapueticAreaState extends State<TherapueticArea> {
           ),
           actions: [
             IconButton(onPressed: () async {
-              showSearch(context: context, delegate: SearchDrug_TherapueticArea());
+              showSearch(context: context, delegate: SearchDrugPhramGroup());
 
               // final results = await showSearch(context: context, delegate: SearchDrug());
 
@@ -51,17 +54,17 @@ class _TherapueticAreaState extends State<TherapueticArea> {
           ],
         ),
         backgroundColor: Colors.black,
-        body: FutureBuilder<List<DrugListTherapueticArea>>(
-            future: _drugList_therapueticArea.getDrugList_therapueticArea(query),
+        body: FutureBuilder<List<DrugListPharmGroup>>(
+            future: _drugListphramGroup.getDrugListphramGroup(query),
             builder: (context, snapshot) {
-              var data_therapueticArea = snapshot.data;
+              var dataphramGroup = snapshot.data;
               if (!snapshot.hasData) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
               return ListView.builder(
-                itemCount: data_therapueticArea?.length,
+                itemCount: dataphramGroup?.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
@@ -76,7 +79,7 @@ class _TherapueticAreaState extends State<TherapueticArea> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '${data_therapueticArea?[index].category.name}',
+                                  '${dataphramGroup?[index].category.name}',
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
@@ -91,7 +94,7 @@ class _TherapueticAreaState extends State<TherapueticArea> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${data_therapueticArea?[index].medicineName}',
+                                      '${dataphramGroup?[index].medicineName}',
                                       style: const TextStyle(color: Colors.black),
                                     ),
                                   ],
@@ -99,7 +102,7 @@ class _TherapueticAreaState extends State<TherapueticArea> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text('${data_therapueticArea?[index].innName}',
+                                    Text('${dataphramGroup?[index].innName}',
                                         style: const TextStyle(color: Colors.black)),
                                   ],
                                 ),

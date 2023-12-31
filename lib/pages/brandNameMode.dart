@@ -1,19 +1,24 @@
 
-import 'package:drugitudeleviosa/drugList_call_model/drugList_pharmaceutical_group_model.dart';
-import 'package:drugitudeleviosa/search_models/pharmaceutical_group_search.dart';
 import 'package:flutter/material.dart';
-import '../api_service_models/pharmaceuticalGroup_api_model.dart';
 
 
-class PhramGroup extends StatefulWidget {
-  const PhramGroup({super.key});
+
+import '../apiServiceModels/brandnameapiModel.dart';
+
+import '../drugListCallModel/drugListbrandNamemodel.dart';
+import '../searchModels/brandNameSearch.dart';
+
+
+
+class BrandName extends StatefulWidget {
+  const BrandName({super.key});
 
   @override
-  State<PhramGroup> createState() => _PhramGroupState();
+  State<BrandName> createState() => _BrandNameState();
 }
 
-class _PhramGroupState extends State<PhramGroup> {
-  final FetchDrug_phramGroup _drugList_phramGroup = FetchDrug_phramGroup();
+class _BrandNameState extends State<BrandName> {
+  final FetchDrugbrandName _drugListbrandName = FetchDrugbrandName();
 
   String? get query => null;
 
@@ -29,7 +34,7 @@ class _PhramGroupState extends State<PhramGroup> {
 
         appBar: AppBar(
           backgroundColor: Colors.purple,
-          title: Row(
+          title: const Row(
             children: [
               Text('A ', style: TextStyle(color: Colors.white, fontSize: 20), ),
               Text(' - ',style: TextStyle(color: Colors.red, fontSize: 20),),
@@ -40,7 +45,7 @@ class _PhramGroupState extends State<PhramGroup> {
           ),
           actions: [
             IconButton(onPressed: () async {
-              showSearch(context: context, delegate: SearchDrug_PhramGroup());
+              showSearch(context: context, delegate: SearchDrugBrandName());
 
               // final results = await showSearch(context: context, delegate: SearchDrug());
 
@@ -50,17 +55,17 @@ class _PhramGroupState extends State<PhramGroup> {
           ],
         ),
         backgroundColor: Colors.black,
-        body: FutureBuilder<List<DrugListPharmGroup>>(
-            future: _drugList_phramGroup.getDrugList_phramGroup(query),
+        body: FutureBuilder<List<DrugListBrandName>>(
+            future: _drugListbrandName.getDrugListbrandName(query),
             builder: (context, snapshot) {
-              var data_phramGroup = snapshot.data;
+              var databrandName = snapshot.data;
               if (!snapshot.hasData) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
               return ListView.builder(
-                itemCount: data_phramGroup?.length,
+                itemCount: databrandName?.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
@@ -75,7 +80,7 @@ class _PhramGroupState extends State<PhramGroup> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '${data_phramGroup?[index].category.name}',
+                                  '${databrandName?[index].category.name}',
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
@@ -90,7 +95,7 @@ class _PhramGroupState extends State<PhramGroup> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${data_phramGroup?[index].medicineName}',
+                                      '${databrandName?[index].medicineName}',
                                       style: const TextStyle(color: Colors.black),
                                     ),
                                   ],
@@ -98,7 +103,7 @@ class _PhramGroupState extends State<PhramGroup> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text('${data_phramGroup?[index].innName}',
+                                    Text('${databrandName?[index].innName}',
                                         style: const TextStyle(color: Colors.black)),
                                   ],
                                 ),

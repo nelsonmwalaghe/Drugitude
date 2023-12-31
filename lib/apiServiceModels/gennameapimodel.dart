@@ -1,11 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../drugListCallModel/drugListModel.dart';
 
-import '../drugList_call_model/drugList_Model.dart';
-// Note This is innName
-// data - innName
-// fetchurl - innName
-// results - innName
 
 
 class FetchDrug {
@@ -17,7 +13,7 @@ class FetchDrug {
   Future<List<DrugList>> getDrugList(String? query) async
   {
     var url = Uri.parse(fetchurl);
-    try {
+
       var response = await http.get(url);
       if (response.statusCode == 200) {
         data = json.decode(response.body);
@@ -25,12 +21,7 @@ class FetchDrug {
         if(query != null){
           results = results.where((element) => element.innName.toLowerCase().contains(query.toLowerCase())).toList();
         }
-      } else {
-        print('api error');
-      }
-    } on Exception catch (e) {
-      print('error: $e');
-    }
+      } else {}
     return results;
   }
 

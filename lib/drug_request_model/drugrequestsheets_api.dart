@@ -1,6 +1,6 @@
 import'package:gsheets/gsheets.dart';
 
-import 'drug_request_fields.dart';
+import 'drugrequestfields.dart';
 
 class DrugRequestSheetsApi {
   static const _credentials = r'''
@@ -19,7 +19,7 @@ class DrugRequestSheetsApi {
 }
 
   ''';
-  static final _spreedsheetIdDrugRequest = '1b4Y0rDekq_pmJFExbVcFNRyeZ9tP0JoSXLl5OUdv0Jg';
+  static const _spreedsheetIdDrugRequest = '1b4Y0rDekq_pmJFExbVcFNRyeZ9tP0JoSXLl5OUdv0Jg';
   static final _gsheetsDrugRequest = GSheets(_credentials);
   static Worksheet? _drugReqSheet;
 

@@ -1,9 +1,9 @@
 class DrugRequestFields {
-  static final String id = 'id';
-  static final String brandName = 'brandName';
-  static final String genericName = 'genericName';
-  static final String email = 'email';
-  static final String shouldwecontactyou = 'shouldwecontactyou';
+  static const String id = 'id';
+  static const String brandName = 'brandName';
+  static const String genericName = 'genericName';
+  static const String email = 'email';
+  static const String shouldwecontactyou = 'shouldwecontactyou';
 
   static List<String> getDrugRequestFields() => [id, brandName, genericName, email, shouldwecontactyou];
 
@@ -35,7 +35,7 @@ class DrugRequestedEntry {
   DrugRequestedEntry(
       id: id ?? this.id,
       brandName: brandName ?? this.brandName,
-      genericName: genericName ?? this.genericName,
+      genericName: genericName ?? genericName,
       email: email ?? this.email,
       shouldwecontactyou: shouldwecontactyou ?? this.shouldwecontactyou,
   );

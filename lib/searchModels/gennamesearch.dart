@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '../api_service_models/innName_api_model.dart';
-import '../drugList_call_model/drugList_Model.dart';
+import '../apiServiceModels/gennameapimodel.dart';
+import '../drugListCallModel/drugListModel.dart';
+
 // Note this is for INN Search key words to remember
 // drugstosearch-innName
 // recentdrugs - innName
@@ -54,7 +55,7 @@ class SearchDrug extends SearchDelegate {
             if (!snapshot.hasData) {
               return const Center(
                   child:SpinKitCubeGrid(
-                    color: Colors.purple,
+                    color: Colors.white,
                     size: 70,
                   ),
               );
@@ -78,16 +79,16 @@ class SearchDrug extends SearchDelegate {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(top: 25.0, bottom: 0, left: 8, right: 8),
-                                          child: Text('Category: ${data?[index].category.name}',style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                          child: Text('Category: ${data?[index].category.name}',style: const TextStyle(color: Colors.white54, fontSize: 12),),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${data?[index].medicineName}',
                                               textAlign: TextAlign.start,
-                                              style: TextStyle(color: Colors.white, fontSize: 70, fontWeight: FontWeight.bold)),
+                                              style: const TextStyle(color: Colors.white, fontSize: 70, fontWeight: FontWeight.bold)),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Active Ingredient',
                                             style: TextStyle(color: Colors.white54, fontSize: 12),),
                                         ),
@@ -96,7 +97,7 @@ class SearchDrug extends SearchDelegate {
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${data?[index].innName}',
                                             textAlign: TextAlign.start,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
                                         ),
                                         Padding(
@@ -104,10 +105,10 @@ class SearchDrug extends SearchDelegate {
                                           child: Text('Active Substance: ${data?[index].activeSubstance}',
                                             overflow: TextOverflow.fade,
                                             textAlign: TextAlign.start,
-                                            style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                            style: const TextStyle(color: Colors.white54, fontSize: 12),),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Therapuetic Area',
                                             style: TextStyle(color: Colors.white54,fontSize: 12),),
                                         ),
@@ -115,59 +116,59 @@ class SearchDrug extends SearchDelegate {
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${data?[index].therapeuticArea}',
                                             textAlign: TextAlign.start,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold),),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Pharmacotherpuetic Group',
                                               style: TextStyle(color: Colors.white54, fontSize: 12)),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${data?[index].humanPharmacotherapeuticGroup}',
-                                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                                         ),
 
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Marketing Authorization Company',
                                             style: TextStyle(color: Colors.white54, fontSize: 12),),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${data?[index].marketingAuthorisationHolderorCompanyName}',
-                                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+                                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Authorization Status',
                                               style: TextStyle(color: Colors.white54, fontSize: 12)),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${data?[index].authorisationStatus.name}',
-                                              style: TextStyle(color: Colors.white, fontSize: 12)
+                                              style: const TextStyle(color: Colors.white, fontSize: 12)
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Indication and Use',
                                               style: TextStyle(color: Colors.white54, fontSize: 12)),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                          padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${data?[index].conditionOrIndication}',
                                             overflow: TextOverflow.fade,
                                             textAlign: TextAlign.start,
-                                            style: TextStyle(fontSize: 12,
+                                            style: const TextStyle(fontSize: 12,
                                                 color: Colors.white70,
                                                 fontWeight: FontWeight.bold),),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Additional information:',
                                               style: TextStyle(color: Colors.white54, fontSize: 12)
                                           ),
@@ -177,7 +178,7 @@ class SearchDrug extends SearchDelegate {
                                           child: Text('Product Number: ${data?[index].productNumber}; ATC-Code: ${data?[index].atccode}, Generic? ${data?[index].generic.name}, Biosimilar? ${data?[index].biosimilar.name}, Conditional Approval: ${data?[index].conditionalApproval.name}, Exceptional Circumstances: ${data?[index].exceptionalCircumstances.name}, Accelerated Assessment: ${data?[index].acceleratedAssessment.name}, Orphan Medicine: ${data?[index].orphanMedicine.name}, Marketing Authorization Date: ${data?[index].marketingAuthorisationDate}, Date of Opinion: ${data?[index].dateofOpinion}, Decision Date: ${data?[index].decisionDate}, First Published: ${data?[index].firstPublished}, Revision Date: ${data?[index].revisionDate}, Revision Number: ${data?[index].revisionNumber}, url: ${data?[index].url}',
                                               overflow: TextOverflow.fade,
                                               textAlign: TextAlign.start,
-                                              style: TextStyle(fontSize: 12,
+                                              style: const TextStyle(fontSize: 12,
                                                   color: Colors.white70,
                                                   fontWeight: FontWeight.bold)
                                           ),

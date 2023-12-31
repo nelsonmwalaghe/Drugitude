@@ -1,19 +1,21 @@
 
 import 'package:flutter/material.dart';
 
-import '../api_service_models/innName_api_model.dart';
-import '../drugList_call_model/drugList_Model.dart';
-import '../search_models/innName_search.dart';
+import '../apiServiceModels/therapeuticAreaApiModel.dart';
+import '../drugListCallModel/drugListTherapueticAreaModel.dart';
+import '../searchModels/therapueticareasearch.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+
+
+class TherapueticArea extends StatefulWidget {
+  const TherapueticArea({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<TherapueticArea> createState() => _TherapueticAreaState();
 }
 
-class _HomeState extends State<Home> {
-  final FetchDrug _drugList = FetchDrug();
+class _TherapueticAreaState extends State<TherapueticArea> {
+  final FetchDrugTherapueticArea _drugListTherapueticArea = FetchDrugTherapueticArea();
 
   String? get query => null;
 
@@ -29,7 +31,7 @@ class _HomeState extends State<Home> {
 
         appBar: AppBar(
           backgroundColor: Colors.purple,
-          title: Row(
+          title: const Row(
             children: [
               Text('A ', style: TextStyle(color: Colors.white, fontSize: 20), ),
               Text(' - ',style: TextStyle(color: Colors.red, fontSize: 20),),
@@ -40,7 +42,7 @@ class _HomeState extends State<Home> {
           ),
           actions: [
             IconButton(onPressed: () async {
-              showSearch(context: context, delegate: SearchDrug());
+              showSearch(context: context, delegate: SearchDrugTherapueticArea());
 
               // final results = await showSearch(context: context, delegate: SearchDrug());
 
@@ -50,17 +52,17 @@ class _HomeState extends State<Home> {
           ],
         ),
         backgroundColor: Colors.black,
-        body: FutureBuilder<List<DrugList>>(
-            future: _drugList.getDrugList(query),
+        body: FutureBuilder<List<DrugListTherapueticArea>>(
+            future: _drugListTherapueticArea.getDrugListTherapueticArea(query),
             builder: (context, snapshot) {
-              var data = snapshot.data;
+              var dataTherapueticArea = snapshot.data;
               if (!snapshot.hasData) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
               return ListView.builder(
-                itemCount: data?.length,
+                itemCount: dataTherapueticArea?.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
@@ -75,7 +77,7 @@ class _HomeState extends State<Home> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '${data?[index].category.name}',
+                                  '${dataTherapueticArea?[index].category.name}',
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
@@ -90,7 +92,7 @@ class _HomeState extends State<Home> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${data?[index].medicineName}',
+                                      '${dataTherapueticArea?[index].medicineName}',
                                       style: const TextStyle(color: Colors.black),
                                     ),
                                   ],
@@ -98,7 +100,7 @@ class _HomeState extends State<Home> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text('${data?[index].innName}',
+                                    Text('${dataTherapueticArea?[index].innName}',
                                         style: const TextStyle(color: Colors.black)),
                                   ],
                                 ),
