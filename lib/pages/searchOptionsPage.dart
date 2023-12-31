@@ -5,7 +5,6 @@ import '../searchModels/brandNameSearch.dart';
 import '../searchModels/gennamesearch.dart';
 import '../searchModels/pharmaceuticalgroupsearch.dart';
 import '../searchModels/therapueticareasearch.dart';
-import 'aboutdrugitude.dart';
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
 
@@ -40,9 +39,9 @@ class SearchOptions extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => const LandingPage(),
                           ));
-                    }, child: Column(
+                    }, child: const Column(
                       children: [
-                        const Icon(Icons.home_outlined, color: Colors.grey,),
+                        Icon(Icons.home_outlined, color: Colors.grey,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.grey))
                       ],
                     )),
@@ -58,9 +57,9 @@ class SearchOptions extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) =>
                           const DictionaryMode(),
-                        ));}, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.menu_book_outlined, color: Colors.black,),
+                        Icon(Icons.menu_book_outlined, color: Colors.black,),
                         Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -78,9 +77,9 @@ class SearchOptions extends StatelessWidget {
                             builder: (context) =>
                             const DrugRequestPage(),
                           ));
-                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.mail_outline_rounded, color: Colors.black,),
+                        Icon(Icons.mail_outline_rounded, color: Colors.black,),
                         Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -91,9 +90,9 @@ class SearchOptions extends StatelessWidget {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){}, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.corporate_fare_outlined, color: Colors.black,),
+                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
                         Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -106,8 +105,8 @@ class SearchOptions extends StatelessWidget {
           ),
         ),
         extendBody: true,
-        drawer: Padding(
-          padding: const EdgeInsets.only(top: 56.0),
+        drawer: const Padding(
+          padding: EdgeInsets.only(top: 56.0),
           child: SizedBox(
             height: 400,
             width: 200,
@@ -273,7 +272,7 @@ class SearchOptions extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           leading: IconButton(onPressed: (){Navigator.pop(context);},
-              icon: Icon(Icons.arrow_back, color: Colors.white,)),
+              icon: const Icon(Icons.arrow_back, color: Colors.white,)),
           backgroundColor: Colors.black,
           iconTheme: const IconThemeData(color: Colors.white),
           elevation: 8,

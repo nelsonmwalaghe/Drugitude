@@ -44,9 +44,9 @@ class DrugRequestPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => const LandingPage(),
                           ));
-                    }, child: Column(
+                    }, child: const Column(
                       children: [
-                        const Icon(Icons.home_outlined, color: Colors.black,),
+                        Icon(Icons.home_outlined, color: Colors.black,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -62,9 +62,9 @@ class DrugRequestPage extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) =>
                           const DictionaryMode(),
-                        ));}, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.menu_book_outlined, color: Colors.black,),
+                        Icon(Icons.menu_book_outlined, color: Colors.black,),
                         Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -77,10 +77,10 @@ class DrugRequestPage extends StatelessWidget {
                   children: [
                     TextButton(onPressed: (){
                       // Navigator.push(context, MaterialPageRoute(builder: (context) => const DrugRequestPage(),));
-                    }, child: Column(
+                    }, child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.mail_outline_rounded, color: Colors.grey,),
+                        Icon(Icons.mail_outline_rounded, color: Colors.grey,),
                         Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.grey))
                       ],
                     )),
@@ -97,9 +97,9 @@ class DrugRequestPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.corporate_fare_outlined, color: Colors.black,),
+                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
                         Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -213,7 +213,7 @@ class DrugRequestPage extends StatelessWidget {
 
         appBar: AppBar(
           leading: IconButton(onPressed: (){Navigator.pop(context);},
-              icon: Icon(Icons.arrow_back, color: Colors.white,)),
+              icon: const Icon(Icons.arrow_back, color: Colors.white,)),
           backgroundColor: Colors.black,
           title: const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

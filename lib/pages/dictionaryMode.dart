@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import '../apiServiceModels/gennameapimodel.dart';
 import '../drugListCallModel/drugListModel.dart';
-import '../searchModels/dictionarymodeAZsearch.dart';
+import '../searchModels/dictionarymodeazsearch.dart';
 import 'aboutDrugitude.dart';
 import 'drugrequestpage.dart';
 import 'package:drugitudeleviosa/pages/landingpage.dart';

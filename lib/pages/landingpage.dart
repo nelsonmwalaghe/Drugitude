@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../apiServiceModels/daydrugapimodel.dart';
-
 import '../drugListCallModel/drugofthedayinputmodel.dart';
-import '../searchModels/gennamesearch.dart';
 import 'aboutDrugitude.dart';
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
@@ -49,9 +47,9 @@ class _LandingPageState extends State<LandingPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){}, child: Column(
+                    TextButton(onPressed: (){}, child: const Column(
                       children: [
-                        const Icon(Icons.home_outlined, color: Colors.grey,),
+                        Icon(Icons.home_outlined, color: Colors.grey,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.grey))
                       ],
                     )),
@@ -67,9 +65,9 @@ class _LandingPageState extends State<LandingPage> {
                         MaterialPageRoute(
                           builder: (context) =>
                           const DictionaryMode(),
-                        ));}, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.menu_book_outlined, color: Colors.black,),
+                        Icon(Icons.menu_book_outlined, color: Colors.black,),
                         Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -87,10 +85,10 @@ class _LandingPageState extends State<LandingPage> {
                             builder: (context) =>
                             const DrugRequestPage(),
                           ));
-                    }, child: Column(
+                    }, child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.mail_outline_rounded, color: Colors.black,),
+                        Icon(Icons.mail_outline_rounded, color: Colors.black,),
                         Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -107,9 +105,9 @@ class _LandingPageState extends State<LandingPage> {
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.corporate_fare_outlined, color: Colors.black,),
+                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
                         Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
