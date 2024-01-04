@@ -1,3 +1,4 @@
+import 'package:drugitudeleviosa/notificationsmodel/notificationservices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -10,6 +11,7 @@ import 'searchOptionsPage.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
+
 
   @override
   State<LandingPage> createState() => _LandingPageState();
@@ -34,6 +36,22 @@ class _LandingPageState extends State<LandingPage> {
                 MaterialPageRoute(
                   builder: (context) => const SearchOptions(),
                 ));
+          await NotificationService.showNotification(
+            hoursFromNow: 1,
+              title: "Drugitude",
+              body: "Drug of the Day",
+              summary: "Daily Dose of New Drug Information",
+            scheduled: true,
+            repeatNotif: true
+            );
+
+
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
           },
           child: const Icon(Icons.search_outlined),
         ),
@@ -47,9 +65,11 @@ class _LandingPageState extends State<LandingPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){}, child: const Column(
+                    TextButton(onPressed: (){
+
+                    }, child: const Column(
                       children: [
-                        Icon(Icons.home_outlined, color: Colors.grey,),
+                        Icon(Icons.home_filled, color: Colors.grey,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.grey))
                       ],
                     )),
@@ -141,7 +161,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 150,
+                            width: 155,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.pushReplacement(
@@ -154,12 +174,12 @@ class _LandingPageState extends State<LandingPage> {
                                 child: const Row(
                                   children: [
                                     Icon(
-                                      Icons.home_outlined,
+                                      Icons.menu_book_outlined,
                                       size: 20,
                                       color: Colors.black,
                                     ),
                                     Text(
-                                      'Dictionary Mode',
+                                      ' Dictionary Mode',
                                       style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
@@ -177,7 +197,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 150,
+                            width: 155,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -213,7 +233,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 150,
+                            width: 155,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.pushReplacement(
@@ -249,7 +269,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 150,
+                            width: 155,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.pushReplacement(

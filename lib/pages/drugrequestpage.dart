@@ -1,6 +1,6 @@
+import 'package:drugitudeleviosa/pages/drugrequestlistconfirmation.dart';
 import 'package:drugitudeleviosa/pages/landingpage.dart';
 import 'package:flutter/material.dart';
-
 import '../drug_request_model/DrugRequestForm_Widget.dart';
 import '../drug_request_model/drugrequestsheets_api.dart';
 import 'aboutDrugitude.dart';
@@ -9,9 +9,16 @@ import 'searchOptionsPage.dart';
 
 
 
-class DrugRequestPage extends StatelessWidget {
+class DrugRequestPage extends StatefulWidget {
   const DrugRequestPage({super.key});
 
+  @override
+  State<DrugRequestPage> createState() => _DrugRequestPageState();
+}
+
+class _DrugRequestPageState extends State<DrugRequestPage> {
+
+  String? get query => null;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,7 +53,7 @@ class DrugRequestPage extends StatelessWidget {
                           ));
                     }, child: const Column(
                       children: [
-                        Icon(Icons.home_outlined, color: Colors.black,),
+                        Icon(Icons.home_filled, color: Colors.black,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
@@ -248,39 +255,64 @@ class DrugRequestPage extends StatelessWidget {
           ],
         ),
         backgroundColor: Colors.black,
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 150),
-            child: Column(
-              children: [
-                const Text('Request Drug:', style: TextStyle(color: Colors.white),),
-                DrugRequestFormWidget(onSavedDrugRequestedEntry:
-                (drugsrequestedentry) async {
-                  final id = await DrugRequestSheetsApi.getRowCount() + 1;
-                  final newDrugRequestEntry = drugsrequestedentry.copy(id: id);
-                
-                  await DrugRequestSheetsApi.insert([newDrugRequestEntry.toJson()]);
-                }),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+        body:
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0, bottom: 50),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('Check out the current request queue',style: TextStyle(
+                                  color: Colors.white, fontSize: 11) ),
+                            ),
+                            ElevatedButton(
+                                onPressed: () async {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const DrugRequestConfirmation(),
+                                      ));
+                                },
+                                style: const ButtonStyle(
+                                  fixedSize: MaterialStatePropertyAll(Size(200, 30)),
+                                ),
+                                child: const Row(
+                                  children: [
+                                    Icon(Icons.remove_from_queue_outlined,
+                                        size: 20, color: Colors.black),
+                                    Text(
+                                      '  DRUG REQUEST QUEUE',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 12),
+                                    ),
+                                  ],
+                                )),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('If not in Queue, feel free to type and submit a request',style: TextStyle(
+                                  color: Colors.white, fontSize: 11) ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Text('Request Drug:', style: TextStyle(color: Colors.white),),
+                      DrugRequestFormWidget(onSavedDrugRequestedEntry:
+                          (drugsrequestedentry) async {
+                        final id = await DrugRequestSheetsApi.getRowCount() + 1;
+                        final newDrugRequestEntry = drugsrequestedentry.copy(id: id);
 
-  // Future insertDrugsRequested() async {
-  //   final drugsrequestedentry = [
-  //     DrugRequestedEntry(id: 1, brandName: 'Melcam', genericName: 'Melxicam', email: 'nelsonmwalaghe', shouldwecontactyou: true),
-  //     DrugRequestedEntry(id: 2, brandName: 'Melcam', genericName: 'Melxicam', email: 'nelsonmwalaghe', shouldwecontactyou: true),
-  //     DrugRequestedEntry(id: 3, brandName: 'Melcam', genericName: 'Melxicam', email: 'nelsonmwalaghe', shouldwecontactyou: true),
-  //     DrugRequestedEntry(id: 4, brandName: 'Melcam', genericName: 'Melxicam', email: 'nelsonmwalaghe', shouldwecontactyou: true),
-  //     DrugRequestedEntry(id: 5, brandName: 'Melcam', genericName: 'Melxicam', email: 'nelsonmwalaghe', shouldwecontactyou: true),
-  //
-  //
-  //   ];
-  //   final JsonDrugsRequested = drugsrequestedentry.map((drugrequestedentry) => drugrequestedentry.toJson()).toList();
-  //
-  //   await DrugRequestSheetsApi.insert(JsonDrugsRequested);
-  // }
+                        await DrugRequestSheetsApi.insert([newDrugRequestEntry.toJson()]);
+                      }),
+
+                    ],
+                  ),
+                ),
+              ),),);
+
+  }
 }

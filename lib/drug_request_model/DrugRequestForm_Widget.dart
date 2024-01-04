@@ -1,4 +1,5 @@
 import 'package:drugitudeleviosa/drug_request_model/drugrequestfields.dart';
+import 'package:drugitudeleviosa/pages/drugrequestlistconfirmation.dart';
 import 'package:flutter/material.dart';
 
 
@@ -114,7 +115,11 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
                 return AlertDialog(
                   title: const Text('Request Successfully Submitted'),
                   actions: [
-                    TextButton(onPressed: () => Navigator.of(context).pop(),
+                    TextButton(onPressed: () =>  Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DrugRequestConfirmation(),
+                        )),
                         child: const Text('Okay'))
                   ],
                 );
