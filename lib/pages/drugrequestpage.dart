@@ -45,13 +45,12 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LandingPage(),
-                          ));
-                    }, child: const Column(
+                    TextButton(onPressed: (){Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                          const LandingPage(),
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.home_filled, color: Colors.black,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
@@ -265,8 +264,8 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                         padding: const EdgeInsets.only(top: 5.0, bottom: 50),
                         child: Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
                               child: Text('Check out the current request queue',style: TextStyle(
                                   color: Colors.white, fontSize: 11) ),
                             ),
@@ -279,7 +278,7 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                                       ));
                                 },
                                 style: const ButtonStyle(
-                                  fixedSize: MaterialStatePropertyAll(Size(200, 30)),
+                                  fixedSize: MaterialStatePropertyAll(Size(210, 30)),
                                 ),
                                 child: const Row(
                                   children: [
@@ -292,8 +291,8 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                                     ),
                                   ],
                                 )),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
                               child: Text('If not in Queue, feel free to type and submit a request',style: TextStyle(
                                   color: Colors.white, fontSize: 11) ),
                             ),

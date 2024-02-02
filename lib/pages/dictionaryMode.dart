@@ -50,9 +50,12 @@ class _DictionaryMode extends State<DictionaryMode> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
-                    }, child: const Column(
+                    TextButton(onPressed: (){Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                          const LandingPage(),
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.home_filled, color: Colors.black,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))

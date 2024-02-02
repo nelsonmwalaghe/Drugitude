@@ -50,21 +50,18 @@ class _DrugRequestConfirmationState extends State<DrugRequestConfirmation> {
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LandingPage(),
-                          ));
-                    }, child: const Column(
+                    TextButton(onPressed: (){Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                          const LandingPage(),
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.home_filled, color: Colors.black,),
-                        Text('Home', style: TextStyle(
-                            fontSize: 9.0, color: Colors.black))
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
                   ],
@@ -140,127 +137,127 @@ class _DrugRequestConfirmationState extends State<DrugRequestConfirmation> {
           ),
         ),
         extendBody: true,
-        drawer: Padding(
-          padding: const EdgeInsets.only(top: 56.0),
+        drawer: const Padding(
+          padding: EdgeInsets.only(top: 56.0),
           child:
           SizedBox(height: 278, width: 150,
-            child: Drawer(
-                backgroundColor: Colors.black,
-                shape: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                    )),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0.0, bottom: 50),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(
-                                    builder: (
-                                        context) => const LandingPage(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(Icons.home_outlined, size: 20,
-                                      color: Colors.black,),
-                                    Text('Home', style: TextStyle(fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => SearchOptions(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(Icons.medication_outlined, size: 20,
-                                      color: Colors.grey,),
-                                    Text('Search', style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pop(context, MaterialPageRoute(
-                                    builder: (
-                                        context) => const LandingPage(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(Icons.request_page_outlined, size: 20,
-                                      color: Colors.black,),
-                                    Text('Request Drug', style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.perm_device_info_outlined, size: 20,
-                                      color: Colors.black,),
-                                    Text('About', style: TextStyle(fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
+            // child: Drawer(
+            //     backgroundColor: Colors.black,
+            //     shape: const OutlineInputBorder(
+            //         borderSide: BorderSide(color: Colors.black),
+            //         borderRadius: BorderRadius.only(
+            //           bottomRight: Radius.circular(50),
+            //           topRight: Radius.circular(50),
+            //         )),
+            //     child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+            //       children: [
+            //         Padding(
+            //           padding: const EdgeInsets.only(top: 0.0, bottom: 50),
+            //           child: Row(
+            //             children: [
+            //               SizedBox(height: 26, width: 150,
+            //                 child: ElevatedButton(
+            //                     onPressed: () {
+            //                       Navigator.push(context, MaterialPageRoute(
+            //                         builder: (
+            //                             context) => const LandingPage(),));
+            //                     },
+            //                     child: const Row(
+            //                       children: [
+            //                         Icon(Icons.home_outlined, size: 20,
+            //                           color: Colors.black,),
+            //                         Text('Home', style: TextStyle(fontSize: 12,
+            //                             fontWeight: FontWeight.bold,
+            //                             color: Colors.black),)
+            //                       ],
+            //                     )
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
+            //           child: Row(
+            //             children: [
+            //               SizedBox(height: 26, width: 150,
+            //                 child: ElevatedButton(
+            //                     onPressed: () {
+            //                       // Navigator.pop(context, MaterialPageRoute(builder: (context) => SearchOptions(),));
+            //                     },
+            //                     child: const Row(
+            //                       children: [
+            //                         Icon(Icons.medication_outlined, size: 20,
+            //                           color: Colors.grey,),
+            //                         Text('Search', style: TextStyle(
+            //                             fontSize: 12,
+            //                             fontWeight: FontWeight.bold,
+            //                             color: Colors.grey),)
+            //                       ],
+            //                     )
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
+            //           child: Row(
+            //             children: [
+            //               SizedBox(height: 26, width: 150,
+            //                 child: ElevatedButton(
+            //                     onPressed: () {
+            //                       Navigator.pop(context, MaterialPageRoute(
+            //                         builder: (
+            //                             context) => const LandingPage(),));
+            //                     },
+            //                     child: const Row(
+            //                       children: [
+            //                         Icon(Icons.request_page_outlined, size: 20,
+            //                           color: Colors.black,),
+            //                         Text('Request Drug', style: TextStyle(
+            //                             fontSize: 12,
+            //                             fontWeight: FontWeight.bold,
+            //                             color: Colors.black),)
+            //                       ],
+            //                     )
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
+            //           child: Row(
+            //             children: [
+            //               SizedBox(height: 26, width: 150,
+            //                 child: ElevatedButton(
+            //                     onPressed: () {
+            //                       // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+            //                     },
+            //                     child: const Row(
+            //                       children: [
+            //                         Icon(
+            //                           Icons.perm_device_info_outlined, size: 20,
+            //                           color: Colors.black,),
+            //                         Text('About', style: TextStyle(fontSize: 12,
+            //                             fontWeight: FontWeight.bold,
+            //                             color: Colors.black),)
+            //                       ],
+            //                     )
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ],
+            //     )),
           ),
         ),
 
         appBar: AppBar(
           leading: IconButton(onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DrugRequestPage(),));
           },
               icon: const Icon(Icons.arrow_back, color: Colors.white,)),
           backgroundColor: Colors.black,

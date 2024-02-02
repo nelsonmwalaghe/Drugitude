@@ -5,6 +5,7 @@ import '../searchModels/brandNameSearch.dart';
 import '../searchModels/gennamesearch.dart';
 import '../searchModels/pharmaceuticalgroupsearch.dart';
 import '../searchModels/therapueticareasearch.dart';
+import 'aboutDrugitude.dart';
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
 
@@ -33,16 +34,15 @@ class SearchOptions extends StatelessWidget {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LandingPage(),
-                          ));
-                    }, child: const Column(
+                    TextButton(onPressed: (){Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                          const LandingPage(),
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.home_outlined, color: Colors.grey,),
-                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.grey))
+                        Icon(Icons.home_filled, color: Colors.black,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
                       ],
                     )),
                   ],
@@ -90,7 +90,13 @@ class SearchOptions extends StatelessWidget {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AboutPage(),
+                          ));
+                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.corporate_fare_outlined, color: Colors.black,),
                         Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))

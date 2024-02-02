@@ -1,4 +1,3 @@
-import 'package:drugitudeleviosa/notificationsmodel/notificationservices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -36,14 +35,14 @@ class _LandingPageState extends State<LandingPage> {
                 MaterialPageRoute(
                   builder: (context) => const SearchOptions(),
                 ));
-          await NotificationService.showNotification(
-            hoursFromNow: 1,
-              title: "Drugitude",
-              body: "Drug of the Day",
-              summary: "Daily Dose of New Drug Information",
-            scheduled: true,
-            repeatNotif: true
-            );
+          // await NotificationService.showNotification(
+          //   interval: 5,
+          //     title: "Drugitude",
+          //     body: "Drug of the Day",
+          //     summary: "Daily Dose of New Drug Information",
+          //   scheduled: true,
+          //   repeatNotif: true
+          //   );
 
 
             // AwesomeNotifications().createNotification(content: NotificationContent(
@@ -65,9 +64,12 @@ class _LandingPageState extends State<LandingPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){
-
-                    }, child: const Column(
+                    TextButton(onPressed: (){Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                          const LandingPage(),
+                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.home_filled, color: Colors.grey,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.grey))
@@ -136,13 +138,12 @@ class _LandingPageState extends State<LandingPage> {
               ),
               const SizedBox(width: 52,)
             ],
-
           ),
         ),
-        extendBody: false,
+        extendBody: true,
         drawer: Padding(
           padding: const EdgeInsets.only(top: 56.0, ),
-          child: SizedBox(height: 400, width: 200,
+          child: SizedBox(height: 400, width: 300,
             child: Drawer(
                 elevation: BorderSide.strokeAlignOutside,
                 backgroundColor: Colors.white.withOpacity(.1),
@@ -161,7 +162,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 155,
+                            width: 160,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.pushReplacement(
@@ -197,7 +198,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 155,
+                            width: 160,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -233,7 +234,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 155,
+                            width: 160,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.pushReplacement(
@@ -269,7 +270,7 @@ class _LandingPageState extends State<LandingPage> {
                         children: [
                           SizedBox(
                             height: 26,
-                            width: 155,
+                            width: 160,
                             child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.pushReplacement(
@@ -326,7 +327,13 @@ class _LandingPageState extends State<LandingPage> {
                 const Row(
                   children: [
                     Text('DRUGITUDE', style: TextStyle(color: Colors.white, fontSize: 20),),
-
+                    Padding(
+                      padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: CircleAvatar(
+                        radius: 10,
+                        child: Image(image: AssetImage('assets/drugitudeicon.png')),
+                      ),
+                    ),
                   ],
                 ),
                 Row(

@@ -1,6 +1,6 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:drugitudeleviosa/notificationsmodel/notificationservices.dart';
 import 'package:flutter/material.dart';
+import 'adverseDrugReactionReportModel/adversedrugreaction_api.dart';
 import 'drug_request_model/drugrequestsheets_api.dart';
 import 'pages/landingpage.dart';
 
@@ -8,6 +8,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await NotificationService.initializeNotification();
   await DrugRequestSheetsApi.init();
+  await AdrSheetApi.init();
 
 
   runApp(const MyApp());

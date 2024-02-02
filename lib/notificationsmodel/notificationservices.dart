@@ -75,7 +75,7 @@ static Future<void>onActionReceivedMethod(
     // }
 }
 static Future<void>showNotification({
-  required int hoursFromNow,
+  // required int hoursFromNow,
   bool repeatNotif = false,
   required final String title,
   required final String body,
@@ -88,18 +88,18 @@ static Future<void>showNotification({
   final bool scheduled = false,
   final int? interval,
 }) async {
-    assert (!scheduled || (scheduled && interval != null));
-    var nowDate = DateTime.now().add(Duration(hours: hoursFromNow, seconds: 5));
+    // assert (!scheduled || (scheduled && interval != null));
+    // var nowDate = DateTime.now().add(Duration(hours: hoursFromNow, seconds: 5));
 
     await AwesomeNotifications().createNotification(
-      schedule: NotificationCalendar(
-        //weekday: nowDate.day,
-        hour: nowDate.hour,
-        minute: 0,
-        second: nowDate.second,
-        repeats: repeatNotif,
-        //allowWhileIdle: true,
-        ),
+      // schedule: NotificationCalendar(
+      //   //weekday: nowDate.day,
+      //   hour: nowDate.hour,
+      //   minute: 0,
+      //   second: nowDate.second,
+      //   repeats: repeatNotif,
+      //   //allowWhileIdle: true,
+      //   ),
 
         content: NotificationContent(
             id: 1,
@@ -123,5 +123,20 @@ static Future<void>showNotification({
       // )
       //     : null,
     );
+}
+static Future<bool>scheduleNotification() async {
+final AwesomeNotifications awesomeNotifications = AwesomeNotifications();
+return await awesomeNotifications.createNotification(
+    schedule: NotificationCalendar(
+        hour: 17,
+      repeats: true,
+    ),
+  content: NotificationContent(
+      id: 3,
+      channelKey: "High Importance Channel",
+    title: "Drugitude",
+    body: "check out Drug of the Day",
+  )
+);
 }
 }
