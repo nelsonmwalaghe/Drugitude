@@ -4,6 +4,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../apiServiceModels/daydrugapimodel.dart';
 import '../drugListCallModel/drugofthedayinputmodel.dart';
 import 'aboutDrugitude.dart';
+import 'adrsLandingPage.dart';
+import 'adrsReportPage.dart';
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
 import 'searchOptionsPage.dart';
@@ -143,7 +145,7 @@ class _LandingPageState extends State<LandingPage> {
         extendBody: true,
         drawer: Padding(
           padding: const EdgeInsets.only(top: 56.0, ),
-          child: SizedBox(height: 400, width: 300,
+          child: SizedBox(height: 480, width: 300,
             child: Drawer(
                 elevation: BorderSide.strokeAlignOutside,
                 backgroundColor: Colors.white.withOpacity(.1),
@@ -276,7 +278,7 @@ class _LandingPageState extends State<LandingPage> {
                                   Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const AboutPage(),
+                                        builder: (context) => const AdrsReportPage(),
                                       ));
                                 },
                                 child: const Row(
@@ -288,6 +290,41 @@ class _LandingPageState extends State<LandingPage> {
                                     ),
                                     Text(
                                       'About',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    )
+                                  ],
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, bottom: 56.0),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: 26,
+                            width: 160,
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const AdrsLandingPage(),
+                                      ));
+                                },
+                                child: const Row(
+                                  children: [
+                                    Icon(
+                                      Icons.report,
+                                      size: 20,
+                                      color: Colors.black,
+                                    ),
+                                    Text(
+                                      'ADRs Report',
                                       style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
@@ -374,6 +411,7 @@ class _LandingPageState extends State<LandingPage> {
                   child:SpinKitCubeGrid(
                     color: Colors.white,
                     size: 70,
+                    duration: Duration(milliseconds: 400),
                   )
               );
             }

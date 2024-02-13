@@ -1,3 +1,4 @@
+import 'package:drugitudeleviosa/adverseDrugReactionReportModel/adversedrugreaction_fields.dart';
 import'package:gsheets/gsheets.dart';
 
 class AdrSheetApi {
@@ -16,23 +17,42 @@ class AdrSheetApi {
   "universe_domain": "googleapis.com"
 }
   ''';
-  static final _spreadsheetIdADRSReport = '1Jc1V4vnI3aNTw6SF0byKPmaw2zqGUC0NJVHlUI5Fv6E';
+  static const _spreadsheetIdADRSReport = '1Jc1V4vnI3aNTw6SF0byKPmaw2zqGUC0NJVHlUI5Fv6E';
   static final _gsheetsADRSReport = GSheets(_credentials);
-  static Worksheet? _ADRSReportSheet;
+  static Worksheet? _adrsReportSheet;
 
   static Future init() async {
-    final spreadsheet = await _gsheetsADRSReport.spreadsheet(_spreadsheetIdADRSReport);
-    _ADRSReportSheet = await _getADRSReportWorkSheet(spreadsheet, title: 'DRUGITUTE ADVERSE DRUG REACTION REPORTING FORM');
+    try {
+      final spreadsheet = await _gsheetsADRSReport.spreadsheet(
+          _spreadsheetIdADRSReport);
+      _adrsReportSheet = await _getADRSReportWorkSheet(
+          spreadsheet, title: 'DRUGITUDE ADVERSE DRUG REACTION REPORTING FORM');
+
+      final firstRow = AdrsReportFields.getAdrsReportFields();
+      _adrsReportSheet!.values.insertRow(1, firstRow);
+    } catch (e) {
+      print('Init Error: $e');
+    }
   }
-  static Future<Worksheet> _getADRSReportWorkSheet(
-      Spreadsheet spreadsheet, {
-        required String title,
-  }
-      ) async {
+
+  static Future<Worksheet> _getADRSReportWorkSheet(Spreadsheet spreadsheet, {
+    required String title,
+  }) async {
     try {
       return await spreadsheet.addWorksheet(title);
     } catch (e) {
       return spreadsheet.worksheetByTitle(title)!;
     }
+  }
+
+  static Future<int> getRowCount() async {
+    if (_adrsReportSheet == null) return 0;
+    final lastRow = await _adrsReportSheet!.values.lastRow();
+    return lastRow == null ? 0 : int.tryParse(lastRow.first) ?? 0;
+  }
+
+  static Future insert(List<Map<String, dynamic>> rowList) async {
+    if (_adrsReportSheet == null) return;
+    _adrsReportSheet!.values.map.appendRows(rowList);
   }
 }

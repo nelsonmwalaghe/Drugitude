@@ -174,6 +174,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                   child: SpinKitCubeGrid(
                     color: Colors.white,
                     size: 70,
+                    duration: Duration(milliseconds: 400),
                   ),
                 );
               }

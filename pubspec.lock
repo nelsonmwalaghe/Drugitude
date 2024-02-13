@@ -177,7 +177,7 @@ packages:
     source: hosted
     version: "1.4.1"
   gsheets:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: gsheets
       sha256: "5730f2585d9df565f1cf54d8c26a3608c2586c5e1797932cb4484d5f1262e85b"
