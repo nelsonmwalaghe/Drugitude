@@ -188,7 +188,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                 Expanded(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.black,
+                                      color: Colors.grey.shade900,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child:
@@ -203,7 +203,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                             padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                             child: Text('${data?[index].medicineName}',
                                                 textAlign: TextAlign.start,
-                                                style: const TextStyle(color: Colors.white, fontSize: 70, fontWeight: FontWeight.bold)),
+                                                style: const TextStyle(color: Colors.white, decoration: TextDecoration.underline,decorationColor: Colors.white,fontSize:30, fontWeight: FontWeight.bold)),
                                           ),
                                           const Padding(
                                             padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
@@ -271,36 +271,61 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                 style: const TextStyle(color: Colors.white, fontSize: 12)
                                             ),
                                           ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                            child: Text('Indication and Use',
-                                                style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                            child: Text('${data?[index].conditionOrIndication}',
-                                              overflow: TextOverflow.fade,
-                                              textAlign: TextAlign.start,
-                                              style: const TextStyle(fontSize: 12,
-                                                  color: Colors.white70,
-                                                  fontWeight: FontWeight.bold),),
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                            child: Text('Additional information:',
-                                                style: TextStyle(color: Colors.white54, fontSize: 12)
+                                          Card(color: Colors.blueGrey.shade900,
+                                            child: ExpansionTile(
+                                              iconColor: Colors.white,
+                                              collapsedIconColor: Colors.green,
+                                              title: const Padding(
+                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 0, right: 8),
+                                                child: Text('Indication and Use',
+                                                    style: TextStyle(color: Colors.white, fontSize: 16)),
+                                              ),
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                                  child: Text('${data?[index].conditionOrIndication}',
+                                                    overflow: TextOverflow.fade,
+                                                    textAlign: TextAlign.start,
+                                                    style: const TextStyle(fontSize: 12,
+                                                        color: Colors.white70,
+                                                        fontWeight: FontWeight.bold),),
+                                                ),
+                                                Card(color: Colors.black,
+                                                  child: ExpansionTile(
+                                                      iconColor: Colors.green,
+                                                      collapsedIconColor: Colors.white,
+                                                      title: const Padding(
+                                                    padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                    child: Text('Additional information:',
+                                                        style: TextStyle(color: Colors.white54, fontSize: 12)
+                                                    ),
+                                                  ),
+                                                    children: [
+                                                      Column(
+                                                        children: [
+
+                                                          Padding(
+                                                            padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                                            child: Text('Product Number: ${data?[index].productNumber}; ATC-Code: ${data?[index].atccode}, Generic? ${data?[index].generic.name}, Biosimilar? ${data?[index].biosimilar.name}, Conditional Approval: ${data?[index].conditionalApproval.name}, Exceptional Circumstances: ${data?[index].exceptionalCircumstances.name}, Accelerated Assessment: ${data?[index].acceleratedAssessment.name}, Orphan Medicine: ${data?[index].orphanMedicine.name}, Marketing Authorization Date: ${data?[index].marketingAuthorisationDate}, Date of Opinion: ${data?[index].dateofOpinion}, Decision Date: ${data?[index].decisionDate}, First Published: ${data?[index].firstPublished}, Revision Date: ${data?[index].revisionDate}, Revision Number: ${data?[index].revisionNumber}, url: ${data?[index].url}',
+                                                                overflow: TextOverflow.fade,
+                                                                textAlign: TextAlign.start,
+                                                                style: const TextStyle(fontSize: 12,
+                                                                    color: Colors.white70,
+                                                                    fontWeight: FontWeight.bold)
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+
+                                                  ),
+                                                ),
+
+                                              ],
+
                                             ),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                            child: Text('Product Number: ${data?[index].productNumber}; ATC-Code: ${data?[index].atccode}, Generic? ${data?[index].generic.name}, Biosimilar? ${data?[index].biosimilar.name}, Conditional Approval: ${data?[index].conditionalApproval.name}, Exceptional Circumstances: ${data?[index].exceptionalCircumstances.name}, Accelerated Assessment: ${data?[index].acceleratedAssessment.name}, Orphan Medicine: ${data?[index].orphanMedicine.name}, Marketing Authorization Date: ${data?[index].marketingAuthorisationDate}, Date of Opinion: ${data?[index].dateofOpinion}, Decision Date: ${data?[index].decisionDate}, First Published: ${data?[index].firstPublished}, Revision Date: ${data?[index].revisionDate}, Revision Number: ${data?[index].revisionNumber}, url: ${data?[index].url}',
-                                                overflow: TextOverflow.fade,
-                                                textAlign: TextAlign.start,
-                                                style: const TextStyle(fontSize: 12,
-                                                    color: Colors.white70,
-                                                    fontWeight: FontWeight.bold)
-                                            ),
-                                          ),
+
 
 
                                         ],

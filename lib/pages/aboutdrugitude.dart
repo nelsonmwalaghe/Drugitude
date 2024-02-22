@@ -263,13 +263,13 @@ class AboutPage extends StatelessWidget {
                   textAlign: TextAlign.justify,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text("This concept utilizes data from European Medicines Agency's (EMA) download data, 'European public assessment reports (EPAR)' by creating an API model to prove the concept. The developer utilizes this example to illustrate the efficiency of having a centralized mechanism of obtaining all drugs within the world, with the hopes of providing an information hub to make an organized and easily accessible search platform",
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.all(8.0),
+              //   child: Text("This concept utilizes data from European Medicines Agency's (EMA) download data, 'European public assessment reports (EPAR)' by creating an API model to prove the concept. The developer utilizes this example to illustrate the efficiency of having a centralized mechanism of obtaining all drugs within the world, with the hopes of providing an information hub to make an organized and easily accessible search platform",
+              //     textAlign: TextAlign.justify,
+              //     style: TextStyle(color: Colors.white),
+              //   ),
+              // ),
               Padding(
                 padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 40),
                 child: Text("With a background in DataBase management, Software development, android engineering and Pharmaceutical Technology, the developer identifies a niche and provided a conceptual answer to the gap within Medical Industry, providing links among Pharmaceutical Manufacturers, Marketers, Medical Professionals, Students, Drug Users and patients, ensuring clarity and ease of access to empirical medical data sourced from viable medical information sources.",

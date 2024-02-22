@@ -85,7 +85,7 @@ class SearchDrugBrandName extends SearchDelegate {
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text('${dataBrandname?[index].medicineName}',
                                               textAlign: TextAlign.start,
-                                              style: const TextStyle(color: Colors.white, fontSize: 70, fontWeight: FontWeight.bold)),
+                                              style: const TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold)),
                                         ),
                                         const Padding(
                                           padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),

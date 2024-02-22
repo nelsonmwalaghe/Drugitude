@@ -20,8 +20,7 @@ class FetchDrugRequestList {
         if(query != null){
           resultsdrugrequestlist = resultsdrugrequestlist.where((element) => element.genericName.toLowerCase().contains(query.toLowerCase())).toList();
         }
-      } else {
-      }
+      } else {}
     } on Exception catch (e) {
       ('error: $e');
     }

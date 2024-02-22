@@ -331,147 +331,149 @@ class SearchOptions extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.black,
-        body: Padding(
-          padding: const EdgeInsets.only(top: 150),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Text(
-                  'Search by:',
-                  style: TextStyle(color: Colors.white38),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                          onPressed: () async {
-                            showSearch(
-                                context: context,
-                                delegate: SearchDrugBrandName());
-                          },
-                          style: const ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(108, 30)),
-                          ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.medication_rounded,
-                                  size: 20, color: Colors.black),
-                              Text(
-                                'BRAND',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
-                              ),
-                            ],
-                          )),
-                      const Text(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 60),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Search by:',
+                    style: TextStyle(color: Colors.white38),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () async {
+                              showSearch(
+                                  context: context,
+                                  delegate: SearchDrugBrandName());
+                            },
+                            style: const ButtonStyle(
+                              fixedSize: MaterialStatePropertyAll(Size(108, 30)),
+                            ),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.medication_rounded,
+                                    size: 20, color: Colors.black),
+                                Text(
+                                  'BRAND',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                ),
+                              ],
+                            )),
+                        const Text(
+                            style: TextStyle(color: Colors.white38, fontSize: 11),
+                            'Also known as trade name, utilized by company that manufactures it, usually the company which develops and patents it and market it with a specific brand name',
+                            overflow: TextOverflow.fade,
+                            textAlign: TextAlign.center)
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () async {
+                              showSearch(
+                                  context: context, delegate: SearchDrug());
+                            },
+                            style: const ButtonStyle(
+                              fixedSize: MaterialStatePropertyAll(Size(160, 30)),
+                            ),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.medication_outlined,
+                                    size: 20, color: Colors.black),
+                                Text(
+                                  'GENERIC NAME',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                ),
+                              ],
+                            )),
+                        const Text(
                           style: TextStyle(color: Colors.white38, fontSize: 11),
-                          'Also known as trade name, utilized by company that manufactures it, usually the company which develops and patents it and market it with a specific brand name',
+                          'Also known as International Non-Proprietary Name (INN), is the chemical name of an active ingredient. This name is the same no matter how many companies manufacture the medicine.',
                           overflow: TextOverflow.fade,
-                          textAlign: TextAlign.center)
-                    ],
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      ElevatedButton(
-                          onPressed: () async {
-                            showSearch(
-                                context: context, delegate: SearchDrug());
-                          },
-                          style: const ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(160, 30)),
-                          ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.medication_outlined,
-                                  size: 20, color: Colors.black),
-                              Text(
-                                'GENERIC NAME',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
-                              ),
-                            ],
-                          )),
-                      const Text(
-                        style: TextStyle(color: Colors.white38, fontSize: 11),
-                        'Also known as International Non-Proprietary Name (INN), is the chemical name of an active ingredient. This name is the same no matter how many companies manufacture the medicine.',
-                        overflow: TextOverflow.fade,
-                        textAlign: TextAlign.center,
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      ElevatedButton(
-                          onPressed: () async {
-                            showSearch(
-                                context: context,
-                                delegate: SearchDrugTherapueticArea());
-                          },
-                          style: const ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(190, 30)),
-                          ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.medical_services_rounded,
-                                  size: 20, color: Colors.black),
-                              Text(
-                                'THERAPUETIC AREA',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
-                              ),
-                            ],
-                          )),
-                      const Text(
-                        style: TextStyle(color: Colors.white38, fontSize: 11),
-                        'Refers to grouping of similar diseases or conditions under a generalised heading,',
-                        overflow: TextOverflow.fade,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      ElevatedButton(
-                          onPressed: () async {
-                            showSearch(
-                                context: context,
-                                delegate: SearchDrugPhramGroup());
-                          },
-                          style: const ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(220, 30)),
-                          ),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.medical_information_rounded,
-                                  size: 20, color: Colors.black),
-                              Text(
-                                'PHARMACEUTICAL GROUP',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
-                              ),
-                            ],
-                          )),
-                      const Text(
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () async {
+                              showSearch(
+                                  context: context,
+                                  delegate: SearchDrugTherapueticArea());
+                            },
+                            style: const ButtonStyle(
+                              fixedSize: MaterialStatePropertyAll(Size(190, 30)),
+                            ),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.medical_services_rounded,
+                                    size: 20, color: Colors.black),
+                                Text(
+                                  'THERAPUETIC AREA',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                ),
+                              ],
+                            )),
+                        const Text(
                           style: TextStyle(color: Colors.white38, fontSize: 11),
-                          'Refers to a group of drugs that share a similar chemical structure, or have the same mechanism of action, the same related mode of action or target the same illness or related illnesses.',
+                          'Refers to grouping of similar diseases or conditions under a generalised heading,',
                           overflow: TextOverflow.fade,
-                          textAlign: TextAlign.center),
-                    ],
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () async {
+                              showSearch(
+                                  context: context,
+                                  delegate: SearchDrugPhramGroup());
+                            },
+                            style: const ButtonStyle(
+                              fixedSize: MaterialStatePropertyAll(Size(220, 30)),
+                            ),
+                            child: const Row(
+                              children: [
+                                Icon(Icons.medical_information_rounded,
+                                    size: 20, color: Colors.black),
+                                Text(
+                                  'PHARMACEUTICAL GROUP',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                ),
+                              ],
+                            )),
+                        const Text(
+                            style: TextStyle(color: Colors.white38, fontSize: 11),
+                            'Refers to a group of drugs that share a similar chemical structure, or have the same mechanism of action, the same related mode of action or target the same illness or related illnesses.',
+                            overflow: TextOverflow.fade,
+                            textAlign: TextAlign.center),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

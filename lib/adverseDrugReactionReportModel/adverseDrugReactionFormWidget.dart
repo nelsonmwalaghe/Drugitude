@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../pages/adrsreportconfirmationlistpage.dart';
 import 'adversedrugreaction_fields.dart';
 
 
@@ -21,15 +22,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
   final itemKeyT = GlobalKey();
   Future scrollToItemC() async {
     final context = itemKeyC.currentContext!;
-    await Scrollable.ensureVisible(context, duration: Duration(seconds: 1));
+    await Scrollable.ensureVisible(context, duration: const Duration(seconds: 1));
   }
   Future scrollToItemD() async {
     final context = itemKeyD.currentContext!;
-    await Scrollable.ensureVisible(context, duration: Duration(seconds: 1));
+    await Scrollable.ensureVisible(context, duration: const Duration(seconds: 1));
   }
   Future scrollToItemT() async {
     final context = itemKeyT.currentContext!;
-    await Scrollable.ensureVisible(context, duration: Duration(seconds: 1));
+    await Scrollable.ensureVisible(context, duration: const Duration(seconds: 1));
   }
 
   final formKey = GlobalKey<FormState>();
@@ -188,6 +189,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
   late TextEditingController controllerReporterContact;
   late TextEditingController controllerReporterEmail;
   late TextEditingController controllerReportDate;
+  late TextEditingController controllerReportStatus;
 
 
 
@@ -520,7 +522,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
   List<String> pregnancyStatusitems = ['NOT APPLICABLE', 'NOT PREGNANT', '1ST TRIMESTER', '2ND TRIMESTER', '3RD TRIMESTER'];
   String? selectedPregnancyStatusItem = 'NOT APPLICABLE';
 
-  List<String> routeAdminidtrationitems = ['ORAL', 'SUBLINGUAL', 'BUCCAL', 'RECTAL', 'INTRAVENOUS', 'INTRAMUSCULAR', 'SUBCUTANEOUS', 'INTRANASAL', 'INHALATIONAL', 'VAGINAL', 'TRANSDERMAL', 'INTRAMYOCARDIAL', 'INTRAPERICARDIAL', 'INTRATHECAL', 'TOPICAL'];
+  List<String> routeAdministrationitems = ['ORAL', 'SUBLINGUAL', 'BUCCAL', 'RECTAL', 'INTRAVENOUS', 'INTRAMUSCULAR', 'SUBCUTANEOUS', 'INTRANASAL', 'INHALATIONAL', 'VAGINAL', 'TRANSDERMAL', 'INTRAMYOCARDIAL', 'INTRAPERICARDIAL', 'INTRATHECAL', 'TOPICAL'];
   String? selectedRouteAdminidtrationItem = 'ORAL';
 
   List<String> doseFrequencyitems = ['O.D', 'B.D', 'T.D.S', 'Q.I.D', 'NOCT.', 'STAT','Q.O.D', 'T.I.W', 'S.O.S', 'S.A', 'Q.W.K', 'Q.Q.H', 'Q.1.H', 'Q.2.H', 'Q.3.H'];
@@ -539,7 +541,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
   String? selectedReactionSeriousnessItem = 'YES';
 
 
-  List<String> seriousnessCriteriaitems = ['HOSPITALIZATION','PROLONGED HOSPITALIZATION','DISABILITY','CONGENITAL ANOMALY','LIFE THREATENING', 'DEATH' ];
+  List<String> seriousnessCriteriaitems = ['NO INTERVENTION', 'SUPERVISED OBSERVATION','HOSPITALIZATION','PROLONGED HOSPITALIZATION','DISABILITY','CONGENITAL ANOMALY','LIFE THREATENING', 'DEATH' ];
   String? selectedSeriousnessCriteriaItem = 'HOSPITALIZATION';
 
   List<String> actionTakenitems = ['DRUG WITHDRAWN','DOSE REDUCED','DOSE INCREASED','DOSE NOT CHANGED','NOT APPLICABLE', 'UNKNOWN' ];
@@ -547,6 +549,9 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
 
   List<String> outcomeitems = ['RECOVERED','RECOVERED WITH SEQUELAE','RECOVERING','NOT RECOVERED','DEATH', 'UNKNOWN' ];
   String? selectedOutcomeItem = 'RECOVERED';
+
+  List<String> reportStatusitems = ['REPORT RECEIVED: PROCESSING...','REPORT SENT TO MANUFACTURER AND PPB','PLEASE AWAIT COMMUNIQUE','REPORT PROCESSED AND ARCHIVED SUCCESSFULLY','RESOLVED',];
+  String? selectedReportStatusItem = 'REPORT RECEIVED: PROCESSING...';
 
 
   @override
@@ -713,6 +718,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     controllerReporterContact = TextEditingController();
     controllerReporterEmail = TextEditingController();
     controllerReportDate = TextEditingController();
+    controllerReportStatus = TextEditingController();
   }
 
   @override
@@ -736,8 +742,10 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                         const Text('SECTION A', style: TextStyle(color: Colors.white)),
                         Card(color: Colors.black,
                             child: ExpansionTile(
-                              title: Text('Preliminary info and Bio-Data', style: TextStyle(color: Colors.white)),
-                              trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
+                              collapsedIconColor: Colors.white,
+                              iconColor: Colors.green,
+                              title: const Text('Preliminary info and Bio-Data', style: TextStyle(color: Colors.white)),
+                              // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                           children: [
                             buildReportTitle(),
                             buildReportOn(),
@@ -776,14 +784,16 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                       Card(color: Colors.blueGrey.shade800,
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const Text('Current Medication',style: TextStyle(color: Colors.white)),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text('Current Medication',style: TextStyle(color: Colors.white)),
                           ),
                           Card(color: Colors.black,
                             child: ExpansionTile(
-                                title: Text('Drugs currently used by Patient',style: TextStyle(color: Colors.white)),
-                              trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
+                              collapsedIconColor: Colors.white,
+                              iconColor: Colors.green,
+                                title: const Text('Drugs currently used by Patient',style: TextStyle(color: Colors.white)),
+                              // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                               children: [
                                 const Padding(
                                   padding: EdgeInsets.all(8.0),
@@ -945,8 +955,10 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                               ),
                               Card(color: Colors.black,
                                 child: ExpansionTile(
-                                  title: Text('Drugs used in the last 3 months', style: TextStyle(color: Colors.white),),
-                                  trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
+                                  collapsedIconColor: Colors.white,
+                                  iconColor: Colors.green,
+                                  title: const Text('Drugs used in the last 3 months', style: TextStyle(color: Colors.white),),
+                                  // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                                   children: <Widget>[
                                     const Padding(
                                       padding: EdgeInsets.all(8.0),
@@ -1095,16 +1107,18 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                         Card(color: Colors.blueGrey.shade300,
                           child: Column(
                             children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
                               child: Text("Intervention History", style: TextStyle(color: Colors.white),),
                             ),
                               Card(color: Colors.blueGrey.shade900,
                               child: ExpansionTile(
-                                title: Text("Procedures to treat Reaction", style: TextStyle(color: Colors.white),),
-                                trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
+                                collapsedIconColor: Colors.white,
+                                iconColor: Colors.green,
+                                title: const Text("Procedures to treat Reaction", style: TextStyle(color: Colors.white),),
+                                // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                                 children: <Widget>[
-                                  Text("Description of treatments, procedures and other actions taken to prevent or treat the reaction or improve patient's health in any other way.", style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                  const Text("Description of treatments, procedures and other actions taken to prevent or treat the reaction or improve patient's health in any other way.", style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
                                   buildAdrsHaltResolution(),
                                   buildAdrsResumeResolution(),
                                   buildLabInvestigationReport(),
@@ -1115,9 +1129,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                   buildOutcome(),
                                   buildOtherComment(),
                                 ],
-                                onExpansionChanged: (bool expanded) {
-                                  setState(() => _customIcon = expanded);
-                                },
+                                // onExpansionChanged: (bool expanded) {
+                                //   setState(() => _customIcon = expanded);},
                               )
                             )
                             ],
@@ -1141,8 +1154,10 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
               
                               Card(color: Colors.blueGrey.shade900,
                                 child: ExpansionTile(
-                                  title: Text('Reporter Identification Data',style: TextStyle(color: Colors.white),),
-                                  trailing: Icon(color: Colors.white, _customIcon ? Icons.arrow_drop_down_circle  : Icons.arrow_drop_down),
+                                  collapsedIconColor: Colors.white,
+                                  iconColor: Colors.green,
+                                  title: const Text('Reporter Identification Data',style: TextStyle(color: Colors.white),),
+                                  // trailing: Icon(color: Colors.white, _customIcon ? Icons.arrow_drop_down_circle  : Icons.arrow_drop_down),
                                   children: <Widget>[
                                     buildReporterFirstName(),
                                     buildReporterOtherNames(),
@@ -1150,25 +1165,28 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     buildReporterContact(),
                                     buildReporterEmail(),
                                     buildReportDate(),
+                                    buildReportStatus(),
                                     Row(mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         TextButton(
                                             onPressed: () => scrollToItemT(),
-                                            child: Row(
+                                            child: const Row(
                                               children: [
-                                                const Text('Top', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,),
+                                                Text('Top', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,),
                                                 Icon(Icons.arrow_drop_up, size: 18, ),
                                               ],
                                             ),),
                                       ],
                                     ),
-
+                                    buildSubmit(),
+                                    const SizedBox(height: 50,)
                                   ],
-                                  onExpansionChanged: (bool expanded) {
-                                    setState(() => _customIcon = expanded);
-                                  },
+                                  // onExpansionChanged: (bool expanded) {
+                                  //   setState(() => _customIcon = expanded);
+                                  // },
                                 ),
                               ),
+
 
                               // Card(color: Colors.black,
                               //   child: ExpansionTile(
@@ -1196,8 +1214,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                       ],
                     ),
                   ),
-                  buildSubmit(),
-                  SizedBox(height: 60,)
+
+                  const SizedBox(height: 60,)
                   //section E
                 ]
               
@@ -1288,7 +1306,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         isDense: true,
       ),
-      validator: (value) => value != null && value.isEmpty ? 'Enter Title' : null,
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Title' : null,
     ),
   );
   Widget buildReportOn() => Padding(
@@ -1309,6 +1328,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Report on Option' : null,
           items: reportOnitems.map((item) => DropdownMenuItem<String>(value: item,
             child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
           onChanged: (item) => setState(() => selectedReportOnItem = item),),
@@ -1332,6 +1353,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Report Type Option' : null,
         items: reportTypeitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedReportTypeItem = item),),
@@ -1354,6 +1377,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                 borderRadius: BorderRadius.circular(12)
             )
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Product Category Option' : null,
         items: productCategoryitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedProductCategoryItem = item),),
@@ -1376,6 +1401,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Institution Name' : null,
     ),
   );
   Widget buildInstitutionContact() => Padding(
@@ -1397,12 +1424,14 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Institution Contact' : null,
     ),
   );
   Widget buildInstitutionFacilityCode() => Padding(
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
-        controller: controllerInstitutionCounty,
+        controller: controllerInstitutionFacilityCode,
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
@@ -1416,7 +1445,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         isDense: true,
       ),
-
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Institution Facility Code' : null,
     ),
   );
   Widget buildInstitutionCounty() => Padding(
@@ -1435,6 +1465,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                 borderSide: BorderSide(color: Colors.grey.shade600),
                 borderRadius: BorderRadius.circular(12)
             )),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Institution County' : null,
         isDense: true,
         items: institutionCountyitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
@@ -1451,7 +1483,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       decoration: InputDecoration(
         hintText: 'e.g. P****K****',
         hintStyle: const TextStyle(color: Colors.white60),
-        labelText: 'Patient Full Name or Initials',
+        labelText: 'Patient Full Name/Initials',
         labelStyle:const TextStyle(color: Colors.white),
         border: OutlineInputBorder(
           // borderSide: BorderSide.none,              // No border
@@ -1475,6 +1507,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         ),
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Patient full Name/Initials' : null,
       // focusNode: textFieldFocusNode,
       textCapitalization: TextCapitalization.characters,
           ),
@@ -1496,6 +1530,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Patient IP/OP No' : null,
     ),
   );
   Widget buildPatientAgeBracket() => Padding(
@@ -1516,6 +1552,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Enter Patient Age Bracket' : null,
         items: patientAgeBracketitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedPatientAgeBracketItem = item),),
@@ -1554,6 +1592,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         ),
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Patient Address' : null,
     ),
   );
   Widget buildPatientWardClinic() => Padding(
@@ -1573,13 +1613,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Patient Ward/Clinic' : null,
     ),
   );
   Widget buildPatientSex() => Padding(
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        value: selectedPatientSexItem,
+        // value: selectedPatientSexItem,
         style: const TextStyle(color: Colors.white),
         dropdownColor: Colors.grey.shade800,
         decoration: InputDecoration(
@@ -1593,6 +1635,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Patient Sex' : null,
         items: patientSexitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedPatientSexItem = item),),
@@ -1615,13 +1659,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Patient Allergy info' : null,
     ),
   );
   Widget buildPatientPregnancyStatus() => Padding(
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        value: selectedPregnancyStatusItem,
+        // value: selectedPregnancyStatusItem,
         style: const TextStyle(color: Colors.white),
         dropdownColor: Colors.grey.shade800,
         decoration: InputDecoration(
@@ -1635,6 +1681,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Pregnancy Status' : null,
         items:pregnancyStatusitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedPregnancyStatusItem = item),),
@@ -1657,6 +1705,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Patient Weight' : null,
     ),
   );
   Widget buildPatientHeight() => Padding(
@@ -1676,6 +1726,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Patient Height' : null,
     ),
   );
   Widget buildSuspectedADRsOnset() => Padding(
@@ -1695,6 +1747,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Suspected Adverse Reaction Onset Date' : null,
     ),
   );
   Widget buildPatientMedicalHistory() => Padding(
@@ -1714,6 +1768,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+
     ),
   );
   Widget buildAdrsDescription() => Padding(
@@ -1733,6 +1788,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Brief Description of Reaction' : null,
     ),
   );
 
@@ -1754,9 +1811,13 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Brand Name' : null,
     ),
   );
   Widget buildCurrentMedicineList1SuspectedDrug() => SwitchListTile(
+    inactiveTrackColor: Colors.red,
+      activeColor: Colors.green,
       value: isDrugsuspected1,
       title:const Text("Drug Suspected to Cause Adverse Reaction?",
         style: TextStyle(color: Colors.white,fontSize: 16),),
@@ -1781,13 +1842,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Generic Name' : null,
     ),
   );
   Widget buildCurrentMedicineList1Manufacturer() => Padding(
     padding: const EdgeInsets.all(8.0),
     child:
     TextFormField(
-      controller: controllerPastMedicineList1Manufacturer,
+      controller: controllerCurrentMedicineList1Manufacturer,
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
@@ -1801,6 +1864,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Manufacturer' : null,
     ),
   );
   Widget buildCurrentMedicineList1Batch() => Padding(
@@ -1821,6 +1886,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Batch/Lot No' : null,
     ),
   );
   Widget buildCurrentMedicineList1Dose() => Padding(
@@ -1841,6 +1908,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             ),
             isDense: false,
           ),
+          validator: (value) =>
+          value != null && value.isEmpty ? 'Enter Dose' : null,
         ),
       );
   Widget buildCurrentMedicineList1Route() => Padding(
@@ -1861,7 +1930,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -1906,6 +1975,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Treatment Start Date' : null,
     ),
   );
   Widget buildCurrentMedicineList1RxEndDate() => Padding(
@@ -1925,6 +1996,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Treatment End Date' : null,
     ),
   );
   Widget buildCurrentMedicineList1Indication() => Padding(
@@ -1935,7 +2008,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -1945,6 +2018,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Indication' : null,
     ),
   );
 
@@ -1970,6 +2045,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     ),
   );
   Widget buildCurrentMedicineList2SuspectedDrug() => SwitchListTile(
+      inactiveTrackColor: Colors.red,
+      activeColor: Colors.green,
       value: isDrugsuspected2,
       title:const Text("Drug Suspected to Cause Adverse Reaction?",
         style: TextStyle(color: Colors.white,fontSize: 16),),
@@ -2074,7 +2151,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -2083,6 +2160,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
+
         style: const TextStyle(color: Colors.white),
         dropdownColor: Colors.grey.shade800,
         decoration: InputDecoration(
@@ -2147,7 +2225,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -2182,6 +2260,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     ),
   );
   Widget buildCurrentMedicineList3SuspectedDrug() => SwitchListTile(
+      inactiveTrackColor: Colors.red,
+      activeColor: Colors.green,
       value: isDrugsuspected3,
       title:const Text("Drug Suspected to Cause Adverse Reaction?",
         style: TextStyle(color: Colors.white,fontSize: 16),),
@@ -2286,7 +2366,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -2359,7 +2439,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -2394,6 +2474,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     ),
   );
   Widget buildCurrentMedicineList4SuspectedDrug() => SwitchListTile(
+      inactiveTrackColor: Colors.red,
+      activeColor: Colors.green,
       value: isDrugsuspected4,
       title:const Text("Drug Suspected to Cause Adverse Reaction?",
         style: TextStyle(color: Colors.white,fontSize: 16),),
@@ -2497,7 +2579,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -2570,7 +2652,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -2588,7 +2670,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child:
     TextFormField(
-      controller: controllerCurrentMedicineList4Indication,
+      controller: controllerCurrentMedicineList5Brand,
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
@@ -2605,6 +2687,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     ),
   );
   Widget buildCurrentMedicineList5SuspectedDrug() => SwitchListTile(
+      inactiveTrackColor: Colors.red,
+      activeColor: Colors.green,
       value: isDrugsuspected5,
       title:const Text("Drug Suspected to Cause Adverse Reaction?",
         style: TextStyle(color: Colors.white,fontSize: 16),),
@@ -2708,7 +2792,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -2781,7 +2865,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -2912,7 +2996,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -2985,7 +3069,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -3115,7 +3199,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -3188,7 +3272,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -3318,7 +3402,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -3391,7 +3475,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -3521,7 +3605,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -3594,7 +3678,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -3724,7 +3808,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
-        items: routeAdminidtrationitems.map((item) => DropdownMenuItem<String>(value: item,
+        items: routeAdministrationitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedRouteAdminidtrationItem = item),),
     ),
@@ -3797,7 +3881,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       style: const TextStyle(color: Colors.white),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
-        hintText: "e.g. Cellulitis",
+        hintText: "e.g. Cellulitis in the 1st Trimester",
         hintStyle: const TextStyle(color: Colors.white60),
         labelText: 'Indication',
         labelStyle:const TextStyle(color: Colors.white),
@@ -3827,6 +3911,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select drug halt/reduced dose option' : null,
         items: adrsHaltResolutionitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedAdrsHaltResolutionItem = item),),
@@ -3849,6 +3935,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select reintroduction option' : null,
         items: adrsResumeResolutionitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedAdrsResumeResolutionItem = item),),
@@ -3893,6 +3981,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Reaction/Event Severity' : null,
         items: reactionSeverityitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedReactionSeverityItem = item),),
@@ -3915,6 +4005,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Reaction Seriousness' : null,
         items: reactionSeriousnessitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedReactionSeriousnessItem = item),),
@@ -3937,6 +4029,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Criteria/Reason for Seriousness' : null,
         items: seriousnessCriteriaitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedSeriousnessCriteriaItem = item),),
@@ -3959,6 +4053,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Action Taken' : null,
         items: actionTakenitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedActionTakenItem = item),),
@@ -3981,6 +4077,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
           isDense: true,
         ),
+        validator: (value) =>
+        value != null && value.isEmpty ? 'Select Outcome' : null,
         items: outcomeitems.map((item) => DropdownMenuItem<String>(value: item,
           child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
         onChanged: (item) => setState(() => selectedOutcomeItem = item),),
@@ -4006,6 +4104,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: false,
       ),
+
     ),
   );
 
@@ -4028,6 +4127,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         isDense: true,
 
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter First Name' : null,
     ),
   );
   Widget buildReporterOtherNames() => Padding(
@@ -4063,6 +4164,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         ),
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Other Names' : null,
     ),
   );
   Widget buildReporterCadre() => Padding(
@@ -4082,6 +4185,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Cadre/Designation' : null,
     ),
   );
   Widget buildReporterContact() => Padding(
@@ -4118,6 +4223,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
           ),
         ),
       ),
+      validator: (value) =>
+      value != null && value.isEmpty ? 'Enter Reporter Contact' : null,
     ),
   );
   Widget buildReporterEmail() => Padding(
@@ -4173,10 +4280,35 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         ),
         isDense: true,
       ),
+        validator: (value) =>
+            value != null && value.isEmpty ? 'Enter Date of Report' : null,
     ),
   );
 
-
+Widget buildReportStatus() => Visibility(
+  visible: false,
+  child: Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: SizedBox(width: double.infinity,
+      child: DropdownButtonFormField<String>(
+        value: selectedReportStatusItem,
+        style: const TextStyle(color: Colors.white),
+        dropdownColor: Colors.grey.shade800,
+        decoration: InputDecoration(
+          labelText: 'Report Status',
+          labelStyle:const TextStyle(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderRadius: BorderRadius.circular(12)
+          ),
+          isDense: true,
+        ),
+        items: reportStatusitems.map((item) => DropdownMenuItem<String>(value: item,
+          child: Text(item, style: const TextStyle(fontSize: 12,),),)).toList(),
+        onChanged: (item) => setState(() => selectedReportStatusItem = item),),
+    ),
+  ),
+);
 
 
   Widget buildSubmit() => ElevatedButton(
@@ -4221,9 +4353,9 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotno_1:controllerCurrentMedicineList1Batch.text,
             manufacturer_1: controllerCurrentMedicineList1Manufacturer.text,
             dose_1:controllerCurrentMedicineList1Dose.text,
-            route_1:controllerCurrentMedicineList1Route.text,
+            route_1:selectedRouteAdminidtrationItem.toString(),
             // list of Route for selection or type
-            frequency_1:controllerCurrentMedicineList1Frequency.text,
+            frequency_1:selectedDoseFrequencyItem.toString(),
             rxStartDate_1:controllerCurrentMedicineList1RxStartDate.text,
             rxEndDate_1:controllerCurrentMedicineList1RxEndDate.text,
             indication_1:controllerCurrentMedicineList1Indication.text,
@@ -4234,8 +4366,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotno_2: controllerCurrentMedicineList2Batch.text,
             manufacturer_2:controllerCurrentMedicineList2Manufacturer.text,
             dose_2:controllerCurrentMedicineList2Dose.text,
-            route_2:controllerCurrentMedicineList2Route.text,
-            frequency_2:controllerCurrentMedicineList2Frequency.text,
+            route_2:selectedRouteAdminidtrationItem.toString(),
+            frequency_2:selectedDoseFrequencyItem.toString(),
             // list of Route for selection or type
             rxStartDate_2:controllerCurrentMedicineList2RxStartDate.text,
             rxEndDate_2: controllerCurrentMedicineList2RxEndDate.text,
@@ -4247,8 +4379,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotno_3:controllerCurrentMedicineList3Batch.text,
             manufacturer_3:controllerCurrentMedicineList3Manufacturer.text,
             dose_3:controllerCurrentMedicineList3Dose.text,
-            route_3:controllerCurrentMedicineList3Route.text,
-            frequency_3:controllerCurrentMedicineList3Frequency.text,
+            route_3:selectedRouteAdminidtrationItem.toString(),
+            frequency_3:selectedDoseFrequencyItem.toString(),
             rxStartDate_3:controllerCurrentMedicineList3RxStartDate.text,
             rxEndDate_3: controllerCurrentMedicineList3RxEndDate.text,
             indication_3:controllerCurrentMedicineList3Indication.text,
@@ -4258,8 +4390,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotno_4: controllerCurrentMedicineList4Batch.text,
             manufacturer_4: controllerCurrentMedicineList4Manufacturer.text,
             dose_4: controllerCurrentMedicineList4Dose.text,
-            route_4: controllerCurrentMedicineList4Route.text,
-            frequency_4: controllerCurrentMedicineList4Frequency.text,
+            route_4: selectedRouteAdminidtrationItem.toString(),
+            frequency_4: selectedDoseFrequencyItem.toString(),
             rxStartDate_4: controllerCurrentMedicineList4RxStartDate.text,
             rxEndDate_4: controllerCurrentMedicineList4RxEndDate.text,
             indication_4: controllerCurrentMedicineList4Indication.text,
@@ -4269,8 +4401,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotno_5: controllerCurrentMedicineList5Batch.text,
             manufacturer_5: controllerCurrentMedicineList5Manufacturer.text,
             dose_5: controllerCurrentMedicineList5Dose.text,
-            route_5: controllerCurrentMedicineList5Route.text,
-            frequency_5: controllerCurrentMedicineList5Frequency.text,
+            route_5:  selectedRouteAdminidtrationItem.toString(),
+            frequency_5: selectedDoseFrequencyItem.toString(),
             rxStartDate_5:controllerCurrentMedicineList5RxStartDate.text,
             rxEndDate_5:controllerCurrentMedicineList5RxEndDate.text,
             indication_5: controllerCurrentMedicineList5Indication.text,
@@ -4279,8 +4411,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotnoHx_1: controllerPastMedicineList1Batch.text,
             manufacturerHx_1: controllerPastMedicineList1Manufacturer.text,
             doseHx_1: controllerPastMedicineList1Dose.text,
-            routeHx_1: controllerPastMedicineList1Route.text,
-            frequencyHx_1: controllerPastMedicineList1Frequency.text,
+            routeHx_1: selectedRouteAdminidtrationItem.toString(),
+            frequencyHx_1: selectedDoseFrequencyItem.toString(),
             rxStartDateHx_1: controllerPastMedicineList1RxStartDate.text,
             rxEndDateHx_1: controllerPastMedicineList1RxEndDate.text,
             indicationHx_1: controllerPastMedicineList1Indication.text,
@@ -4289,8 +4421,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotnoHx_2: controllerPastMedicineList2Batch.text,
             manufacturerHx_2: controllerPastMedicineList2Manufacturer.text,
             doseHx_2: controllerPastMedicineList2Dose.text,
-            routeHx_2: controllerPastMedicineList2Route.text,
-            frequencyHx_2: controllerPastMedicineList2Frequency.text,
+            routeHx_2: selectedRouteAdminidtrationItem.toString(),
+            frequencyHx_2: selectedDoseFrequencyItem.toString(),
             rxStartDateHx_2: controllerPastMedicineList2RxStartDate.text,
             rxEndDateHx_2: controllerPastMedicineList3RxEndDate.text,
             indicationHx_2: controllerPastMedicineList3Indication.text,
@@ -4299,8 +4431,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotnoHx_3: controllerPastMedicineList3Batch.text,
             manufacturerHx_3: controllerPastMedicineList3Manufacturer.text,
             doseHx_3: controllerPastMedicineList3Dose.text,
-            routeHx_3: controllerPastMedicineList3Route.text,
-            frequencyHx_3: controllerPastMedicineList3Frequency.text,
+            routeHx_3: selectedRouteAdminidtrationItem.toString(),
+            frequencyHx_3: selectedDoseFrequencyItem.toString(),
             rxStartDateHx_3: controllerPastMedicineList3RxStartDate.text,
             rxEndDateHx_3: controllerPastMedicineList3RxEndDate.text,
             indicationHx_3: controllerPastMedicineList3Indication.text,
@@ -4309,8 +4441,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotnoHx_4: controllerPastMedicineList4Batch.text,
             manufacturerHx_4: controllerPastMedicineList4Manufacturer.text,
             doseHx_4: controllerPastMedicineList4Dose.text,
-            routeHx_4: controllerPastMedicineList4Route.text,
-            frequencyHx_4: controllerPastMedicineList4Frequency.text,
+            routeHx_4: selectedRouteAdminidtrationItem.toString(),
+            frequencyHx_4: selectedDoseFrequencyItem.toString(),
             rxStartDateHx_4: controllerPastMedicineList4RxStartDate.text,
             rxEndDateHx_4: controllerPastMedicineList4RxEndDate.text,
             indicationHx_4: controllerPastMedicineList4Indication.text,
@@ -4319,8 +4451,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             batchLotnoHx_5: controllerPastMedicineList5Batch.text,
             manufacturerHx_5: controllerPastMedicineList5Manufacturer.text,
             doseHx_5: controllerPastMedicineList5Dose.text,
-            routeHx_5: controllerPastMedicineList5Route.text,
-            frequencyHx_5: controllerPastMedicineList5Frequency.text,
+            routeHx_5: selectedRouteAdminidtrationItem.toString(),
+            frequencyHx_5: selectedDoseFrequencyItem.toString(),
             rxStartDateHx_5:controllerPastMedicineList5RxStartDate.text,
             rxEndDateHx_5: controllerPastMedicineList5RxEndDate.text,
             indicationHx_5: controllerPastMedicineList5Indication.text,
@@ -4344,9 +4476,24 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             // List Drop Down for Selection or type
             reporterDetailsMobileNo:controllerReporterContact.text,
             reporterDetailsEmail:controllerReporterEmail.text,
-            dateOfReport:controllerReportDate.text,);
+            dateOfReport:controllerReportDate.text,
+              adrsReportStatus: selectedReportStatusItem.toString(),);
         widget.onSavedAdrsReportEntry(adrsReport);
-
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('ADRs Report Successfully Submitted'),
+                actions: [
+                  TextButton(onPressed: () =>  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AdrsReportconfirmationlist(),
+                      )),
+                      child: const Text('Okay'))
+                ],
+              );
+            });
       }
     },
     style: const ButtonStyle(

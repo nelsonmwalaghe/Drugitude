@@ -305,6 +305,7 @@ class _DrugRequestConfirmationState extends State<DrugRequestConfirmation> {
                   child: SpinKitCubeGrid(
                     color: Colors.white,
                     size: 70,
+                      duration: Duration(milliseconds: 400)
                   ),
                 );
               }

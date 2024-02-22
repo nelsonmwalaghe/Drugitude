@@ -4,7 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../apiServiceModels/daydrugapimodel.dart';
 import '../drugListCallModel/drugofthedayinputmodel.dart';
 import 'aboutDrugitude.dart';
-import 'adrsLandingPage.dart';
+import 'adrsOptionsPage.dart';
 import 'adrsReportPage.dart';
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
@@ -66,12 +66,14 @@ class _LandingPageState extends State<LandingPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const LandingPage(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //     const LandingPage(),
+                      //   ));
+                      }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.home_filled, color: Colors.grey,),
                         Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.grey))
@@ -144,205 +146,206 @@ class _LandingPageState extends State<LandingPage> {
         ),
         extendBody: true,
         drawer: Padding(
-          padding: const EdgeInsets.only(top: 56.0, ),
-          child: SizedBox(height: 480, width: 300,
-            child: Drawer(
-                elevation: BorderSide.strokeAlignOutside,
-                backgroundColor: Colors.white.withOpacity(.1),
-                shape: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                    )),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50.0, bottom: 50),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 26,
-                            width: 160,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                        const DictionaryMode(),
-                                      ));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.menu_book_outlined,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                    Text(
-                                      ' Dictionary Mode',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
+            padding: const EdgeInsets.only(top: 10.0, ),
+            child: SizedBox(height: 480, width: 300,
+              child: Drawer(
+                  elevation: BorderSide.strokeAlignOutside,
+                  backgroundColor: Colors.white.withOpacity(.1),
+                  shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(50),
+                        topRight: Radius.circular(50),
+                      )),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 50.0, bottom: 50),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 26,
+                              width: 160,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          const DictionaryMode(),
+                                        ));
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.menu_book_outlined,
+                                        size: 20,
+                                        color: Colors.black,
+                                      ),
+                                      Text(
+                                        ' Dictionary Mode',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      )
+                                    ],
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 26,
-                            width: 160,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                        const SearchOptions(),
-                                      ));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.medication_outlined,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                    Text(
-                                      'Search',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 26,
+                              width: 160,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          const SearchOptions(),
+                                        ));
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.medication_outlined,
+                                        size: 20,
+                                        color: Colors.black,
+                                      ),
+                                      Text(
+                                        'Search',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      )
+                                    ],
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 26,
-                            width: 160,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                        const DrugRequestPage(),
-                                      ));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.mail_outline_rounded,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                    Text(
-                                      'Request Drug',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 26,
+                              width: 160,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          const DrugRequestPage(),
+                                        ));
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.mail_outline_rounded,
+                                        size: 20,
+                                        color: Colors.black,
+                                      ),
+                                      Text(
+                                        'Request Drug',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      )
+                                    ],
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 56.0),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 26,
-                            width: 160,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const AdrsReportPage(),
-                                      ));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.perm_device_info_outlined,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                    Text(
-                                      'About',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 56.0),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 26,
+                              width: 160,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const AboutPage(),
+                                        ));
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.perm_device_info_outlined,
+                                        size: 20,
+                                        color: Colors.black,
+                                      ),
+                                      Text(
+                                        'About',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      )
+                                    ],
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 56.0),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: 26,
-                            width: 160,
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const AdrsLandingPage(),
-                                      ));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.report,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                    Text(
-                                      'ADRs Report',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 56.0),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: 26,
+                              width: 160,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const AdrsOptionsPage(),
+                                        ));
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      Icon(
+                                        Icons.report,
+                                        size: 20,
+                                        color: Colors.black,
+                                      ),
+                                      Text(
+                                        'ADRs Report',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      )
+                                    ],
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                )),
+                    ],
+                  )),
+            ),
           ),
-        ),
 
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+
           iconTheme: const IconThemeData(color: Colors.white),
           elevation: 8,
           // shadowColor: Colors.red.withOpacity(.1),
@@ -351,10 +354,9 @@ class _LandingPageState extends State<LandingPage> {
                 bottomLeft: Radius.circular(25),
                 bottomRight: Radius.circular(25),
               ),
-              borderSide: BorderSide(
+              borderSide: BorderSide(width: 2,
                   color: Colors.white,
-                  strokeAlign:
-                      BouncingScrollSimulation.maxSpringTransferVelocity)),
+                  strokeAlign: double.maxFinite)),
           backgroundColor: Colors.black87,
           title: Padding(
             padding: const EdgeInsets.only(left: 0, right: 20),
@@ -366,10 +368,8 @@ class _LandingPageState extends State<LandingPage> {
                     Text('DRUGITUDE', style: TextStyle(color: Colors.white, fontSize: 20),),
                     Padding(
                       padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                      child: CircleAvatar(
-                        radius: 10,
-                        child: Image(image: AssetImage('assets/drugitudeicon.png')),
-                      ),
+                      child: SizedBox(width: 20, height: 20,
+                          child: Image(image: AssetImage('assets/drugitudeicon.png'))),
                     ),
                   ],
                 ),
