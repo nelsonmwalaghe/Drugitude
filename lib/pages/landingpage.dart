@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import '../apiServiceModels/daydrugapimodel.dart';
 import '../drugListCallModel/drugofthedayinputmodel.dart';
 import 'aboutDrugitude.dart';
 import 'adrsOptionsPage.dart';
-import 'adrsReportPage.dart';
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
 import 'searchOptionsPage.dart';
+import 'package:rive/rive.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -366,11 +364,11 @@ class _LandingPageState extends State<LandingPage> {
                 const Row(
                   children: [
                     Text('DRUGITUDE', style: TextStyle(color: Colors.white, fontSize: 20),),
-                    Padding(
-                      padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                      child: SizedBox(width: 20, height: 20,
-                          child: Image(image: AssetImage('assets/drugitudeicon.png'))),
-                    ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                    //   child: SizedBox(width: 20, height: 20,
+                    //       child: Image(image: AssetImage('assets/drugitudeicon.png'))),
+                    // ),
                   ],
                 ),
                 Row(
@@ -408,12 +406,39 @@ class _LandingPageState extends State<LandingPage> {
             var dataDayDrug = snapshot.data;
             if (!snapshot.hasData) {
               return const Center(
-                  child:SpinKitCubeGrid(
-                    color: Colors.white,
-                    size: 70,
-                    duration: Duration(milliseconds: 400),
-                  )
-              );
+
+                 child:
+                 SizedBox(width: 192,
+                         child: Column(
+                           children: [
+                             Expanded(child: RiveAnimation.asset('assets/drugiconLoading.riv')),
+                             // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                           ],
+                         ),
+
+
+                 // Padding(
+                 //   padding: const EdgeInsets.only(top:200.0),
+                 //   child: SizedBox(width: 192,
+                 //     child: Column(
+                 //       children: [
+                 //         Image.asset('assets/Springrat1.apng'),
+                 //         Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                 //       ],
+                 //     ),
+                 //   ),
+                 // )
+
+
+                  // SvgPicture.asset("LoadingIcon.svg",semanticsLabel: 'Drugitude Loading Animation',
+                  // // height: 192, width: 192,
+                  //   )
+                  // SpinKitCubeGrid(
+                  //   color: Colors.white,
+                  //   size: 70,
+                  //   duration: Duration(milliseconds: 400),
+                  // )
+              ));
             }
             return ListView.builder(
                 itemCount: dataDayDrug!.length = 1,
@@ -611,9 +636,11 @@ class _LandingPageState extends State<LandingPage> {
                                       //     ),
                                       //               ),
                                                     ),),
-                            )
+                            ),
+
+                            const SizedBox(height: 160,)
     ]
-    )
+    ),
     )
     );
     }

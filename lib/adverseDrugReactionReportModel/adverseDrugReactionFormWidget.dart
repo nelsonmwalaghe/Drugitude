@@ -16,7 +16,7 @@ class AdrsReportFormWidget extends StatefulWidget {
 }
 
 class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
-  late bool _customIcon = false;
+  late final bool _customIcon = false;
   final itemKeyC = GlobalKey();
   final itemKeyD = GlobalKey();
   final itemKeyT = GlobalKey();

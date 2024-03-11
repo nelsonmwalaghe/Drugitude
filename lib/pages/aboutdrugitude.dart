@@ -251,8 +251,8 @@ class AboutPage extends StatelessWidget {
               Center(child: Text('What is Drugitude?', style: TextStyle(color: Colors.white),)),
               Padding(
                 padding: EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                  radius: 100,
+                child: CircleAvatar(backgroundColor: Colors.transparent,
+                  radius: 160,
                     child: Image(image: AssetImage('assets/drugitudeicon.png')),
                 ),
               ),

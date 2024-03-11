@@ -307,7 +307,7 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
 
                         await DrugRequestSheetsApi.insert([newDrugRequestEntry.toJson()]);
                       }),
-
+                      const SizedBox(height: 160,)
                     ],
                   ),
                 ),

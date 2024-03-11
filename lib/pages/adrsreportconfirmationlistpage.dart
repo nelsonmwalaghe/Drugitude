@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+// import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:rive/rive.dart';
 import '../adverseDrugReactionReportModel/adverseDRsReportConfirmationAPIModel.dart';
 import '../adverseDrugReactionReportModel/adrsreportConfirmation.dart';
 import 'aboutDrugitude.dart';
@@ -185,12 +186,39 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                 var dataADRSList = snapshot.data;
                 if (!snapshot.hasData) {
                   return const Center(
-                    child: SpinKitCubeGrid(
-                      color: Colors.white,
-                      size: 70,
-                      duration: Duration(milliseconds: 400),
-                    ),
-                  );
+
+                      child:
+                      SizedBox(width: 192,
+                        child: Column(
+                          children: [
+                            Expanded(child: RiveAnimation.asset('assets/drugiconLoading.riv')),
+                            // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                          ],
+                        ),
+
+
+                        // Padding(
+                        //   padding: const EdgeInsets.only(top:200.0),
+                        //   child: SizedBox(width: 192,
+                        //     child: Column(
+                        //       children: [
+                        //         Image.asset('assets/Springrat1.apng'),
+                        //         Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // )
+
+
+                        // SvgPicture.asset("LoadingIcon.svg",semanticsLabel: 'Drugitude Loading Animation',
+                        // // height: 192, width: 192,
+                        //   )
+                        // SpinKitCubeGrid(
+                        //   color: Colors.white,
+                        //   size: 70,
+                        //   duration: Duration(milliseconds: 400),
+                        // )
+                      ));
               }
               return
               ListView.builder(

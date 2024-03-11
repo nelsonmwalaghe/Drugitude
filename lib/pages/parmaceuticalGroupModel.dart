@@ -1,8 +1,5 @@
-
-
-
+import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
-
 import '../apiServiceModels/pharmaceuticalGroupApiModel.dart';
 import '../drugListCallModel/drugListPharmaceuticalGroupModel.dart';
 import '../searchModels/pharmaceuticalgroupsearch.dart';
@@ -60,8 +57,16 @@ class _PhramGroupState extends State<PhramGroup> {
               var dataphramGroup = snapshot.data;
               if (!snapshot.hasData) {
                 return const Center(
-                  child: CircularProgressIndicator(),
-                );
+
+                    child:
+                    SizedBox(width: 192,
+                      child: Column(
+                        children: [
+                          Expanded(child: RiveAnimation.asset('assets/drugiconLoading.riv')),
+                          // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                        ],
+                      ),
+                    ));
               }
               return ListView.builder(
                 itemCount: dataphramGroup?.length,

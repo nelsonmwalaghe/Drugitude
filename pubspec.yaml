@@ -38,7 +38,13 @@ dependencies:
   http: ^1.1.2
   awesome_notifications: ^0.8.3
   flutter_launcher_icons: ^0.13.1
+  flutter_app_icons: ^0.0.9
   gsheets: ^0.5.0
+  introduction_screen: ^3.1.12
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.10+1
+  image: ^4.1.7
+  rive: ^0.12.4
 
 
 dev_dependencies:
@@ -57,9 +63,13 @@ dev_dependencies:
 
 
 
+
+
+
 flutter_launcher_icons:
     android: "launcher_icon"
     ios: true
+    web: true
     image_path: "assets/drugitudeicon.png"
 
 

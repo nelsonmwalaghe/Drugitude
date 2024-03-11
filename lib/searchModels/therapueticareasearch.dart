@@ -1,6 +1,6 @@
 import 'package:drugitudeleviosa/apiServiceModels/therapeuticAreaApiModel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:rive/rive.dart';
 import '../drugListCallModel/drugListTherapueticAreaModel.dart';
 // Note this is for INN Search key words to remember
 // drugstosearch-innName
@@ -49,12 +49,30 @@ class SearchDrugTherapueticArea extends SearchDelegate {
           future: _drugListTherapueticArea.getDrugListTherapueticArea(query),
           builder: (context, snapshot) {
             var dataTherapueticArea = snapshot.data;
-            if (!snapshot.hasData) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                  child:SpinKitCubeGrid(
-                    color: Colors.white,
-                    size: 70,
-                  ),
+                  child:
+                  SizedBox(width: 192,
+                    child: Column(
+                      children: [
+                        Expanded(child: RiveAnimation.asset('assets/drugiconLoading.riv')),
+                        // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                      ],
+                    ),
+                  ));
+            }
+            // else if (snapshot.hasData) {}
+
+            else if (snapshot.hasData && snapshot.data!.isEmpty){
+              return const Expanded(
+                  child: Text('Oops,Something went wrong...We dont seem to have what you are looking for.', style: TextStyle(color: Colors.red),));
+            }
+            else if (snapshot.hasError){
+              return const Column(
+                children: [
+                  Text('Oops,Something went wrong...?', style: TextStyle(color: Colors.red),),
+                  Image(image: AssetImage('assets/drugitudeicon.png')),
+                ],
               );
             }
             return ListView.builder(
@@ -168,7 +186,7 @@ class SearchDrugTherapueticArea extends SearchDelegate {
                                           padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Additional information:',
                                               style: TextStyle(color: Colors.white54, fontSize: 12)
-                                              ),
+                                          ),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
