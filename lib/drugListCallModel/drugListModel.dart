@@ -37,6 +37,7 @@ class DrugList {
   String firstPublished;
   String revisionDate;
   String url;
+  dynamic manufactureVerified;
 
   DrugList({
     required this.category,
@@ -67,6 +68,7 @@ class DrugList {
     required this.firstPublished,
     required this.revisionDate,
     required this.url,
+    required this.manufactureVerified,
   });
 
   factory DrugList.fromJson(Map<String, dynamic> json) => DrugList(
@@ -98,6 +100,7 @@ class DrugList {
     firstPublished: json["firstPublished"],
     revisionDate: json["revisionDate"],
     url: json["url"],
+    manufactureVerified: json["manufactureVerified"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -129,6 +132,7 @@ class DrugList {
     "firstPublished": firstPublished,
     "revisionDate": revisionDate,
     "url": url,
+    "manufactureVerified": manufactureVerified,
   };
 }
 

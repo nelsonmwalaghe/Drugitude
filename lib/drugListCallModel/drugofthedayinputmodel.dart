@@ -37,6 +37,7 @@ class DayDrug {
   DateTime firstPublished;
   DateTime revisionDate;
   String url;
+  dynamic manufactureVerified;
 
   DayDrug({
     required this.category,
@@ -67,6 +68,7 @@ class DayDrug {
     required this.firstPublished,
     required this.revisionDate,
     required this.url,
+    required this.manufactureVerified,
   });
 
   factory DayDrug.fromJson(Map<String, dynamic> json) => DayDrug(
@@ -98,6 +100,7 @@ class DayDrug {
     firstPublished: DateTime.parse(json["firstPublished"]),
     revisionDate: DateTime.parse(json["revisionDate"]),
     url: json["url"],
+    manufactureVerified: json["manufactureVerified"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -129,5 +132,6 @@ class DayDrug {
     "firstPublished": firstPublished.toIso8601String(),
     "revisionDate": revisionDate.toIso8601String(),
     "url": url,
+    "manufactureVerified": manufactureVerified,
   };
 }
