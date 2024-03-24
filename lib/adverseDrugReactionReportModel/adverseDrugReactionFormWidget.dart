@@ -437,12 +437,12 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                   const SizedBox(height: 20,),
 
                   Card(key: itemKeyT,
-                      color: Colors.blueGrey.shade600,
+                      color: Colors.blueGrey.shade600.withOpacity(0.6),
                       child:
                       Column(
                       children: [
                         const Text('SECTION A', style: TextStyle(color: Colors.white)),
-                        Card(color: Colors.black,
+                        Card(color: Colors.black.withOpacity(0.6),
                             child: ExpansionTile(
                               collapsedIconColor: Colors.white,
                               iconColor: Colors.green,
@@ -474,7 +474,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                         )),
                       ],
                     )), //section A
-                  Card(color: Colors.grey.shade700,
+                  Card(color: Colors.grey.shade700.withOpacity(0.6),
                     child:
                     Column(
                       children: [
@@ -483,14 +483,14 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                           child: Text('SECTION B', style: TextStyle(color: Colors.white),),
                         ),
 
-                      Card(color: Colors.blueGrey.shade800,
+                      Card(color: Colors.blueGrey.shade800.withOpacity(0.6),
                       child: Column(
                         children: [
                           const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text('Current Medication',style: TextStyle(color: Colors.white)),
                           ),
-                          Card(color: Colors.black,
+                          Card(color: Colors.black.withOpacity(0.6),
                             child: ExpansionTile(
                               collapsedIconColor: Colors.white,
                               iconColor: Colors.green,
@@ -501,7 +501,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                   padding: EdgeInsets.all(8.0),
                                   child: Text("List all medicines being currently used by the patient including OTC and herbal products.", style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                                 ),
-                                Card(color: Colors.grey.shade900,
+                                Card(color: Colors.grey.shade900.withOpacity(0.6),
                                   child: Column(
                                     children: [
                                       const Text("CURRENT MEDICINE 1",
@@ -520,7 +520,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     ],
                                   ),
                                 ),
-                                Card(color: Colors.blueGrey.shade700,
+                                Card(color: Colors.blueGrey.shade700.withOpacity(0.6),
                                   child: Column(
                                     children: [
                                       const Text("CURRENT MEDICINE 2",
@@ -546,7 +546,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     ],
                                   ),
                                 ),
-                                Card(color: Colors.black26,
+                                Card(color: Colors.black26.withOpacity(0.6),
                                   child: Column(
                                     children: [
                                       const Text("CURRENT MEDICINE 3",
@@ -572,7 +572,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     ],
                                   ),
                                 ),
-                                Card(color: Colors.blueGrey.shade900,
+                                Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
                                   child: Column(
                                     children: [
                                       const Text("CURRENT MEDICINE 4",
@@ -599,7 +599,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                   ),
                                 ),
                                 Card(
-                                  color: Colors.black,
+                                  color: Colors.black.withOpacity(0.6),
                                   child: Column(
                                     children: [
                                       const Text("CURRENT MEDICINE 5",
@@ -641,21 +641,21 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
               )
               ), //section B
                   Card(key: itemKeyC,
-                    color: Colors.grey.shade700,
+                    color: Colors.grey.shade700.withOpacity(0.6),
                     child: Column(
                       children: [
                         const Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text('SECTION C', style: TextStyle(color: Colors.white),),
                         ),
-                        Card(color: Colors.blueGrey.shade300,
+                        Card(color: Colors.blueGrey.shade300.withOpacity(0.6),
                           child: Column(
                             children: [
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Text('Past Medication History', style: TextStyle(color: Colors.white),),
                               ),
-                              Card(color: Colors.black,
+                              Card(color: Colors.black.withOpacity(0.6),
                                 child: ExpansionTile(
                                   collapsedIconColor: Colors.white,
                                   iconColor: Colors.green,
@@ -666,7 +666,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                       padding: EdgeInsets.all(8.0),
                                       child: Text("List all medicines used in the last 3 months including OTC, herbals and if pregnant indicate medicines used in the 1st trimester", style: TextStyle(color: Colors.white,), textAlign: TextAlign.center,),
                                     ),
-                                    Card(color: Colors.grey.shade900,
+                                    Card(color: Colors.grey.shade900.withOpacity(0.6),
                                         child: Column(
                                           children: [
                                             const Text("PAST MEDICINE 1", style: TextStyle(color: Colors.white,fontSize: 12),),
@@ -690,7 +690,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                           ],
                                         )
                                     ),
-                                    Card(color: Colors.blueGrey.shade900,
+                                    Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
                                       child: Column(
                                         children: [
                                           const Text("PAST MEDICINE 2",
@@ -715,7 +715,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                         ],
                                       ),
                                     ),
-                                    Card(color: Colors.grey.shade900,
+                                    Card(color: Colors.grey.shade900.withOpacity(0.6),
                                         child: Column(
                                           children: [
                                             const Text("PAST MEDICINE 3",
@@ -740,7 +740,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                           ],
                                         )
                                     ),
-                                    Card(color: Colors.blueGrey.shade700,
+                                    Card(color: Colors.blueGrey.shade700.withOpacity(0.6),
                                       child: Column(
                                         children: [
                                           const Text("PAST MEDICINE 4",
@@ -765,7 +765,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                         ],
                                       ),
                                     ),
-                                    Card(color: Colors.blueGrey.shade900,
+                                    Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
                                       child: Column(
                                         children: [
                                           const Text("PAST MEDICINE 5",
@@ -802,18 +802,18 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
               
                   ), //section C
                   Card(key: itemKeyD,
-                    color: Colors.grey.shade700,
+                    color: Colors.grey.shade700.withOpacity(0.6),
                     child: Column(
                       children: [
                         const Text('SECTION D',style: TextStyle(color: Colors.white),),
-                        Card(color: Colors.blueGrey.shade300,
+                        Card(color: Colors.blueGrey.shade300.withOpacity(0.6),
                           child: Column(
                             children: [
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text("Intervention History", style: TextStyle(color: Colors.white),),
                             ),
-                              Card(color: Colors.blueGrey.shade900,
+                              Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
                               child: ExpansionTile(
                                 collapsedIconColor: Colors.white,
                                 iconColor: Colors.green,
@@ -841,11 +841,11 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                       ],
                     ),
                   ), //section D
-                  Card(color: Colors.grey.shade700,
+                  Card(color: Colors.grey.shade700.withOpacity(0.6),
                     child: Column(
                       children: [
                         const Text('SECTION E', style: TextStyle(color: Colors.white),),
-                        Card(color: Colors.blueGrey.shade300,
+                        Card(color: Colors.blueGrey.shade300.withOpacity(0.6),
                           child: Column(
                             children: [
                               const Padding(
@@ -854,7 +854,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                               ),
 
               
-                              Card(color: Colors.blueGrey.shade900,
+                              Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
                                 child: ExpansionTile(
                                   collapsedIconColor: Colors.white,
                                   iconColor: Colors.green,

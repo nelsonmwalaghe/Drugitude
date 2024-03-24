@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   final _flutterAppIconsPlugin = FlutterAppIcons();
   void setIcon(String? nextIcon) {
     if (nextIcon == null) return;
-    _flutterAppIconsPlugin.setIcon(icon: 'assets/drugitudeicon.png');
+    _flutterAppIconsPlugin.setIcon(icon: 'assets/drugitudeiconX.png');
   }
   // This widget is the root of your application.
   @override

@@ -76,7 +76,7 @@ class _BrandNameState extends State<BrandName> {
                     child: Card(color: Colors.black,
                       child: Column(
                         children: [
-                          Card(color: Colors.black,
+                          const Card(color: Colors.black,
                               child: Column(
                                 children: [
                                   Padding(
@@ -96,8 +96,8 @@ class _BrandNameState extends State<BrandName> {
                                   ),
                                 ],
                               )),
-                          Expanded(child: RiveAnimation.asset('assets/drugitudenodata.riv')),
-                          Card(color: Colors.black,
+                          const Expanded(child: RiveAnimation.asset('assets/drugitudenodata.riv')),
+                          const Card(color: Colors.black,
                               child: Column(
                                 children: [
                                   Padding(
@@ -113,11 +113,11 @@ class _BrandNameState extends State<BrandName> {
                           Card(color: Colors.black,
                               child: Column(
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.all(5.0),
                                     child: Text("2. INQUIRY MISSING IN LIBRARY", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                   ),
-                                  Column(
+                                  const Column(
                                     children: [
                                       Text("Our Codex probably doesn't have the information you are looking for. ",
                                           style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
@@ -132,9 +132,9 @@ class _BrandNameState extends State<BrandName> {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                    DrugRequestPage(),
+                                                    const DrugRequestPage(),
                                               ));
-                                        }, child: Row(
+                                        }, child: const Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Icon(Icons.mail_outline_rounded, size: 30, color: Colors.green,),
@@ -156,7 +156,7 @@ class _BrandNameState extends State<BrandName> {
                     child: Card(color: Colors.black,
                       child: Column(
                         children: [
-                          Card(color: Colors.black,
+                          const Card(color: Colors.black,
                               child: Column(
                                 children: [
                                   Padding(
@@ -176,8 +176,8 @@ class _BrandNameState extends State<BrandName> {
                                   ),
                                 ],
                               )),
-                          Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
-                          Card(color: Colors.black,
+                          const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
+                          const Card(color: Colors.black,
                               child: Column(
                                 children: [
                                   Padding(
@@ -191,11 +191,11 @@ class _BrandNameState extends State<BrandName> {
                           Card(color: Colors.black,
                               child: Column(
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.all(5.0),
                                     child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                   ),
-                                  Column(
+                                  const Column(
                                     children: [
                                       Text("Please turn on your connection by turning Airplane Mode off. ",
                                           style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
@@ -206,8 +206,8 @@ class _BrandNameState extends State<BrandName> {
                                   SizedBox(width: 200, height: 30,
                                     child: ElevatedButton(
                                         onPressed: (){
-                                          Navigator.pop(context);;
-                                        }, child: Row(
+                                          Navigator.pop(context);
+                                        }, child: const Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
@@ -239,7 +239,7 @@ class _BrandNameState extends State<BrandName> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '${databrandName?[index].category.name}',
+                                  '${databrandName?[index].category}',
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),

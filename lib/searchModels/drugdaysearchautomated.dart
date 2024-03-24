@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rive/rive.dart';
 import '../apiServiceModels/daydrugapimodel.dart';
 import '../drugListCallModel/drugofthedayinputmodel.dart';
@@ -67,7 +66,7 @@ class DayDrugSearch extends SearchDelegate {
                   child: Card(color: Colors.black,
                     child: Column(
                       children: [
-                        Card(color: Colors.black,
+                        const Card(color: Colors.black,
                             child: Column(
                               children: [
                                 Padding(
@@ -87,8 +86,8 @@ class DayDrugSearch extends SearchDelegate {
                                 ),
                               ],
                             )),
-                        Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
-                        Card(color: Colors.black,
+                        const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
+                        const Card(color: Colors.black,
                             child: Column(
                               children: [
                                 Padding(
@@ -102,11 +101,11 @@ class DayDrugSearch extends SearchDelegate {
                         Card(color: Colors.black,
                             child: Column(
                               children: [
-                                Padding(
+                                const Padding(
                                   padding: EdgeInsets.all(5.0),
                                   child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                 ),
-                                Column(
+                                const Column(
                                   children: [
                                     Text("Please turn on your connection by turning Airplane Mode off. ",
                                         style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
@@ -117,8 +116,8 @@ class DayDrugSearch extends SearchDelegate {
                                 SizedBox(width: 200, height: 30,
                                   child: ElevatedButton(
                                       onPressed: (){
-                                        Navigator.pop(context);;
-                                      }, child: Row(
+                                        Navigator.pop(context);
+                                      }, child: const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),

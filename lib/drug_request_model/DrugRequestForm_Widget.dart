@@ -59,7 +59,7 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
     style: const TextStyle(color: Colors.white),
     decoration:
     const InputDecoration(
-      labelText: 'Brand Name',
+      labelText: 'Brand Name', labelStyle: TextStyle(color: Colors.white),
       border: OutlineInputBorder(),
     ),
     validator: (value) => value != null && value.isEmpty ? 'Enter Brand Name' : null,
@@ -69,7 +69,7 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
     controller: controllerGenericName,
     style: const TextStyle(color: Colors.white),
     decoration: const InputDecoration(
-    labelText: 'Generic Name',
+    labelText: 'Generic Name', labelStyle: TextStyle(color: Colors.white),
     border: OutlineInputBorder(),
   ),
     validator: (value) => value != null && value.isEmpty ? 'Enter Generic Name' : null,
@@ -79,7 +79,7 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
     controller: controllerEmail,
     style: const TextStyle(color: Colors.white),
     decoration: const InputDecoration(
-      labelText: 'Email Address',
+      labelText: 'Email Address',labelStyle: TextStyle(color: Colors.white),
       border: OutlineInputBorder(),
     ),
     validator: (value) => value != null && !value.contains('@') ? 'Enter Email' : null,

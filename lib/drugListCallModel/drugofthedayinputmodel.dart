@@ -14,7 +14,15 @@ class DayDrug {
   String therapeuticArea;
   String innName;
   String activeSubstance;
-  String productNumber;
+  String activeSubstanceStrengthPerDose;
+  String dosageForm;
+  String routeName;
+  String shelfLife;
+  String productVisualDesc;
+  String productImageUrl;
+  String localForeign;
+  String approxRetailPrice;
+  int productNumber;
   String patientSafety;
   String authorisationStatus;
   String atccode;
@@ -25,19 +33,34 @@ class DayDrug {
   String exceptionalCircumstances;
   String acceleratedAssessment;
   String orphanMedicine;
-  DateTime marketingAuthorisationDate;
+  String marketingAuthorisationDate;
   String dateofRefusalofmarketingAuthorisation;
+  String localRepresentativeHolderCompanyName;
   String marketingAuthorisationHolderorCompanyName;
+  String marketingAuthorisationHolderorCompanyAddress;
+  String marketingAuthorisationHolderorCompanyEmail;
+  String marketingAuthorisedCompanySite;
+  String marketingAuthorisedCompanySiteAddress;
   String humanPharmacotherapeuticGroup;
   String vetPharmacotherapeuticGroup;
   String dateofOpinion;
-  DateTime decisionDate;
-  int revisionNumber;
+  String decisionDate;
+  String revisionNumber;
   String conditionOrIndication;
-  DateTime firstPublished;
-  DateTime revisionDate;
+  String contraindicationOrWarningsOrPrecautions;
+  String pregnancyLactation;
+  String drivingOrMachineryUseAbility;
+  String undesirableEffects;
+  String overdose;
+  String mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics;
+  String excipientsList;
+  String incompatibilitiesOrInteractions;
+  String specialStorageOrPrecautions;
+  String disposalHandlingPrecautions;
+  String firstPublished;
+  String revisionDate;
   String url;
-  dynamic manufactureVerified;
+  String verifiedInfo;
 
   DayDrug({
     required this.category,
@@ -45,6 +68,14 @@ class DayDrug {
     required this.therapeuticArea,
     required this.innName,
     required this.activeSubstance,
+    required this.activeSubstanceStrengthPerDose,
+    required this.dosageForm,
+    required this.routeName,
+    required this.shelfLife,
+    required this.productVisualDesc,
+    required this.productImageUrl,
+    required this.localForeign,
+    required this.approxRetailPrice,
     required this.productNumber,
     required this.patientSafety,
     required this.authorisationStatus,
@@ -58,17 +89,32 @@ class DayDrug {
     required this.orphanMedicine,
     required this.marketingAuthorisationDate,
     required this.dateofRefusalofmarketingAuthorisation,
+    required this.localRepresentativeHolderCompanyName,
     required this.marketingAuthorisationHolderorCompanyName,
+    required this.marketingAuthorisationHolderorCompanyAddress,
+    required this.marketingAuthorisationHolderorCompanyEmail,
+    required this.marketingAuthorisedCompanySite,
+    required this.marketingAuthorisedCompanySiteAddress,
     required this.humanPharmacotherapeuticGroup,
     required this.vetPharmacotherapeuticGroup,
     required this.dateofOpinion,
     required this.decisionDate,
     required this.revisionNumber,
     required this.conditionOrIndication,
+    required this.contraindicationOrWarningsOrPrecautions,
+    required this.pregnancyLactation,
+    required this.drivingOrMachineryUseAbility,
+    required this.undesirableEffects,
+    required this.overdose,
+    required this.mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics,
+    required this.excipientsList,
+    required this.incompatibilitiesOrInteractions,
+    required this.specialStorageOrPrecautions,
+    required this.disposalHandlingPrecautions,
     required this.firstPublished,
     required this.revisionDate,
     required this.url,
-    required this.manufactureVerified,
+    required this.verifiedInfo,
   });
 
   factory DayDrug.fromJson(Map<String, dynamic> json) => DayDrug(
@@ -77,6 +123,14 @@ class DayDrug {
     therapeuticArea: json["therapeuticArea"],
     innName: json["inn_name"],
     activeSubstance: json["activeSubstance"],
+    activeSubstanceStrengthPerDose: json["activeSubstanceStrengthPerDose"],
+    dosageForm: json["dosageForm"],
+    routeName: json["routeName"],
+    shelfLife: json["shelfLife"],
+    productVisualDesc: json["productVisualDesc"],
+    productImageUrl: json["productImageUrl"],
+    localForeign: json["localForeign"],
+    approxRetailPrice: json["approxRetailPrice"],
     productNumber: json["productNumber"],
     patientSafety: json["patientSafety"],
     authorisationStatus: json["authorisationStatus"],
@@ -88,19 +142,34 @@ class DayDrug {
     exceptionalCircumstances: json["exceptionalCircumstances"],
     acceleratedAssessment: json["acceleratedAssessment"],
     orphanMedicine: json["orphanMedicine"],
-    marketingAuthorisationDate: DateTime.parse(json["marketingAuthorisationDate"]),
+    marketingAuthorisationDate: json["marketingAuthorisationDate"],
     dateofRefusalofmarketingAuthorisation: json["dateofRefusalofmarketingAuthorisation"],
+    localRepresentativeHolderCompanyName: json["localRepresentativeHolderCompanyName"],
     marketingAuthorisationHolderorCompanyName: json["marketingAuthorisationHolderorCompanyName"],
+    marketingAuthorisationHolderorCompanyAddress: json["marketingAuthorisationHolderorCompanyAddress"],
+    marketingAuthorisationHolderorCompanyEmail: json["marketingAuthorisationHolderorCompanyEmail"],
+    marketingAuthorisedCompanySite: json["marketingAuthorisedCompanySite"],
+    marketingAuthorisedCompanySiteAddress: json["marketingAuthorisedCompanySiteAddress"],
     humanPharmacotherapeuticGroup: json["humanPharmacotherapeuticGroup"],
     vetPharmacotherapeuticGroup: json["vetPharmacotherapeuticGroup"],
     dateofOpinion: json["dateofOpinion"],
-    decisionDate: DateTime.parse(json["decisionDate"]),
+    decisionDate: json["decisionDate"],
     revisionNumber: json["revisionNumber"],
     conditionOrIndication: json["conditionOrIndication"],
-    firstPublished: DateTime.parse(json["firstPublished"]),
-    revisionDate: DateTime.parse(json["revisionDate"]),
+    contraindicationOrWarningsOrPrecautions: json["contraindicationOrWarningsOrPrecautions"],
+    pregnancyLactation: json["pregnancyLactation"],
+    drivingOrMachineryUseAbility: json["drivingOrMachineryUseAbility"],
+    undesirableEffects: json["undesirableEffects"],
+    overdose: json["overdose"],
+    mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics: json["mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics"],
+    excipientsList: json["excipientsList"],
+    incompatibilitiesOrInteractions: json["incompatibilitiesOrInteractions"],
+    specialStorageOrPrecautions: json["specialStorageOrPrecautions"],
+    disposalHandlingPrecautions: json["disposalHandlingPrecautions"],
+    firstPublished: json["firstPublished"],
+    revisionDate: json["revisionDate"],
     url: json["url"],
-    manufactureVerified: json["manufactureVerified"],
+    verifiedInfo: json["verifiedInfo"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -109,6 +178,14 @@ class DayDrug {
     "therapeuticArea": therapeuticArea,
     "inn_name": innName,
     "activeSubstance": activeSubstance,
+    "activeSubstanceStrengthPerDose": activeSubstanceStrengthPerDose,
+    "dosageForm": dosageForm,
+    "routeName": routeName,
+    "shelfLife": shelfLife,
+    "productVisualDesc": productVisualDesc,
+    "productImageUrl": productImageUrl,
+    "localForeign": localForeign,
+    "approxRetailPrice": approxRetailPrice,
     "productNumber": productNumber,
     "patientSafety": patientSafety,
     "authorisationStatus": authorisationStatus,
@@ -120,18 +197,33 @@ class DayDrug {
     "exceptionalCircumstances": exceptionalCircumstances,
     "acceleratedAssessment": acceleratedAssessment,
     "orphanMedicine": orphanMedicine,
-    "marketingAuthorisationDate": marketingAuthorisationDate.toIso8601String(),
+    "marketingAuthorisationDate": marketingAuthorisationDate,
     "dateofRefusalofmarketingAuthorisation": dateofRefusalofmarketingAuthorisation,
+    "localRepresentativeHolderCompanyName": localRepresentativeHolderCompanyName,
     "marketingAuthorisationHolderorCompanyName": marketingAuthorisationHolderorCompanyName,
+    "marketingAuthorisationHolderorCompanyAddress": marketingAuthorisationHolderorCompanyAddress,
+    "marketingAuthorisationHolderorCompanyEmail": marketingAuthorisationHolderorCompanyEmail,
+    "marketingAuthorisedCompanySite": marketingAuthorisedCompanySite,
+    "marketingAuthorisedCompanySiteAddress": marketingAuthorisedCompanySiteAddress,
     "humanPharmacotherapeuticGroup": humanPharmacotherapeuticGroup,
     "vetPharmacotherapeuticGroup": vetPharmacotherapeuticGroup,
     "dateofOpinion": dateofOpinion,
-    "decisionDate": decisionDate.toIso8601String(),
+    "decisionDate": decisionDate,
     "revisionNumber": revisionNumber,
     "conditionOrIndication": conditionOrIndication,
-    "firstPublished": firstPublished.toIso8601String(),
-    "revisionDate": revisionDate.toIso8601String(),
+    "contraindicationOrWarningsOrPrecautions": contraindicationOrWarningsOrPrecautions,
+    "pregnancyLactation": pregnancyLactation,
+    "drivingOrMachineryUseAbility": drivingOrMachineryUseAbility,
+    "undesirableEffects": undesirableEffects,
+    "overdose": overdose,
+    "mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics": mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics,
+    "excipientsList": excipientsList,
+    "incompatibilitiesOrInteractions": incompatibilitiesOrInteractions,
+    "specialStorageOrPrecautions": specialStorageOrPrecautions,
+    "disposalHandlingPrecautions": disposalHandlingPrecautions,
+    "firstPublished": firstPublished,
+    "revisionDate": revisionDate,
     "url": url,
-    "manufactureVerified": manufactureVerified,
+    "verifiedInfo": verifiedInfo,
   };
 }

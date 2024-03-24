@@ -10,8 +10,7 @@ class FetchDrugDayDrug {
   List<DayDrug> resultsDayDrug = [];
   // results_DayDrug.where();
   String fetchurlDayDrug =
-      "https://script.google.com/macros/s/AKfycbxdxDT6Gs3g4m2lpJZteO8qsbtOD0KMI_YN_L5Vl_fyMk2eLMfc1pFMrOyXCU2c-4oIMw/exec";
-
+      "https://script.googleusercontent.com/macros/echo?user_content_key=o4QeY3MrZeHvP3j3nMlxA9HtfXLS-Q5BAnODagM0uIvlbJzuqtp4z3J9aH1LJUY4T8OSR9cvynk8cgz7eXLWtvYpJK_b7L0wm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnHBo-ChCqjN8Kc5rU-irP6B2_61B7mtEptlTaJ0iCZ7ynFonTSsYYLn0n8Quem0VbtGXadBbhIbbXbySVtqqobzEhPn-4zCdBtz9Jw9Md8uu&lib=MHYLI_QlBq6Ca8oFBC4SGd8OfU6_gdlge";
   Future<List<DayDrug>> getDayDrug(String? query) async
   {
     var url = Uri.parse(fetchurlDayDrug);
