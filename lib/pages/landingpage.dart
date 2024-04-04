@@ -702,7 +702,7 @@ class _LandingPageState extends State<LandingPage> {
                                               style: const TextStyle(color: Colors.white, fontSize: 12),textAlign: TextAlign.center
                                           ),
                                         ),
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Local Representative Company',
                                             style: TextStyle(color: Colors.white54, fontSize: 12),),

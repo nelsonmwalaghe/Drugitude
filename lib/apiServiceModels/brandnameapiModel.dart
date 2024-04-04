@@ -9,7 +9,7 @@ class FetchDrugbrandName {
   var databrandName = [];
   List<DrugListBrandName> resultsbrandName = [];
   String fetchurlbrandName =
-      "https://script.googleusercontent.com/macros/echo?user_content_key=LwoodWt2qCHtrfiRGAPzdexbq4v3iQaV8Yp-4VKygFqF_4UPyIlJw8Xtk8pqptj7_WHAmKWPbqcVNJXTdlq1OxG9rGUULxcYm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnC-WBSfHvHiPlTxuiQTcpJV8zQ0h6AzlK1jesKRgfxboSAqlJULr7ha7-NeVwkjEwXHNdINEWyWXsgMXua6DKx-fJMRCcv9cYw&lib=Meh_bsooRvK-e94zE4gUzGohLs1YLDbPg";
+    "https://drugitudeapi.ridcoltd.co.ke/api/drugitudecodex";
 
   Future<List<DrugListBrandName>> getDrugListbrandName(String? query) async
   {
@@ -20,7 +20,7 @@ class FetchDrugbrandName {
         databrandName = json.decode(response.body);
         resultsbrandName = databrandName.map((e) => DrugListBrandName.fromJson(e)).toList();
         if(query != null){
-          resultsbrandName = resultsbrandName.where((element) => element.medicineName!.toLowerCase().contains(query.toLowerCase())).toList();
+          resultsbrandName = resultsbrandName.where((element) => element.medicineName.toLowerCase().contains(query.toLowerCase())).toList();
         }
       } else {
       }

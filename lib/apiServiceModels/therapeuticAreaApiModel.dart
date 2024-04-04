@@ -15,7 +15,7 @@ class FetchDrugTherapueticArea {
   var datatherapueticArea = [];
   List<DrugListTherapueticArea> resultsTherapueticArea = [];
   String fetchurlTherapueticArea =
-      "https://script.google.com/macros/s/AKfycbx_LulT5i4DQUeQI82lV4i8BBFTA5tNRpK8vK0V8JcKL6xzoeR-XYa351ENjaVHphvA/exec";
+     "https://drugitudeapi.ridcoltd.co.ke/api/drugitudecodex";
 
   Future<List<DrugListTherapueticArea>> getDrugListTherapueticArea(String? query) async
   {
@@ -26,7 +26,7 @@ class FetchDrugTherapueticArea {
         datatherapueticArea = json.decode(response.body);
         resultsTherapueticArea = datatherapueticArea.map((e) => DrugListTherapueticArea.fromJson(e)).toList();
         if(query != null){
-          resultsTherapueticArea = resultsTherapueticArea.where((element) => element.therapeuticArea!.toLowerCase().contains(query.toLowerCase())).toList();
+          resultsTherapueticArea = resultsTherapueticArea.where((element) => element.therapeuticArea.toLowerCase().contains(query.toLowerCase())).toList();
         }
       } else {
       }

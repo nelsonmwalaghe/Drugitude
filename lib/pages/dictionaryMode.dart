@@ -796,7 +796,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                     ),
                                     Card(color: Colors.black.withOpacity(0.6),
                                       child: ExpansionTile(
-                                        title: Text('More..',
+                                        title: const Text('More..',
                                           style: TextStyle(color: Colors.white54, fontSize: 12),),
                                         children: [
                                           Padding(
@@ -853,7 +853,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                             ),
                                           ),
                                           ExpansionTile(
-                                            title: Text('Indication and Use',
+                                            title: const Text('Indication and Use',
                                               style: TextStyle(color: Colors.white54, fontSize: 12),),
                                             children: [
 
@@ -888,72 +888,12 @@ class _DictionaryMode extends State<DictionaryMode> {
 
                                               const Padding(
                                                 padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Pregnancy & Lactation',
-                                                    style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].pregnancyLactation}',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.start,
-                                                  style: const TextStyle(fontSize: 12,
-                                                      color: Colors.white70,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Ability to use Machinery or Driving',
-                                                    style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].drivingOrMachineryUseAbility}',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.start,
-                                                  style: const TextStyle(fontSize: 12,
-                                                      color: Colors.white70,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Undesirable Effects',
-                                                    style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].undesirableEffects}',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.start,
-                                                  style: const TextStyle(fontSize: 12,
-                                                      color: Colors.white70,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Overdose',
-                                                    style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].overdose}',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.start,
-                                                  style: const TextStyle(fontSize: 12,
-                                                      color: Colors.white70,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                 child: Text('Mechanism of Action',
                                                     style: TextStyle(color: Colors.white54, fontSize: 12)),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics}',
+                                                child: Text('${data?[index].moaPhamacology}',
                                                   overflow: TextOverflow.fade,
                                                   textAlign: TextAlign.start,
                                                   style: const TextStyle(fontSize: 12,
@@ -976,53 +916,8 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                       fontWeight: FontWeight.bold),),
                                               ),
 
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Incompatibilities and Interactions',
-                                                    style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].incompatibilitiesOrInteractions}',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.start,
-                                                  style: const TextStyle(fontSize: 12,
-                                                      color: Colors.white70,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Storage & Special Precautions',
-                                                    style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].specialStorageOrPrecautions}',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.start,
-                                                  style: const TextStyle(fontSize: 12,
-                                                      color: Colors.white70,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Disposal, Handling and Precautions',
-                                                    style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].disposalHandlingPrecautions}',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.start,
-                                                  style: const TextStyle(fontSize: 12,
-                                                      color: Colors.white70,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-
                                               ExpansionTile(
-                                                title: Text('Additional Information',
+                                                title: const Text('Additional Information',
                                                     style: TextStyle(color: Colors.white54, fontSize: 12)),
                                                 children: [
                                                   const Padding(
@@ -1033,7 +928,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                   ),
                                                   Padding(
                                                     padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                    child: Text('Product Number: ${data?[index].productNumber}; ATC-Code: ${data?[index].atccode}, Generic? ${data?[index].generic}, Biosimilar? ${data?[index].biosimilar}, Conditional Approval: ${data?[index].conditionalApproval}, Exceptional Circumstances: ${data?[index].exceptionalCircumstances}, Accelerated Assessment: ${data?[index].acceleratedAssessment}, Orphan Medicine: ${data?[index].orphanMedicine}, Marketing Authorization Date: ${data?[index].marketingAuthorisationDate}, Date of Opinion: ${data?[index].dateofOpinion}, Decision Date: ${data?[index].decisionDate}, First Published: ${data?[index].firstPublished}, Revision Date: ${data?[index].revisionDate}, Revision Number: ${data?[index].revisionNumber}, url: ${data?[index].url}',
+                                                    child: Text('ATC-Code: ${data?[index].atccode}, url: ${data?[index].url}',
                                                         overflow: TextOverflow.fade,
                                                         textAlign: TextAlign.start,
                                                         style: const TextStyle(fontSize: 12,

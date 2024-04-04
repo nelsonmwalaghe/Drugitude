@@ -351,7 +351,7 @@ class SearchDrugTherapueticArea extends SearchDelegate {
                                           ),
                                           Card(color: Colors.black.withOpacity(0.6),
                                             child: ExpansionTile(
-                                              title: Text('More..',
+                                              title: const Text('More..',
                                                 style: TextStyle(color: Colors.white54, fontSize: 12),),
                                               children: [
                                                 Padding(
@@ -408,7 +408,7 @@ class SearchDrugTherapueticArea extends SearchDelegate {
                                                   ),
                                                 ),
                                                 ExpansionTile(
-                                                  title: Text('Indication and Use',
+                                                  title: const Text('Indication and Use',
                                                     style: TextStyle(color: Colors.white54, fontSize: 12),),
                                                   children: [
 
@@ -443,72 +443,12 @@ class SearchDrugTherapueticArea extends SearchDelegate {
 
                                                     const Padding(
                                                       padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('Pregnancy & Lactation',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].pregnancyLactation}',
-                                                        overflow: TextOverflow.fade,
-                                                        textAlign: TextAlign.start,
-                                                        style: const TextStyle(fontSize: 12,
-                                                            color: Colors.white70,
-                                                            fontWeight: FontWeight.bold),),
-                                                    ),
-
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('Ability to use Machinery or Driving',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].drivingOrMachineryUseAbility}',
-                                                        overflow: TextOverflow.fade,
-                                                        textAlign: TextAlign.start,
-                                                        style: const TextStyle(fontSize: 12,
-                                                            color: Colors.white70,
-                                                            fontWeight: FontWeight.bold),),
-                                                    ),
-
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('Undesirable Effects',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].undesirableEffects}',
-                                                        overflow: TextOverflow.fade,
-                                                        textAlign: TextAlign.start,
-                                                        style: const TextStyle(fontSize: 12,
-                                                            color: Colors.white70,
-                                                            fontWeight: FontWeight.bold),),
-                                                    ),
-
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('Overdose',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].overdose}',
-                                                        overflow: TextOverflow.fade,
-                                                        textAlign: TextAlign.start,
-                                                        style: const TextStyle(fontSize: 12,
-                                                            color: Colors.white70,
-                                                            fontWeight: FontWeight.bold),),
-                                                    ),
-
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                       child: Text('Mechanism of Action',
                                                           style: TextStyle(color: Colors.white54, fontSize: 12)),
                                                     ),
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics}',
+                                                      child: Text('${dataTherapueticArea?[index].moaPhamacology}',
                                                         overflow: TextOverflow.fade,
                                                         textAlign: TextAlign.start,
                                                         style: const TextStyle(fontSize: 12,
@@ -531,53 +471,9 @@ class SearchDrugTherapueticArea extends SearchDelegate {
                                                             fontWeight: FontWeight.bold),),
                                                     ),
 
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('Incompatibilities and Interactions',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].incompatibilitiesOrInteractions}',
-                                                        overflow: TextOverflow.fade,
-                                                        textAlign: TextAlign.start,
-                                                        style: const TextStyle(fontSize: 12,
-                                                            color: Colors.white70,
-                                                            fontWeight: FontWeight.bold),),
-                                                    ),
-
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('Storage & Special Precautions',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].specialStorageOrPrecautions}',
-                                                        overflow: TextOverflow.fade,
-                                                        textAlign: TextAlign.start,
-                                                        style: const TextStyle(fontSize: 12,
-                                                            color: Colors.white70,
-                                                            fontWeight: FontWeight.bold),),
-                                                    ),
-
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('Disposal, Handling and Precautions',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('${dataTherapueticArea?[index].disposalHandlingPrecautions}',
-                                                        overflow: TextOverflow.fade,
-                                                        textAlign: TextAlign.start,
-                                                        style: const TextStyle(fontSize: 12,
-                                                            color: Colors.white70,
-                                                            fontWeight: FontWeight.bold),),
-                                                    ),
 
                                                     ExpansionTile(
-                                                      title: Text('Additional Information',
+                                                      title: const Text('Additional Information',
                                                           style: TextStyle(color: Colors.white54, fontSize: 12)),
                                                       children: [
                                                         const Padding(
@@ -588,7 +484,7 @@ class SearchDrugTherapueticArea extends SearchDelegate {
                                                         ),
                                                         Padding(
                                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                          child: Text('Product Number: ${dataTherapueticArea?[index].productNumber}; ATC-Code: ${dataTherapueticArea?[index].atccode}, Generic? ${dataTherapueticArea?[index].generic}, Biosimilar? ${dataTherapueticArea?[index].biosimilar}, Conditional Approval: ${dataTherapueticArea?[index].conditionalApproval}, Exceptional Circumstances: ${dataTherapueticArea?[index].exceptionalCircumstances}, Accelerated Assessment: ${dataTherapueticArea?[index].acceleratedAssessment}, Orphan Medicine: ${dataTherapueticArea?[index].orphanMedicine}, Marketing Authorization Date: ${dataTherapueticArea?[index].marketingAuthorisationDate}, Date of Opinion: ${dataTherapueticArea?[index].dateofOpinion}, Decision Date: ${dataTherapueticArea?[index].decisionDate}, First Published: ${dataTherapueticArea?[index].firstPublished}, Revision Date: ${dataTherapueticArea?[index].revisionDate}, Revision Number: ${dataTherapueticArea?[index].revisionNumber}, url: ${dataTherapueticArea?[index].url}',
+                                                          child: Text('ATC-Code: ${dataTherapueticArea?[index].atccode}, url: ${dataTherapueticArea?[index].url}',
                                                               overflow: TextOverflow.fade,
                                                               textAlign: TextAlign.start,
                                                               style: const TextStyle(fontSize: 12,

@@ -18,47 +18,18 @@ class DayDrug {
   String dosageForm;
   String routeName;
   String shelfLife;
-  String productVisualDesc;
   String productImageUrl;
   String localForeign;
   String approxRetailPrice;
-  int productNumber;
-  String patientSafety;
   String authorisationStatus;
   String atccode;
-  String additionalMonitoring;
-  String generic;
-  String biosimilar;
-  String conditionalApproval;
-  String exceptionalCircumstances;
-  String acceleratedAssessment;
-  String orphanMedicine;
-  String marketingAuthorisationDate;
-  String dateofRefusalofmarketingAuthorisation;
   String localRepresentativeHolderCompanyName;
   String marketingAuthorisationHolderorCompanyName;
-  String marketingAuthorisationHolderorCompanyAddress;
-  String marketingAuthorisationHolderorCompanyEmail;
-  String marketingAuthorisedCompanySite;
-  String marketingAuthorisedCompanySiteAddress;
   String humanPharmacotherapeuticGroup;
-  String vetPharmacotherapeuticGroup;
-  String dateofOpinion;
-  String decisionDate;
-  String revisionNumber;
   String conditionOrIndication;
   String contraindicationOrWarningsOrPrecautions;
-  String pregnancyLactation;
-  String drivingOrMachineryUseAbility;
-  String undesirableEffects;
-  String overdose;
-  String mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics;
+  String moaPhamacology;
   String excipientsList;
-  String incompatibilitiesOrInteractions;
-  String specialStorageOrPrecautions;
-  String disposalHandlingPrecautions;
-  String firstPublished;
-  String revisionDate;
   String url;
   String verifiedInfo;
 
@@ -72,47 +43,18 @@ class DayDrug {
     required this.dosageForm,
     required this.routeName,
     required this.shelfLife,
-    required this.productVisualDesc,
     required this.productImageUrl,
     required this.localForeign,
     required this.approxRetailPrice,
-    required this.productNumber,
-    required this.patientSafety,
     required this.authorisationStatus,
     required this.atccode,
-    required this.additionalMonitoring,
-    required this.generic,
-    required this.biosimilar,
-    required this.conditionalApproval,
-    required this.exceptionalCircumstances,
-    required this.acceleratedAssessment,
-    required this.orphanMedicine,
-    required this.marketingAuthorisationDate,
-    required this.dateofRefusalofmarketingAuthorisation,
     required this.localRepresentativeHolderCompanyName,
     required this.marketingAuthorisationHolderorCompanyName,
-    required this.marketingAuthorisationHolderorCompanyAddress,
-    required this.marketingAuthorisationHolderorCompanyEmail,
-    required this.marketingAuthorisedCompanySite,
-    required this.marketingAuthorisedCompanySiteAddress,
     required this.humanPharmacotherapeuticGroup,
-    required this.vetPharmacotherapeuticGroup,
-    required this.dateofOpinion,
-    required this.decisionDate,
-    required this.revisionNumber,
     required this.conditionOrIndication,
     required this.contraindicationOrWarningsOrPrecautions,
-    required this.pregnancyLactation,
-    required this.drivingOrMachineryUseAbility,
-    required this.undesirableEffects,
-    required this.overdose,
-    required this.mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics,
+    required this.moaPhamacology,
     required this.excipientsList,
-    required this.incompatibilitiesOrInteractions,
-    required this.specialStorageOrPrecautions,
-    required this.disposalHandlingPrecautions,
-    required this.firstPublished,
-    required this.revisionDate,
     required this.url,
     required this.verifiedInfo,
   });
@@ -127,47 +69,18 @@ class DayDrug {
     dosageForm: json["dosageForm"],
     routeName: json["routeName"],
     shelfLife: json["shelfLife"],
-    productVisualDesc: json["productVisualDesc"],
     productImageUrl: json["productImageUrl"],
     localForeign: json["localForeign"],
     approxRetailPrice: json["approxRetailPrice"],
-    productNumber: json["productNumber"],
-    patientSafety: json["patientSafety"],
     authorisationStatus: json["authorisationStatus"],
     atccode: json["atccode"],
-    additionalMonitoring: json["additionalMonitoring"],
-    generic: json["generic"],
-    biosimilar: json["biosimilar"],
-    conditionalApproval: json["conditionalApproval"],
-    exceptionalCircumstances: json["exceptionalCircumstances"],
-    acceleratedAssessment: json["acceleratedAssessment"],
-    orphanMedicine: json["orphanMedicine"],
-    marketingAuthorisationDate: json["marketingAuthorisationDate"],
-    dateofRefusalofmarketingAuthorisation: json["dateofRefusalofmarketingAuthorisation"],
     localRepresentativeHolderCompanyName: json["localRepresentativeHolderCompanyName"],
     marketingAuthorisationHolderorCompanyName: json["marketingAuthorisationHolderorCompanyName"],
-    marketingAuthorisationHolderorCompanyAddress: json["marketingAuthorisationHolderorCompanyAddress"],
-    marketingAuthorisationHolderorCompanyEmail: json["marketingAuthorisationHolderorCompanyEmail"],
-    marketingAuthorisedCompanySite: json["marketingAuthorisedCompanySite"],
-    marketingAuthorisedCompanySiteAddress: json["marketingAuthorisedCompanySiteAddress"],
     humanPharmacotherapeuticGroup: json["humanPharmacotherapeuticGroup"],
-    vetPharmacotherapeuticGroup: json["vetPharmacotherapeuticGroup"],
-    dateofOpinion: json["dateofOpinion"],
-    decisionDate: json["decisionDate"],
-    revisionNumber: json["revisionNumber"],
     conditionOrIndication: json["conditionOrIndication"],
     contraindicationOrWarningsOrPrecautions: json["contraindicationOrWarningsOrPrecautions"],
-    pregnancyLactation: json["pregnancyLactation"],
-    drivingOrMachineryUseAbility: json["drivingOrMachineryUseAbility"],
-    undesirableEffects: json["undesirableEffects"],
-    overdose: json["overdose"],
-    mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics: json["mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics"],
+    moaPhamacology: json["moaPhamacology"],
     excipientsList: json["excipientsList"],
-    incompatibilitiesOrInteractions: json["incompatibilitiesOrInteractions"],
-    specialStorageOrPrecautions: json["specialStorageOrPrecautions"],
-    disposalHandlingPrecautions: json["disposalHandlingPrecautions"],
-    firstPublished: json["firstPublished"],
-    revisionDate: json["revisionDate"],
     url: json["url"],
     verifiedInfo: json["verifiedInfo"],
   );
@@ -182,47 +95,18 @@ class DayDrug {
     "dosageForm": dosageForm,
     "routeName": routeName,
     "shelfLife": shelfLife,
-    "productVisualDesc": productVisualDesc,
     "productImageUrl": productImageUrl,
     "localForeign": localForeign,
     "approxRetailPrice": approxRetailPrice,
-    "productNumber": productNumber,
-    "patientSafety": patientSafety,
     "authorisationStatus": authorisationStatus,
     "atccode": atccode,
-    "additionalMonitoring": additionalMonitoring,
-    "generic": generic,
-    "biosimilar": biosimilar,
-    "conditionalApproval": conditionalApproval,
-    "exceptionalCircumstances": exceptionalCircumstances,
-    "acceleratedAssessment": acceleratedAssessment,
-    "orphanMedicine": orphanMedicine,
-    "marketingAuthorisationDate": marketingAuthorisationDate,
-    "dateofRefusalofmarketingAuthorisation": dateofRefusalofmarketingAuthorisation,
     "localRepresentativeHolderCompanyName": localRepresentativeHolderCompanyName,
     "marketingAuthorisationHolderorCompanyName": marketingAuthorisationHolderorCompanyName,
-    "marketingAuthorisationHolderorCompanyAddress": marketingAuthorisationHolderorCompanyAddress,
-    "marketingAuthorisationHolderorCompanyEmail": marketingAuthorisationHolderorCompanyEmail,
-    "marketingAuthorisedCompanySite": marketingAuthorisedCompanySite,
-    "marketingAuthorisedCompanySiteAddress": marketingAuthorisedCompanySiteAddress,
     "humanPharmacotherapeuticGroup": humanPharmacotherapeuticGroup,
-    "vetPharmacotherapeuticGroup": vetPharmacotherapeuticGroup,
-    "dateofOpinion": dateofOpinion,
-    "decisionDate": decisionDate,
-    "revisionNumber": revisionNumber,
     "conditionOrIndication": conditionOrIndication,
     "contraindicationOrWarningsOrPrecautions": contraindicationOrWarningsOrPrecautions,
-    "pregnancyLactation": pregnancyLactation,
-    "drivingOrMachineryUseAbility": drivingOrMachineryUseAbility,
-    "undesirableEffects": undesirableEffects,
-    "overdose": overdose,
-    "mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics": mechanismOfActionOrPharmacologicalOrPharmacodyamicOrPharmacokineticXtics,
+    "moaPhamacology": moaPhamacology,
     "excipientsList": excipientsList,
-    "incompatibilitiesOrInteractions": incompatibilitiesOrInteractions,
-    "specialStorageOrPrecautions": specialStorageOrPrecautions,
-    "disposalHandlingPrecautions": disposalHandlingPrecautions,
-    "firstPublished": firstPublished,
-    "revisionDate": revisionDate,
     "url": url,
     "verifiedInfo": verifiedInfo,
   };
