@@ -76,7 +76,7 @@ static Future<void>onActionReceivedMethod(
 }
 static Future<void>showNotification({
   // required int hoursFromNow,
-  bool repeatNotif = false,
+  bool repeatNotif = true,
   required final String title,
   required final String body,
   required String? summary,
@@ -85,21 +85,21 @@ static Future<void>showNotification({
   final NotificationCategory? category,
   final String? bigPicture,
   final List<NotificationActionButton>? actionButtons,
-  final bool scheduled = false,
+  final bool scheduled = true,
   final int? interval,
 }) async {
     // assert (!scheduled || (scheduled && interval != null));
     // var nowDate = DateTime.now().add(Duration(hours: hoursFromNow, seconds: 5));
 
     await AwesomeNotifications().createNotification(
-      // schedule: NotificationCalendar(
-      //   //weekday: nowDate.day,
-      //   hour: nowDate.hour,
-      //   minute: 0,
-      //   second: nowDate.second,
-      //   repeats: repeatNotif,
-      //   //allowWhileIdle: true,
-      //   ),
+      schedule: NotificationCalendar(
+        //weekday: nowDate.day,
+        day: 1-7,
+        hour: 17,
+        minute: 58,
+        repeats: repeatNotif,
+        //allowWhileIdle: true,
+        ),
 
         content: NotificationContent(
             id: 1,
@@ -128,7 +128,9 @@ static Future<bool>scheduleNotification() async {
 final AwesomeNotifications awesomeNotifications = AwesomeNotifications();
 return await awesomeNotifications.createNotification(
     schedule: NotificationCalendar(
-        hour: 17,
+      day: 1-7,
+        minute: 42,
+        hour: 21,
       repeats: true,
     ),
   content: NotificationContent(

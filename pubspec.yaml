@@ -1,5 +1,5 @@
 name: drugitudeleviosa
-description: A new Flutter project.
+description: A R.I.D.C.O L.T.D PROJECT.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -46,6 +46,7 @@ dependencies:
   image: ^4.1.7
   rive: ^0.12.4
   flutter_lints: ^3.0.1
+  cron:
 
 
 

@@ -1,3 +1,4 @@
+import 'package:drugitudeleviosa/pages/messageconfirmation.dart';
 import 'package:flutter/material.dart';
 import '../apiServiceModels/daydrugapimodel.dart';
 import '../drugListCallModel/drugofthedayinputmodel.dart';
@@ -491,6 +492,23 @@ class _LandingPageState extends State<LandingPage> {
                           children: [
                             // Text('search drug', style: TextStyle(color: Colors.white),),
                             Icon(Icons.search, color: Colors.white),
+                          ],
+                        )),
+                    ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor:
+                            MaterialStatePropertyAll(Colors.transparent)),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MessageConfirmation(),
+                              ));
+                        },
+                        child: const Row(
+                          children: [
+                            // Text('search drug', style: TextStyle(color: Colors.white),),
+                            Icon(Icons.notifications_outlined, color: Colors.white, size: 20,),
                           ],
                         )),
                   ],

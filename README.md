@@ -1,6 +1,6 @@
-# drugitudeleviosa
+# drugitude
 
-A new Flutter project.
+East Africa's First Digital Drug Index
 
 ## Getting Started
 
