@@ -4,7 +4,6 @@ import 'package:drugitudeleviosa/pages/aboutDrugitude.dart';
 import 'package:drugitudeleviosa/pages/drugrequestpage.dart';
 import 'package:drugitudeleviosa/pages/landingpage.dart';
 import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
-import 'package:drugitudeleviosa/searchModels/dictionarymodeazsearch.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
@@ -305,7 +304,7 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Text(
-                    '           Messages & Alerts Section ',
+                    '           Messages & Alerts ',
                     style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],
@@ -505,229 +504,258 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 5.0,
-                                              bottom: 0,
-                                              left: 2,
-                                              right: 2),
-                                          child: Text(
-                                            'Category: ${data?[index].priority.toString()}',
-                                            style: const TextStyle(
-                                                color: Colors.white54,
-                                                fontSize: 12),
-                                          ),
+                                        Row(mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0,),
+                                              child: Text(
+                                                ' ${data?[index].priority.toString()}',
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 12),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0,
+                                                  bottom: 0,
+                                                  left: 2,),
+                                              child: Padding(
+                                                padding:
+                                                const EdgeInsets.only(
+                                                    top: 0.0,
+                                                    bottom: 0,
+                                                    left: 0,
+                                                    right: 0),
+                                                child: CircleAvatar(backgroundColor: Colors.transparent,
+                                                    radius: 5,
+                                                    child: Image.asset(
+                                                        "assets/${data?[index].priority}.png")),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 3.0,
+                                                  bottom: 0,
+                                                  left: 0,
+                                                  right: 0),
+                                              child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.help_outline_outlined,
+                                                    color: Colors.grey,
+                                                    size: 15,),
+                                                  onPressed: () => showDialog<String>(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                          SingleChildScrollView(physics: const ClampingScrollPhysics(),
+                                                            child: AlertDialog(scrollable: true,
+                                                              title: const Text(
+                                                                  'Message Hierarchy'),
+                                                              content: Column(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding:
+                                                                    const EdgeInsets
+                                                                        .only(
+                                                                        top: 0.0,
+                                                                        bottom: 0,
+                                                                        left: 0,
+                                                                        right: 8),
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                      children: [
+                                                                        const Text(
+                                                                            'HIGH PRIORITY',
+                                                                            style: TextStyle(
+                                                                                color: Colors
+                                                                                    .black,
+                                                                                fontWeight:
+                                                                                FontWeight
+                                                                                    .bold,
+                                                                                fontSize:
+                                                                                12,
+                                                                                decoration:
+                                                                                TextDecoration
+                                                                                    .underline)),
+                                                                        Padding(
+                                                                          padding:
+                                                                          const EdgeInsets
+                                                                              .only(
+                                                                              top:
+                                                                              0.0,
+                                                                              bottom:
+                                                                              2,
+                                                                              left: 5,
+                                                                              right:
+                                                                              0),
+                                                                          child: CircleAvatar(
+                                                                              radius: 5,
+                                                                              child: Image
+                                                                                  .asset(
+                                                                                  "assets/HIGH PRIORITY.png")),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  const Text(
+                                                                      "Highest Level of Alert. Consists of Emergency information of high Priority, including Drug Withdrawals and Callbacks."),
+                                                                  Padding(
+                                                                    padding:
+                                                                    const EdgeInsets
+                                                                        .only(
+                                                                        top: 8.0,
+                                                                        bottom: 2,
+                                                                        left: 0,
+                                                                        right: 8),
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                      children: [
+                                                                        const Text(
+                                                                            'ADMINISTRATIVE',
+                                                                            style: TextStyle(
+                                                                                color: Colors
+                                                                                    .black,
+                                                                                fontWeight:
+                                                                                FontWeight
+                                                                                    .bold,
+                                                                                fontSize:
+                                                                                12,
+                                                                                decoration:
+                                                                                TextDecoration
+                                                                                    .underline)),
+                                                                        Padding(
+                                                                          padding:
+                                                                          const EdgeInsets
+                                                                              .only(
+                                                                              top:
+                                                                              0.0,
+                                                                              bottom:
+                                                                              2,
+                                                                              left: 5,
+                                                                              right:
+                                                                              0),
+                                                                          child: CircleAvatar(
+                                                                              radius: 5,
+                                                                              child: Image
+                                                                                  .asset(
+                                                                                  "assets/ADMINISTRATIVE.png")),
+                                                                        ),
+
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  const Text(
+                                                                      "Intermediate Level of Alert. Consists of Government Information, specifically from the Ministry of Health and Pharmacy & Poisons Board (PPB)."),
+                                                                  Row(
+                                                                    mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                    children: [
+                                                                      const Padding(
+                                                                        padding: EdgeInsets
+                                                                      .only(
+                                                                      top: 6,
+                                                                      bottom: 2,
+                                                                      left: 0,
+                                                                      right: 5),
+                                                                        child: Text(
+                                                                            'IN APP MESSAGE',
+                                                                            style: TextStyle(
+                                                                                color: Colors
+                                                                                    .black,
+                                                                                fontWeight:
+                                                                                FontWeight
+                                                                                    .bold,
+                                                                                fontSize:
+                                                                                12,
+                                                                                decoration:
+                                                                                TextDecoration
+                                                                                    .underline)),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding:
+                                                                        const EdgeInsets
+                                                                            .only(
+                                                                            top: 6.0,
+                                                                            bottom: 2,
+                                                                            left: 2,
+                                                                            right: 0),
+                                                                        child: CircleAvatar(
+                                                                            radius: 5,
+                                                                            child: Image
+                                                                                .asset(
+                                                                                "assets/IN APP MESSAGE.png")),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  const Text(
+                                                                      "Low Level Alert. Consists of Drugitude Application's information and messages from its developers"),
+                                                                   Row(
+                                                                    mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                    children: [
+                                                                      const Padding(
+                                                                        padding:
+                                                                        EdgeInsets
+                                                                            .only(
+                                                                            top: 6,
+                                                                            bottom: 2,
+                                                                            left: 0,
+                                                                            right: 5),
+                                                                        child: Text(
+                                                                            'INFORMATIVE',
+                                                                            style: TextStyle(
+                                                                                color: Colors
+                                                                                    .black,
+                                                                                fontWeight:
+                                                                                FontWeight
+                                                                                    .bold,
+                                                                                fontSize:
+                                                                                12,
+                                                                                decoration:
+                                                                                TextDecoration
+                                                                                    .underline)),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding:
+                                                                         const EdgeInsets
+                                                                            .only(
+                                                                            top: 6.0,
+                                                                            bottom: 2,
+                                                                            left: 2,
+                                                                            right: 0),
+                                                                        child: CircleAvatar(
+                                                                            radius: 5,
+                                                                            child: Image
+                                                                                .asset(
+                                                                                "assets/INFORMATIVE.png")),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  const Text(
+                                                                      "Medical Information that serve as C.M.E's (Continuous Medical Education) targeting various medical topics"),
+                                                                ],
+                                                              ),
+                                                              actions: <Widget>[
+                                                                TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            context,
+                                                                            'Cancel'),
+                                                                    child: const Text('Ok'))
+                                                              ],
+                                                            ),
+                                                          ),
+                                                )),
+                                            )
+                                          ],
                                         ),
-                                        // Padding(
-                                        //   padding: const EdgeInsets.only(
-                                        //       top: 0.0,
-                                        //       bottom: 0,
-                                        //       left: 0,
-                                        //       right: 8),
-                                        //   child: SizedBox(
-                                        //     width: 230,
-                                        //     child: ElevatedButton(
-                                        //         style: const ButtonStyle(
-                                        //             backgroundColor:
-                                        //             MaterialStatePropertyAll(
-                                        //                 Colors.transparent)),
-                                        //         onPressed: () => showDialog<String>(
-                                        //           context: context,
-                                        //           builder: (context) =>
-                                        //               SingleChildScrollView(physics: const ClampingScrollPhysics(),
-                                        //                 child: AlertDialog(scrollable: true,
-                                        //                   title: const Text(
-                                        //                       'Drug Info Source'),
-                                        //                   content: Column(
-                                        //                     children: [
-                                        //                       Padding(
-                                        //                         padding:
-                                        //                         const EdgeInsets
-                                        //                             .only(
-                                        //                             top: 0.0,
-                                        //                             bottom: 2,
-                                        //                             left: 0,
-                                        //                             right: 8),
-                                        //                         child: Row(
-                                        //                           mainAxisAlignment:
-                                        //                           MainAxisAlignment
-                                        //                               .start,
-                                        //                           children: [
-                                        //                             const Text(
-                                        //                                 'Manufacturer Verified',
-                                        //                                 style: TextStyle(
-                                        //                                     color: Colors
-                                        //                                         .black,
-                                        //                                     fontWeight:
-                                        //                                     FontWeight
-                                        //                                         .bold,
-                                        //                                     fontSize:
-                                        //                                     12,
-                                        //                                     decoration:
-                                        //                                     TextDecoration
-                                        //                                         .underline)),
-                                        //                             Padding(
-                                        //                               padding:
-                                        //                               const EdgeInsets
-                                        //                                   .only(
-                                        //                                   top:
-                                        //                                   0.0,
-                                        //                                   bottom:
-                                        //                                   2,
-                                        //                                   left: 5,
-                                        //                                   right:
-                                        //                                   0),
-                                        //                               child: CircleAvatar(
-                                        //                                   radius: 5,
-                                        //                                   child: Image
-                                        //                                       .asset(
-                                        //                                       "assets/VERIFIED.png")),
-                                        //                             ),
-                                        //                           ],
-                                        //                         ),
-                                        //                       ),
-                                        //                       const Padding(
-                                        //                         padding:
-                                        //                         EdgeInsets
-                                        //                             .only(
-                                        //                             top: 0.0,
-                                        //                             bottom: 10,
-                                        //                             left: 0,
-                                        //                             right: 8),
-                                        //                         child: Text(
-                                        //                             "This confirms that this drug's information has been sourced from, "
-                                        //                                 "confirmed and verified by Drug Manufacturer's Medical Information (MI) department. "
-                                        //                                 "MI departments are responsible for providing drug information to pharmacists, health care professionals and the public about the Manufacturer's products"),
-                                        //                       ),
-                                        //                       Row(
-                                        //                         mainAxisAlignment:
-                                        //                         MainAxisAlignment
-                                        //                             .start,
-                                        //                         children: [
-                                        //                           const Text(
-                                        //                               'Manufacturer Verified',
-                                        //                               style: TextStyle(
-                                        //                                   color: Colors
-                                        //                                       .black,
-                                        //                                   fontWeight:
-                                        //                                   FontWeight
-                                        //                                       .bold,
-                                        //                                   fontSize:
-                                        //                                   12,
-                                        //                                   decoration:
-                                        //                                   TextDecoration
-                                        //                                       .underline)),
-                                        //                           Padding(
-                                        //                             padding:
-                                        //                             const EdgeInsets
-                                        //                                 .only(
-                                        //                                 top: 0.0,
-                                        //                                 bottom: 2,
-                                        //                                 left: 5,
-                                        //                                 right: 0),
-                                        //                             child: CircleAvatar(
-                                        //                                 radius: 5,
-                                        //                                 child: Image
-                                        //                                     .asset(
-                                        //                                     "assets/UNVERIFIED.png")),
-                                        //                           ),
-                                        //                         ],
-                                        //                       ),
-                                        //                       const Text(
-                                        //                           "This indicates that drug information is obtained from other sources and awaiting "
-                                        //                               "additional information and verification from Manufacturer. "
-                                        //                               "Information from other sources include drug literature, which is usually used to cover the basics of the drug,"
-                                        //                               " and their resources are referenced in additional information tile."),
-                                        //                       const Row(
-                                        //                         mainAxisAlignment:
-                                        //                         MainAxisAlignment
-                                        //                             .start,
-                                        //                         children: [
-                                        //                           Padding(
-                                        //                             padding:
-                                        //                             EdgeInsets
-                                        //                                 .only(
-                                        //                                 top: 8,
-                                        //                                 bottom: 2,
-                                        //                                 left: 0,
-                                        //                                 right: 5),
-                                        //                             child: Text(
-                                        //                                 'Please Note',
-                                        //                                 style: TextStyle(
-                                        //                                     color: Colors
-                                        //                                         .black,
-                                        //                                     fontWeight:
-                                        //                                     FontWeight
-                                        //                                         .bold,
-                                        //                                     fontSize:
-                                        //                                     12,
-                                        //                                     decoration:
-                                        //                                     TextDecoration
-                                        //                                         .underline)),
-                                        //                           ),
-                                        //                           Icon(
-                                        //                             Icons
-                                        //                                 .security_sharp,
-                                        //                             size: 15,
-                                        //                             color:
-                                        //                             Colors.blue,
-                                        //                           ),
-                                        //                         ],
-                                        //                       ),
-                                        //                       const Text(
-                                        //                           "Unverified information is not detailed and we strongly advice practitioner or user to utilize in practice, only drug information verified by manufacturers"),
-                                        //                     ],
-                                        //                   ),
-                                        //                   actions: <Widget>[
-                                        //                     TextButton(
-                                        //                         onPressed: () =>
-                                        //                             Navigator.pop(
-                                        //                                 context,
-                                        //                                 'Cancel'),
-                                        //                         child: const Text('Ok'))
-                                        //                   ],
-                                        //                 ),
-                                        //               ),
-                                        //         ),
-                                        //         child: Row(
-                                        //           mainAxisAlignment:
-                                        //           MainAxisAlignment.start,
-                                        //           children: [
-                                        //             const Padding(
-                                        //               padding:
-                                        //               EdgeInsets.only(
-                                        //                   top: 0.0,
-                                        //                   bottom: 0,
-                                        //                   left: 0,
-                                        //                   right: 8),
-                                        //               child: Text(
-                                        //                   'Manufacturer Verified',
-                                        //                   style: TextStyle(
-                                        //                       color: Colors.white54,
-                                        //                       fontSize: 12)),
-                                        //             ),
-                                        //             Padding(
-                                        //               padding:
-                                        //               const EdgeInsets.only(
-                                        //                   top: 0.0,
-                                        //                   bottom: 0,
-                                        //                   left: 0,
-                                        //                   right: 8),
-                                        //               child: CircleAvatar(
-                                        //                   radius: 5,
-                                        //                   child: Image.asset(
-                                        //                       "assets/${data?[index].priority}.png")),
-                                        //             ),
-                                        //             const Icon(
-                                        //               Icons.help_outline_outlined,
-                                        //               color: Colors.grey,
-                                        //               size: 15,
-                                        //             )
-                                        //           ],
-                                        //         )),
-                                        //   ),
-                                        // ),
-                                        // Text('assets/${data?[index].verifiedInfo.name}.png', style: TextStyle(color: Colors.white),),
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               top: 0.0,
@@ -781,43 +809,73 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                                               style: TextStyle(color: Colors.white54, fontSize: 12),),
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                                  padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                                  child: SizedBox(width: MediaQuery.of(context).size.width,
+                                                      child: Image.network(
+                                                          data![index].image,
+
+                                                          frameBuilder: (context, child, frame, wasSynchronouslyLoaded)
+                                                          {
+                                                            return child;
+                                                          },
+                                                          loadingBuilder: (context, child, loadingProgress) {
+                                                            if (loadingProgress == null)
+                                                            {
+                                                              return child;
+                                                            } else {
+                                                              return const Center( child:
+                                                              SizedBox(width: 192, height: 192,
+                                                                child: Column(
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child: RiveAnimation.asset('assets/drugiconLoading.riv'),),
+                                                                    // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                                                                  ],
+                                                                ),
+                                                              ),);
+                                                            }
+                                                          }
+                                                      )
+                                                  )
+                                              ),
+                                              const Padding(
+                                                padding: EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                                 child: Text('Origin',
-                                                  textAlign: TextAlign.left,
-                                                  style: const TextStyle(color: Colors.white54, fontSize: 12),),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(color: Colors.white54, fontSize: 12),),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('${data?[index].sourceorigin}',
+                                                child: Text(data[index].sourceorigin,
                                                   overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.left,
+                                                  textAlign: TextAlign.center,
                                                   style: const TextStyle(color: Colors.white, fontSize: 16),),
                                               ),
                                               const Padding(
                                                 padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 2, right: 2),
                                                 child: Text('Author',
                                                   overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.left,
+                                                  textAlign: TextAlign.center,
                                                   style: TextStyle(color: Colors.white54,fontSize: 12),),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 2, right: 2),
-                                                child: Text('${data?[index].author}',
-                                                  textAlign: TextAlign.left,
+                                                child: Text(data[index].author,
+                                                  textAlign: TextAlign.center,
                                                   style: const TextStyle(
                                                       color: Colors.white,
                                                       fontWeight: FontWeight.bold),),
                                               ),
                                               Card(
                                                child: ExpansionTile(
-                                                 title: Text('Message',
+                                                 title: const Text('Message',
                                                      textAlign: TextAlign.left,
                                                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                                                  backgroundColor: Colors.white,
                                                  children: [
                                                    Padding(
                                                      padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 2, right: 2),
-                                                     child: Text('${data?[index].messagebody}',
+                                                     child: Text(data[index].messagebody,
                                                          textAlign: TextAlign.start,
                                                          style: const TextStyle(color: Colors.black, fontSize: 12 )),
                                                    ),
@@ -830,307 +888,11 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                                             ],
                                           ),
                                         ),
-                                        // Padding(
-                                        //   padding: const EdgeInsets.only(
-                                        //       top: 0.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //     'Active Substance: ${data?[index].activeSubstance}',
-                                        //     overflow: TextOverflow.fade,
-                                        //     textAlign: TextAlign.start,
-                                        //     style: const TextStyle(
-                                        //         color: Colors.white54,
-                                        //         fontSize: 12),
-                                        //   ),
-                                        // ),
-                                        // const Padding(
-                                        //   padding: EdgeInsets.only(
-                                        //       top: 8.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //     'Therapuetic Area',
-                                        //     style: TextStyle(
-                                        //         color: Colors.white54,
-                                        //         fontSize: 12),
-                                        //   ),
-                                        // ),
-                                        // Padding(
-                                        //   padding: const EdgeInsets.only(
-                                        //       top: 0.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //     '${data?[index].therapeuticArea}',
-                                        //     textAlign: TextAlign.start,
-                                        //     style: const TextStyle(
-                                        //         color: Colors.white,
-                                        //         fontWeight: FontWeight.bold),
-                                        //   ),
-                                        // ),
-                                        // const Padding(
-                                        //   padding: EdgeInsets.only(
-                                        //       top: 8.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text('Pharmacotherpuetic Group',
-                                        //       style: TextStyle(
-                                        //           color: Colors.white54,
-                                        //           fontSize: 12)),
-                                        // ),
-                                        // Padding(
-                                        //   padding: const EdgeInsets.only(
-                                        //       top: 0.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //       '${data?[index].humanPharmacotherapeuticGroup}',
-                                        //       style: const TextStyle(
-                                        //           color: Colors.white,
-                                        //           fontWeight: FontWeight.bold)),
-                                        // ),
-                                        //
-                                        // const Padding(
-                                        //   padding: EdgeInsets.only(
-                                        //       top: 8.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //     'Marketing Authorization Company',
-                                        //     style: TextStyle(
-                                        //         color: Colors.white54,
-                                        //         fontSize: 12),
-                                        //   ),
-                                        // ),
-                                        // Padding(
-                                        //   padding: const EdgeInsets.only(
-                                        //       top: 0.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //       '${data?[index].marketingAuthorisationHolderorCompanyName}',
-                                        //       style: const TextStyle(
-                                        //           color: Colors.white,
-                                        //           fontWeight: FontWeight.bold)),
-                                        // ),
-                                        // const Padding(
-                                        //   padding: EdgeInsets.only(
-                                        //       top: 8.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text('Authorization Status',
-                                        //       style: TextStyle(
-                                        //           color: Colors.white54,
-                                        //           fontSize: 12)),
-                                        // ),
-                                        // Padding(
-                                        //   padding: const EdgeInsets.only(
-                                        //       top: 0.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //       '${data?[index].authorisationStatus}',
-                                        //       style: const TextStyle(
-                                        //           color: Colors.white,
-                                        //           fontSize: 12)),
-                                        // ),
-                                        // Card(
-                                        //   color: Colors.blueGrey.shade900
-                                        //       .withOpacity(0.6),
-                                        //   child: ExpansionTile(
-                                        //     iconColor: Colors.white,
-                                        //     collapsedIconColor: Colors.green,
-                                        //     title: const Padding(
-                                        //       padding: EdgeInsets.only(
-                                        //           top: 8.0,
-                                        //           bottom: 0,
-                                        //           left: 0,
-                                        //           right: 8),
-                                        //       child: Text('Indication and Use',
-                                        //           style: TextStyle(
-                                        //               color: Colors.white,
-                                        //               fontSize: 16)),
-                                        //     ),
-                                        //     children: [
-                                        //       Padding(
-                                        //         padding: const EdgeInsets.only(
-                                        //             top: 0.0,
-                                        //             bottom: 0,
-                                        //             left: 8,
-                                        //             right: 8),
-                                        //         child: Text(
-                                        //           '${data?[index].conditionOrIndication}',
-                                        //           overflow: TextOverflow.fade,
-                                        //           textAlign: TextAlign.start,
-                                        //           style: const TextStyle(
-                                        //               fontSize: 12,
-                                        //               color: Colors.white70,
-                                        //               fontWeight: FontWeight.bold),
-                                        //         ),
-                                        //       ),
-                                        //       Card(
-                                        //         color:
-                                        //             Colors.black.withOpacity(0.6),
-                                        //         child: ExpansionTile(
-                                        //           iconColor: Colors.green,
-                                        //           collapsedIconColor: Colors.white,
-                                        //           title: const Padding(
-                                        //             padding: EdgeInsets.only(
-                                        //                 top: 8.0,
-                                        //                 bottom: 0,
-                                        //                 left: 8,
-                                        //                 right: 8),
-                                        //             child: Text(
-                                        //                 'Additional information:',
-                                        //                 style: TextStyle(
-                                        //                     color: Colors.white54,
-                                        //                     fontSize: 12)),
-                                        //           ),
-                                        //           children: [
-                                        //             Column(
-                                        //               children: [
-                                        //                 Padding(
-                                        //                   padding:
-                                        //                       const EdgeInsets.only(
-                                        //                           top: 0.0,
-                                        //                           bottom: 0,
-                                        //                           left: 8,
-                                        //                           right: 8),
-                                        //                   child: Text(
-                                        //                       'Product Number: ${data?[index].productNumber}; ATC-Code: ${data?[index].atccode}, Generic? ${data?[index].generic}, Biosimilar? ${data?[index].biosimilar}, Conditional Approval: ${data?[index].conditionalApproval}, Exceptional Circumstances: ${data?[index].exceptionalCircumstances}, Accelerated Assessment: ${data?[index].acceleratedAssessment}, Orphan Medicine: ${data?[index].orphanMedicine}, Marketing Authorization Date: ${data?[index].marketingAuthorisationDate}, Date of Opinion: ${data?[index].dateofOpinion}, Decision Date: ${data?[index].decisionDate}, First Published: ${data?[index].firstPublished}, Revision Date: ${data?[index].revisionDate}, Revision Number: ${data?[index].revisionNumber}, url: ${data?[index].url}',
-                                        //                       overflow:
-                                        //                           TextOverflow.fade,
-                                        //                       textAlign:
-                                        //                           TextAlign.start,
-                                        //                       style: const TextStyle(
-                                        //                           fontSize: 12,
-                                        //                           color: Colors
-                                        //                               .white70,
-                                        //                           fontWeight:
-                                        //                               FontWeight
-                                        //                                   .bold)),
-                                        //                 ),
-                                        //               ],
-                                        //             ),
-                                        //           ],
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ),
-                                        // ),
+
                                       ],
                                     ),
 
-                                    // child: Padding(
-                                    //     padding: EdgeInsets.only(top: 100.0),
-                                    //     child: Center(
-                                    //       child: Column(
-                                    //           crossAxisAlignment: CrossAxisAlignment.center,
-                                    //           children: [
-                                    //             Text(
-                                    //               'Drug of the day',
-                                    //               style: TextStyle(
-                                    //                   decorationThickness:
-                                    //                       BouncingScrollSimulation
-                                    //                           .maxSpringTransferVelocity,
-                                    //                   fontSize: 20,
-                                    //                   color: Colors.white38),
-                                    //             ),
-                                    //             Text('${data_DayDrug?[index].medicineName}',
-                                    //                 style: TextStyle(
-                                    //                     color: Colors.white,
-                                    //                     fontSize: 70,
-                                    //                     fontWeight: FontWeight.bold)),
-                                    //             Column(
-                                    //               children: [
-                                    //                 Text(
-                                    //                   'Active Ingredient',
-                                    //                   style: TextStyle(color: Colors.white54),
-                                    //                 ),
-                                    //                 // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
-                                    //               ],
-                                    //             ),
-                                    //             Padding(
-                                    //               padding: EdgeInsets.only(bottom: 8.0),
-                                    //               child: Text(
-                                    //                 'Melatonin',
-                                    //                 style: TextStyle(
-                                    //                     color: Colors.white,
-                                    //                     fontSize: 20,
-                                    //                     fontWeight: FontWeight.bold),
-                                    //               ),
-                                    //             ),
-                                    //             Text(
-                                    //               'Therapuetic Area',
-                                    //               style: TextStyle(color: Colors.white54),
-                                    //             ),
-                                    //             Text(
-                                    //               'Sleep Initiation and Maintenance Disorders;  Autistic Disorder',
-                                    //               style: TextStyle(
-                                    //                   color: Colors.white,
-                                    //                   fontWeight: FontWeight.bold),
-                                    //             ),
-                                    //             Padding(
-                                    //               padding: EdgeInsets.only(top: 10.0),
-                                    //               child: Column(
-                                    //                 children: [
-                                    //                   Text('Pharmacotherpuetic Group',
-                                    //                       style: TextStyle(
-                                    //                           color: Colors.white54)),
-                                    //                   Text('Psycholeptics',
-                                    //                       style: TextStyle(
-                                    //                           color: Colors.white,
-                                    //                           fontWeight: FontWeight.bold)),
-                                    //                 ],
-                                    //               ),
-                                    //             ),
-                                    //             Padding(
-                                    //               padding: EdgeInsets.only(top: 5.0),
-                                    //               child: Column(
-                                    //                 children: [
-                                    //                   Text('Authorization Status',
-                                    //                       style: TextStyle(
-                                    //                           color: Colors.white54)),
-                                    //                   Text('Authorized',
-                                    //                       style: TextStyle(
-                                    //                           color: Colors.white,
-                                    //                           fontWeight: FontWeight.bold)),
-                                    //                 ],
-                                    //               ),
-                                    //             ),
-                                    //             Padding(
-                                    //               padding: EdgeInsets.only(top: 10.0),
-                                    //               child: Text('Indication and Use',
-                                    //                   style:
-                                    //                       TextStyle(color: Colors.white54)),
-                                    //             ),
-                                    //             Expanded(
-                                    //               child: Padding(
-                                    //                 padding: EdgeInsets.only(
-                                    //                     left: 8.0, right: 8.0, bottom: 1.0),
-                                    //                 child: Text(
-                                    //                   'Slenyto is indicated for the treatment of insomnia in children and adolescents aged 2-18 with Autism Spectrum Disorder (ASD) and / or Smith-Magenis syndrome, where sleep hygiene measures have been insufficient.',
-                                    //                   overflow: TextOverflow.fade,
-                                    //                   textAlign: TextAlign.center,
-                                    //                   style: TextStyle(
-                                    //                       color: Colors.white,
-                                    //                       fontWeight: FontWeight.bold),
-                                    //                 ),
-                                    //               ),
-                                    //             ),
-                                    //           ]),
-                                    //     ),
-                                    //               ),
+
                                   ),
                                 ),
                               )

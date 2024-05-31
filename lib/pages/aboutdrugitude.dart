@@ -374,25 +374,23 @@ class _AboutPageState extends State<AboutPage> {
               image: AssetImage(
                 imageGet(),
               ),
-              fit: BoxFit.cover,
-              opacity: 0.6),
+              fit: BoxFit.cover,),
         ),
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: Card(color: Colors.black.withOpacity(0.3),
+            child: Card(color: Colors.black.withOpacity(0.7),
               child: const Column(crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Center(child: Text('What is Drugitude?', style: TextStyle(color: Colors.white),)),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(top: 2),
                     child: CircleAvatar(backgroundColor: Colors.transparent,
                       radius: 160,
-                        child: Image(image: AssetImage('assets/drugitudeiconX.png')),
+                        child: Image(image: AssetImage('assets/Drugitude.png')),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Text("Drugitude is an app that attempts to conceptualize the idea of a centralized list of all Human and Veterinary drugs in the World (currently non-existing), providing an easy to search platform and reliable information, easily accessed by Medical Professionals, Students & untrained users, limiting jargon; providing clear and concise drug information.",
                       style: TextStyle(color: Colors.white),
                       textAlign: TextAlign.justify,

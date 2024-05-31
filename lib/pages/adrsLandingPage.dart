@@ -283,12 +283,12 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                   imageGet(),
                 ),
                 fit: BoxFit.cover,
-                opacity: 0.6),
+                ),
           ),
           child: Padding(
             padding: const EdgeInsets.only(top: 80),
             child: SingleChildScrollView(
-              child: Card(color: Colors.black.withOpacity(0.3),
+              child: Card(color: Colors.black.withOpacity(0.7),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [

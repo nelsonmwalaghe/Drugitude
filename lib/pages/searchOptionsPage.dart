@@ -494,7 +494,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                       delegate: SearchDrugBrandName());
                                 },
                                 style: const ButtonStyle(
-                                  fixedSize: MaterialStatePropertyAll(Size(108, 30)),
+                                  fixedSize: MaterialStatePropertyAll(Size(110, 30)),
                                 ),
                                 child: const Row(
                                   children: [

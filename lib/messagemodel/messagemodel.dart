@@ -14,6 +14,7 @@ class Message {
   String author;
   String sourceorigin;
   String title;
+  String image;
   String messagebody;
 
   Message({
@@ -22,6 +23,7 @@ class Message {
     required this.author,
     required this.sourceorigin,
     required this.title,
+    required this.image,
     required this.messagebody,
   });
 
@@ -31,6 +33,7 @@ class Message {
     author: json["author"],
     sourceorigin: json["sourceorigin"],
     title: json["title"],
+    image: json["image"],
     messagebody: json["messagebody"],
   );
 
@@ -40,6 +43,7 @@ class Message {
     "author": author,
     "sourceorigin": sourceorigin,
     "title": title,
+    "image": image,
     "messagebody": messagebody,
   };
 }

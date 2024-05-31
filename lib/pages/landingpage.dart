@@ -18,6 +18,7 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  late bool _customIcon = false;
   final FetchDrugDayDrug _daydrugList = FetchDrugDayDrug();
   // var now = new DateTime.now();
   // print(new DateFormat("yyyy-MM-dd").format(now));
@@ -249,7 +250,7 @@ class _LandingPageState extends State<LandingPage> {
                               children: [
                                 SizedBox(
                                   height: 26,
-                                  width: 160,
+                                  width: 170,
                                   child: ElevatedButton(
                                       onPressed: () {
                                         Navigator.pushReplacement(
@@ -670,7 +671,44 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                         Text(dataDayDrug[index].medicineName,
                                           style: const TextStyle(color: Colors.white, height:1.3,fontSize: 50, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                                        Card(color: Colors.black.withOpacity(0.1),
+                                          child: ExpansionTile(
+                                            trailing: Icon(_customIcon ? Icons.visibility_sharp : Icons.visibility_off),
+                                            title:  const Text("Drug Image",textAlign: TextAlign.start,
+                                                style: TextStyle(
+                                                    fontSize: 12, color: Colors.white54)),
+                                            children: [
+                                              Center(
+                                                  child: Image.network(
+                                                      dataDayDrug[index].productImageUrl,
 
+                                                      frameBuilder: (context, child, frame, wasSynchronouslyLoaded)
+                                                      {
+                                                        return child;
+                                                      },
+                                                      loadingBuilder: (context, child, loadingProgress) {
+                                                        if (loadingProgress == null)
+                                                        {
+                                                          return child;
+                                                        } else {
+                                                          return const Center( child:
+                                                          SizedBox(width: 192, height: 192,
+                                                            child: Column(
+                                                              children: [
+                                                                Expanded(
+                                                                  child: RiveAnimation.asset('assets/drugiconLoading.riv'),),
+                                                                // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                                                              ],
+                                                            ),
+                                                          ),);
+                                                        }
+                                                      }
+                                                  )
+                                              ),
+                                            ],
+                                            onExpansionChanged: (bool expanded) {setState(() => _customIcon = expanded);},
+                                          ),
+                                        ),
                                     const Padding(
                                       padding: EdgeInsets.only(top: 2.0, bottom: 0, left: 8, right: 8),
                                       child: Text('Active Ingredient',
@@ -701,7 +739,15 @@ class _LandingPageState extends State<LandingPage> {
                                     ),
                                         Text(dataDayDrug[index].humanPharmacotherapeuticGroup,
                                             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
-                                    const Padding(
+                                        const Padding(
+                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                          child: Text('Approx Retail Price',
+                                              style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                        ),
+                                        Text(dataDayDrug[index].approxRetailPrice,
+                                            style: const TextStyle(
+                                                color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+                                        const Padding(
                                       padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                       child: Text('Authorization Status',
                                           style: TextStyle(color: Colors.white54, fontSize: 12)),
