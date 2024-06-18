@@ -965,86 +965,10 @@ class SearchDrugTherapueticArea extends SearchDelegate {
             }),
       );
 
-  // Widget buildResults(BuildContext context)
-  // {
-  //   return Container(
-  //     child: FutureBuilder<List<DrugList>>(
-  //         future: _drugList.getDrugList(query),
-  //         builder: (context, snapshot) {
-  //           var data = snapshot.data;
-  //           if (!snapshot.hasData) {
-  //             return Center(
-  //               child: CircularProgressIndicator(),
-  //             );
-  //           }
-  //           return ListView.builder(
-  //             itemCount: data?.length,
-  //             itemBuilder: (context, index) {
-  //               return Card(
-  //                 child: ListTile(
-  //                     title: Row(
-  //                       children: [
-  //                         Container(
-  //                           height: 80,
-  //                           width: 80,
-  //                           decoration: BoxDecoration(
-  //                             color: Colors.black,
-  //                             borderRadius: BorderRadius.circular(10),
-  //                           ),
-  //                           child: Center(
-  //                             child: Text(
-  //                               '${data?[index].category.name}',
-  //                               style: TextStyle(
-  //                                   color: Colors.white,
-  //                                   fontWeight: FontWeight.bold),
-  //                             ),
-  //                           ),
-  //                         ),
-  //                         SizedBox(width: 10),
-  //                         Column(
-  //                           crossAxisAlignment: CrossAxisAlignment.start,
-  //                           children: [
-  //                             Row(
-  //                               mainAxisAlignment: MainAxisAlignment.start,
-  //                               children: [
-  //                                 Text(
-  //                                   '${data?[index].medicineName}',
-  //                                   style: TextStyle(color: Colors.black),
-  //                                 ),
-  //                               ],
-  //                             ),
-  //                             Row(
-  //                               mainAxisAlignment: MainAxisAlignment.start,
-  //                               children: [
-  //                                 Text('${data?[index].innName}',
-  //                                     style: TextStyle(color: Colors.black)),
-  //                               ],
-  //                             ),
-  //                           ],
-  //                         )
-  //                       ],
-  //                     )),
-  //               );
-  //             },
-  //           );
-  //         }),
-  //   );
-  // }
 
   @override
   Widget buildSuggestions(BuildContext context)
-  //     FutureBuilder<List<DrugList>>(
-  // future: _drugList.getDrugList(query),
-  // builder: (context, snapshot) {
-  //   switch (snapshot.connectionState) {
-  //     case ConnectionState.waiting:
-  //       return Center(
-  //           child: CircularProgressIndicator());
-  //     default:
-  //     return buildSuggestionSuccess(_drugList as List<String>);
-  //   }
-  // }
-  // );
+
   {
     final suggestions = query.isEmpty
         ? recentdrugsTherapueticArea

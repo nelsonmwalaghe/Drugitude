@@ -1,15 +1,10 @@
-// To parse this JSON data, do
-//
-//     final drugList = drugListFromJson(jsonString);
-
 import 'dart:convert';
 
-List<DrugList> drugListFromJson(String str) => List<DrugList>.from(json.decode(str).map((x) => DrugList.fromJson(x)));
+List<DrugListDB> drugListFromJson(String str) => List<DrugListDB>.from(json.decode(str).map((x) => DrugListDB.fromJson(x)));
 
-String drugListToJson(List<DrugList> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String drugListToJson(List<DrugListDB> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class DrugList {
-  String id;
+class DrugListDB {
   String category;
   String medicineName;
   String therapeuticArea;
@@ -34,8 +29,7 @@ class DrugList {
   String url;
   String verifiedInfo;
 
-  DrugList({
-    required this.id,
+  DrugListDB({
     required this.category,
     required this.medicineName,
     required this.therapeuticArea,
@@ -61,35 +55,33 @@ class DrugList {
     required this.verifiedInfo,
   });
 
-  factory DrugList.fromJson(Map<String, dynamic> json) => DrugList(
-    id: json["id"],
-    category: json["category"],
-    medicineName: json["medicineName"],
-    therapeuticArea: json["therapeuticArea"],
-    inn_name: json["inn_name"],
-    activeSubstance: json["activeSubstance"],
-    activeSubstanceStrengthPerDose: json["activeSubstanceStrengthPerDose"],
-    dosageForm: json["dosageForm"],
-    routeName: json["routeName"],
-    shelfLife: json["shelfLife"],
-    productImageUrl: json["productImageUrl"],
-    localForeign: json["localForeign"],
-    approxRetailPrice: json["approxRetailPrice"],
-    authorisationStatus: json["authorisationStatus"],
-    atccode: json["atccode"],
-    localRepresentativeHolderCompanyName: json["localRepresentativeHolderCompanyName"],
-    marketingAuthorisationHolderorCompanyName: json["marketingAuthorisationHolderorCompanyName"],
-    humanPharmacotherapeuticGroup: json["humanPharmacotherapeuticGroup"],
-    conditionOrIndication: json["conditionOrIndication"],
-    contraindicationOrWarningsOrPrecautions: json["contraindicationOrWarningsOrPrecautions"],
-    moaPhamacology: json["moaPhamacology"],
-    excipientsList: json["excipientsList"],
-    url: json["url"],
-    verifiedInfo: json["verifiedInfo"],
+  factory DrugListDB.fromJson(Map<String, dynamic> json) => DrugListDB(
+    category: json["category"] ?? "",
+    medicineName: json["medicineName"] ?? "",
+    therapeuticArea: json["therapeuticArea"] ?? "",
+    inn_name: json["inn_name"]?? "",
+    activeSubstance: json["activeSubstance"] ?? "",
+    activeSubstanceStrengthPerDose: json["activeSubstanceStrengthPerDose"] ?? "",
+    dosageForm: json["dosageForm"] ?? "",
+    routeName: json["routeName"] ?? "",
+    shelfLife: json["shelfLife"] ?? "",
+    productImageUrl: json["productImageUrl"] ?? "",
+    localForeign: json["localForeign"] ?? "",
+    approxRetailPrice: json["approxRetailPrice"] ?? "",
+    authorisationStatus: json["authorisationStatus"] ?? "",
+    atccode: json["atccode"] ?? "",
+    localRepresentativeHolderCompanyName: json["localRepresentativeHolderCompanyName"] ?? "",
+    marketingAuthorisationHolderorCompanyName: json["marketingAuthorisationHolderorCompanyName"] ?? "",
+    humanPharmacotherapeuticGroup: json["humanPharmacotherapeuticGroup"] ?? "",
+    conditionOrIndication: json["conditionOrIndication"] ?? "",
+    contraindicationOrWarningsOrPrecautions: json["contraindicationOrWarningsOrPrecautions"] ?? "",
+    moaPhamacology: json["moaPhamacology"] ?? "",
+    excipientsList: json["excipientsList"] ?? "",
+    url: json["url"] ?? "",
+    verifiedInfo: json["verifiedInfo"] ?? "",
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
     "category": category,
     "medicineName": medicineName,
     "therapeuticArea": therapeuticArea,

@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import '../apiServiceModels/gennameapimodel.dart';
@@ -108,13 +109,13 @@ class SearchDrug extends SearchDelegate {
     return [
       IconButton(
           onPressed: () {
-        if(query.isEmpty){
-          close(context, null);
-        }
-        query = "";
-        showSuggestions(context);
+            if(query.isEmpty){
+              close(context, null);
+            }
+            query = "";
+            showSuggestions(context);
 
-      },
+          },
           icon: const Icon(Icons.close))
     ];
   }
@@ -135,9 +136,9 @@ class SearchDrug extends SearchDelegate {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(imageGet(),
-              ),
-              fit: BoxFit.cover,
+            image: AssetImage(imageGet(),
+            ),
+            fit: BoxFit.cover,
           ),
         ),
         child: FutureBuilder<List<DrugList>>(
@@ -157,7 +158,7 @@ class SearchDrug extends SearchDelegate {
                     ));
               }
               // else if (snapshot.hasData) {}
-        
+
               else if (snapshot.hasData && snapshot.data!.isEmpty){
                 return  Center(
                   child: SizedBox(width: double.infinity,
@@ -196,8 +197,8 @@ class SearchDrug extends SearchDelegate {
                                       style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
                                 ],
                               )),
-        
-        
+
+
                           Card(color: Colors.black,
                               child: Column(
                                 children: [
@@ -220,7 +221,7 @@ class SearchDrug extends SearchDelegate {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const DrugRequestPage(),
+                                                const DrugRequestPage(),
                                               ));
                                         }, child: const Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -320,7 +321,7 @@ class SearchDrug extends SearchDelegate {
                             Expanded(
                               child: Container(
                                 decoration: BoxDecoration(
-                      color: Colors.grey.shade900.withOpacity(0.6),
+                                  color: Colors.grey.shade900.withOpacity(0.6),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child:
@@ -576,7 +577,7 @@ class SearchDrug extends SearchDelegate {
                                       // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
                                       Padding(
                                         padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                        child: Text('${data?[index].innName}',
+                                        child: Text('${data?[index].inn_name}',
                                           textAlign: TextAlign.start,
                                           style: const TextStyle(
                                               color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),

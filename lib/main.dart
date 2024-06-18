@@ -1,20 +1,31 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cron/cron.dart';
+import 'package:drugitudeleviosa/controllers/local_database.dart';
 import 'package:drugitudeleviosa/notificationsmodel/notificationservices.dart';
+import 'package:drugitudeleviosa/pages/MainScreen.dart';
+import 'package:drugitudeleviosa/pages/welcomScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_icons/flutter_app_icons.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'adverseDrugReactionReportModel/adversedrugreaction_api.dart';
 import 'drug_request_model/drugrequestsheets_api.dart';
-import 'pages/landingpage.dart';
+
+
+const String APIDRUGCODEXR_BOX = "api_drugCodexR";
 
 Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(SETTINGS_BOX);
+  await Hive.openBox(APIDRUGCODEXR_BOX);
   WidgetsFlutterBinding.ensureInitialized();
+  await LocalDatabase.createDatabase();
   AwesomeNotifications().initialize(
       null,
       [
         NotificationChannel(
           channelGroupKey: 'High Importance Channel',
           channelKey: 'High Importance Channel',
+
           channelName: 'Basic notification',
           channelDescription: 'Check drug of the Day Notification',
           defaultColor: const Color(0xFF905000),
@@ -76,6 +87,7 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Drugitude',
@@ -83,7 +95,9 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white70),
         useMaterial3: true,
       ),
-      home: const LandingPage(),
+      home: const
+      // LandingPage(),
+      MainScreen()
     );
   }
 }

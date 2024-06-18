@@ -1,10 +1,16 @@
 import 'package:drugitudeleviosa/pages/landingpage.dart';
 import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
+import 'package:drugitudeleviosa/pages/welcomScreen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'dictionaryMode.dart';
+import 'drugdictionarydb.dart';
 import 'drugrequestpage.dart';
+import 'modechoice.dart';
+
+const String SETTINGS_BOX = "settings";
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -380,16 +386,16 @@ class _AboutPageState extends State<AboutPage> {
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Card(color: Colors.black.withOpacity(0.7),
-              child: const Column(crossAxisAlignment: CrossAxisAlignment.center,
+              child:  Column(crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 2),
                     child: CircleAvatar(backgroundColor: Colors.transparent,
                       radius: 160,
                         child: Image(image: AssetImage('assets/Drugitude.png')),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Text("Drugitude is an app that attempts to conceptualize the idea of a centralized list of all Human and Veterinary drugs in the World (currently non-existing), providing an easy to search platform and reliable information, easily accessed by Medical Professionals, Students & untrained users, limiting jargon; providing clear and concise drug information.",
                       style: TextStyle(color: Colors.white),
@@ -403,13 +409,28 @@ class _AboutPageState extends State<AboutPage> {
                   //     style: TextStyle(color: Colors.white),
                   //   ),
                   // ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 40),
                     child: Text("With a background in DataBase management, Software development, android engineering and Pharmaceutical Technology, the developer identifies a niche and provided a conceptual answer to the gap within Medical Industry, providing links among Pharmaceutical Manufacturers, Marketers, Medical Professionals, Students, Drug Users and patients, ensuring clarity and ease of access to empirical medical data sourced from viable medical information sources.",
                       textAlign: TextAlign.justify,
                       style: TextStyle(color: Colors.white),
                     ),
-                  )
+                  ),
+                  Text("Additional App Options", textAlign: TextAlign.justify,
+                      style: TextStyle(color: Colors.white)),
+                  ElevatedButton(
+                    onPressed: (){
+                      // Hive.box(SETTINGS_BOX).delete('welcome_shown');
+                      setState(() {
+                        Hive.box(SETTINGS_BOX).put('welcome_shown', false);
+                      });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                          builder: (context) =>
+                      const ModeChoice()));
+
+                    }, child: const Text("Reset App"),),
                 ],
               ),
             ),

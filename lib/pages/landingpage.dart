@@ -1,10 +1,12 @@
 import 'package:drugitudeleviosa/pages/messageconfirmation.dart';
 import 'package:flutter/material.dart';
+
 import '../apiServiceModels/daydrugapimodel.dart';
-import '../drugListCallModel/drugofthedayinputmodel.dart';
+// import '../drugListCallModel/drugofthedayinputmodel.dart';
 import 'aboutDrugitude.dart';
 import 'adrsOptionsPage.dart';
 import 'dictionaryMode.dart';
+import 'drugdictionarydb.dart';
 import 'drugrequestpage.dart';
 import 'searchOptionsPage.dart';
 import 'package:rive/rive.dart';
@@ -18,6 +20,8 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+
+
   late bool _customIcon = false;
   final FetchDrugDayDrug _daydrugList = FetchDrugDayDrug();
   // var now = new DateTime.now();
@@ -439,6 +443,45 @@ class _LandingPageState extends State<LandingPage> {
                             ),
                           ),
                         ),
+                        Flexible(flex: 1,
+                            child: SizedBox(height: 10)),
+                        Flexible(flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 26,
+                                  width: 160,
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => const DictionaryDB(),
+                                            ));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.airplane_ticket_outlined,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
+                                          Text(
+                                            'Offline Mode',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   )),
@@ -461,18 +504,13 @@ class _LandingPageState extends State<LandingPage> {
                   strokeAlign: double.maxFinite)),
           backgroundColor: Colors.black87,
           title: Padding(
-            padding: const EdgeInsets.only(left: 0, right: 20),
+            padding:  const EdgeInsets.only(left: 0, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Row(
                   children: [
                     Text('DRUGITUDE', style: TextStyle(color: Colors.white, fontSize: 20),),
-                    // Padding(
-                    //   padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                    //   child: SizedBox(width: 20, height: 20,
-                    //       child: Image(image: AssetImage('assets/drugitudeicon.png'))),
-                    // ),
                   ],
                 ),
                 Row(
@@ -531,44 +569,30 @@ class _LandingPageState extends State<LandingPage> {
               opacity: 0.6
             ),
           ),
-          child: FutureBuilder<List<DayDrug>>(
-            future: _daydrugList.getDayDrug(query),
+          child:
+          FutureBuilder(
+            future: _daydrugList.getAlldayDrug(),
             builder: (context, snapshot) {
-              var dataDayDrug = snapshot.data;
               if (!snapshot.hasData) {
-                return const Center(child:
-                   SizedBox(width: 192,
-                           child: Column(
-                             children: [
-                               Expanded(child: RiveAnimation.asset('assets/drugiconLoading.riv'),),
-                               // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
-                             ],
-                           ),
+                return const Center(
+                    child: SizedBox(
+                      width: 192,
+                      child: Column(
+                        children: [
+                          Expanded(
+                              child: RiveAnimation.asset(
+                                  'assets/drugiconLoading.riv')),
+                          // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                        ],
+                      ),
+                    ));
 
+              } else if(_daydrugList.dayDrug.contains('empty')){
+                return const Text('No Data',
+                  style: TextStyle(fontSize: 24.0,),);
+              }
 
-                   // Padding(
-                   //   padding: const EdgeInsets.only(top:200.0),
-                   //   child: SizedBox(width: 192,
-                   //     child: Column(
-                   //       children: [
-                   //         Image.asset('assets/Springrat1.apng'),
-                   //         Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
-                   //       ],
-                   //     ),
-                   //   ),
-                   // )
-
-
-                    // SvgPicture.asset("LoadingIcon.svg",semanticsLabel: 'Drugitude Loading Animation',
-                    // // height: 192, width: 192,
-                    //   )
-                    // SpinKitCubeGrid(
-                    //   color: Colors.white,
-                    //   size: 70,
-                    //   duration: Duration(milliseconds: 400),
-                    // )
-                ));
-              } else if (snapshot.hasError){
+              else if (snapshot.hasError){
                 return Center(
                   child: SizedBox(width: double.infinity,
                     child: Card(color: Colors.black,
@@ -642,7 +666,7 @@ class _LandingPageState extends State<LandingPage> {
                 );
               }
               return ListView.builder(
-                  itemCount: dataDayDrug!.length = 1,
+                  itemCount: _daydrugList.dayDrug.length,
                   itemBuilder: (context, index) {
                     return Card(color: Colors.black.withOpacity(0.6),borderOnForeground: false,
                         shape: const OutlineInputBorder(
@@ -669,7 +693,7 @@ class _LandingPageState extends State<LandingPage> {
                                           decorationThickness: BouncingScrollSimulation.maxSpringTransferVelocity,
                                           fontSize: 20, color: Colors.white38)),
                                         ),
-                                        Text(dataDayDrug[index].medicineName,
+                                        Text("${_daydrugList.dayDrug[index]['medicineName']}",
                                           style: const TextStyle(color: Colors.white, height:1.3,fontSize: 50, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                                         Card(color: Colors.black.withOpacity(0.1),
                                           child: ExpansionTile(
@@ -680,8 +704,7 @@ class _LandingPageState extends State<LandingPage> {
                                             children: [
                                               Center(
                                                   child: Image.network(
-                                                      dataDayDrug[index].productImageUrl,
-
+                                                     "${_daydrugList.dayDrug[index]['productImageUrl']}",
                                                       frameBuilder: (context, child, frame, wasSynchronouslyLoaded)
                                                       {
                                                         return child;
@@ -718,7 +741,7 @@ class _LandingPageState extends State<LandingPage> {
                                         // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
                                     Padding(
                                       padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                      child: Text(dataDayDrug[index].innName,
+                                      child: Text('${_daydrugList.dayDrug[index]['inn_name']}',
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
                                             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
@@ -728,7 +751,7 @@ class _LandingPageState extends State<LandingPage> {
                                       child: Text('Therapuetic Area',
                                         style: TextStyle(color: Colors.white54,fontSize: 12),),
                                     ),
-                                        Text(dataDayDrug[index].therapeuticArea,
+                                        Text("${_daydrugList.dayDrug[index]['therapeuticArea']}",
                                                     style: const TextStyle(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.bold),textAlign: TextAlign.center),
@@ -737,14 +760,14 @@ class _LandingPageState extends State<LandingPage> {
                                       child: Text('Pharmacotherpuetic Group',
                                           style: TextStyle(color: Colors.white54, fontSize: 12)),
                                     ),
-                                        Text(dataDayDrug[index].humanPharmacotherapeuticGroup,
+                                        Text("${_daydrugList.dayDrug[index]['humanPharmacotherapeuticGroup']}",
                                             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
                                         const Padding(
                                           padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Approx Retail Price',
                                               style: TextStyle(color: Colors.white54, fontSize: 12)),
                                         ),
-                                        Text(dataDayDrug[index].approxRetailPrice,
+                                        Text("${_daydrugList.dayDrug[index]['approxRetailPrice']}",
                                             style: const TextStyle(
                                                 color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
                                         const Padding(
@@ -752,7 +775,7 @@ class _LandingPageState extends State<LandingPage> {
                                       child: Text('Authorization Status',
                                           style: TextStyle(color: Colors.white54, fontSize: 12)),
                                     ),
-                                        Text(dataDayDrug[index].authorisationStatus,
+                                        Text("${_daydrugList.dayDrug[index]['authorisationStatus']}",
                                             style: const TextStyle(
                                                 color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
                                         const Padding(
@@ -762,7 +785,7 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                          child: Text(dataDayDrug[index].marketingAuthorisationHolderorCompanyName,
+                                          child: Text("${_daydrugList.dayDrug[index]['marketingAuthorisationHolderorCompanyName']}",
                                               style: const TextStyle(color: Colors.white, fontSize: 12),textAlign: TextAlign.center
                                           ),
                                         ),
@@ -773,7 +796,7 @@ class _LandingPageState extends State<LandingPage> {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                          child: Text(dataDayDrug[index].localRepresentativeHolderCompanyName,
+                                          child: Text("${_daydrugList.dayDrug[index]['localRepresentativeHolderCompanyName']}",
                                               style: const TextStyle(color: Colors.white, fontSize: 12),textAlign: TextAlign.center
                                           ),
                                         ),
@@ -782,7 +805,7 @@ class _LandingPageState extends State<LandingPage> {
                                       child: Text('Indication and Use',
                                         style: TextStyle(color: Colors.white54, fontSize: 12)),
                                     ),
-                                    Text(dataDayDrug[index].conditionOrIndication,
+                                    Text("${_daydrugList.dayDrug[index]['conditionOrIndication']}",
                                      overflow: TextOverflow.fade,
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(fontSize: 12,
@@ -905,6 +928,380 @@ class _LandingPageState extends State<LandingPage> {
 
               }
               ),
+          // FutureBuilder<List<DayDrug>>(
+          //   future: _daydrugList.getDayDrug(query),
+          //   builder: (context, snapshot) {
+          //     var dataDayDrug = snapshot.data;
+          //     if (!snapshot.hasData) {
+          //       return const Center(child:
+          //          SizedBox(width: 192,
+          //                  child: Column(
+          //                    children: [
+          //                      Expanded(child: RiveAnimation.asset('assets/drugiconLoading.riv'),),
+          //                      // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+          //                    ],
+          //                  ),
+          //
+          //
+          //          // Padding(
+          //          //   padding: const EdgeInsets.only(top:200.0),
+          //          //   child: SizedBox(width: 192,
+          //          //     child: Column(
+          //          //       children: [
+          //          //         Image.asset('assets/Springrat1.apng'),
+          //          //         Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+          //          //       ],
+          //          //     ),
+          //          //   ),
+          //          // )
+          //
+          //
+          //           // SvgPicture.asset("LoadingIcon.svg",semanticsLabel: 'Drugitude Loading Animation',
+          //           // // height: 192, width: 192,
+          //           //   )
+          //           // SpinKitCubeGrid(
+          //           //   color: Colors.white,
+          //           //   size: 70,
+          //           //   duration: Duration(milliseconds: 400),
+          //           // )
+          //       ));
+          //     } else if (snapshot.hasError){
+          //       return Center(
+          //         child: SizedBox(width: double.infinity,
+          //           child: Card(color: Colors.black,
+          //             child: Column(
+          //               children: [
+          //                 const Card(color: Colors.black,
+          //                     child: Column(
+          //                       children: [
+          //                         Padding(
+          //                           padding: EdgeInsets.all(2.0),
+          //                           child: Text("Oops...",
+          //                               style: TextStyle(color: Colors.white,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
+          //                         ),
+          //                         Padding(
+          //                           padding: EdgeInsets.all(2.0),
+          //                           child: Text("Seems like we have stumbled upon some critical error.",
+          //                               style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+          //                         ),
+          //                         Padding(
+          //                           padding: EdgeInsets.all(2.0),
+          //                           child: Text("What could have possibly gone wrong?",
+          //                               style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+          //                         ),
+          //                       ],
+          //                     )),
+          //                 const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
+          //                 const Card(color: Colors.black,
+          //                     child: Column(
+          //                       children: [
+          //                         Padding(
+          //                           padding: EdgeInsets.all(5.0),
+          //                           child: Text("1. NETWORK ERROR", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+          //                         ),
+          //                         Text("Please check your internet connection and try again",
+          //                             style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+          //                       ],
+          //                     )),
+          //                 Card(color: Colors.black,
+          //                     child: Column(
+          //                       children: [
+          //                         const Padding(
+          //                           padding: EdgeInsets.all(5.0),
+          //                           child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+          //                         ),
+          //                         const Column(
+          //                           children: [
+          //                             Text("Please turn on your connection by turning Airplane Mode off. ",
+          //                                 style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+          //                             Text("If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
+          //                                 style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+          //                           ],
+          //                         ),
+          //                         SizedBox(width: 200, height: 30,
+          //                           child: ElevatedButton(
+          //                               onPressed: (){
+          //                                 Navigator.pop(context);
+          //                               }, child: const Row(
+          //                             mainAxisAlignment: MainAxisAlignment.center,
+          //                             children: [
+          //                               Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
+          //                               Text('Close', style: TextStyle(fontSize: 15, color: Colors.black))
+          //                             ],
+          //                           )),
+          //                         ),
+          //                       ],
+          //                     )),
+          //               ],
+          //             ),
+          //           ),
+          //         ),
+          //       );
+          //     }
+          //     return ListView.builder(
+          //         itemCount: dataDayDrug!.length = 1,
+          //         itemBuilder: (context, index) {
+          //           return Card(color: Colors.black.withOpacity(0.6),borderOnForeground: false,
+          //               shape: const OutlineInputBorder(
+          //             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
+          //             borderSide: BorderSide(color: Colors.transparent)
+          //           ),
+          //             child: ListTile(
+          //                 title: Row(
+          //                   children: [
+          //                     Expanded(
+          //                       child: Container(
+          //                         decoration: BoxDecoration(
+          //                           color: Colors.transparent,
+          //                           borderRadius: BorderRadius.circular(10),
+          //                         ),
+          //                         child:
+          //                         Center(
+          //                           child: Column(
+          //                             children: [
+          //                               const Padding(
+          //                                 padding: EdgeInsets.only(top: 25.0, bottom: 0, left: 8, right: 8),
+          //                                 child: Text('Drug of the Day',
+          //                             style: TextStyle(
+          //                                 decorationThickness: BouncingScrollSimulation.maxSpringTransferVelocity,
+          //                                 fontSize: 20, color: Colors.white38)),
+          //                               ),
+          //                               Text(dataDayDrug[index].medicineName,
+          //                                 style: const TextStyle(color: Colors.white, height:1.3,fontSize: 50, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+          //                               Card(color: Colors.black.withOpacity(0.1),
+          //                                 child: ExpansionTile(
+          //                                   trailing: Icon(_customIcon ? Icons.visibility_sharp : Icons.visibility_off),
+          //                                   title:  const Text("Drug Image",textAlign: TextAlign.start,
+          //                                       style: TextStyle(
+          //                                           fontSize: 12, color: Colors.white54)),
+          //                                   children: [
+          //                                     Center(
+          //                                         child: Image.network(
+          //                                             dataDayDrug[index].productImageUrl,
+          //
+          //                                             frameBuilder: (context, child, frame, wasSynchronouslyLoaded)
+          //                                             {
+          //                                               return child;
+          //                                             },
+          //                                             loadingBuilder: (context, child, loadingProgress) {
+          //                                               if (loadingProgress == null)
+          //                                               {
+          //                                                 return child;
+          //                                               } else {
+          //                                                 return const Center( child:
+          //                                                 SizedBox(width: 192, height: 192,
+          //                                                   child: Column(
+          //                                                     children: [
+          //                                                       Expanded(
+          //                                                         child: RiveAnimation.asset('assets/drugiconLoading.riv'),),
+          //                                                       // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+          //                                                     ],
+          //                                                   ),
+          //                                                 ),);
+          //                                               }
+          //                                             }
+          //                                         )
+          //                                     ),
+          //                                   ],
+          //                                   onExpansionChanged: (bool expanded) {setState(() => _customIcon = expanded);},
+          //                                 ),
+          //                               ),
+          //                           const Padding(
+          //                             padding: EdgeInsets.only(top: 2.0, bottom: 0, left: 8, right: 8),
+          //                             child: Text('Active Ingredient',
+          //                               textAlign: TextAlign.center,
+          //                               style: TextStyle(color: Colors.white54, fontSize: 12),),
+          //                           ),
+          //                               // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
+          //                           Padding(
+          //                             padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+          //                             child: Text(dataDayDrug[index].innName,
+          //                               textAlign: TextAlign.center,
+          //                               style: const TextStyle(
+          //                                   color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+          //                           ),
+          //                           const Padding(
+          //                             padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+          //                             child: Text('Therapuetic Area',
+          //                               style: TextStyle(color: Colors.white54,fontSize: 12),),
+          //                           ),
+          //                               Text(dataDayDrug[index].therapeuticArea,
+          //                                           style: const TextStyle(
+          //                                               color: Colors.white,
+          //                                               fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+          //                           const Padding(
+          //                             padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+          //                             child: Text('Pharmacotherpuetic Group',
+          //                                 style: TextStyle(color: Colors.white54, fontSize: 12)),
+          //                           ),
+          //                               Text(dataDayDrug[index].humanPharmacotherapeuticGroup,
+          //                                   style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+          //                               const Padding(
+          //                                 padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+          //                                 child: Text('Approx Retail Price',
+          //                                     style: TextStyle(color: Colors.white54, fontSize: 12)),
+          //                               ),
+          //                               Text(dataDayDrug[index].approxRetailPrice,
+          //                                   style: const TextStyle(
+          //                                       color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+          //                               const Padding(
+          //                             padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+          //                             child: Text('Authorization Status',
+          //                                 style: TextStyle(color: Colors.white54, fontSize: 12)),
+          //                           ),
+          //                               Text(dataDayDrug[index].authorisationStatus,
+          //                                   style: const TextStyle(
+          //                                       color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+          //                               const Padding(
+          //                                 padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+          //                                 child: Text('Marketing Authorization Company',
+          //                                   style: TextStyle(color: Colors.white54, fontSize: 12),),
+          //                               ),
+          //                               Padding(
+          //                                 padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+          //                                 child: Text(dataDayDrug[index].marketingAuthorisationHolderorCompanyName,
+          //                                     style: const TextStyle(color: Colors.white, fontSize: 12),textAlign: TextAlign.center
+          //                                 ),
+          //                               ),
+          //                               const Padding(
+          //                                 padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+          //                                 child: Text('Local Representative Company',
+          //                                   style: TextStyle(color: Colors.white54, fontSize: 12),),
+          //                               ),
+          //                               Padding(
+          //                                 padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+          //                                 child: Text(dataDayDrug[index].localRepresentativeHolderCompanyName,
+          //                                     style: const TextStyle(color: Colors.white, fontSize: 12),textAlign: TextAlign.center
+          //                                 ),
+          //                               ),
+          //                           const Padding(
+          //                             padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+          //                             child: Text('Indication and Use',
+          //                               style: TextStyle(color: Colors.white54, fontSize: 12)),
+          //                           ),
+          //                           Text(dataDayDrug[index].conditionOrIndication,
+          //                            overflow: TextOverflow.fade,
+          //                             textAlign: TextAlign.center,
+          //                             style: const TextStyle(fontSize: 12,
+          //                                 color: Colors.white,
+          //                                 fontWeight: FontWeight.bold),),
+          //
+          //                             ],
+          //                           ),
+          //
+          //                               // child: Padding(
+          //                               //     padding: EdgeInsets.only(top: 100.0),
+          //                               //     child: Center(
+          //                               //       child: Column(
+          //                               //           crossAxisAlignment: CrossAxisAlignment.center,
+          //                               //           children: [
+          //                               //             Text(
+          //                               //               'Drug of the day',
+          //                               //               style: TextStyle(
+          //                               //                   decorationThickness:
+          //                               //                       BouncingScrollSimulation
+          //                               //                           .maxSpringTransferVelocity,
+          //                               //                   fontSize: 20,
+          //                               //                   color: Colors.white38),
+          //                               //             ),
+          //                               //             Text('${data_DayDrug?[index].medicineName}',
+          //                               //                 style: TextStyle(
+          //                               //                     color: Colors.white,
+          //                               //                     fontSize: 70,
+          //                               //                     fontWeight: FontWeight.bold)),
+          //                               //             Column(
+          //                               //               children: [
+          //                               //                 Text(
+          //                               //                   'Active Ingredient',
+          //                               //                   style: TextStyle(color: Colors.white54),
+          //                               //                 ),
+          //                               //                 // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
+          //                               //               ],
+          //                               //             ),
+          //                               //             Padding(
+          //                               //               padding: EdgeInsets.only(bottom: 8.0),
+          //                               //               child: Text(
+          //                               //                 'Melatonin',
+          //                               //                 style: TextStyle(
+          //                               //                     color: Colors.white,
+          //                               //                     fontSize: 20,
+          //                               //                     fontWeight: FontWeight.bold),
+          //                               //               ),
+          //                               //             ),
+          //                               //             Text(
+          //                               //               'Therapuetic Area',
+          //                               //               style: TextStyle(color: Colors.white54),
+          //                               //             ),
+          //                               //             Text(
+          //                               //               'Sleep Initiation and Maintenance Disorders;  Autistic Disorder',
+          //                               //               style: TextStyle(
+          //                               //                   color: Colors.white,
+          //                               //                   fontWeight: FontWeight.bold),
+          //                               //             ),
+          //                               //             Padding(
+          //                               //               padding: EdgeInsets.only(top: 10.0),
+          //                               //               child: Column(
+          //                               //                 children: [
+          //                               //                   Text('Pharmacotherpuetic Group',
+          //                               //                       style: TextStyle(
+          //                               //                           color: Colors.white54)),
+          //                               //                   Text('Psycholeptics',
+          //                               //                       style: TextStyle(
+          //                               //                           color: Colors.white,
+          //                               //                           fontWeight: FontWeight.bold)),
+          //                               //                 ],
+          //                               //               ),
+          //                               //             ),
+          //                               //             Padding(
+          //                               //               padding: EdgeInsets.only(top: 5.0),
+          //                               //               child: Column(
+          //                               //                 children: [
+          //                               //                   Text('Authorization Status',
+          //                               //                       style: TextStyle(
+          //                               //                           color: Colors.white54)),
+          //                               //                   Text('Authorized',
+          //                               //                       style: TextStyle(
+          //                               //                           color: Colors.white,
+          //                               //                           fontWeight: FontWeight.bold)),
+          //                               //                 ],
+          //                               //               ),
+          //                               //             ),
+          //                               //             Padding(
+          //                               //               padding: EdgeInsets.only(top: 10.0),
+          //                               //               child: Text('Indication and Use',
+          //                               //                   style:
+          //                               //                       TextStyle(color: Colors.white54)),
+          //                               //             ),
+          //                               //             Expanded(
+          //                               //               child: Padding(
+          //                               //                 padding: EdgeInsets.only(
+          //                               //                     left: 8.0, right: 8.0, bottom: 1.0),
+          //                               //                 child: Text(
+          //                               //                   'Slenyto is indicated for the treatment of insomnia in children and adolescents aged 2-18 with Autism Spectrum Disorder (ASD) and / or Smith-Magenis syndrome, where sleep hygiene measures have been insufficient.',
+          //                               //                   overflow: TextOverflow.fade,
+          //                               //                   textAlign: TextAlign.center,
+          //                               //                   style: TextStyle(
+          //                               //                       color: Colors.white,
+          //                               //                       fontWeight: FontWeight.bold),
+          //                               //                 ),
+          //                               //               ),
+          //                               //             ),
+          //                               //           ]),
+          //                               //     ),
+          //                               //               ),
+          //                                             ),),
+          //                     ),
+          //
+          //                     const SizedBox(height: 160,)
+          //     ]
+          //     ),
+          //     )
+          //     );
+          //     }
+          //     );
+          //
+          //     }
+          //     ),
         ),
     )
     );
