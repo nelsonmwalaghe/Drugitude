@@ -2,15 +2,10 @@ import 'package:drugitudeleviosa/pages/landingpage.dart';
 import 'package:drugitudeleviosa/searchModels/offlinetherapueticareasearch.dart';
 import 'package:flutter/material.dart';
 
-import '../searchModels/brandNameSearch.dart';
-import '../searchModels/gennamesearch.dart';
 import '../searchModels/offlinebrandnamesearch.dart';
 import '../searchModels/offlinedictionarysearch.dart';
 import '../searchModels/offlinepharmaceuticalgroupsearch.dart';
-import '../searchModels/pharmaceuticalgroupsearch.dart';
-import '../searchModels/therapueticareasearch.dart';
 import 'aboutDrugitude.dart';
-import 'dictionaryMode.dart';
 import 'drugdictionarydb.dart';
 import 'drugrequestpage.dart';
 
@@ -184,7 +179,7 @@ class _OfflineSearchOptionsState extends State<OfflineSearchOptions> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                           DictionaryDB(),
+                           const DictionaryDB(),
                         ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.menu_book_outlined, color: Colors.black,),
@@ -499,7 +494,7 @@ class _OfflineSearchOptionsState extends State<OfflineSearchOptions> {
                                         delegate: DictionaryDBBrandSearch());
                                   },
                                   style: const ButtonStyle(
-                                    fixedSize: MaterialStatePropertyAll(Size(110, 30)),
+                                    fixedSize: WidgetStatePropertyAll(Size(110, 30)),
                                   ),
                                   child: const Row(
                                     children: [
@@ -530,7 +525,7 @@ class _OfflineSearchOptionsState extends State<OfflineSearchOptions> {
                                         context: context, delegate: DictionaryDBINNSearch());
                                   },
                                   style: const ButtonStyle(
-                                    fixedSize: MaterialStatePropertyAll(Size(160, 30)),
+                                    fixedSize: WidgetStatePropertyAll(Size(160, 30)),
                                   ),
                                   child: const Row(
                                     children: [
@@ -563,7 +558,7 @@ class _OfflineSearchOptionsState extends State<OfflineSearchOptions> {
                                         delegate: DictionaryDBTherapueticAreaSearch());
                                   },
                                   style: const ButtonStyle(
-                                    fixedSize: MaterialStatePropertyAll(Size(190, 30)),
+                                    fixedSize: WidgetStatePropertyAll(Size(190, 30)),
                                   ),
                                   child: const Row(
                                     children: [
@@ -596,7 +591,7 @@ class _OfflineSearchOptionsState extends State<OfflineSearchOptions> {
                                         delegate: DictionaryDBPharGroupSearch());
                                   },
                                   style: const ButtonStyle(
-                                    fixedSize: MaterialStatePropertyAll(Size(220, 30)),
+                                    fixedSize: WidgetStatePropertyAll(Size(220, 30)),
                                   ),
                                   child: const Row(
                                     children: [

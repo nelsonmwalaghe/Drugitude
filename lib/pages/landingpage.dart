@@ -443,7 +443,7 @@ class _LandingPageState extends State<LandingPage> {
                             ),
                           ),
                         ),
-                        Flexible(flex: 1,
+                        const Flexible(flex: 1,
                             child: SizedBox(height: 10)),
                         Flexible(flex: 1,
                           child: Padding(
@@ -519,7 +519,7 @@ class _LandingPageState extends State<LandingPage> {
                     ElevatedButton(
                         style: const ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(Colors.transparent)),
+                                WidgetStatePropertyAll(Colors.transparent)),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -536,7 +536,7 @@ class _LandingPageState extends State<LandingPage> {
                     ElevatedButton(
                         style: const ButtonStyle(
                             backgroundColor:
-                            MaterialStatePropertyAll(Colors.transparent)),
+                            WidgetStatePropertyAll(Colors.transparent)),
                         onPressed: () {
                           Navigator.push(
                               context,

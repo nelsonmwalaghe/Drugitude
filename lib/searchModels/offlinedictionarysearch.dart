@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import '../controllers/local_database.dart';
-import '../drugListCallModel/druglistdbmodel.dart';
-import '../pages/aboutDrugitude.dart';
 import '../pages/drugrequestpage.dart';
 
-import 'package:drugitudeleviosa/controllers/local_database.dart';
-import 'package:drugitudeleviosa/searchModels/offlinedictionarysearch.dart';
-import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
-
-import '../controllers/fetch_apidrugcodexdb.dart';
-import '../drugListCallModel/druglistdbmodel.dart';
-import '../pages/landingpage.dart';
-import '../searchModels/dictionarymodeazsearch.dart';
 
 
 
-import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
-import '../apiServiceModels/gennameapimodel.dart';
-import '../drugListCallModel/drugListModel.dart';
-import '../pages/drugrequestpage.dart';
+
 
 // Note this is for INN Search key words to remember
 // drugstosearch-innName
@@ -335,7 +320,7 @@ class DictionaryDBINNSearch extends SearchDelegate {
               return ListView.builder(
                 itemCount: data?.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
+                  return ListTile(contentPadding: EdgeInsets.zero,
                       title: Row(
                           children: [
                             Expanded(

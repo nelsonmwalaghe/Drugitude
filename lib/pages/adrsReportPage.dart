@@ -177,7 +177,7 @@ class _AdrsReportPageState extends State<AdrsReportPage> {
                       ElevatedButton(
                           style: const ButtonStyle(
                               backgroundColor:
-                              MaterialStatePropertyAll(Colors.transparent)),
+                              WidgetStatePropertyAll(Colors.transparent)),
                           onPressed: () {
                             Navigator.push(
                                 context,

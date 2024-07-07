@@ -1,12 +1,10 @@
 import 'package:drugitudeleviosa/pages/landingpage.dart';
 import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
-import 'package:drugitudeleviosa/pages/welcomScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'dictionaryMode.dart';
-import 'drugdictionarydb.dart';
 import 'drugrequestpage.dart';
 import 'modechoice.dart';
 
@@ -416,7 +414,7 @@ class _AboutPageState extends State<AboutPage> {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  Text("Additional App Options", textAlign: TextAlign.justify,
+                  const Text("Additional App Options", textAlign: TextAlign.justify,
                       style: TextStyle(color: Colors.white)),
                   ElevatedButton(
                     onPressed: (){

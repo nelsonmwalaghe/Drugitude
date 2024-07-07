@@ -314,7 +314,7 @@ class SearchDrugBrandName extends SearchDelegate {
               return ListView.builder(
                 itemCount: dataBrandname?.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
+                  return ListTile(contentPadding: EdgeInsets.zero,
                       title: Row(
                           children: [
                             Expanded(

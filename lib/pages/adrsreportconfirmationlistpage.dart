@@ -424,7 +424,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                 ListView.builder(
                   itemCount: dataADRSList?.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
+                    return ListTile(contentPadding: EdgeInsets.zero,
                         title: Row(
                             children: [
                               Expanded(

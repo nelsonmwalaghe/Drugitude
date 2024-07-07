@@ -382,7 +382,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                 } else if (snapshot.hasError) {
                   return Center(
                     child: SizedBox(
-                      width: double.infinity,
+                      width: double.maxFinite,
                       child: Card(
                         color: Colors.black,
                         child: Column(
@@ -510,7 +510,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                 return ListView.builder(
                   itemCount: data?.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
+                    return ListTile(contentPadding: EdgeInsets.zero,
                         title: Row(children: [
                           Expanded(
                             child: Container(

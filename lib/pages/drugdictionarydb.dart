@@ -1,11 +1,9 @@
 import 'package:drugitudeleviosa/controllers/local_database.dart';
-import 'package:drugitudeleviosa/searchModels/offlinedictionarysearch.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 import '../controllers/fetch_apidrugcodexdb.dart';
 import '../drugListCallModel/druglistdbmodel.dart';
-import '../searchModels/dictionarymodeazsearch.dart';
 import 'aboutDrugitude.dart';
 import 'drugrequestpage.dart';
 import 'landingpage.dart';
@@ -208,7 +206,7 @@ String imageGet() {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => OfflineSearchOptions(),
+                builder: (context) => const OfflineSearchOptions(),
               ));
           // showSearch(context: context, delegate: DictionaryDBINNSearch());
           // Navigator.push(
@@ -391,7 +389,7 @@ String imageGet() {
         ),
         actions: [
 
-          ElevatedButton(style: ButtonStyle(),
+          ElevatedButton(style: const ButtonStyle(),
             onPressed: () => showDialog<String>(
               context: context,
               builder: (context) =>
@@ -399,9 +397,9 @@ String imageGet() {
                     child: AlertDialog(scrollable: true,
                       title: const Text(
                           'Refresh Drug Codex'),
-                      content: Column(
+                      content: const Column(
                         children: [
-                          const Padding(
+                          Padding(
                             padding:
                             EdgeInsets
                                 .only(
@@ -456,7 +454,7 @@ String imageGet() {
             //     });
             //    await firstPageDrugs();
             //   },
-            child: Row(
+            child: const Row(
             children: [
               Text(
                 'Refresh Drug Codex',
@@ -485,7 +483,7 @@ String imageGet() {
           ),
         ),
         child: isLoading ?
-        Center(
+        const Center(
                   child: SizedBox(
                     width: 192,
                     child: Column(
@@ -497,7 +495,7 @@ String imageGet() {
                       ],
                     ),
                   ),) : latestnewdrugs.isEmpty?
-        Center(child: Text('No new drugs found', style: TextStyle(color: Colors.white),))
+        const Center(child: Text('No new drugs found', style: TextStyle(color: Colors.white),))
         :
             ListView.builder(
                 itemCount: latestnewdrugs.length,
@@ -809,7 +807,7 @@ String imageGet() {
                                             children: [
                                               Center(
                                                   child: Image.network(
-                                                      '${latestnewdrugs[index].productImageUrl}',
+                                                      latestnewdrugs[index].productImageUrl,
 
                                                       frameBuilder: (context, child, frame, wasSynchronouslyLoaded)
                                                       {

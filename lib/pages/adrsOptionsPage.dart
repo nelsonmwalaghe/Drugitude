@@ -317,7 +317,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                                 ));
                           },
                           style: const ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(200, 30)),
+                            fixedSize: WidgetStatePropertyAll(Size(200, 30)),
                           ),
                           child: const Row(mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -347,7 +347,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                                 ));
                           },
                           style: const ButtonStyle(
-                            fixedSize: MaterialStatePropertyAll(Size(300, 30)),
+                            fixedSize: WidgetStatePropertyAll(Size(300, 30)),
                           ),
                           child: const Row(mainAxisAlignment: MainAxisAlignment.center,
                             children: [

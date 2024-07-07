@@ -494,7 +494,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                       delegate: SearchDrugBrandName());
                                 },
                                 style: const ButtonStyle(
-                                  fixedSize: MaterialStatePropertyAll(Size(110, 30)),
+                                  fixedSize: WidgetStatePropertyAll(Size(110, 30)),
                                 ),
                                 child: const Row(
                                   children: [
@@ -525,7 +525,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                       context: context, delegate: SearchDrug());
                                 },
                                 style: const ButtonStyle(
-                                  fixedSize: MaterialStatePropertyAll(Size(160, 30)),
+                                  fixedSize: WidgetStatePropertyAll(Size(160, 30)),
                                 ),
                                 child: const Row(
                                   children: [
@@ -558,7 +558,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                       delegate: SearchDrugTherapueticArea());
                                 },
                                 style: const ButtonStyle(
-                                  fixedSize: MaterialStatePropertyAll(Size(190, 30)),
+                                  fixedSize: WidgetStatePropertyAll(Size(190, 30)),
                                 ),
                                 child: const Row(
                                   children: [
@@ -591,7 +591,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                       delegate: SearchDrugPhramGroup());
                                 },
                                 style: const ButtonStyle(
-                                  fixedSize: MaterialStatePropertyAll(Size(220, 30)),
+                                  fixedSize: WidgetStatePropertyAll(Size(220, 30)),
                                 ),
                                 child: const Row(
                                   children: [

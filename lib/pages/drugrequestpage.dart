@@ -408,7 +408,7 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                                           ));
                                     },
                                     style: const ButtonStyle(
-                                      fixedSize: MaterialStatePropertyAll(Size(210, 30)),
+                                      fixedSize: WidgetStatePropertyAll(Size(210, 30)),
                                     ),
                                     child: const Row(
                                       children: [

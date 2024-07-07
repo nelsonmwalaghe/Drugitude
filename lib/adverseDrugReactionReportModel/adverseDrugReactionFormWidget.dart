@@ -4199,7 +4199,7 @@ Widget buildReportStatus() => Visibility(
       }
     },
     style: const ButtonStyle(
-      fixedSize: MaterialStatePropertyAll(Size(210, 30)),
+      fixedSize: WidgetStatePropertyAll(Size(210, 30)),
     ),
     child: const Row(mainAxisAlignment: MainAxisAlignment.center,
       children: [

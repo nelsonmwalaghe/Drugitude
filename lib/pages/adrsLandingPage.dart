@@ -368,7 +368,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                                     ));
                               },
                               style: const ButtonStyle(
-                                fixedSize: MaterialStatePropertyAll(Size(130, 30)),
+                                fixedSize: WidgetStatePropertyAll(Size(130, 30)),
                               ),
                               child: const Row(mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

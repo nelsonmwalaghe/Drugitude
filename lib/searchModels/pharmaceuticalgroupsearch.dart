@@ -316,7 +316,7 @@ class SearchDrugPhramGroup extends SearchDelegate {
               return ListView.builder(
                 itemCount: dataphramGroup?.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
+                  return ListTile(contentPadding: EdgeInsets.zero,
                       title: Row(children: [
                         Expanded(
                           child: Container(

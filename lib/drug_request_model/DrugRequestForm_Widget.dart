@@ -126,7 +126,7 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
               });
         }
       },
-      style: const ButtonStyle(fixedSize: MaterialStatePropertyAll(Size(170, 30)),),
+      style: const ButtonStyle(fixedSize: WidgetStatePropertyAll(Size(170, 30)),),
       child: const Row(
         children: [
           Icon(Icons.mail_lock_outlined, size: 20,color: Colors.black),

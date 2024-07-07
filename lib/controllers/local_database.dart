@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 import '../drugListCallModel/druglistdbmodel.dart';
 
@@ -76,7 +75,7 @@ static Future <List<Map<String,dynamic>>> getAllDrugsDB() async {
   // count the number of drugs inside database
 static Future<int?> getDrugCodexRCount() async{
   var db = await createDatabase();
-  return await Sqflite.firstIntValue(
+  return Sqflite.firstIntValue(
       await db.rawQuery('SELECT COUNT(*) FROM codex'));
 }
 // search INN drugs

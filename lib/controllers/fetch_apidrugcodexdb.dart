@@ -24,7 +24,7 @@ class DrugsCodexRApi{
         //     excipientsList: 'excipientsList', url: 'url', verifiedInfo: 'verifiedInfo'));
         
         //save in database
-        await LocalDatabase.insertDrugs(druglistdb).toString();
+        LocalDatabase.insertDrugs(druglistdb).toString();
 
       }
       await LocalDatabase.insertSavedTime(0);

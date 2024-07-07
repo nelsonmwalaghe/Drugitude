@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 import '../searchModels/messageSearch.dart';
+import 'dictionaryMode.dart';
 
 class MessageConfirmation extends StatefulWidget {
   const MessageConfirmation({super.key});
@@ -200,23 +201,23 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                   children: [
                     TextButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>
-                          //     const DictionaryMode(),
-                          //   ));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              const DictionaryMode(),
+                            ));
                         },
                         child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.menu_book_outlined,
-                              color: Colors.grey,
+                              color: Colors.black,
                             ),
                             Text('Dictionary Mode',
                                 style: TextStyle(
-                                    fontSize: 9.0, color: Colors.grey))
+                                    fontSize: 9.0, color: Colors.black))
                           ],
                         )),
                   ],
