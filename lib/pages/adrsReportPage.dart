@@ -289,227 +289,220 @@ class _AdrsReportPageState extends State<AdrsReportPage> {
           ),
           extendBodyBehindAppBar: true,
           drawer: Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child:
-            SizedBox(height: 480, width: 300,
-              child:
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, ),
-                child: SizedBox(height: 480, width: 300,
-                  child: Drawer(
-                      elevation: BorderSide.strokeAlignOutside,
-                      backgroundColor: Colors.white.withOpacity(.1),
-                      shape: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(50),
-                            topRight: Radius.circular(50),
-                          )),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Flexible(flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 26,
-                                      width: 160,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                  const DictionaryMode(),
-                                                ));
-                                          },
-                                          child: const Row(
-                                            children: [
-                                              Icon(
-                                                Icons.menu_book_outlined,
-                                                size: 20,
-                                                color: Colors.black,
-                                              ),
-                                              Text(
-                                                ' Dictionary Mode',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
-                                              )
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const Flexible(flex: 1,
-                                child: SizedBox(height: 10)),
-                            Flexible(flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 26,
-                                      width: 160,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                  const SearchOptions(),
-                                                ));
-                                          },
-                                          child: const Row(
-                                            children: [
-                                              Icon(
-                                                Icons.medication_outlined,
-                                                size: 20,
-                                                color: Colors.black,
-                                              ),
-                                              Text(
-                                                'Search',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
-                                              )
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const Flexible(flex: 1,
-                                child: SizedBox(height: 10)),
-                            Flexible(flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 26,
-                                      width: 160,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                  const DrugRequestPage(),
-                                                ));
-                                          },
-                                          child: const Row(
-                                            children: [
-                                              Icon(
-                                                Icons.mail_outline_rounded,
-                                                size: 20,
-                                                color: Colors.black,
-                                              ),
-                                              Text(
-                                                'Request Drug',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
-                                              )
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const Flexible(flex: 1,
-                                child: SizedBox(height: 10)),
-                            Flexible(flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 26,
-                                      width: 160,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) => const AboutPage(),
-                                                ));
-                                          },
-                                          child: const Row(
-                                            children: [
-                                              Icon(
-                                                Icons.perm_device_info_outlined,
-                                                size: 20,
-                                                color: Colors.black,
-                                              ),
-                                              Text(
-                                                'About',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
-                                              )
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const Flexible(flex: 1,
-                                child: SizedBox(height: 10)),
-                            Flexible(flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      height: 26,
-                                      width: 160,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) => const AdrsOptionsPage(),
-                                                ));
-                                          },
-                                          child: const Row(
-                                            children: [
-                                              Icon(
-                                                Icons.report,
-                                                size: 20,
-                                                color: Colors.black,
-                                              ),
-                                              Text(
-                                                'ADRs Report',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
-                                              )
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+            padding: const EdgeInsets.only(top: 10.0, ),
+            child: SizedBox(height: 480, width: 300,
+              child: Drawer(
+                  elevation: BorderSide.strokeAlignOutside,
+                  backgroundColor: Colors.white.withOpacity(.1),
+                  shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(50),
+                        topRight: Radius.circular(50),
                       )),
-                ),
-              ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Flexible(flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 26,
+                                  width: 170,
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                              const DictionaryMode(),
+                                            ));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.menu_book_outlined,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
+                                          Text(
+                                            ' Dictionary Mode',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Flexible(flex: 1,
+                            child: SizedBox(height: 10)),
+                        Flexible(flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 26,
+                                  width: 160,
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                              const SearchOptions(),
+                                            ));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.medication_outlined,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
+                                          Text(
+                                            'Search',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Flexible(flex: 1,
+                            child: SizedBox(height: 10)),
+                        Flexible(flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 26,
+                                  width: 160,
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                              const DrugRequestPage(),
+                                            ));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.mail_outline_rounded,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
+                                          Text(
+                                            'Request Drug',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Flexible(flex: 1,
+                            child: SizedBox(height: 10)),
+                        Flexible(flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 26,
+                                  width: 160,
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => const AboutPage(),
+                                            ));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.perm_device_info_outlined,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
+                                          Text(
+                                            'About',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Flexible(flex: 1,
+                            child: SizedBox(height: 10)),
+                        Flexible(flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 26,
+                                  width: 160,
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => const AdrsOptionsPage(),
+                                            ));
+                                      },
+                                      child: const Row(
+                                        children: [
+                                          Icon(
+                                            Icons.report,
+                                            size: 20,
+                                            color: Colors.black,
+                                          ),
+                                          Text(
+                                            'ADRs Report',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          )
+                                        ],
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
             ),
           ),
           backgroundColor: Colors.black.withOpacity(0.3),

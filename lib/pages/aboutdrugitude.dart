@@ -1,10 +1,17 @@
+
+
 import 'package:drugitudeleviosa/pages/landingpage.dart';
 import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
+import 'package:drugitudeleviosa/pages/welcomeScreenCautionTLC.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:url_launcher/link.dart';
 
 
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
+
+const String SETTINGS_BOX = "settings";
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -380,7 +387,7 @@ class _AboutPageState extends State<AboutPage> {
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Card(color: Colors.black.withOpacity(0.7),
-              child: const Column(crossAxisAlignment: CrossAxisAlignment.center,
+              child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 2),
@@ -409,7 +416,80 @@ class _AboutPageState extends State<AboutPage> {
                       textAlign: TextAlign.justify,
                       style: TextStyle(color: Colors.white),
                     ),
-                  )
+                  ),
+
+                  ExpansionTile(collapsedIconColor: Colors.white,
+                    title: Text("Additional App Options", textAlign: TextAlign.justify,
+                        style: TextStyle(color: Colors.white)),
+                    children: [
+                      Column(
+                        children: [
+                          // Row(mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Link(
+                          //       target: LinkTarget.blank,
+                          //       uri: Uri.parse('https://play.google.com/apps/internaltest/4701330612071211376'),
+                          //       builder: (context, followLink) => ElevatedButton(
+                          //         onPressed: followLink,
+                          //         //     (){
+                          //         //   // // Hive.box(SETTINGS_BOX).delete('welcome_shown');
+                          //         //   // setState(() {
+                          //         //   //   Hive.box(SETTINGS_BOX).put('welcome_shown', false);
+                          //         //   // });
+                          //         //   // Navigator.push(
+                          //         //   //     context,
+                          //         //   //     MaterialPageRoute(
+                          //         //   //         builder: (context) =>
+                          //         //   //         const ModeChoice()));
+                          //         //
+                          //         // },
+                          //         child: const Text("  Review  "),),
+                          //     ),
+                          //     SizedBox(width: 40,),
+                          //     Padding(
+                          //       padding: const EdgeInsets.all(3.0),
+                          //       child: SizedBox(width:240,
+                          //         child: Text('We would love to hear from you. Your rating and review enables us to improve this application to better serve and suit you.',
+                          //           textAlign: TextAlign.start,
+                          //           softWrap: true,
+                          //           style: TextStyle(color: Colors.white), ),
+                          //       ),
+                          //     )
+                          //   ],
+                          // ),
+                          // SizedBox(height: 20,),
+                          Row(mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                onPressed: (){
+                                  // Hive.box(SETTINGS_BOX).delete('welcome_shown');
+                                  setState(() {
+                                    Hive.box(SETTINGS_BOX).put('welcome_shown', false);
+                                  });
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const WelcomeScreenTLC()));
+
+                                }, child: const Text("Reset App"),),
+                              SizedBox(width: 40,),
+                              SizedBox(width: 240,
+                                child: Text('This enables you to go back to original app settings, enabling app state selection. All data instances will still be preserved.',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(color: Colors.white), ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+
+                  ),
+                  SizedBox(height: 50,),
+
+
+
                 ],
               ),
             ),
