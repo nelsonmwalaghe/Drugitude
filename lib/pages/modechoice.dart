@@ -115,20 +115,20 @@ class _ModeChoiceState extends State<ModeChoice>
                   ],
                 ),
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  ElevatedButton(style: const ButtonStyle(visualDensity: VisualDensity.comfortable),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const WelcomeScreenTLC(),
-                            ));
-                        // onPressed: () async {
-                        //   var box = Hive.box(SETTINGS_BOX);
-                        //   box.put("welcome_shown", true);}
-                      },
-                      child: const Text('Back')),
+                  // ElevatedButton(style: const ButtonStyle(visualDensity: VisualDensity.comfortable),
+                  //     onPressed: () {
+                  //       Navigator.pushReplacement(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //             builder: (context) => const WelcomeScreenTLC(),
+                  //           ));
+                  //       // onPressed: () async {
+                  //       //   var box = Hive.box(SETTINGS_BOX);
+                  //       //   box.put("welcome_shown", true);}
+                  //     },
+                  //     child: const Text('Back')),
                   ElevatedButton(style: const ButtonStyle(visualDensity: VisualDensity.comfortable),
                       onPressed: () {
                         Navigator.pushReplacement(

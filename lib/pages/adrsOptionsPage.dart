@@ -244,7 +244,11 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
         ),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: IconButton(onPressed: (){ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
+          leading: IconButton(onPressed: (){ Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LandingPage(),
+              ));
 },
               icon: const Icon(Icons.arrow_back, color: Colors.white,)),
           backgroundColor: Colors.black.withOpacity(0.8),

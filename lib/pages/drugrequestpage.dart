@@ -336,7 +336,11 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
         ),
 
         appBar: AppBar(
-          leading: IconButton(onPressed: (){Navigator.pop(context);},
+          leading: IconButton(onPressed: (){Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LandingPage(),
+              ));},
               icon: const Icon(Icons.arrow_back, color: Colors.white,)),
           backgroundColor: Colors.black.withOpacity(0.8),
           title: const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -362,7 +366,11 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
           ),
           actions: [
             IconButton(onPressed: () async {
-              Navigator.pop(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LandingPage(),
+                  ));
 
               // final results = await showSearch(context: context, delegate: SearchDrug());
 

@@ -3,6 +3,7 @@ import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:url_launcher/link.dart';
 
 import 'dictionaryMode.dart';
 import 'drugrequestpage.dart';
@@ -358,16 +359,16 @@ class _AboutPageState extends State<AboutPage> {
 
           ],
         ),
-        actions: [
-          IconButton(onPressed: () async {
-            Navigator.pop(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
-
-            // final results = await showSearch(context: context, delegate: SearchDrug());
-
-            // print('Results: $results');
-          },
-              icon: const Icon(Icons.close_sharp, color: Colors.white,))
-        ],
+        // actions: [
+        //   IconButton(onPressed: () async {
+        //     Navigator.pop(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
+        //
+        //     // final results = await showSearch(context: context, delegate: SearchDrug());
+        //
+        //     // print('Results: $results');
+        //   },
+        //       icon: const Icon(Icons.close_sharp, color: Colors.white,))
+        // ],
       ),
       backgroundColor: Colors.black.withOpacity(0.3),
       body:  Container(
@@ -407,28 +408,82 @@ class _AboutPageState extends State<AboutPage> {
                   //     style: TextStyle(color: Colors.white),
                   //   ),
                   // ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 40),
                     child: Text("With a background in DataBase management, Software development, android engineering and Pharmaceutical Technology, the developer identifies a niche and provided a conceptual answer to the gap within Medical Industry, providing links among Pharmaceutical Manufacturers, Marketers, Medical Professionals, Students, Drug Users and patients, ensuring clarity and ease of access to empirical medical data sourced from viable medical information sources.",
                       textAlign: TextAlign.justify,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  const Text("Additional App Options", textAlign: TextAlign.justify,
-                      style: TextStyle(color: Colors.white)),
-                  ElevatedButton(
-                    onPressed: (){
-                      // Hive.box(SETTINGS_BOX).delete('welcome_shown');
-                      setState(() {
-                        Hive.box(SETTINGS_BOX).put('welcome_shown', false);
-                      });
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                          builder: (context) =>
-                      const ModeChoice()));
 
-                    }, child: const Text("Reset App"),),
+                  SizedBox(height: 20,),
+                  ExpansionTile(collapsedIconColor: Colors.white,
+                    title: Text("Additional App Options", textAlign: TextAlign.justify,
+                        style: TextStyle(color: Colors.white)),
+                    children: [
+                      Column(
+                        children: [
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Link(
+                                target: LinkTarget.blank,
+                                uri: Uri.parse('https://play.google.com/apps/internaltest/4701330612071211376'),
+                                builder: (context, followLink) => ElevatedButton(
+                                  onPressed: followLink,
+                                  //     (){
+                                  //   // // Hive.box(SETTINGS_BOX).delete('welcome_shown');
+                                  //   // setState(() {
+                                  //   //   Hive.box(SETTINGS_BOX).put('welcome_shown', false);
+                                  //   // });
+                                  //   // Navigator.push(
+                                  //   //     context,
+                                  //   //     MaterialPageRoute(
+                                  //   //         builder: (context) =>
+                                  //   //         const ModeChoice()));
+                                  //
+                                  // },
+                                  child: const Text("Review"),),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: SizedBox(width:240,
+                                  child: Text('We would love to hear from you. Your rating and review enables us to improve this application to better serve and suit you.',
+                                    textAlign: TextAlign.start,
+                                    softWrap: true,
+                                    style: TextStyle(color: Colors.white), ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(height: 20,),
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ElevatedButton(
+                                onPressed: (){
+                                  // Hive.box(SETTINGS_BOX).delete('welcome_shown');
+                                  setState(() {
+                                    Hive.box(SETTINGS_BOX).put('welcome_shown', false);
+                                  });
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const ModeChoice()));
+
+                                }, child: const Text("Reset App"),),
+                              SizedBox(width: 240,
+                                child: Text('This enables you to go back to original app settings, enabling app state selection. All data instances will still be preserved.',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(color: Colors.white), ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+
+                  ),
+                  SizedBox(height: 50,),
                 ],
               ),
             ),

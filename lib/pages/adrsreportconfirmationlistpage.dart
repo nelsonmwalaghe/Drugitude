@@ -264,7 +264,11 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
 
         appBar: AppBar(
           leading: IconButton(onPressed: () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AdrsOptionsPage(),));
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AdrsOptionsPage(),
+                ));
           },
               icon: const Icon(Icons.arrow_back, color: Colors.white,)),
           backgroundColor: Colors.black,
@@ -284,8 +288,11 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
           ),
           actions: [
             IconButton(onPressed: () async {
-              Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (context) => const AdrsOptionsPage(),));
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AdrsOptionsPage(),
+                  ));
 
               // final results = await showSearch(context: context, delegate: SearchDrug());
 

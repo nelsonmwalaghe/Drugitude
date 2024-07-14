@@ -574,7 +574,8 @@ class _LandingPageState extends State<LandingPage> {
             future: _daydrugList.getAlldayDrug(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return const Center(
+                return const
+                Center(
                     child: SizedBox(
                       width: 192,
                       child: Column(

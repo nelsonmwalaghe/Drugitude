@@ -288,7 +288,11 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LandingPage(),
+                    ));
               },
               icon: const Icon(
                 Icons.arrow_back,

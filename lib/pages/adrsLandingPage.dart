@@ -1,3 +1,4 @@
+import 'package:drugitudeleviosa/pages/adrsOptionsPage.dart';
 import 'package:flutter/material.dart';
 
 import '../searchModels/gennamesearch.dart';
@@ -241,7 +242,11 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
         ),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: IconButton(onPressed: (){Navigator.pop(context);},
+          leading: IconButton(onPressed: (){Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AdrsOptionsPage(),
+              ));},
               icon: const Icon(Icons.arrow_back, color: Colors.white,)),
           backgroundColor: Colors.black.withOpacity(0.8),
           iconTheme: const IconThemeData(color: Colors.white),
