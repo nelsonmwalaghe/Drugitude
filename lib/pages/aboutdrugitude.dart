@@ -1,8 +1,12 @@
+
 import 'package:drugitudeleviosa/pages/landingpage.dart';
 import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
+import 'package:drugitudeleviosa/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:provider/provider.dart';
+import 'package:rive/rive.dart';
 import 'package:url_launcher/link.dart';
 
 import 'dictionaryMode.dart';
@@ -139,310 +143,400 @@ class _AboutPageState extends State<AboutPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,elevation: 8,
-        shape: const CircleBorder(side: BorderSide(color: Colors.black)),
-        onPressed: () async {
-          Navigator.push(
+    return SafeArea(
+      child: Scaffold(floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
+          elevation: 8,
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
+          onPressed: () async {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchOptions(),
+                ));
+            // await NotificationService.showNotification(
+            //   interval: 5,
+            //     title: "Drugitude",
+            //     body: "Drug of the Day",
+            //     summary: "Daily Dose of New Drug Information",
+            //   scheduled: true,
+            //   repeatNotif: true
+            //   );
+      
+      
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
+          },
+          child: const Icon(Icons.search_outlined, color: Colors.black),
+        ),
+        bottomNavigationBar: BottomAppBar(height: 54.0,
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
+          shape: const CircularNotchedRectangle(),
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
+          child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const LandingPage(),
+                          ));
+                    }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.primary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                      ],
+                    )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const DictionaryMode(),
+                          ));
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                      ],
+                    )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const DrugRequestPage(),
+                              ));
+      
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.primary,),
+                            Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                          ],
+                        )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
+                    TextButton(onPressed: (){
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => const AboutPage(),
+                      //     ));
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.tertiary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.tertiary))
+                      ],
+                    )),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 52,)
+            ],
+          ),
+        ),
+        extendBodyBehindAppBar: true,
+        // drawer: const Padding(
+        //   padding: EdgeInsets.only(top: 56.0),
+        //   child:
+        //   SizedBox(height: 278, width: 150,
+        //     // child: Drawer(
+        //     //     backgroundColor: Colors.black,
+        //     //     shape: const OutlineInputBorder(
+        //     //         borderSide: BorderSide(color: Colors.black),
+        //     //         borderRadius: BorderRadius.only(
+        //     //           bottomRight: Radius.circular(50),
+        //     //           topRight: Radius.circular(50),
+        //     //         )),
+        //     //     child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+        //     //       children: [
+        //     //         Row(
+        //     //           children: [
+        //     //             SizedBox(height: 26, width: 150,
+        //     //               child: ElevatedButton(
+        //     //                   onPressed:(){
+        //     //                     Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
+        //     //                   },
+        //     //                   child: const Row(
+        //     //                     children: [
+        //     //                       Icon(Icons.home_outlined, size: 20, color: Colors.black,),
+        //     //                       Text('Home', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+        //     //                     ],
+        //     //                   )
+        //     //               ),
+        //     //             ),
+        //     //           ],
+        //     //         ),
+        //     //         Padding(
+        //     //           padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
+        //     //           child: Row(
+        //     //             children: [
+        //     //               SizedBox(height: 26, width: 150,
+        //     //                 child: ElevatedButton(
+        //     //                     onPressed:(){
+        //     //                       // Navigator.pop(context, MaterialPageRoute(builder: (context) => SearchOptions(),));
+        //     //                     },
+        //     //                     child: const Row(
+        //     //                       children: [
+        //     //                         Icon(Icons.medication_outlined, size: 20, color: Colors.grey,),
+        //     //                         Text('Search', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
+        //     //                       ],
+        //     //                     )
+        //     //                 ),
+        //     //               ),
+        //     //             ],
+        //     //           ),
+        //     //         ),
+        //     //         Padding(
+        //     //           padding: const EdgeInsets.only(top: 8.0, bottom:50.0 ),
+        //     //           child: Row(
+        //     //             children: [
+        //     //               SizedBox(height: 26, width: 150,
+        //     //                 child: ElevatedButton(
+        //     //                     onPressed:(){
+        //     //                       Navigator.push(context, MaterialPageRoute(builder: (context) => const DrugRequestPage(),));
+        //     //                     },
+        //     //                     child: const Row(
+        //     //                       children: [
+        //     //                         Icon(Icons.request_page_outlined, size: 20, color: Colors.black,),
+        //     //                         Text('Request Drug', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+        //     //                       ],
+        //     //                     )
+        //     //                 ),
+        //     //               ),
+        //     //             ],
+        //     //           ),
+        //     //         ),
+        //     //         Padding(
+        //     //           padding: const EdgeInsets.only(top: 8.0, bottom:0.0),
+        //     //           child: Row(
+        //     //             children: [
+        //     //               SizedBox(height: 26, width: 150,
+        //     //                 child: ElevatedButton(
+        //     //                     onPressed:(){
+        //     //                       // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+        //     //                     },
+        //     //                     child: const Row(
+        //     //                       children: [
+        //     //                         Icon(Icons.perm_device_info_outlined, size: 20, color: Colors.grey,),
+        //     //                         Text('About', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
+        //     //                       ],
+        //     //                     )
+        //     //                 ),
+        //     //               ),
+        //     //             ],
+        //     //           ),
+        //     //         ),
+        //     //       ],
+        //     //     )),
+        //   ),
+        // ),
+        appBar: AppBar(
+          shape:  const OutlineInputBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              borderSide: BorderSide(width: 2,
+                  color: Colors.white,
+                  strokeAlign: double.maxFinite)),
+          leading: IconButton(onPressed: (){Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const SearchOptions(),
-              ));
-        },
-        child: const Icon(Icons.search_outlined),
-      ),
-      bottomNavigationBar: BottomAppBar(height: 54.0,
-        notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding: const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
-        shape: const CircularNotchedRectangle(),
-        color: Colors.white,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
-              child: Row(
+                builder: (context) => const LandingPage(),
+              ));},
+              icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.primary,)),
+          backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
+          title:  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
                 children: [
-                  TextButton(onPressed: (){Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                        const LandingPage(),
-                      ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.home_filled, color: Colors.black,),
-                      Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
-                    ],
-                  )),
+                  Text(
+                    'DRUGITUDE',
+                    style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),
+                  ),
                 ],
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
-              child: Row(
-                children: [
-                  TextButton(onPressed: (){Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                        const DictionaryMode(),
-                      ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.menu_book_outlined, color: Colors.black,),
-                      Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
-                    ],
-                  )),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
-              child: Row(
-                children: [
-                  TextButton(onPressed: (){
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const DrugRequestPage(),
-                        ));
-                  }, child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.mail_outline_rounded, color: Colors.black,),
-                      Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.black))
-                    ],
-                  )),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
-              child: Row(
-                children: [
-                  TextButton(onPressed: (){
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => const AboutPage(),
-                    //     ));
-                  }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.corporate_fare_outlined, color: Colors.grey,),
-                      Text('About', style: TextStyle(fontSize: 9.0, color: Colors.grey))
-                    ],
-                  )),
-                ],
-              ),
-            ),
-            const SizedBox(width: 52,)
-          ],
-
-        ),
-      ),
-      extendBody: false,
-      drawer: const Padding(
-        padding: EdgeInsets.only(top: 56.0),
-        child:
-        SizedBox(height: 278, width: 150,
-          // child: Drawer(
-          //     backgroundColor: Colors.black,
-          //     shape: const OutlineInputBorder(
-          //         borderSide: BorderSide(color: Colors.black),
-          //         borderRadius: BorderRadius.only(
-          //           bottomRight: Radius.circular(50),
-          //           topRight: Radius.circular(50),
-          //         )),
-          //     child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-          //       children: [
-          //         Row(
-          //           children: [
-          //             SizedBox(height: 26, width: 150,
-          //               child: ElevatedButton(
-          //                   onPressed:(){
-          //                     Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
-          //                   },
-          //                   child: const Row(
-          //                     children: [
-          //                       Icon(Icons.home_outlined, size: 20, color: Colors.black,),
-          //                       Text('Home', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
-          //                     ],
-          //                   )
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //         Padding(
-          //           padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-          //           child: Row(
-          //             children: [
-          //               SizedBox(height: 26, width: 150,
-          //                 child: ElevatedButton(
-          //                     onPressed:(){
-          //                       // Navigator.pop(context, MaterialPageRoute(builder: (context) => SearchOptions(),));
-          //                     },
-          //                     child: const Row(
-          //                       children: [
-          //                         Icon(Icons.medication_outlined, size: 20, color: Colors.grey,),
-          //                         Text('Search', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
-          //                       ],
-          //                     )
-          //                 ),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //         Padding(
-          //           padding: const EdgeInsets.only(top: 8.0, bottom:50.0 ),
-          //           child: Row(
-          //             children: [
-          //               SizedBox(height: 26, width: 150,
-          //                 child: ElevatedButton(
-          //                     onPressed:(){
-          //                       Navigator.push(context, MaterialPageRoute(builder: (context) => const DrugRequestPage(),));
-          //                     },
-          //                     child: const Row(
-          //                       children: [
-          //                         Icon(Icons.request_page_outlined, size: 20, color: Colors.black,),
-          //                         Text('Request Drug', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
-          //                       ],
-          //                     )
-          //                 ),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //         Padding(
-          //           padding: const EdgeInsets.only(top: 8.0, bottom:0.0),
-          //           child: Row(
-          //             children: [
-          //               SizedBox(height: 26, width: 150,
-          //                 child: ElevatedButton(
-          //                     onPressed:(){
-          //                       // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
-          //                     },
-          //                     child: const Row(
-          //                       children: [
-          //                         Icon(Icons.perm_device_info_outlined, size: 20, color: Colors.grey,),
-          //                         Text('About', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
-          //                       ],
-          //                     )
-          //                 ),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       ],
-          //     )),
-        ),
-      ),
-      appBar: AppBar(
-        leading: IconButton(onPressed: (){Navigator.pop(context);},
-            icon: const Icon(Icons.arrow_back, color: Colors.white,)),
-        backgroundColor: Colors.black.withOpacity(0.8),
-        title: const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'DRUGITUDE',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              ],
-            ),
-            // Row(
-            //   children: [
-            //     Text('A ', style: TextStyle(color: Colors.white, fontSize: 12), ),
-            //     Text(' - ',style: TextStyle(color: Colors.purple, fontSize: 12),),
-            //     Text(' Z', style: TextStyle(color: Colors.white, fontSize: 12),),
-            //     Text(' Generic Drug List: ',style: TextStyle(color: Colors.white, fontSize: 12),),
-            //   ],
-            // ),
-
+              // Row(
+              //   children: [
+              //     Text('A ', style: TextStyle(color: Colors.white, fontSize: 12), ),
+              //     Text(' - ',style: TextStyle(color: Colors.purple, fontSize: 12),),
+              //     Text(' Z', style: TextStyle(color: Colors.white, fontSize: 12),),
+              //     Text(' Generic Drug List: ',style: TextStyle(color: Colors.white, fontSize: 12),),
+              //   ],
+              // ),
+      
+            ],
+          ),
+          actions: [
+            IconButton(onPressed: () async {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LandingPage(),
+                  ));
+      
+              // final results = await showSearch(context: context, delegate: SearchDrug());
+      
+              // print('Results: $results');
+            },
+                icon: Icon(Icons.close_sharp, color: Theme.of(context).colorScheme.primary,))
           ],
         ),
-        // actions: [
-        //   IconButton(onPressed: () async {
-        //     Navigator.pop(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
-        //
-        //     // final results = await showSearch(context: context, delegate: SearchDrug());
-        //
-        //     // print('Results: $results');
-        //   },
-        //       icon: const Icon(Icons.close_sharp, color: Colors.white,))
-        // ],
-      ),
-      backgroundColor: Colors.black.withOpacity(0.3),
-      body:  Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
+        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.3),
+        body:  Container(padding: const EdgeInsets.only(top: 60),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            image: DecorationImage(
               image: AssetImage(
                 imageGet(),
               ),
               fit: BoxFit.cover,),
-        ),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Card(color: Colors.black.withOpacity(0.7),
-              child:  Column(crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+          child: Card(color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+            shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+            child:  SingleChildScrollView(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 5.0),
+                  child: Text(
+                  'DRUGITUDE',
+                  style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 15),
+                  ),
+                ),
                   const Padding(
                     padding: EdgeInsets.only(top: 2),
-                    child: CircleAvatar(backgroundColor: Colors.transparent,
-                      radius: 160,
-                        child: Image(image: AssetImage('assets/Drugitude.png')),
-                    ),
+                    child: Center(
+                        child: SizedBox(
+                          height: 150,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  child: RiveAnimation.asset(
+                                      'assets/drugiconLoading.riv',)),
+                              // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                            ],
+                          ),
+                        )),
+                    // SizedBox(height: 120,
+                    //     child: Image(image: AssetImage('assets/drugitudeiconX.png'))),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                     child: Text("Drugitude is an app that attempts to conceptualize the idea of a centralized list of all Human and Veterinary drugs in the World (currently non-existing), providing an easy to search platform and reliable information, easily accessed by Medical Professionals, Students & untrained users, limiting jargon; providing clear and concise drug information.",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary,),
                       textAlign: TextAlign.justify,
                     ),
                   ),
-                  // Padding(
-                  //   padding: EdgeInsets.all(8.0),
-                  //   child: Text("This concept utilizes data from European Medicines Agency's (EMA) download data, 'European public assessment reports (EPAR)' by creating an API model to prove the concept. The developer utilizes this example to illustrate the efficiency of having a centralized mechanism of obtaining all drugs within the world, with the hopes of providing an information hub to make an organized and easily accessible search platform",
-                  //     textAlign: TextAlign.justify,
-                  //     style: TextStyle(color: Colors.white),
-                  //   ),
-                  // ),
                   Padding(
-                    padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 40),
+                    padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0, bottom: 5),
                     child: Text("With a background in DataBase management, Software development, android engineering and Pharmaceutical Technology, the developer identifies a niche and provided a conceptual answer to the gap within Medical Industry, providing links among Pharmaceutical Manufacturers, Marketers, Medical Professionals, Students, Drug Users and patients, ensuring clarity and ease of access to empirical medical data sourced from viable medical information sources.",
                       textAlign: TextAlign.justify,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary,),
                     ),
                   ),
-
-                  SizedBox(height: 20,),
-                  ExpansionTile(collapsedIconColor: Colors.white,
+                      
+                  const SizedBox(height: 5,),
+                  ExpansionTile(
+                    shape: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(50),
+                          topRight: Radius.circular(50),
+                        )),
                     title: Text("Additional App Options", textAlign: TextAlign.justify,
-                        style: TextStyle(color: Colors.white)),
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary,)),
                     children: [
                       Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              OutlinedButton(
+                                style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),),
+                                onPressed:() {Provider.of<ThemeProvider>(context, listen: false).toggleTheme();},
+
+                                child: Row(
+                                  children: [
+                                     Text("Light", style: TextStyle(color: Theme.of(context).colorScheme.secondary),),
+                                    Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary),
+                                  ],
+                                ),),
+                              SizedBox(width: 20,),
+                              OutlinedButton(
+                                style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                onPressed:() {
+                                  Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                                },
+
+                                child: Row(
+                                  children: [
+                                    Text("Dark", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                                    Icon(Icons.dark_mode,color: Theme.of(context).colorScheme.primary,),
+
+                                  ],
+                                ),),
+                            ],
+                          ),
+                          const SizedBox(height: 20,),
                           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Link(
                                 target: LinkTarget.blank,
                                 uri: Uri.parse('https://play.google.com/apps/internaltest/4701330612071211376'),
-                                builder: (context, followLink) => ElevatedButton(
-                                  onPressed: followLink,
-                                  //     (){
-                                  //   // // Hive.box(SETTINGS_BOX).delete('welcome_shown');
-                                  //   // setState(() {
-                                  //   //   Hive.box(SETTINGS_BOX).put('welcome_shown', false);
-                                  //   // });
-                                  //   // Navigator.push(
-                                  //   //     context,
-                                  //   //     MaterialPageRoute(
-                                  //   //         builder: (context) =>
-                                  //   //         const ModeChoice()));
-                                  //
-                                  // },
-                                  child: const Text("Review"),),
+                                builder: (context, followLink) => Padding(
+                                  padding: const EdgeInsets.only(left: 4.0),
+                                  child: OutlinedButton(
+                                    style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                    onPressed: followLink,
+                                    //     (){
+                                    //   // // Hive.box(SETTINGS_BOX).delete('welcome_shown');
+                                    //   // setState(() {
+                                    //   //   Hive.box(SETTINGS_BOX).put('welcome_shown', false);
+                                    //   // });
+                                    //   // Navigator.push(
+                                    //   //     context,
+                                    //   //     MaterialPageRoute(
+                                    //   //         builder: (context) =>
+                                    //   //         const ModeChoice()));
+                                    //
+                                    // },
+                                    child:  Text("Review", style: TextStyle(color: Theme.of(context).colorScheme.primary),),),
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(3.0),
@@ -450,31 +544,36 @@ class _AboutPageState extends State<AboutPage> {
                                   child: Text('We would love to hear from you. Your rating and review enables us to improve this application to better serve and suit you.',
                                     textAlign: TextAlign.start,
                                     softWrap: true,
-                                    style: TextStyle(color: Colors.white), ),
+                                    style: TextStyle(color: Theme.of(context).colorScheme.primary), ),
                                 ),
                               )
                             ],
                           ),
-                          SizedBox(height: 20,),
+                          const SizedBox(height: 20,),
+
                           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ElevatedButton(
-                                onPressed: (){
-                                  // Hive.box(SETTINGS_BOX).delete('welcome_shown');
-                                  setState(() {
-                                    Hive.box(SETTINGS_BOX).put('welcome_shown', false);
-                                  });
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                          const ModeChoice()));
+                              Padding(
+                                padding: const EdgeInsets.only(left: 2.0),
+                                child: OutlinedButton(
+                                style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                  onPressed: (){
+                                    // Hive.box(SETTINGS_BOX).delete('welcome_shown');
+                                    setState(() {
+                                      Hive.box(SETTINGS_BOX).put('welcome_shown', false);
+                                    });
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                            const ModeChoice()));
 
-                                }, child: const Text("Reset App"),),
+                                  }, child: Text("Reset App", style: TextStyle(color: Theme.of(context).colorScheme.primary),),),
+                              ),
                               SizedBox(width: 240,
                                 child: Text('This enables you to go back to original app settings, enabling app state selection. All data instances will still be preserved.',
                                   textAlign: TextAlign.start,
-                                  style: TextStyle(color: Colors.white), ),
+                                  style: TextStyle(color: Theme.of(context).colorScheme.primary), ),
                               )
                             ],
                           ),
@@ -483,7 +582,7 @@ class _AboutPageState extends State<AboutPage> {
                     ],
 
                   ),
-                  SizedBox(height: 50,),
+                  const SizedBox(height: 50,),
                 ],
               ),
             ),

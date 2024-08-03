@@ -56,47 +56,50 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
 
   Widget buildDrugBrandName() => TextFormField(
     controller: controllerBrandName,
-    style: const TextStyle(color: Colors.white),
+    style: TextStyle(color: Theme.of(context).colorScheme.primary),
     decoration:
-    const InputDecoration(
-      labelText: 'Brand Name', labelStyle: TextStyle(color: Colors.white),
-      border: OutlineInputBorder(),
+    InputDecoration(
+      labelText: 'Brand Name', labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+      border: const OutlineInputBorder(),
     ),
     validator: (value) => value != null && value.isEmpty ? 'Enter Brand Name' : null,
   );
 
   Widget buildDrugGenericName() => TextFormField(
     controller: controllerGenericName,
-    style: const TextStyle(color: Colors.white),
-    decoration: const InputDecoration(
-    labelText: 'Generic Name', labelStyle: TextStyle(color: Colors.white),
-    border: OutlineInputBorder(),
+    style: TextStyle(color: Theme.of(context).colorScheme.primary),
+    decoration: InputDecoration(
+    labelText: 'Generic Name', labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+    border: const OutlineInputBorder(),
   ),
     validator: (value) => value != null && value.isEmpty ? 'Enter Generic Name' : null,
   );
 
   Widget buildEmail() => TextFormField(
     controller: controllerEmail,
-    style: const TextStyle(color: Colors.white),
-    decoration: const InputDecoration(
-      labelText: 'Email Address',labelStyle: TextStyle(color: Colors.white),
-      border: OutlineInputBorder(),
+    style: TextStyle(color: Theme.of(context).colorScheme.primary),
+    decoration: InputDecoration(
+      labelText: 'Email Address',labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+      border: const OutlineInputBorder(),
     ),
     validator: (value) => value != null && !value.contains('@') ? 'Enter Email' : null,
   );
 
   Widget buildShouldwecontactyou() => SwitchListTile(
+    activeColor: Colors.green,
+    inactiveTrackColor: Colors.red,
+
 
     contentPadding: EdgeInsets.zero,
       controlAffinity: ListTileControlAffinity.leading,
       value: shouldwecontactyou,
-      title: const Text('Should we contact you after drug addition?',
-        style: TextStyle(color: Colors.white),),
+      title: Text('Should we contact you after drug addition?',
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),),
       onChanged: (value) {setState(() {
         shouldwecontactyou = value;
       });},);
 
-  Widget buildDrugReqSubmit() => ElevatedButton(
+  Widget buildDrugReqSubmit() => OutlinedButton(
       onPressed: () {
         final form = formKey.currentState!;
         final isValid = form.validate();
@@ -126,11 +129,13 @@ class _DrugRequestFormWidgetState extends State<DrugRequestFormWidget> {
               });
         }
       },
-      style: const ButtonStyle(fixedSize: WidgetStatePropertyAll(Size(170, 30)),),
-      child: const Row(
+      style: const ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll(Colors.white),
+        fixedSize: WidgetStatePropertyAll(Size(170, 30)),),
+      child:  const Row(
         children: [
           Icon(Icons.mail_lock_outlined, size: 20,color: Colors.black),
-          Text('SUBMIT REQUEST', style: TextStyle(color: Colors.black, fontSize: 12),),
+          Text(' SUBMIT REQUEST', style: TextStyle(color: Colors.black, fontSize: 12),),
         ],
       ));
 }

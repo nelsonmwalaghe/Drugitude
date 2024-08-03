@@ -142,36 +142,56 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
     return SafeArea(
       child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
-        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,elevation: 8,
-          shape: const CircleBorder(side: BorderSide(color: Colors.black)),
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
+          elevation: 8,
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
           onPressed: () async {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const SearchOptions(),
                 ));
+            // await NotificationService.showNotification(
+            //   interval: 5,
+            //     title: "Drugitude",
+            //     body: "Drug of the Day",
+            //     summary: "Daily Dose of New Drug Information",
+            //   scheduled: true,
+            //   repeatNotif: true
+            //   );
+
+
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
           },
-          child: const Icon(Icons.search_outlined),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
         bottomNavigationBar: BottomAppBar(height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding: const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
           shape: const CircularNotchedRectangle(),
-          color: Colors.white,
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const LandingPage(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const LandingPage(),
+                          ));
+                    }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.home_filled, color: Colors.black,),
-                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.primary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -181,15 +201,17 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.pushReplacement(
+                    TextButton(onPressed: (){
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
                           const DictionaryMode(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                        ));
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.menu_book_outlined, color: Colors.black,),
-                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -199,13 +221,21 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => const DrugRequestPage(),));
-                    }, child: const Column(
+                    TextButton(
+                        onPressed: (){
+                    //   Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) =>
+                    //         const DrugRequestPage(),
+                    //       ));
+                    //
+                },
+                        child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.mail_outline_rounded, color: Colors.grey,),
-                        Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.grey))
+                        Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.tertiary,),
+                        Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.tertiary))
                       ],
                     )),
                   ],
@@ -216,15 +246,15 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                 child: Row(
                   children: [
                     TextButton(onPressed: (){
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
-                        Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -232,124 +262,131 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
               ),
               const SizedBox(width: 52,)
             ],
-
           ),
         ),
         extendBodyBehindAppBar: true,
-        drawer: Padding(
-          padding: const EdgeInsets.only(top: 56.0),
-          child:
-          SizedBox(height: 278, width: 150,
-            child: Drawer(
-                backgroundColor: Colors.black,
-                shape: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                    )),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0.0, bottom: 50),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed:(){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(Icons.home_outlined, size: 20, color: Colors.black,),
-                                    Text('Home', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed:(){
-                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => SearchOptions(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(Icons.medication_outlined, size: 20, color: Colors.grey,),
-                                    Text('Search', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom:50.0 ),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed:(){
-                                  Navigator.pop(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(Icons.request_page_outlined, size: 20, color: Colors.black,),
-                                    Text('Request Drug', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom:0.0),
-                      child: Row(
-                        children: [
-                          SizedBox(height: 26, width: 150,
-                            child: ElevatedButton(
-                                onPressed:(){
-                                  // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
-                                },
-                                child: const Row(
-                                  children: [
-                                    Icon(Icons.perm_device_info_outlined, size: 20, color: Colors.black,),
-                                    Text('About', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
-                                  ],
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
-          ),
-        ),
+        // drawer: Padding(
+        //   padding: const EdgeInsets.only(top: 56.0),
+        //   child:
+        //   SizedBox(height: 278, width: 150,
+        //     child: Drawer(
+        //         backgroundColor: Colors.black,
+        //         shape: const OutlineInputBorder(
+        //             borderSide: BorderSide(color: Colors.black),
+        //             borderRadius: BorderRadius.only(
+        //               bottomRight: Radius.circular(50),
+        //               topRight: Radius.circular(50),
+        //             )),
+        //         child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+        //           children: [
+        //             Padding(
+        //               padding: const EdgeInsets.only(top: 0.0, bottom: 50),
+        //               child: Row(
+        //                 children: [
+        //                   SizedBox(height: 26, width: 150,
+        //                     child: ElevatedButton(
+        //                         onPressed:(){
+        //                           Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
+        //                         },
+        //                         child: const Row(
+        //                           children: [
+        //                             Icon(Icons.home_outlined, size: 20, color: Colors.black,),
+        //                             Text('Home', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+        //                           ],
+        //                         )
+        //                     ),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //             Padding(
+        //               padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
+        //               child: Row(
+        //                 children: [
+        //                   SizedBox(height: 26, width: 150,
+        //                     child: ElevatedButton(
+        //                         onPressed:(){
+        //                           // Navigator.pop(context, MaterialPageRoute(builder: (context) => SearchOptions(),));
+        //                         },
+        //                         child: const Row(
+        //                           children: [
+        //                             Icon(Icons.medication_outlined, size: 20, color: Colors.grey,),
+        //                             Text('Search', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey),)
+        //                           ],
+        //                         )
+        //                     ),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //             Padding(
+        //               padding: const EdgeInsets.only(top: 8.0, bottom:50.0 ),
+        //               child: Row(
+        //                 children: [
+        //                   SizedBox(height: 26, width: 150,
+        //                     child: ElevatedButton(
+        //                         onPressed:(){
+        //                           Navigator.pop(context, MaterialPageRoute(builder: (context) => const LandingPage(),));
+        //                         },
+        //                         child: const Row(
+        //                           children: [
+        //                             Icon(Icons.request_page_outlined, size: 20, color: Colors.black,),
+        //                             Text('Request Drug', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+        //                           ],
+        //                         )
+        //                     ),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //             Padding(
+        //               padding: const EdgeInsets.only(top: 8.0, bottom:0.0),
+        //               child: Row(
+        //                 children: [
+        //                   SizedBox(height: 26, width: 150,
+        //                     child: ElevatedButton(
+        //                         onPressed:(){
+        //                           // Navigator.pop(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+        //                         },
+        //                         child: const Row(
+        //                           children: [
+        //                             Icon(Icons.perm_device_info_outlined, size: 20, color: Colors.black,),
+        //                             Text('About', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),)
+        //                           ],
+        //                         )
+        //                     ),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //           ],
+        //         )),
+        //   ),
+        // ),
 
         appBar: AppBar(
+          shape:  const OutlineInputBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              borderSide: BorderSide(width: 2,
+                  color: Colors.white,
+                  strokeAlign: double.maxFinite)),
           leading: IconButton(onPressed: (){Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => const LandingPage(),
               ));},
-              icon: const Icon(Icons.arrow_back, color: Colors.white,)),
-          backgroundColor: Colors.black.withOpacity(0.8),
-          title: const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.primary,)),
+          backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
+          title:  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   Text(
                     'DRUGITUDE',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),
                   ),
                 ],
               ),
@@ -376,12 +413,11 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
 
               // print('Results: $results');
             },
-                icon: const Icon(Icons.close_sharp, color: Colors.white,))
+                icon: Icon(Icons.close_sharp, color: Theme.of(context).colorScheme.primary,))
           ],
         ),
-        backgroundColor: Colors.black.withOpacity(0.3),
-        body:
-              Container(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        body: Container(padding: const EdgeInsets.only(top: 60),
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
@@ -392,62 +428,63 @@ class _DrugRequestPageState extends State<DrugRequestPage> {
                       fit: BoxFit.cover,
                       opacity: 0.6),
                 ),
-                child: Card(color: Colors.black.withOpacity(0.3),
+                child: Card(
+                  shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                  color: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
                   child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5.0, bottom: 50),
-                            child: Column(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text('Check out the current request queue',style: TextStyle(
-                                      color: Colors.white, fontSize: 11) ),
-                                ),
-                                ElevatedButton(
-                                    onPressed: () async {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => const DrugRequestConfirmation(),
-                                          ));
-                                    },
-                                    style: const ButtonStyle(
-                                      fixedSize: WidgetStatePropertyAll(Size(210, 30)),
-                                    ),
-                                    child: const Row(
-                                      children: [
-                                        Icon(Icons.remove_from_queue_outlined,
-                                            size: 20, color: Colors.black),
-                                        Text(
-                                          '  DRUG REQUEST QUEUE',
-                                          style: TextStyle(
-                                              color: Colors.black, fontSize: 12),
-                                        ),
-                                      ],
-                                    )),
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text('If not in Queue, feel free to type and submit a request',style: TextStyle(
-                                      color: Colors.white, fontSize: 11) ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Text('Request Drug:', style: TextStyle(color: Colors.white),),
-                          DrugRequestFormWidget(onSavedDrugRequestedEntry:
-                              (drugsrequestedentry) async {
-                            final id = await DrugRequestSheetsApi.getRowCount() + 1;
-                            final newDrugRequestEntry = drugsrequestedentry.copy(id: id);
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5.0, bottom: 50),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Check out the current request queue',style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary) ),
+                              ),
+                              OutlinedButton(
 
-                            await DrugRequestSheetsApi.insert([newDrugRequestEntry.toJson()]);
-                          }),
-                          const SizedBox(height: 160,)
-                        ],
-                      ),
+                                  onPressed: () async {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const DrugRequestConfirmation(),
+                                        ));
+                                  },
+                                  style: const ButtonStyle(
+                                      backgroundColor: WidgetStatePropertyAll(Colors.white),
+                                    fixedSize: WidgetStatePropertyAll(Size(210, 30)),
+                                  ),
+                                  child: const Row(
+                                    children: [
+                                      Icon(Icons.remove_from_queue_outlined,
+                                          size: 20, color: Colors.black),
+                                      Text(
+                                        '  DRUG REQUEST QUEUE',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 12),
+                                      ),
+                                    ],
+                                  )),
+                               Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('If not in Queue, feel free to type and submit a request',style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary) ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text('Request Drug:', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                        DrugRequestFormWidget(onSavedDrugRequestedEntry:
+                            (drugsrequestedentry) async {
+                          final id = await DrugRequestSheetsApi.getRowCount() + 1;
+                          final newDrugRequestEntry = drugsrequestedentry.copy(id: id);
+
+                          await DrugRequestSheetsApi.insert([newDrugRequestEntry.toJson()]);
+                        }),
+                        const SizedBox(height: 160,)
+                      ],
                     ),
                   ),
                 ),

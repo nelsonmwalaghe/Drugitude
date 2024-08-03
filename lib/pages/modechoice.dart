@@ -1,8 +1,9 @@
-import 'package:drugitudeleviosa/pages/welcomeScreenCautionTLC.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 
+import '../theme/theme_provider.dart';
 import 'drugdictionarydb.dart';
 import 'landingpage.dart';
 
@@ -19,14 +20,48 @@ class _ModeChoiceState extends State<ModeChoice>
 {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.black,
+    return Scaffold(backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Flexible(flex: 2,
-                  child: Text('Choose app state more suitable for you.', style: TextStyle(color: Colors.white),)),
+              Flexible(flex: 2,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    OutlinedButton(
+                      style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),),
+                      onPressed:() {Provider.of<ThemeProvider>(context, listen: false).toggleTheme();},
+
+                      child: Row(
+                        children: [
+                          Text("Light", style: TextStyle(color: Theme.of(context).colorScheme.secondary),),
+                          Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary),
+                        ],
+                      ),),
+                    SizedBox(width: 10,),
+                    Text("or", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                    SizedBox(width: 10,),
+                    OutlinedButton(
+                      style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                      onPressed:() {
+                        Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                      },
+
+                      child: Row(
+                        children: [
+                          Text("Dark", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                          Icon(Icons.dark_mode,color: Theme.of(context).colorScheme.primary,),
+
+                        ],
+                      ),),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+               Flexible(flex: 2,
+                  child: Text('Choose app state more suitable for you.', style: TextStyle(color: Theme.of(context).colorScheme.primary),)),
               //     Flexible(flex: 2,
               //   child: SizedBox(
               //   width: 192,
@@ -48,19 +83,20 @@ class _ModeChoiceState extends State<ModeChoice>
                 child: Column(
                   children: [
           
-                    const Text('1. ONLINE MODE', style: TextStyle(color: Colors.white, decoration: TextDecoration.underline,decorationColor: Colors.white),),
-                    const Text('This press and play option always requires strong and fast internet connection. It is light and fast, requiring no initial setup.', style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
+                     Text('1. ONLINE MODE', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,),),
+                     Text('This press and play option always requires strong and fast internet connection. It is light and fast, requiring no initial setup.', style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center,),
                     const Center( child:
                     SizedBox(width: 192, height: 100,
                       child: Column(
                         children: [
                           Expanded(
-                            child: RiveAnimation.asset('assets/cheetah_run_2.riv'),),
+                            child: RiveAnimation.asset('assets/cheetah_run_4.riv'),),
                           // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
                         ],
                       ),
                     ),),
-                    ElevatedButton(
+                    OutlinedButton(
+                        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
                         onPressed: () {
                           setState(() {
                             var box = Hive.box(SETTINGS_BOX);
@@ -75,7 +111,7 @@ class _ModeChoiceState extends State<ModeChoice>
                           //   var box = Hive.box(SETTINGS_BOX);
                           //   box.put("welcome_shown", true);}
                         },
-                        child: const Text('Enter Online Mode')),
+                        child: Text('Enter Online Mode', style: TextStyle(color: Theme.of(context).colorScheme.primary))),
                   ],
                 ),
               ),
@@ -84,19 +120,20 @@ class _ModeChoiceState extends State<ModeChoice>
                 child: Column(
                   children: [
           
-                    const Text('2. OFFLINE MODE', style: TextStyle(color: Colors.white, decoration: TextDecoration.underline,decorationColor: Colors.white),),
-                    const Text('Requires an initial short automated set up (approx 2 minutes) with access to the internet, to ensure fast response to future app core functions without internet connection.', style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
-                    const Center( child:
+                    Text('2. OFFLINE MODE', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),),
+                    Text('Requires an initial short automated set up (approx 2 minutes) with access to the internet, to ensure fast response to future app core functions without internet connection.', style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center,),
+                    Center( child:
                     SizedBox(width: 192, height: 100,
                       child: Column(
                         children: [
                           Expanded(
-                            child: RiveAnimation.asset('assets/turtle_run.riv'),),
+                            child: RiveAnimation.asset('assets/turtle_run2.riv', ),),
                           // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
                         ],
                       ),
                     ),),
-                    ElevatedButton(
+                    OutlinedButton(
+                        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
                         onPressed: () {
                           setState(() {
                             var box = Hive.box(SETTINGS_BOX);
@@ -111,7 +148,7 @@ class _ModeChoiceState extends State<ModeChoice>
                           //   var box = Hive.box(SETTINGS_BOX);
                           //   box.put("welcome_shown", true);}
                         },
-                        child: const Text('Enter Offline Mode')),
+                        child: Text('Enter Offline Mode', style: TextStyle(color: Theme.of(context).colorScheme.primary))),
                   ],
                 ),
               ),
@@ -129,7 +166,9 @@ class _ModeChoiceState extends State<ModeChoice>
                   //       //   box.put("welcome_shown", true);}
                   //     },
                   //     child: const Text('Back')),
-                  ElevatedButton(style: const ButtonStyle(visualDensity: VisualDensity.comfortable),
+                  OutlinedButton(
+                      style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                      // style: const ButtonStyle(visualDensity: VisualDensity.comfortable),
                       onPressed: () {
                         Navigator.pushReplacement(
                             context,
@@ -140,7 +179,7 @@ class _ModeChoiceState extends State<ModeChoice>
                         //   var box = Hive.box(SETTINGS_BOX);
                         //   box.put("welcome_shown", true);}
                       },
-                      child: const Text('Skip')),
+                      child: Text('Skip',style: TextStyle(color: Theme.of(context).colorScheme.primary))),
                 ],
               ),
             ],

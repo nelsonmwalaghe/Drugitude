@@ -1,7 +1,6 @@
 import 'package:drugitudeleviosa/pages/adrsOptionsPage.dart';
+import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
 import 'package:flutter/material.dart';
-
-import '../searchModels/gennamesearch.dart';
 import 'aboutDrugitude.dart';
 import 'adrsReportPage.dart';
 import 'dictionaryMode.dart';
@@ -138,51 +137,56 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,elevation: 8,
-          shape: const CircleBorder(side: BorderSide(color: Colors.black)),
-          onPressed:  () async {
-            showSearch(
-                context: context, delegate: SearchDrug());
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
+          elevation: 8,
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
+          onPressed: () async {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchOptions(),
+                ));
+            // await NotificationService.showNotification(
+            //   interval: 5,
+            //     title: "Drugitude",
+            //     body: "Drug of the Day",
+            //     summary: "Daily Dose of New Drug Information",
+            //   scheduled: true,
+            //   repeatNotif: true
+            //   );
+
+
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
           },
-          child: const Icon(Icons.search_outlined),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
         bottomNavigationBar: BottomAppBar(height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding: const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
           shape: const CircularNotchedRectangle(),
-          color: Colors.white,
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const LandingPage(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const LandingPage(),
+                          ));
+                    }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.home_filled, color: Colors.black,),
-                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
-                      ],
-                    )),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
-                child: Row(
-                  children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const DictionaryMode(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.menu_book_outlined, color: Colors.black,),
-                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.primary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -197,12 +201,12 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                            const DrugRequestPage(),
+                            const DictionaryMode(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.mail_outline_rounded, color: Colors.black,),
-                        Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -212,16 +216,40 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const DrugRequestPage(),
+                              ));
+
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.primary,),
+                            Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                          ],
+                        )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
                     TextButton(onPressed: (){
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
-                        Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -229,17 +257,9 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
               ),
               const SizedBox(width: 52,)
             ],
-
           ),
         ),
         extendBody: true,
-        drawer: const Padding(
-          padding: EdgeInsets.only(top: 56.0),
-          child: SizedBox(
-            height: 400,
-            width: 200,
-          ),
-        ),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           leading: IconButton(onPressed: (){Navigator.pushReplacement(
@@ -247,9 +267,9 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
               MaterialPageRoute(
                 builder: (context) => const AdrsOptionsPage(),
               ));},
-              icon: const Icon(Icons.arrow_back, color: Colors.white,)),
-          backgroundColor: Colors.black.withOpacity(0.8),
-          iconTheme: const IconThemeData(color: Colors.white),
+              icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.primary,)),
+          backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+          iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
           elevation: 8,
           // shadowColor: Colors.red.withOpacity(.1),
           shape: const OutlineInputBorder(
@@ -260,7 +280,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
               borderSide: BorderSide(
                 color: Colors.white,
               )),
-          title: const Padding(
+          title: Padding(
             padding: EdgeInsets.only(left: 0, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -270,7 +290,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                   children: [
                     Text(
                       'DRUGITUDE',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),
                     ),
                   ],
                 ),
@@ -278,7 +298,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -293,70 +313,74 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
           child: Padding(
             padding: const EdgeInsets.only(top: 80),
             child: SingleChildScrollView(
-              child: Card(color: Colors.black.withOpacity(0.7),
+              child: Card(shape: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.all(Radius.circular(25)
+                  )),
+                color: Theme.of(context).colorScheme.surface.withOpacity(0.7),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'ADVERSE DRUG REACTIONS REPORT PORTAL',
-                        style: TextStyle(color: Colors.white, decoration: TextDecoration.underline, decorationColor: Colors.white),
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),
                       ),
                     ),
-                    const Text(
+                    Text(
                       'Your support and contribution towards Regional Pharmacovigilance System is appreciated',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary),
                       textAlign: TextAlign.center,
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 16.0, bottom: 0, left: 8, right: 8),
                       child: Text(
                         '"You need not be certain...Just be suspicious!"',
-                        style: TextStyle(color: Colors.white, fontSize: 17, decoration: TextDecoration.underline, decorationColor: Colors.white),
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 17, decoration: TextDecoration.underline),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Submission of a report does not constitute an admission that medical personnel or manufacturer or the product caused or contributed to the event.',
-                        style: TextStyle(color: Colors.white, fontSize: 14), textAlign: TextAlign.justify,
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.justify,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Patient’s identity is held in strict confidence and program staff is not expected to and will not disclose reporter’s identity in response to any public request.',
-                        style: TextStyle(color: Colors.white, fontSize: 14), textAlign: TextAlign.justify,
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.justify,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Information supplied by you will contribute to the improvement of drug safety and therapy in the East Africa Region.',
-                        style: TextStyle(color: Colors.white, fontSize: 14), textAlign: TextAlign.justify,
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.justify,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Completed Reports will be sent to the National Pharmacy and Poisons Board of the country case is reported ',
-                        style: TextStyle(color: Colors.white, fontSize: 14), textAlign: TextAlign.center,
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.center,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 5, bottom: 0, left: 8, right: 8),
                       child: Text(
                         'PLEASE NOTE!',
-                        style: TextStyle(color: Colors.white, fontSize: 20), textAlign: TextAlign.center,
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20), textAlign: TextAlign.center,
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 5, bottom: 0, left: 8, right: 8),
                       child: Text(
                         'ADRs reports are quite vast and detailed. Precision is expected. With this in mind, we suggest that the reporter should familiarize themselves with the information requested for in the various entry fields, gather the necessary data and proceed accordingly.',
-                        style: TextStyle(color: Colors.white, fontSize: 14), textAlign: TextAlign.center,
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.center,
                       ),
                     ),
                     Padding(
@@ -364,7 +388,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ElevatedButton(
+                          OutlinedButton(
                               onPressed: () async {
                                 Navigator.push(
                                     context,
@@ -372,18 +396,19 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                                       builder: (context) => const AdrsReportPage(),
                                     ));
                               },
-                              style: const ButtonStyle(
+                              style: ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
                                 fixedSize: WidgetStatePropertyAll(Size(130, 30)),
                               ),
-                              child: const Row(mainAxisAlignment: MainAxisAlignment.center,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     'PROCEED',
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 12),
+                                        color: Theme.of(context).colorScheme.primary, fontSize: 12),
                                   ),
                                   Icon(Icons.navigate_next,
-                                      size: 20, color: Colors.black),
+                                      size: 20, color: Theme.of(context).colorScheme.primary),
                                 ],
                               )),
                         ],

@@ -1,8 +1,10 @@
 import 'package:drugitudeleviosa/pages/messageconfirmation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../apiServiceModels/daydrugapimodel.dart';
 // import '../drugListCallModel/drugofthedayinputmodel.dart';
+import '../theme/theme_provider.dart';
 import 'aboutDrugitude.dart';
 import 'adrsOptionsPage.dart';
 import 'dictionaryMode.dart';
@@ -115,8 +117,9 @@ class _LandingPageState extends State<LandingPage> {
     return SafeArea(
       child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,elevation: 8,
-          shape: const CircleBorder(side: BorderSide(color: Colors.black)),
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
+          elevation: 8,
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
           onPressed: () async {
             Navigator.push(
                 context,
@@ -140,12 +143,13 @@ class _LandingPageState extends State<LandingPage> {
             //     icon: 'drugitudeicon',
             // ),);
           },
-          child: const Icon(Icons.search_outlined),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
         bottomNavigationBar: BottomAppBar(height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding: const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
           shape: const CircularNotchedRectangle(),
-          color: Colors.white.withOpacity(0.95),
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
@@ -159,10 +163,10 @@ class _LandingPageState extends State<LandingPage> {
                       //     builder: (context) =>
                       //     const LandingPage(),
                       //   ));
-                      }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                      }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.home_filled, color: Colors.grey,),
-                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.grey))
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.tertiary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.tertiary))
                       ],
                     )),
                   ],
@@ -172,15 +176,19 @@ class _LandingPageState extends State<LandingPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.push(
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
                           const DictionaryMode(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                        ));
+                          },
+                        child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.menu_book_outlined, color: Colors.black,),
-                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -197,11 +205,11 @@ class _LandingPageState extends State<LandingPage> {
                             builder: (context) =>
                             const DrugRequestPage(),
                           ));
-                    }, child: const Column(
+                    }, child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.mail_outline_rounded, color: Colors.black,),
-                        Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.primary,),
+                        Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -217,10 +225,10 @@ class _LandingPageState extends State<LandingPage> {
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
-                        Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -232,258 +240,336 @@ class _LandingPageState extends State<LandingPage> {
         ),
         extendBody: true,
         drawer: Padding(
-            padding: const EdgeInsets.only(top: 10.0, ),
+            padding: const EdgeInsets.only(top: 10.0,left: 5 ),
             child: SizedBox(height: 480, width: 300,
               child: Drawer(
                   elevation: BorderSide.strokeAlignOutside,
-                  backgroundColor: Colors.white.withOpacity(.1),
+                  backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(.4),
                   shape: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(50),
                         topRight: Radius.circular(50),
                       )),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 26,
-                                  width: 170,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                              const DictionaryMode(),
-                                            ));
-                                      },
-                                      child: const Row(
-                                        children: [
-                                          Icon(
-                                            Icons.menu_book_outlined,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                          Text(
-                                            ' Dictionary Mode',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black),
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const Flexible(flex: 1,
-                            child: SizedBox(height: 10)),
-                        Flexible(flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 26,
-                                  width: 160,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                              const SearchOptions(),
-                                            ));
-                                      },
-                                      child: const Row(
-                                        children: [
-                                          Icon(
-                                            Icons.medication_outlined,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                          Text(
-                                            'Search',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black),
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const Flexible(flex: 1,
-                            child: SizedBox(height: 10)),
-                        Flexible(flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 26,
-                                  width: 160,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                              const DrugRequestPage(),
-                                            ));
-                                      },
-                                      child: const Row(
-                                        children: [
-                                          Icon(
-                                            Icons.mail_outline_rounded,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                          Text(
-                                            'Request Drug',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black),
-                                          )
-                                        ],
-                                      )),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const Flexible(flex: 1,
-                            child: SizedBox(height: 10)),
-                        Flexible(flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 26,
-                                  width: 160,
-                                  child: ElevatedButton(
-                                      onPressed: () {
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Flexible(flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
+                                      width: 160,
+                                      child: OutlinedButton(
+                                          style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                          onPressed: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) => const AboutPage(),
                                             ));
                                       },
-                                      child: const Row(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.perm_device_info_outlined,
+                                                size: 20,
+                                                color: Theme.of(context).colorScheme.primary,
+                                              ),
+                                              Text(
+                                                'About',
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Theme.of(context).colorScheme.primary),
+                                              )
+                                            ],
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            const Flexible(flex: 1,
+                                child: SizedBox(height: 10)),
+                            Flexible(flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
+                                      width: 160,
+                                      child:
+                                      OutlinedButton(
+                                          style:  ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                          onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                              const SearchOptions(),
+                                            ));
+                                      }, child: Row(
                                         children: [
                                           Icon(
-                                            Icons.perm_device_info_outlined,
+                                            Icons.medication_outlined,
                                             size: 20,
-                                            color: Colors.black,
+                                            color: Theme.of(context).colorScheme.primary,
                                           ),
                                           Text(
-                                            'About',
+                                            'Search',
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.black),
+                                                color: Theme.of(context).colorScheme.primary),
                                           )
                                         ],
                                       )),
+                                      // ElevatedButton(
+                                      //     onPressed: () {
+                                      //       Navigator.push(
+                                      //           context,
+                                      //           MaterialPageRoute(
+                                      //             builder: (context) =>
+                                      //             const SearchOptions(),
+                                      //           ));
+                                      //     },
+                                      //     child: Row(
+                                      //       children: [
+                                      //         Icon(
+                                      //           Icons.medication_outlined,
+                                      //           size: 20,
+                                      //           color: Theme.of(context).colorScheme.primary,
+                                      //         ),
+                                      //         Text(
+                                      //           'Search',
+                                      //           style: TextStyle(
+                                      //               fontSize: 12,
+                                      //               fontWeight: FontWeight.bold,
+                                      //               color: Theme.of(context).colorScheme.primary),
+                                      //         )
+                                      //       ],
+                                      //     )),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                        const Flexible(flex: 1,
-                            child: SizedBox(height: 10)),
-                        Flexible(flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 26,
-                                  width: 160,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => const AdrsOptionsPage(),
+                            const Flexible(flex: 1,
+                                child: SizedBox(height: 10)),
+                            Flexible(flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
+                                      width: 160,
+                                      child:
+                                      OutlinedButton(
+                                          style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                              const DrugRequestPage(),
                                             ));
-                                      },
-                                      child: const Row(
-                                        children: [
-                                          Icon(
-                                            Icons.report,
-                                            size: 20,
-                                            color: Colors.black,
-                                          ),
-                                          Text(
-                                            'ADRs Report',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black),
-                                          )
-                                        ],
-                                      )),
+                                      }, child: Row(
+                                      children: [
+                                      Icon(
+                                      Icons.mail_outline_rounded,
+                                      size: 20,
+                                      color: Theme.of(context).colorScheme.primary,
+                                    ),
+                                    Text(
+                                      'Request Drug',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context).colorScheme.primary),
+                                    )
+                                  ],
+                                )),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                        const Flexible(flex: 1,
-                            child: SizedBox(height: 10)),
-                        Flexible(flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  height: 26,
-                                  width: 160,
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => const DictionaryDB(),
-                                            ));
-                                      },
-                                      child: const Row(
+                            const Flexible(flex: 1,
+                                child: SizedBox(height: 10)),
+                            Flexible(flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
+                                      width: 160,
+                                      child:
+                                      OutlinedButton(
+                                          style:ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => const DictionaryDB(),
+                                                ));
+                                          }, child: Row(
                                         children: [
                                           Icon(
                                             Icons.airplane_ticket_outlined,
                                             size: 20,
-                                            color: Colors.black,
+                                            color: Theme.of(context).colorScheme.primary,
                                           ),
                                           Text(
                                             'Offline Mode',
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.black),
+                                                color: Theme.of(context).colorScheme.primary),
                                           )
                                         ],
                                       )),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            ),
+                            const Flexible(flex: 1,
+                                child: SizedBox(height: 10)),
+                            Flexible(flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0, bottom: 0.0),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
+                                      width: 160,
+                                      child: OutlinedButton(
+                                          style:  ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => const AdrsOptionsPage(),
+                                                ));
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.report,
+                                                size: 20,
+                                                color:Theme.of(context).colorScheme.primary,
+                                              ),
+                                              Text(
+                                                'ADRs Report',
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Theme.of(context).colorScheme.primary),
+                                              )
+                                            ],
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const Flexible(flex: 1,
+                                child: SizedBox(height: 10)),
+
+                            Flexible(flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
+                                      width: 170,
+                                      child: OutlinedButton(
+                                          style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                  const DictionaryMode(),
+                                                ));
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.menu_book_outlined,
+                                                size: 20,
+                                                color: Theme.of(context).colorScheme.primary,
+                                              ),
+                                              Text(
+                                                ' Dictionary Mode',
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Theme.of(context).colorScheme.primary),
+                                              )
+                                            ],
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: SizedBox(height: 104, width: 87,
+                            child: Card(color: Colors.transparent,
+                              shape: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.all(Radius.circular(27))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  OutlinedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.primary),),
+                                    onPressed:() {Provider.of<ThemeProvider>(context, listen: false).toggleTheme();},
+
+                                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary,),
+                                      ],
+                                    ),),
+                                  SizedBox(width: 2,),
+                                  // Text("or", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                                  OutlinedButton(
+                                    style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                                    onPressed:() {
+                                      Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                                    },
+
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.dark_mode,color: Theme.of(context).colorScheme.primary,),
+
+                                      ],
+                                    ),),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   )),
             ),
           ),
@@ -491,7 +577,7 @@ class _LandingPageState extends State<LandingPage> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
 
-          iconTheme: const IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
           elevation: 8,
           // shadowColor: Colors.red.withOpacity(.1),
           shape: const OutlineInputBorder(
@@ -502,54 +588,77 @@ class _LandingPageState extends State<LandingPage> {
               borderSide: BorderSide(width: 2,
                   color: Colors.white,
                   strokeAlign: double.maxFinite)),
-          backgroundColor: Colors.black87,
+          backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(.9),
           title: Padding(
             padding:  const EdgeInsets.only(left: 0, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Row(
+                 Row(
                   children: [
-                    Text('DRUGITUDE', style: TextStyle(color: Colors.white, fontSize: 20),),
+                    Text('DRUGITUDE', style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),),
                   ],
                 ),
                 Row(
                   children: [
-
-                    ElevatedButton(
-                        style: const ButtonStyle(
-                            backgroundColor:
-                                WidgetStatePropertyAll(Colors.transparent)),
+                    IconButton(
+                        style: IconButton.styleFrom(backgroundColor:
+                    Colors.transparent,
+                    // Theme.of(context).colorScheme.primary,
+                    ),
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const SearchOptions(),
                               ));
-                        },
-                        child: const Row(
-                          children: [
-                            // Text('search drug', style: TextStyle(color: Colors.white),),
-                            Icon(Icons.search, color: Colors.white),
-                          ],
-                        )),
-                    ElevatedButton(
-                        style: const ButtonStyle(
-                            backgroundColor:
-                            WidgetStatePropertyAll(Colors.transparent)),
+                        }, icon: Icon(Icons.search, color: Theme.of(context).colorScheme.primary)),
+
+        //             ElevatedButton(
+        //                 style: ElevatedButton.styleFrom(
+        //             backgroundColor:
+        //             Colors.transparent,
+        //             // Theme.of(context).colorScheme.primary,
+        //   // textStyle: TextStyle(backgroundColor: Theme.of(context).colorScheme.secondary,)
+        //
+        // ),
+        //                 onPressed: () {
+        //                   Navigator.push(
+        //                       context,
+        //                       MaterialPageRoute(
+        //                         builder: (context) => const SearchOptions(),
+        //                       ));
+        //                 },
+        //                 child: const Row(
+        //                   children: [
+        //                     // Text('search drug', style: TextStyle(color: Colors.white),),
+        //                     Icon(Icons.search, color: Colors.white),
+        //                   ],
+        //                 )),
+                    IconButton(style: IconButton.styleFrom(backgroundColor:
+                    Colors.transparent,
+                      // Theme.of(context).colorScheme.primary,
+                    ),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const MessageConfirmation(),
-                              ));
-                        },
-                        child: const Row(
-                          children: [
-                            // Text('search drug', style: TextStyle(color: Colors.white),),
-                            Icon(Icons.notifications_outlined, color: Colors.white, size: 20,),
-                          ],
-                        )),
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const MessageConfirmation(),));},
+                        icon: Icon(Icons.notifications_outlined, color: Theme.of(context).colorScheme.primary, size: 20,)),
+                    // ElevatedButton(
+                    //     style: const ButtonStyle(
+                    //         backgroundColor:
+                    //         WidgetStatePropertyAll(Colors.transparent)),
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //             builder: (context) => const MessageConfirmation(),
+                    //           ));
+                    //     },
+                    //     child: const Row(
+                    //       children: [
+                    //         // Text('search drug', style: TextStyle(color: Colors.white),),
+                    //         Icon(Icons.notifications_outlined, color: Colors.white, size: 20,),
+                    //       ],
+                    //     )),
                   ],
                 ),
 
@@ -557,7 +666,7 @@ class _LandingPageState extends State<LandingPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -566,7 +675,7 @@ class _LandingPageState extends State<LandingPage> {
                 image: AssetImage(imageGet(),
                 ),
                 fit: BoxFit.cover,
-              opacity: 0.6
+              // opacity: 0.6
             ),
           ),
           child:
@@ -596,65 +705,65 @@ class _LandingPageState extends State<LandingPage> {
               else if (snapshot.hasError){
                 return Center(
                   child: SizedBox(width: double.infinity,
-                    child: Card(color: Colors.black,
+                    child: Card(color:  Theme.of(context).colorScheme.surface,
                       child: Column(
                         children: [
-                          const Card(color: Colors.black,
+                           Card(color: Theme.of(context).colorScheme.surface,
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Text("Oops...",
-                                        style: TextStyle(color: Colors.white,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
+                                        style: TextStyle(color:  Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Text("Seems like we have stumbled upon some critical error.",
-                                        style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                        style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Text("What could have possibly gone wrong?",
-                                        style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                        style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                   ),
                                 ],
                               )),
                           const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
-                          const Card(color: Colors.black,
+                           Card(color:  Theme.of(context).colorScheme.surface,
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text("1. NETWORK ERROR", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text("1. NETWORK ERROR", style: TextStyle(color:  Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                   ),
                                   Text("Please check your internet connection and try again",
-                                      style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                      style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                 ],
                               )),
-                          Card(color: Colors.black,
+                          Card(color: Theme.of(context).colorScheme.surface,
                               child: Column(
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                                   Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                   ),
-                                  const Column(
+                                   Column(
                                     children: [
                                       Text("Please turn on your connection by turning Airplane Mode off. ",
-                                          style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                       Text("If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
-                                          style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                     ],
                                   ),
                                   SizedBox(width: 200, height: 30,
                                     child: ElevatedButton(
                                         onPressed: (){
                                           Navigator.pop(context);
-                                        }, child: const Row(
+                                        }, child: Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
-                                        Text('Close', style: TextStyle(fontSize: 15, color: Colors.black))
+                                        const Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
+                                        Text('Close', style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.primary))
                                       ],
                                     )),
                                   ),
@@ -669,10 +778,10 @@ class _LandingPageState extends State<LandingPage> {
               return ListView.builder(
                   itemCount: _daydrugList.dayDrug.length,
                   itemBuilder: (context, index) {
-                    return Card(color: Colors.black.withOpacity(0.6),borderOnForeground: false,
+                    return Card(color: Theme.of(context).colorScheme.surface.withOpacity(0.8),borderOnForeground: false,
                         shape: const OutlineInputBorder(
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
-                      borderSide: BorderSide(color: Colors.transparent)
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+                      borderSide: BorderSide(color: Colors.white)
                     ),
                       child: ListTile(
                           title: Row(
@@ -687,21 +796,23 @@ class _LandingPageState extends State<LandingPage> {
                                   Center(
                                     child: Column(
                                       children: [
-                                        const Padding(
-                                          padding: EdgeInsets.only(top: 25.0, bottom: 0, left: 8, right: 8),
+                                         Padding(
+                                          padding: const EdgeInsets.only(top: 25.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Drug of the Day',
-                                      style: TextStyle(
-                                          decorationThickness: BouncingScrollSimulation.maxSpringTransferVelocity,
-                                          fontSize: 20, color: Colors.white38)),
+                                      style: TextStyle(decoration: TextDecoration.underline,
+                                          // decorationThickness: BouncingScrollSimulation.maxSpringTransferVelocity,
+                                          fontSize: 20, color: Theme.of(context).colorScheme.primary.withOpacity(0.8))),
                                         ),
                                         Text("${_daydrugList.dayDrug[index]['medicineName']}",
-                                          style: const TextStyle(color: Colors.white, height:1.3,fontSize: 50, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
-                                        Card(color: Colors.black.withOpacity(0.1),
-                                          child: ExpansionTile(
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary, height:1,fontSize: 50, fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                                        Card(
+                                          shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                          color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                          child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                             trailing: Icon(_customIcon ? Icons.visibility_sharp : Icons.visibility_off),
-                                            title:  const Text("Drug Image",textAlign: TextAlign.start,
+                                            title:  Text("Drug Image",textAlign: TextAlign.start,
                                                 style: TextStyle(
-                                                    fontSize: 12, color: Colors.white54)),
+                                                    fontSize: 12, color: Theme.of(context).colorScheme.primary)),
                                             children: [
                                               Center(
                                                   child: Image.network(
@@ -733,84 +844,84 @@ class _LandingPageState extends State<LandingPage> {
                                             onExpansionChanged: (bool expanded) {setState(() => _customIcon = expanded);},
                                           ),
                                         ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 2.0, bottom: 0, left: 8, right: 8),
+                                     Padding(
+                                      padding: const EdgeInsets.only(top: 2.0, bottom: 0, left: 8, right: 8),
                                       child: Text('Active Ingredient',
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                        style: TextStyle(color: Theme.of(context).colorScheme.primary,decoration: TextDecoration.underline, fontSize: 12),),
                                     ),
                                         // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
                                     Padding(
                                       padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                       child: Text('${_daydrugList.dayDrug[index]['inn_name']}',
                                         textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                        style: TextStyle(
+                                            color: Theme.of(context).colorScheme.primary, fontSize: 20, fontWeight: FontWeight.bold),),
                                     ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        Padding(
+                                      padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                       child: Text('Therapuetic Area',
-                                        style: TextStyle(color: Colors.white54,fontSize: 12),),
+                                        style: TextStyle(color: Theme.of(context).colorScheme.primary,decoration: TextDecoration.underline ,fontSize: 12),),
                                     ),
                                         Text("${_daydrugList.dayDrug[index]['therapeuticArea']}",
-                                                    style: const TextStyle(
-                                                        color: Colors.white,
+                                                    style: TextStyle(
+                                                        color: Theme.of(context).colorScheme.primary,
                                                         fontWeight: FontWeight.bold),textAlign: TextAlign.center),
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        Padding(
+                                      padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                       child: Text('Pharmacotherpuetic Group',
-                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,fontSize: 12)),
                                     ),
                                         Text("${_daydrugList.dayDrug[index]['humanPharmacotherapeuticGroup']}",
-                                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
-                                        const Padding(
-                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+                                         Padding(
+                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Approx Retail Price',
-                                              style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                              style: TextStyle(color: Theme.of(context).colorScheme.primary,decoration: TextDecoration.underline ,fontSize: 12)),
                                         ),
                                         Text("${_daydrugList.dayDrug[index]['approxRetailPrice']}",
-                                            style: const TextStyle(
-                                                color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
-                                        const Padding(
-                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                            style: TextStyle(
+                                                color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+                                         Padding(
+                                      padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                       child: Text('Authorization Status',
-                                          style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary,decoration: TextDecoration.underline ,fontSize: 12)),
                                     ),
                                         Text("${_daydrugList.dayDrug[index]['authorisationStatus']}",
-                                            style: const TextStyle(
-                                                color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
-                                        const Padding(
-                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                            style: TextStyle(
+                                                color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+                                         Padding(
+                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Marketing Authorization Company',
-                                            style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline ,fontSize: 12),),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                          padding:  const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text("${_daydrugList.dayDrug[index]['marketingAuthorisationHolderorCompanyName']}",
-                                              style: const TextStyle(color: Colors.white, fontSize: 12),textAlign: TextAlign.center
+                                              style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold,),textAlign: TextAlign.center
                                           ),
                                         ),
-                                        const Padding(
-                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                           child: Text('Local Representative Company',
-                                            style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline ,fontSize: 12),),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                           child: Text("${_daydrugList.dayDrug[index]['localRepresentativeHolderCompanyName']}",
-                                              style: const TextStyle(color: Colors.white, fontSize: 12),textAlign: TextAlign.center
+                                              style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),textAlign: TextAlign.center
                                           ),
                                         ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                       child: Text('Indication and Use',
-                                        style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                        style: TextStyle(color:Theme.of(context).colorScheme.primary,decoration: TextDecoration.underline, fontSize: 12)),
                                     ),
                                     Text("${_daydrugList.dayDrug[index]['conditionOrIndication']}",
                                      overflow: TextOverflow.fade,
                                       textAlign: TextAlign.center,
-                                      style: const TextStyle(fontSize: 12,
-                                          color: Colors.white,
+                                      style: TextStyle(fontSize: 12,
+                                          color: Theme.of(context).colorScheme.primary,
                                           fontWeight: FontWeight.bold),),
 
                                       ],

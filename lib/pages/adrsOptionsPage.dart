@@ -1,6 +1,5 @@
+import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
 import 'package:flutter/material.dart';
-
-import '../searchModels/gennamesearch.dart';
 import 'aboutDrugitude.dart';
 import 'adrsLandingPage.dart';
 import 'adrsreportconfirmationlistpage.dart';
@@ -140,51 +139,56 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,elevation: 8,
-          shape: const CircleBorder(side: BorderSide(color: Colors.black)),
-          onPressed:  () async {
-            showSearch(
-                context: context, delegate: SearchDrug());
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
+          elevation: 8,
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
+          onPressed: () async {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchOptions(),
+                ));
+            // await NotificationService.showNotification(
+            //   interval: 5,
+            //     title: "Drugitude",
+            //     body: "Drug of the Day",
+            //     summary: "Daily Dose of New Drug Information",
+            //   scheduled: true,
+            //   repeatNotif: true
+            //   );
+
+
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
           },
-          child: const Icon(Icons.search_outlined),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
         bottomNavigationBar: BottomAppBar(height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding: const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
           shape: const CircularNotchedRectangle(),
-          color: Colors.white,
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const LandingPage(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const LandingPage(),
+                          ));
+                    }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.home_filled, color: Colors.black,),
-                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
-                      ],
-                    )),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
-                child: Row(
-                  children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const DictionaryMode(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.menu_book_outlined, color: Colors.black,),
-                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.primary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -199,12 +203,12 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                            const DrugRequestPage(),
+                            const DictionaryMode(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.mail_outline_rounded, color: Colors.black,),
-                        Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -214,16 +218,40 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const DrugRequestPage(),
+                              ));
+
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.primary,),
+                            Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                          ],
+                        )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
                     TextButton(onPressed: (){
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
-                        Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -231,17 +259,16 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
               ),
               const SizedBox(width: 52,)
             ],
-
           ),
         ),
         extendBody: true,
-        drawer: const Padding(
-          padding: EdgeInsets.only(top: 56.0),
-          child: SizedBox(
-            height: 400,
-            width: 200,
-          ),
-        ),
+        // drawer: const Padding(
+        //   padding: EdgeInsets.only(top: 56.0),
+        //   child: SizedBox(
+        //     height: 400,
+        //     width: 200,
+        //   ),
+        // ),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           leading: IconButton(onPressed: (){ Navigator.pushReplacement(
@@ -250,9 +277,9 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                 builder: (context) => const LandingPage(),
               ));
 },
-              icon: const Icon(Icons.arrow_back, color: Colors.white,)),
-          backgroundColor: Colors.black.withOpacity(0.8),
-          iconTheme: const IconThemeData(color: Colors.white),
+              icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.primary,)),
+          backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+          iconTheme: IconThemeData(color: Theme.of(context).colorScheme.secondary,),
           elevation: 8,
           // shadowColor: Colors.red.withOpacity(.1),
           shape: const OutlineInputBorder(
@@ -263,7 +290,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
               borderSide: BorderSide(
                 color: Colors.white,
               )),
-          title: const Padding(
+          title: Padding(
             padding: EdgeInsets.only(left: 0, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -273,7 +300,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                   children: [
                     Text(
                       'DRUGITUDE',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),
                     ),
                   ],
                 ),
@@ -281,7 +308,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -297,76 +324,87 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Card(color: Colors.black.withOpacity(0.8),
-                  child: const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'ADVERSE DRUG REACTIONS REPORT PORTAL',
-                      style: TextStyle(color: Colors.white, decoration: TextDecoration.underline, decorationColor: Colors.white),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                Card(shape: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.all(Radius.circular(25)
+              )),
+                  color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text(
+                          'ADVERSE DRUG REACTIONS REPORT PORTAL',
+                          style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
 
-                      ElevatedButton(
-                          onPressed: () async {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const AdrsLandingPage(),
-                                ));
-                          },
-                          style: const ButtonStyle(
-                            fixedSize: WidgetStatePropertyAll(Size(200, 30)),
-                          ),
-                          child: const Row(mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'ADRS INITIAL REPORT',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
-                              ),
-                              Icon(Icons.navigate_next,
-                                  size: 20, color: Colors.black),
-                            ],
-                          )),
+                            OutlinedButton(
+                                onPressed: () async {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const AdrsLandingPage(),
+                                      ));
+                                },
+                                style: ButtonStyle(
+                                    backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
+                                  fixedSize: WidgetStatePropertyAll(Size(200, 30)),
+                                ),
+                                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'ADRS INITIAL REPORT',
+                                      style: TextStyle(
+                                          color: Theme.of(context).colorScheme.primary, fontSize: 12),
+                                    ),
+                                    Icon(Icons.navigate_next,
+                                        size: 20, color: Theme.of(context).colorScheme.primary),
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                                onPressed: () async {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const AdrsReportconfirmationlist(),
+                                      ));
+                                },
+                                style: ButtonStyle(
+                                    backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
+                                  fixedSize: WidgetStatePropertyAll(Size(300, 30)),
+                                ),
+                                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'FOLLOW UP ON SUBMITTED REPORT',
+                                      style: TextStyle(
+                                          color: Theme.of(context).colorScheme.primary, fontSize: 12),
+                                    ),
+                                    Icon(Icons.navigate_next,
+                                        size: 20, color: Theme.of(context).colorScheme.primary),
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                          onPressed: () async {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const AdrsReportconfirmationlist(),
-                                ));
-                          },
-                          style: const ButtonStyle(
-                            fixedSize: WidgetStatePropertyAll(Size(300, 30)),
-                          ),
-                          child: const Row(mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'FOLLOW UP ON SUBMITTED REPORT',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
-                              ),
-                              Icon(Icons.navigate_next,
-                                  size: 20, color: Colors.black),
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
+
               ],
             ),
           ),

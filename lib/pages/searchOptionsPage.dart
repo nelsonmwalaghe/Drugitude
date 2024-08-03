@@ -139,51 +139,56 @@ class _SearchOptionsState extends State<SearchOptions> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,elevation: 8,
-          shape: const CircleBorder(side: BorderSide(color: Colors.black)),
-          onPressed:  () async {
-            showSearch(
-                context: context, delegate: SearchDrug());
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
+          elevation: 8,
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
+          onPressed: () async {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchOptions(),
+                ));
+            // await NotificationService.showNotification(
+            //   interval: 5,
+            //     title: "Drugitude",
+            //     body: "Drug of the Day",
+            //     summary: "Daily Dose of New Drug Information",
+            //   scheduled: true,
+            //   repeatNotif: true
+            //   );
+
+
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
           },
-          child: const Icon(Icons.search_outlined),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
         bottomNavigationBar: BottomAppBar(height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding: const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
           shape: const CircularNotchedRectangle(),
-          color: Colors.white,
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const LandingPage(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const LandingPage(),
+                          ));
+                    }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.home_filled, color: Colors.black,),
-                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
-                      ],
-                    )),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
-                child: Row(
-                  children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const DictionaryMode(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.menu_book_outlined, color: Colors.black,),
-                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.primary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -198,12 +203,12 @@ class _SearchOptionsState extends State<SearchOptions> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                            const DrugRequestPage(),
+                            const DictionaryMode(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.mail_outline_rounded, color: Colors.black,),
-                        Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -213,16 +218,40 @@ class _SearchOptionsState extends State<SearchOptions> {
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const DrugRequestPage(),
+                              ));
+
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.primary,),
+                            Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                          ],
+                        )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
                     TextButton(onPressed: (){
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.corporate_fare_outlined, color: Colors.black,),
-                        Text('About', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -230,230 +259,63 @@ class _SearchOptionsState extends State<SearchOptions> {
               ),
               const SizedBox(width: 52,)
             ],
-
           ),
         ),
         extendBody: true,
-        drawer: const Padding(
-          padding: EdgeInsets.only(top: 56.0),
-          child: SizedBox(
-            height: 400,
-            width: 200,
-             // child: Drawer(
-            //     elevation: BorderSide.strokeAlignOutside,
-            //     backgroundColor: Colors.white.withOpacity(.1),
-            //     shape: const OutlineInputBorder(
-            //         borderSide: BorderSide(color: Colors.black),
-            //         borderRadius: BorderRadius.only(
-            //           bottomRight: Radius.circular(50),
-            //           topRight: Radius.circular(50),
-            //         )),
-            //     child: Column(
-            //       crossAxisAlignment: CrossAxisAlignment.center,
-            //       children: [
-            //         Padding(
-            //           padding: const EdgeInsets.only(top: 50.0, bottom: 50),
-            //           child: Row(
-            //             children: [
-            //               SizedBox(
-            //                 height: 26,
-            //                 width: 150,
-            //                 child: ElevatedButton(
-            //                     onPressed: () {
-            //                       Navigator.pushReplacement(
-            //                           context,
-            //                           MaterialPageRoute(
-            //                             builder: (context) =>
-            //                                 const LandingPage(),
-            //                           ));
-            //                     },
-            //                     child: const Row(
-            //                       children: [
-            //                         Icon(
-            //                           Icons.home_outlined,
-            //                           size: 20,
-            //                           color: Colors.black,
-            //                         ),
-            //                         Text(
-            //                           'Home',
-            //                           style: TextStyle(
-            //                               fontSize: 12,
-            //                               fontWeight: FontWeight.bold,
-            //                               color: Colors.black),
-            //                         )
-            //                       ],
-            //                     )),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-            //           child: Row(
-            //             children: [
-            //               SizedBox(
-            //                 height: 26,
-            //                 width: 150,
-            //                 child: ElevatedButton(
-            //                     onPressed: () {
-            //                       Navigator.push(
-            //                           context,
-            //                           MaterialPageRoute(
-            //                             builder: (context) =>
-            //                                 const SearchOptions(),
-            //                           ));
-            //                     },
-            //                     child: const Row(
-            //                       children: [
-            //                         Icon(
-            //                           Icons.medication_outlined,
-            //                           size: 20,
-            //                           color: Colors.black,
-            //                         ),
-            //                         Text(
-            //                           'Search',
-            //                           style: TextStyle(
-            //                               fontSize: 12,
-            //                               fontWeight: FontWeight.bold,
-            //                               color: Colors.black),
-            //                         )
-            //                       ],
-            //                     )),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(top: 8.0, bottom: 50.0),
-            //           child: Row(
-            //             children: [
-            //               SizedBox(
-            //                 height: 26,
-            //                 width: 150,
-            //                 child: ElevatedButton(
-            //                     onPressed: () {
-            //                       Navigator.push(
-            //                           context,
-            //                           MaterialPageRoute(
-            //                             builder: (context) =>
-            //                                 const DrugRequestPage(),
-            //                           ));
-            //                     },
-            //                     child: const Row(
-            //                       children: [
-            //                         Icon(
-            //                           Icons.request_page_outlined,
-            //                           size: 20,
-            //                           color: Colors.black,
-            //                         ),
-            //                         Text(
-            //                           'Request Drug',
-            //                           style: TextStyle(
-            //                               fontSize: 12,
-            //                               fontWeight: FontWeight.bold,
-            //                               color: Colors.black),
-            //                         )
-            //                       ],
-            //                     )),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //         Padding(
-            //           padding: const EdgeInsets.only(top: 8.0, bottom: 56.0),
-            //           child: Row(
-            //             children: [
-            //               SizedBox(
-            //                 height: 26,
-            //                 width: 150,
-            //                 child: ElevatedButton(
-            //                     onPressed: () {
-            //                       Navigator.push(
-            //                           context,
-            //                           MaterialPageRoute(
-            //                             builder: (context) => const AboutPage(),
-            //                           ));
-            //                     },
-            //                     child: const Row(
-            //                       children: [
-            //                         Icon(
-            //                           Icons.perm_device_info_outlined,
-            //                           size: 20,
-            //                           color: Colors.black,
-            //                         ),
-            //                         Text(
-            //                           'About',
-            //                           style: TextStyle(
-            //                               fontSize: 12,
-            //                               fontWeight: FontWeight.bold,
-            //                               color: Colors.black),
-            //                         )
-            //                       ],
-            //                     )),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ],
-            //     )),
-          ),
-        ),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: IconButton(onPressed: (){Navigator.pop(context);},
-              icon: const Icon(Icons.arrow_back, color: Colors.white,)),
-          backgroundColor: Colors.black.withOpacity(0.8),
-          iconTheme: const IconThemeData(color: Colors.white),
-          elevation: 8,
-          // shadowColor: Colors.red.withOpacity(.1),
-          shape: const OutlineInputBorder(
+          shape:  const OutlineInputBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(25),
                 bottomRight: Radius.circular(25),
               ),
-              borderSide: BorderSide(
-                color: Colors.white,
-              )),
-          title: const Padding(
-            padding: EdgeInsets.only(left: 0, right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'DRUGITUDE',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ],
-                ),
-                // Row(
-                //   children: [
-                //     ElevatedButton(
-                //         style: const ButtonStyle(
-                //             backgroundColor:
-                //                 MaterialStatePropertyAll(Colors.transparent)),
-                //         onPressed: () {
-                //           Navigator.push(
-                //               context,
-                //               MaterialPageRoute(
-                //                 builder: (context) => const SearchOptions(),
-                //               ));
-                //         },
-                //         child: const Row(
-                //           children: [
-                //             // Text('search drug', style: TextStyle(color: Colors.white),),
-                //             Icon(Icons.search, color: Colors.white),
-                //           ],
-                //         )),
-                //   ],
-                // ),
-              ],
-            ),
+              borderSide: BorderSide(width: 2,
+                  color: Colors.white,
+                  strokeAlign: double.maxFinite)),
+          leading: IconButton(onPressed: (){Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LandingPage(),
+              ));},
+              icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.primary,)),
+          backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
+          title:  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    'DRUGITUDE',
+                    style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),
+                  ),
+                ],
+              ),
+              // Row(
+              //   children: [
+              //     Text('A ', style: TextStyle(color: Colors.white, fontSize: 12), ),
+              //     Text(' - ',style: TextStyle(color: Colors.purple, fontSize: 12),),
+              //     Text(' Z', style: TextStyle(color: Colors.white, fontSize: 12),),
+              //     Text(' Generic Drug List: ',style: TextStyle(color: Colors.white, fontSize: 12),),
+              //   ],
+              // ),
+
+            ],
           ),
+          actions: [
+            IconButton(onPressed: () async {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LandingPage(),
+                  ));
+
+              // final results = await showSearch(context: context, delegate: SearchDrug());
+
+              // print('Results: $results');
+            },
+                icon: Icon(Icons.close_sharp, color: Theme.of(context).colorScheme.primary,))
+          ],
         ),
-        backgroundColor: Colors.black.withOpacity(0.3),
+        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -470,45 +332,50 @@ class _SearchOptionsState extends State<SearchOptions> {
               padding: const EdgeInsets.only(top: 60),
               child: ListView(physics: const ClampingScrollPhysics(),
                 children: [
-                  const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Search by:',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  Card(color: Colors.black.withOpacity(0.6),
+                  Card(shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(25)
+                      )),
+                    color: Theme.of(context).colorScheme.surface.withOpacity(0.8),
                     child: Column(
                     children: [
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            'Search by:',
+                            style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ElevatedButton(
+                            OutlinedButton(
                                 onPressed: () async {
                                   showSearch(
                                       context: context,
                                       delegate: SearchDrugBrandName());
                                 },
-                                style: const ButtonStyle(
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
                                   fixedSize: WidgetStatePropertyAll(Size(110, 30)),
                                 ),
-                                child: const Row(
+                                child: Row(
                                   children: [
                                     Icon(Icons.medication_rounded,
-                                        size: 20, color: Colors.black),
+                                        size: 20, color: Theme.of(context).colorScheme.primary),
                                     Text(
                                       'BRAND',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 12),
+                                          color: Theme.of(context).colorScheme.primary),
                                     ),
                                   ],
                                 )),
-                            const Text(
-                                style: TextStyle(color: Colors.white, fontSize: 11),
+                             Text(
+                                style: TextStyle(color: Theme.of(context).colorScheme.primary),
                                 'Also known as trade name, utilized by company that manufactures it, usually the company which develops and patents it and market it with a specific brand name',
                                 overflow: TextOverflow.fade,
                                 textAlign: TextAlign.center)
@@ -519,27 +386,28 @@ class _SearchOptionsState extends State<SearchOptions> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ElevatedButton(
+                            OutlinedButton(
                                 onPressed: () async {
                                   showSearch(
                                       context: context, delegate: SearchDrug());
                                 },
-                                style: const ButtonStyle(
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
                                   fixedSize: WidgetStatePropertyAll(Size(160, 30)),
                                 ),
-                                child: const Row(
+                                child: Row(
                                   children: [
                                     Icon(Icons.medication_outlined,
-                                        size: 20, color: Colors.black),
+                                        size: 20, color: Theme.of(context).colorScheme.primary),
                                     Text(
                                       'GENERIC NAME',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 12),
+                                          color: Theme.of(context).colorScheme.primary),
                                     ),
                                   ],
                                 )),
-                            const Text(
-                              style: TextStyle(color: Colors.white, fontSize: 11),
+                             Text(
+                              style: TextStyle(color: Theme.of(context).colorScheme.primary),
                               'Also known as International Non-Proprietary Name (INN), is the chemical name of an active ingredient. This name is the same no matter how many companies manufacture the medicine.',
                               overflow: TextOverflow.fade,
                               textAlign: TextAlign.center,
@@ -551,28 +419,29 @@ class _SearchOptionsState extends State<SearchOptions> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ElevatedButton(
+                            OutlinedButton(
                                 onPressed: () async {
                                   showSearch(
                                       context: context,
                                       delegate: SearchDrugTherapueticArea());
                                 },
-                                style: const ButtonStyle(
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
                                   fixedSize: WidgetStatePropertyAll(Size(190, 30)),
                                 ),
-                                child: const Row(
+                                child: Row(
                                   children: [
                                     Icon(Icons.medical_services_rounded,
-                                        size: 20, color: Colors.black),
+                                        size: 20, color: Theme.of(context).colorScheme.primary),
                                     Text(
                                       'THERAPUETIC AREA',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 12),
+                                          color: Theme.of(context).colorScheme.primary,),
                                     ),
                                   ],
                                 )),
-                            const Text(
-                              style: TextStyle(color: Colors.white, fontSize: 11),
+                            Text(
+                              style: TextStyle(color: Theme.of(context).colorScheme.primary,),
                               'Refers to grouping of similar diseases or conditions under a generalised heading,',
                               overflow: TextOverflow.fade,
                               textAlign: TextAlign.center,
@@ -584,28 +453,29 @@ class _SearchOptionsState extends State<SearchOptions> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ElevatedButton(
+                            OutlinedButton(
                                 onPressed: () async {
                                   showSearch(
                                       context: context,
                                       delegate: SearchDrugPhramGroup());
                                 },
-                                style: const ButtonStyle(
-                                  fixedSize: WidgetStatePropertyAll(Size(220, 30)),
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
+                                  fixedSize: WidgetStatePropertyAll(Size(230, 30)),
                                 ),
-                                child: const Row(
+                                child: Row(
                                   children: [
                                     Icon(Icons.medical_information_rounded,
-                                        size: 20, color: Colors.black),
+                                        size: 20, color: Theme.of(context).colorScheme.primary),
                                     Text(
                                       'PHARMACEUTICAL GROUP',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 12),
+                                          color: Theme.of(context).colorScheme.primary),
                                     ),
                                   ],
                                 )),
-                            const Text(
-                                style: TextStyle(color: Colors.white, fontSize: 11),
+                            Text(
+                                style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 11),
                                 'Refers to a group of drugs that share a similar chemical structure, or have the same mechanism of action, the same related mode of action or target the same illness or related illnesses.',
                                 overflow: TextOverflow.fade,
                                 textAlign: TextAlign.center),

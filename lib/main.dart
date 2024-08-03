@@ -5,9 +5,11 @@ import 'package:drugitudeleviosa/controllers/local_database.dart';
 import 'package:drugitudeleviosa/notificationsmodel/notificationservices.dart';
 import 'package:drugitudeleviosa/pages/MainScreen.dart';
 import 'package:drugitudeleviosa/pages/welcomScreen.dart';
+import 'package:drugitudeleviosa/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_icons/flutter_app_icons.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 import 'adverseDrugReactionReportModel/adversedrugreaction_api.dart';
 import 'drug_request_model/drugrequestsheets_api.dart';
@@ -70,7 +72,10 @@ Future<void> main() async {
   await AdrSheetApi.init();
 
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(create: (context) =>
+  ThemeProvider(),
+      child:
+      const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -93,10 +98,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Drugitude',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white70),
-        useMaterial3: true,
-      ),
+      theme: Provider.of<ThemeProvider>(context).themeData,
+      darkTheme: Provider.of<ThemeProvider>(context).themeData,
+
+      
+      // ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.white70),
+      //   useMaterial3: true,
+      // ),
       home: const
       // LandingPage(),
       SplashScreen(),
@@ -120,7 +129,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 192,
               child: Column(
                 children: [
-                  Text('Drugitude', style: TextStyle(color: Colors.white, fontSize: 20),textAlign: TextAlign.center),
+                  Text('Drugitude', style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                   SizedBox(height: 20),
                   Expanded(
                       child: RiveAnimation.asset(
@@ -131,8 +140,10 @@ class _SplashScreenState extends State<SplashScreen> {
             )),
         nextScreen: MainScreen(),
     splashIconSize: 192,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
     );
   }
 }
+
+
 

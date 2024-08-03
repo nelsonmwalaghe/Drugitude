@@ -16,7 +16,7 @@ class AdrsReportFormWidget extends StatefulWidget {
 }
 
 class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
-  late final bool _customIcon = false;
+  // late final bool _customIcon = false;
   final itemKeyC = GlobalKey();
   final itemKeyD = GlobalKey();
   final itemKeyT = GlobalKey();
@@ -432,21 +432,33 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const Text('ADRS REPORT',style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
-                  const Text("This report consists of FIVE Sections. Please tap the sections below to open and fill all. You can also tap the 'skip' button to go to the next Section when necessary.", style: TextStyle(color: Colors.white), textAlign: TextAlign.justify,),
+                  Text('ADRS REPORT',style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20, fontWeight: FontWeight.bold ), textAlign: TextAlign.center,),
+                  Text("This report consists of FIVE Sections. Please tap the sections below to open and fill all. You can also tap the 'skip' button to go to the next Section when necessary.", style: TextStyle(color: Theme.of(context).colorScheme.primary), textAlign: TextAlign.justify,),
                   const SizedBox(height: 20,),
 
-                  Card(key: itemKeyT,
-                      color: Colors.blueGrey.shade600.withOpacity(0.6),
+                  Card(shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(25)
+                      )),
+                      key: itemKeyT,
+                      color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                       child:
                       Column(
                       children: [
-                        const Text('SECTION A', style: TextStyle(color: Colors.white)),
-                        Card(color: Colors.black.withOpacity(0.6),
-                            child: ExpansionTile(
-                              collapsedIconColor: Colors.white,
+                        Text('SECTION A', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                        Card(shape: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.all(Radius.circular(25)
+                            )),
+                            color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                            child: ExpansionTile(shape: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.all(Radius.circular(25)
+                                )),
+                              backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                              collapsedIconColor: Theme.of(context).colorScheme.primary,
                               iconColor: Colors.green,
-                              title: const Text('Preliminary info and Bio-Data', style: TextStyle(color: Colors.white)),
+                              title: Text('Preliminary info and Bio-Data', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
                               // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                           children: [
                             buildReportTitle(),
@@ -474,38 +486,57 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                         )),
                       ],
                     )), //section A
-                  Card(color: Colors.grey.shade700.withOpacity(0.6),
+                  Card(shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(25)
+                      )),
+                      color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                     child:
                     Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text('SECTION B', style: TextStyle(color: Colors.white),),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('SECTION B', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                         ),
 
-                      Card(color: Colors.blueGrey.shade800.withOpacity(0.6),
+                      Card(shape: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(25)
+                          )),
+                        color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                       child: Column(
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Current Medication',style: TextStyle(color: Colors.white)),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Current Medication',style: TextStyle(color: Theme.of(context).colorScheme.primary)),
                           ),
-                          Card(color: Colors.black.withOpacity(0.6),
-                            child: ExpansionTile(
-                              collapsedIconColor: Colors.white,
+                          Card(shape: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.all(Radius.circular(25)
+                              )),
+                            color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                            child: ExpansionTile(shape: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.all(Radius.circular(25)
+                                )),
+                              backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                              collapsedIconColor: Theme.of(context).colorScheme.primary,
                               iconColor: Colors.green,
-                                title: const Text('Drugs currently used by Patient',style: TextStyle(color: Colors.white)),
+                                title: Text('Drugs currently used by Patient',style: TextStyle(color: Theme.of(context).colorScheme.primary)),
                               // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text("List all medicines being currently used by the patient including OTC and herbal products.", style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text("List all medicines being currently used by the patient including OTC and herbal products.", style: TextStyle(color: Theme.of(context).colorScheme.primary), textAlign: TextAlign.center,),
                                 ),
-                                Card(color: Colors.grey.shade900.withOpacity(0.6),
+                                Card(color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                   child: Column(
                                     children: [
-                                      const Text("CURRENT MEDICINE 1",
-                                        style: TextStyle(color: Colors.white,fontSize: 12),),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text("CURRENT MEDICINE 1",
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                      ),
                                       buildCurrentMedicineList1Brand(),
                                       buildCurrentMedicineList1SuspectedDrug(),
                                       buildCurrentMedicineList1Gen(),
@@ -520,16 +551,23 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     ],
                                   ),
                                 ),
-                                Card(color: Colors.blueGrey.shade700.withOpacity(0.6),
+                                Card(shape: const OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.all(Radius.circular(25)
+                                    )),
+                                  color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                   child: Column(
                                     children: [
-                                      const Text("CURRENT MEDICINE 2",
-                                        style: TextStyle(color: Colors.white,fontSize: 12),),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 8.0),
+                                        child: Text("CURRENT MEDICINE 2",
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                      ),
                                       Row(mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           TextButton(
                                               onPressed: () => scrollToItemC(),
-                                              child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                              child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                         ],
                                       ),
                                       buildCurrentMedicineList2Brand(),
@@ -546,16 +584,23 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     ],
                                   ),
                                 ),
-                                Card(color: Colors.black26.withOpacity(0.6),
+                                Card(shape: const OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.all(Radius.circular(25)
+                                    )),
+                                  color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                   child: Column(
                                     children: [
-                                      const Text("CURRENT MEDICINE 3",
-                                        style: TextStyle(color: Colors.white,fontSize: 12),),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 8.0),
+                                        child: Text("CURRENT MEDICINE 3",
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                      ),
                                       Row(mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           TextButton(
                                               onPressed: () => scrollToItemC(),
-                                              child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                              child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                         ],
                                       ),
                                       buildCurrentMedicineList3Brand(),
@@ -572,16 +617,23 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     ],
                                   ),
                                 ),
-                                Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
+                                Card(shape: const OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.all(Radius.circular(25)
+                                    )),
+                                  color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                   child: Column(
                                     children: [
-                                      const Text("CURRENT MEDICINE 4",
-                                        style: TextStyle(color: Colors.white,fontSize: 12),),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 8.0),
+                                        child: Text("CURRENT MEDICINE 4",
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                      ),
                                       Row(mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           TextButton(
                                               onPressed: () => scrollToItemC(),
-                                              child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                              child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                         ],
                                       ),
                                       buildCurrentMedicineList4Brand(),
@@ -598,17 +650,23 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     ],
                                   ),
                                 ),
-                                Card(
-                                  color: Colors.black.withOpacity(0.6),
+                                Card(shape: const OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.all(Radius.circular(25)
+                                    )),
+                                  color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                   child: Column(
                                     children: [
-                                      const Text("CURRENT MEDICINE 5",
-                                        style: TextStyle(color: Colors.white,fontSize: 12),),
+                                       Padding(
+                                         padding: const EdgeInsets.only(top:8.0),
+                                         child: Text("CURRENT MEDICINE 5",
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                       ),
                                       Row(mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
                                           TextButton(
                                               onPressed: () => scrollToItemC(),
-                                              child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                              child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                         ],
                                       ),
                                       buildCurrentMedicineList5Brand(),
@@ -634,47 +692,70 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                         ],
                       ),
                     ),
-              
-              
-              
+
+
+
                 ],
               )
               ), //section B
-                  Card(key: itemKeyC,
-                    color: Colors.grey.shade700.withOpacity(0.6),
+                  Card(shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(25)
+                      )),
+                    color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                    key: itemKeyC,
                     child: Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text('SECTION C', style: TextStyle(color: Colors.white),),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('SECTION C', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                         ),
-                        Card(color: Colors.blueGrey.shade300.withOpacity(0.6),
+                        Card(shape: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.all(Radius.circular(25)
+                            )),
+                          color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                           child: Column(
                             children: [
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text('Past Medication History', style: TextStyle(color: Colors.white),),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Past Medication History', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                               ),
-                              Card(color: Colors.black.withOpacity(0.6),
-                                child: ExpansionTile(
+                              Card(shape: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.all(Radius.circular(25)
+                                  )),
+                                color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                                child: ExpansionTile(shape: const OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.all(Radius.circular(25)
+                                    )),
+                                  backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                   collapsedIconColor: Colors.white,
                                   iconColor: Colors.green,
-                                  title: const Text('Drugs used in the last 3 months', style: TextStyle(color: Colors.white),),
+                                  title: Text('Drugs used in the last 3 months', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                                   // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                                   children: <Widget>[
-                                    const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text("List all medicines used in the last 3 months including OTC, herbals and if pregnant indicate medicines used in the 1st trimester", style: TextStyle(color: Colors.white,), textAlign: TextAlign.center,),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text("List all medicines used in the last 3 months including OTC, herbals and if pregnant indicate medicines used in the 1st trimester", style: TextStyle(color: Theme.of(context).colorScheme.primary,), textAlign: TextAlign.center,),
                                     ),
-                                    Card(color: Colors.grey.shade900.withOpacity(0.6),
+                                    Card(shape: const OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.white),
+                                        borderRadius: BorderRadius.all(Radius.circular(25)
+                                        )),
+                                        color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                         child: Column(
                                           children: [
-                                            const Text("PAST MEDICINE 1", style: TextStyle(color: Colors.white,fontSize: 12),),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0),
+                                              child: Text("PAST MEDICINE 1", style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                            ),
                                             Row(mainAxisAlignment: MainAxisAlignment.end,
                                               children: [
                                                 TextButton(
                                                     onPressed: () => scrollToItemD(),
-                                                    child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                                    child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                               ],
                                             ),
                                             buildPastMedicineList1Brand(),
@@ -690,16 +771,23 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                           ],
                                         )
                                     ),
-                                    Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
+                                    Card(shape: const OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.white),
+                                        borderRadius: BorderRadius.all(Radius.circular(25)
+                                        )),
+                                      color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                       child: Column(
                                         children: [
-                                          const Text("PAST MEDICINE 2",
-                                            style: TextStyle(color: Colors.white,fontSize: 12),),
+                                          Padding(
+                                            padding: const EdgeInsets.only(top: 8.0),
+                                            child: Text("PAST MEDICINE 2",
+                                              style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                          ),
                                           Row(mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
                                               TextButton(
                                                   onPressed: () => scrollToItemD(),
-                                                  child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                                  child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                             ],
                                           ),
                                           buildPastMedicineList2Brand(),
@@ -715,16 +803,23 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                         ],
                                       ),
                                     ),
-                                    Card(color: Colors.grey.shade900.withOpacity(0.6),
+                                    Card(shape: const OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.white),
+                                        borderRadius: BorderRadius.all(Radius.circular(25)
+                                        )),
+                                        color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                         child: Column(
                                           children: [
-                                            const Text("PAST MEDICINE 3",
-                                              style: TextStyle(color: Colors.white,fontSize: 12),),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0),
+                                              child:  Text("PAST MEDICINE 3",
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                            ),
                                             Row(mainAxisAlignment: MainAxisAlignment.end,
                                               children: [
                                                 TextButton(
                                                     onPressed: () => scrollToItemD(),
-                                                    child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                                    child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                               ],
                                             ),
                                             buildPastMedicineList3Brand(),
@@ -740,16 +835,23 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                           ],
                                         )
                                     ),
-                                    Card(color: Colors.blueGrey.shade700.withOpacity(0.6),
+                                    Card(shape: const OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.white),
+                                        borderRadius: BorderRadius.all(Radius.circular(25)
+                                        )),
+                                        color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                       child: Column(
                                         children: [
-                                          const Text("PAST MEDICINE 4",
-                                            style: TextStyle(color: Colors.white,fontSize: 12),),
+                                          Padding(
+                                            padding: const EdgeInsets.only(top:8.0),
+                                            child: Text("PAST MEDICINE 4",
+                                              style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                          ),
                                           Row(mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
                                               TextButton(
                                                   onPressed: () => scrollToItemD(),
-                                                  child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                                  child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                             ],
                                           ),
                                           buildPastMedicineList4Brand(),
@@ -765,16 +867,26 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                         ],
                                       ),
                                     ),
-                                    Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
+                                    Card(shape: const OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.white),
+                                        borderRadius: BorderRadius.all(Radius.circular(25)
+                                        )),
+                                      color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                       child: Column(
                                         children: [
-                                          const Text("PAST MEDICINE 5",
-                                            style: TextStyle(color: Colors.white,fontSize: 12),),
+                                          Padding(
+                                            padding: const EdgeInsets.only(top:8.0),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top: 8.0),
+                                              child: Text("PAST MEDICINE 5",
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
+                                            ),
+                                          ),
                                           Row(mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
                                               TextButton(
                                                   onPressed: () => scrollToItemD(),
-                                                  child: const Text('Skip', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,) ),
+                                                  child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,) ),
                                             ],
                                           ),
                                           buildPastMedicineList5Brand(),
@@ -799,28 +911,47 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                         )
                       ],
                     ),
-              
+
                   ), //section C
-                  Card(key: itemKeyD,
-                    color: Colors.grey.shade700.withOpacity(0.6),
+                  Card(shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(25)
+                      )),
+                    color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                    key: itemKeyD,
+
                     child: Column(
                       children: [
-                        const Text('SECTION D',style: TextStyle(color: Colors.white),),
-                        Card(color: Colors.blueGrey.shade300.withOpacity(0.6),
+                        Padding(
+                          padding: const EdgeInsets.only(top:8.0),
+                          child: Text('SECTION D',style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                        ),
+                        Card(shape: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.all(Radius.circular(25)
+                            )),
+                          color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                           child: Column(
-                            children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text("Intervention History", style: TextStyle(color: Colors.white),),
+                            children: [Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("Intervention History", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                             ),
-                              Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
-                              child: ExpansionTile(
+                              Card(shape: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.all(Radius.circular(25)
+                                  )),
+                                  color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                              child: ExpansionTile(shape: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.all(Radius.circular(25)
+                                  )),
+                                backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                 collapsedIconColor: Colors.white,
                                 iconColor: Colors.green,
-                                title: const Text("Procedures to treat Reaction", style: TextStyle(color: Colors.white),),
+                                title: Text("Procedures to treat Reaction", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                                 // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
                                 children: <Widget>[
-                                  const Text("Description of treatments, procedures and other actions taken to prevent or treat the reaction or improve patient's health in any other way.", style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                  Text("Description of treatments, procedures and other actions taken to prevent or treat the reaction or improve patient's health in any other way.", style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                   buildAdrsHaltResolution(),
                                   buildAdrsResumeResolution(),
                                   buildLabInvestigationReport(),
@@ -841,24 +972,43 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                       ],
                     ),
                   ), //section D
-                  Card(color: Colors.grey.shade700.withOpacity(0.6),
+                  Card(shape: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(25)
+                      )),
+                    color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                     child: Column(
                       children: [
-                        const Text('SECTION E', style: TextStyle(color: Colors.white),),
-                        Card(color: Colors.blueGrey.shade300.withOpacity(0.6),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text('SECTION E', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                        ),
+                        Card(shape: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.all(Radius.circular(25)
+                            )),
+                            color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                           child: Column(
                             children: [
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text('Credentials',style: TextStyle(color: Colors.white),),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Credentials',style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                               ),
 
-              
-                              Card(color: Colors.blueGrey.shade900.withOpacity(0.6),
-                                child: ExpansionTile(
+
+                              Card(shape: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.all(Radius.circular(25)
+                                  )),
+                                color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                                child: ExpansionTile(shape: const OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.all(Radius.circular(25)
+                                    )),
+                                  backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
                                   collapsedIconColor: Colors.white,
                                   iconColor: Colors.green,
-                                  title: const Text('Reporter Identification Data',style: TextStyle(color: Colors.white),),
+                                  title: Text('Reporter Identification Data',style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                                   // trailing: Icon(color: Colors.white, _customIcon ? Icons.arrow_drop_down_circle  : Icons.arrow_drop_down),
                                   children: <Widget>[
                                     buildReporterFirstName(),
@@ -872,10 +1022,10 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                       children: [
                                         TextButton(
                                             onPressed: () => scrollToItemT(),
-                                            child: const Row(
+                                            child: Row(
                                               children: [
-                                                Text('Top', style: TextStyle(color: Colors.white,fontSize: 12), textAlign: TextAlign.right,),
-                                                Icon(Icons.arrow_drop_up, size: 18, ),
+                                                Text('Top', style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12), textAlign: TextAlign.right,),
+                                                const Icon(Icons.arrow_drop_up, size: 18, ),
                                               ],
                                             ),),
                                       ],
@@ -920,7 +1070,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                   const SizedBox(height: 60,)
                   //section E
                 ]
-              
+
                         // Stepper(
                         //   physics:ClampingScrollPhysics(),
                         //   // controlsBuilder: (context, controller) => Row(
@@ -995,15 +1145,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerReportTitle,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. DRUG-X RELATED RASH',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Report Title',
-      labelStyle:const TextStyle(color: Colors.white),
+      labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
       border: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey.shade600),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
           borderRadius: BorderRadius.circular(12)
           ),
         isDense: true,
@@ -1016,16 +1166,16 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
         // value: selectedReportOnItem,
-        dropdownColor: Colors.grey.shade800,
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
             hintText: 'SELECT ONE OPTION',
-            hintStyle: const TextStyle(color: Colors.white60),
+            hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Report On',
-            labelStyle:const TextStyle(color: Colors.white),
+            labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1042,15 +1192,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
           // value: selectedReportTypeItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
             hintText: 'SELECT ONE OPTION',
-            hintStyle: const TextStyle(color: Colors.white60),
+            hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
             labelText: 'Report Type',
-            labelStyle:const TextStyle(color: Colors.white),
+            labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade600),
+                borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.circular(12)
             ),
           isDense: true,
@@ -1067,15 +1217,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         // value: selectedProductCategoryItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
             labelText: 'Product Category',
-            labelStyle:const TextStyle(color: Colors.white),
+            labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             hintText: 'SELECT ONE OPTION',
-            hintStyle: const TextStyle(color: Colors.white60),
+            hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade600),
+                borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.circular(12)
             )
         ),
@@ -1090,15 +1240,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerInstitutionName,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
           hintText: 'e.g. MOI COUNTY REFERRAL HOSPITAL',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Institution Name',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
         isDense: true,
@@ -1111,17 +1261,17 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerInstitutionContact,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
         keyboardType: TextInputType.number,
         inputFormatters: <TextInputFormatter>[
     FilteringTextInputFormatter.digitsOnly],
       decoration: InputDecoration(
           hintText: 'e.g. 254708206492',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Institution Contact',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
         isDense: true,
@@ -1134,15 +1284,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerInstitutionFacilityCode,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
           hintText: 'e.g. MLF11641',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Institution facility Code',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
         isDense: true,
@@ -1156,15 +1306,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         // value: selectedInstitutionCountyItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
             hintText: 'SELECT ONE OPTION',
-            hintStyle: const TextStyle(color: Colors.white60),
+            hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             labelText: 'Institution County',
-            labelStyle:const TextStyle(color: Colors.white),
+            labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade600),
+                borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.circular(12)
             )),
         validator: (value) =>
@@ -1179,14 +1329,14 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPatientName,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       keyboardType: TextInputType.visiblePassword,
       obscureText: _obscured,
       decoration: InputDecoration(
         hintText: 'e.g. P****K****',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient Full Name/Initials',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
           // borderSide: BorderSide.none,              // No border
           borderRadius: BorderRadius.circular(12),
@@ -1219,15 +1369,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPatientIpOpNo,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. IPNO/12023',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient IP/OP No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1241,15 +1391,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         // value: selectedPatientAgeBracketItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Patient Age Bracket',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1268,15 +1418,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       obscureText: _obscured,
       // focusNode: textFieldFocusNode,
       controller: controllerPatientAddress,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. 80300 - 169 Voi',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient Address',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1302,15 +1452,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPatientWardClinic,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. Male Ward/Diabetes Clinic',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient Ward/Clinic',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1324,15 +1474,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         // value: selectedPatientSexItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Patient Sex',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1348,15 +1498,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPatientAllergies,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Type 'NO', if 'YES', Please Specify...",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient Allergies',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle:TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1370,15 +1520,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         // value: selectedPregnancyStatusItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Pregnancy Status',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1394,15 +1544,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPatientWeight,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. 78',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient Weight (in Kg)',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1415,15 +1565,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPatientHeight,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. 150',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient Height (in cm)',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1436,15 +1586,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerSuspectedADRsOnset,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Suspected Adverse Reaction Onset',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1457,15 +1607,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPatientMedicalHistory,
-      style: const TextStyle(color: Colors.white),maxLines:8,
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),maxLines:8,
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "Other relevant history including pre-existing medical conditions e.g. allergies, smoking, alcohol use, hepatic/ renal dysfunction etc",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Patient Medical History',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1477,15 +1627,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerAdrsDescription,
-      style: const TextStyle(color: Colors.white),maxLines:8,
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),maxLines:8,
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 'Patient with an extensive rash was referred urgently to hospital. The rash started on the backs of her hands and spread very quickly to the arms, trunk, neck, and face. The lesions consist of concentric rings with frank blistering in some areas. Lesions have also started to appear on her lips and inside her mouth.'",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brief Description of Reaction',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1500,15 +1650,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList1Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1521,8 +1671,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     inactiveTrackColor: Colors.red,
       activeColor: Colors.green,
       value: isDrugsuspected1,
-      title:const Text("Drug Suspected to Cause Adverse Reaction?",
-        style: TextStyle(color: Colors.white,fontSize: 16),),
+      title: Text("Drug Suspected to Cause Adverse Reaction?",
+        style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 16),),
       onChanged: (value) {setState(() {
         isDrugsuspected1 = value;
       });});
@@ -1531,15 +1681,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList1Gen,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1553,15 +1703,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList1Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1575,15 +1725,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList1Batch,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1597,15 +1747,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
         child:
         TextFormField(
           controller: controllerCurrentMedicineList1Dose,
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: Theme.of(context).colorScheme.primary),
           textCapitalization: TextCapitalization.characters,
           decoration: InputDecoration(
             hintText: "e.g. 657mg",
-            hintStyle: const TextStyle(color: Colors.white60),
+            hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             labelText: 'Dose',
-            labelStyle:const TextStyle(color: Colors.white),
+            labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade600),
+                borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.circular(12)
             ),
             isDense: false,
@@ -1619,15 +1769,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         // value: selectedRouteAdminidtrationItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1642,15 +1792,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         // value: selectedDoseFrequencyItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1664,15 +1814,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerCurrentMedicineList1RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color:Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1685,15 +1835,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerCurrentMedicineList1RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1707,15 +1857,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList1Indication,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1731,15 +1881,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList2Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1750,8 +1900,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       inactiveTrackColor: Colors.red,
       activeColor: Colors.green,
       value: isDrugsuspected2,
-      title:const Text("Drug Suspected to Cause Adverse Reaction?",
-        style: TextStyle(color: Colors.white,fontSize: 16),),
+      title: Text("Drug Suspected to Cause Adverse Reaction?",
+        style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 16),),
   onChanged: (value) {setState(() {
   isDrugsuspected2 = value;
   });});
@@ -1761,15 +1911,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList2Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1781,15 +1931,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList2Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1801,15 +1951,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerCurrentMedicineList2Batch,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1821,15 +1971,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerCurrentMedicineList2Dose,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1840,15 +1990,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1863,15 +2013,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
 
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -1885,15 +2035,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerCurrentMedicineList2RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1904,15 +2054,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerCurrentMedicineList2RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -1924,15 +2074,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerCurrentMedicineList2Indication,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1946,15 +2096,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerCurrentMedicineList3Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1965,8 +2115,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       inactiveTrackColor: Colors.red,
       activeColor: Colors.green,
       value: isDrugsuspected3,
-      title:const Text("Drug Suspected to Cause Adverse Reaction?",
-        style: TextStyle(color: Colors.white,fontSize: 16),),
+      title: Text("Drug Suspected to Cause Adverse Reaction?",
+        style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 16),),
       onChanged: (value) {setState(() {
         isDrugsuspected3 = value;
       });});
@@ -1976,15 +2126,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerCurrentMedicineList3Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -1996,15 +2146,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList3Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2016,13 +2166,13 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerCurrentMedicineList3Batch,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade600),
             borderRadius: BorderRadius.circular(12)
@@ -2036,15 +2186,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerCurrentMedicineList3Dose,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2055,15 +2205,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2077,15 +2227,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2099,15 +2249,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerCurrentMedicineList3RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2118,15 +2268,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerCurrentMedicineList3RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2138,15 +2288,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList3Indication,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2160,15 +2310,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList4Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2179,8 +2329,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       inactiveTrackColor: Colors.red,
       activeColor: Colors.green,
       value: isDrugsuspected4,
-      title:const Text("Drug Suspected to Cause Adverse Reaction?",
-        style: TextStyle(color: Colors.white,fontSize: 16),),
+      title: Text("Drug Suspected to Cause Adverse Reaction?",
+        style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 16),),
       onChanged: (value) {setState(() {
         isDrugsuspected4 = value;
       });});
@@ -2189,15 +2339,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList4Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2209,15 +2359,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList4Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2229,15 +2379,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList4Batch,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2249,15 +2399,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList4Dose,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2268,15 +2418,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2290,15 +2440,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2312,15 +2462,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerCurrentMedicineList4RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2331,15 +2481,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerCurrentMedicineList4RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2351,15 +2501,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList4Indication,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2373,15 +2523,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList5Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2392,8 +2542,8 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       inactiveTrackColor: Colors.red,
       activeColor: Colors.green,
       value: isDrugsuspected5,
-      title:const Text("Drug Suspected to Cause Adverse Reaction?",
-        style: TextStyle(color: Colors.white,fontSize: 16),),
+      title: Text("Drug Suspected to Cause Adverse Reaction?",
+        style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 16),),
       onChanged: (value) {setState(() {
         isDrugsuspected5 = value;
       });});
@@ -2402,15 +2552,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList5Gen,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2422,15 +2572,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList5Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2442,15 +2592,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList5Batch,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2462,15 +2612,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList5Dose,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2481,15 +2631,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2503,15 +2653,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2525,15 +2675,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerCurrentMedicineList5RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2544,15 +2694,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerCurrentMedicineList5RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2564,15 +2714,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerCurrentMedicineList5Indication,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2586,15 +2736,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerPastMedicineList1Brand,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2606,15 +2756,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerPastMedicineList1Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2626,13 +2776,13 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerPastMedicineList1Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade600),
             borderRadius: BorderRadius.circular(12)
@@ -2646,15 +2796,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList1Batch,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2666,15 +2816,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList1Dose,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2685,15 +2835,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2707,15 +2857,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2729,15 +2879,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPastMedicineList1RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2748,15 +2898,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerPastMedicineList1RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2768,15 +2918,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerPastMedicineList1Indication,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2789,15 +2939,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerPastMedicineList2Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2809,15 +2959,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList2Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2829,15 +2979,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList2Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2849,15 +2999,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList2Batch,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2869,15 +3019,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList2Dose,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2888,15 +3038,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2910,15 +3060,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style:  TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -2932,15 +3082,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList2RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2951,15 +3101,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList2RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -2971,15 +3121,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList2Indication,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -2992,15 +3142,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList3Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3012,15 +3162,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerPastMedicineList3Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3032,15 +3182,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList3Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3052,15 +3202,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList3Batch,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3072,15 +3222,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
       controller: controllerPastMedicineList3Dose,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3091,15 +3241,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3113,15 +3263,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3135,15 +3285,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList3RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3154,15 +3304,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList3RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3174,15 +3324,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList3Indication,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3195,15 +3345,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList4Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3215,15 +3365,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList4Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3235,15 +3385,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList4Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3255,15 +3405,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList4Batch,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3275,15 +3425,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList4Dose,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3294,15 +3444,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3316,15 +3466,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3338,15 +3488,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList4RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3357,15 +3507,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList4RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3377,15 +3527,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList4Indication,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3398,15 +3548,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList5Brand,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Agumentin",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Brand Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3418,15 +3568,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList5Gen,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Amoxiclav",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Generic Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3438,15 +3588,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList5Manufacturer,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. GlaxoSmithKline Limited",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Manufacturer',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3458,15 +3608,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList5Batch,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. CB2372828",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Batch/Lot No',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3478,15 +3628,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList5Dose,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. 657mg",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Dose',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3497,15 +3647,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Administration Route',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3519,15 +3669,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Dose Frequency',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3541,15 +3691,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList5RxStartDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment Start Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3560,15 +3710,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerPastMedicineList5RxEndDate,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Treatment End Date',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3580,15 +3730,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     child:
     TextFormField(
         controller: controllerPastMedicineList5Indication,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g. Cellulitis in the 1st Trimester",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Indication',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3600,15 +3750,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'ADR resolved after drug halt/reduced dose?',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3624,15 +3774,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'ADR reappeared after drug reintroduced?',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3651,15 +3801,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       maxLines: 10,
       minLines: 2,
         controller: controllerLabInvestigationReport,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'Lab Reports. e.g. Blood pressure:120/70mmHg; Blood glucose:11mmol/litre (3.5–10); Calcium:2.4mmol/litre (2.2–2.6); Urea:7.4mmol/litre (2.5–6.5); Bilirubin:10micromol/litre (5–17)...etc',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Lab Investigations and Results',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3670,15 +3820,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Reaction/Event Severity',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3694,15 +3844,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Is the reaction Serious?',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3718,15 +3868,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Criteria/Reason for Seriousness?',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3742,15 +3892,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Action Taken?',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3766,15 +3916,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           hintText: 'SELECT ONE OPTION',
-          hintStyle: const TextStyle(color: Colors.white60),
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           labelText: 'Outcome?',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -3793,15 +3943,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       maxLines: 10,
       minLines: 2,
       controller: controllerOtherComment,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "e.g 'X-ray of the abdomen shows no evidence of gallstones or pancreatic calcification. Abdominal ultrasound shows no evidence of pancreatic necrosis or dilatation of intrahepatic ducts.A diagnosis of acute pancreatitis is made but causality is not known.The patient is nil by mouth and placed on supportive therapy including parenteral analgesia, intravenous fluids, and intravenous insulin.'",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Any Other Comment',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: false,
@@ -3815,15 +3965,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerReporterFirstName,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. John',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'First Name',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3840,15 +3990,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       obscureText: _obscured,
       // focusNode: textFieldFocusNode,
       controller: controllerReporterOtherNames,
-      style: const TextStyle(color: Colors.white),
+      style:  TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. Smith Oliver',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Other Names',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3874,15 +4024,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
       controller: controllerReporterCadre,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: 'e.g. Pharmaceutical Technologist',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Cadre/Designation',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3898,16 +4048,16 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       obscureText: _obscured,
       // focusNode: textFieldFocusNode,
       controller: controllerReporterContact,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly],
       decoration: InputDecoration(
         hintText: 'e.g. 254708206492',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Reporter Contact',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3936,15 +4086,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
       obscureText: _obscured,
       // focusNode: textFieldFocusNode,
       controller: controllerReporterEmail,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
 
       decoration: InputDecoration(
         hintText: 'e.g. johnsmith@gmail.com',
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Reporter Email',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3969,15 +4119,15 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
     padding: const EdgeInsets.all(8.0),
     child: TextFormField(
         controller: controllerReportDate,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Theme.of(context).colorScheme.primary),
       textCapitalization: TextCapitalization.characters,
       decoration: InputDecoration(
         hintText: "DD/MM/YYYY e.g. 1/12/2024",
-        hintStyle: const TextStyle(color: Colors.white60),
+        hintStyle:  TextStyle(color: Theme.of(context).colorScheme.primary),
         labelText: 'Date of Report',
-        labelStyle:const TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade600),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
             borderRadius: BorderRadius.circular(12)
         ),
         isDense: true,
@@ -3994,13 +4144,13 @@ Widget buildReportStatus() => Visibility(
     child: SizedBox(width: double.infinity,
       child: DropdownButtonFormField<String>(
         value: selectedReportStatusItem,
-        style: const TextStyle(color: Colors.white),
-        dropdownColor: Colors.grey.shade800,
+        style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        dropdownColor: Theme.of(context).colorScheme.secondary,
         decoration: InputDecoration(
           labelText: 'Report Status',
-          labelStyle:const TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade600),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(12)
           ),
           isDense: true,
@@ -4013,7 +4163,7 @@ Widget buildReportStatus() => Visibility(
 );
 
 
-  Widget buildSubmit() => ElevatedButton(
+  Widget buildSubmit() => OutlinedButton(
     onPressed: () async {
       final form = formKey.currentState;
       final isValid = form!.validate();
@@ -4198,17 +4348,18 @@ Widget buildReportStatus() => Visibility(
             });
       }
     },
-    style: const ButtonStyle(
-      fixedSize: WidgetStatePropertyAll(Size(210, 30)),
+    style: ButtonStyle(
+      backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
+      fixedSize: const WidgetStatePropertyAll(Size(210, 30)),
     ),
-    child: const Row(mainAxisAlignment: MainAxisAlignment.center,
+    child:  Row(mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(Icons.email_outlined,
-            size: 20, color: Colors.black),
+            size: 20, color: Theme.of(context).colorScheme.primary),
         Text(
           '  SUBMIT ADRs REPORT',
           style: TextStyle(
-              color: Colors.black, fontSize: 12),
+              color: Theme.of(context).colorScheme.primary, fontSize: 12),
         ),
       ],
     ));

@@ -145,105 +145,119 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
       child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation
             .miniEndDocked,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
           elevation: 8,
-          shape: const CircleBorder(side: BorderSide(color: Colors.black)),
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
           onPressed: () async {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const SearchOptions(),
                 ));
+            // await NotificationService.showNotification(
+            //   interval: 5,
+            //     title: "Drugitude",
+            //     body: "Drug of the Day",
+            //     summary: "Daily Dose of New Drug Information",
+            //   scheduled: true,
+            //   repeatNotif: true
+            //   );
+
+
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
           },
-          child: const Icon(Icons.search_outlined),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
-        bottomNavigationBar: BottomAppBar(
-          height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,
-          elevation: 8,
-          padding: const EdgeInsets.only(left: 0, right: 0, bottom: 0, top: 0),
+        bottomNavigationBar: BottomAppBar(height: 54.0,
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
           shape: const CircularNotchedRectangle(),
-          color: Colors.white,
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                          const LandingPage(),
-                        ));}, child: const Column(mainAxisAlignment: MainAxisAlignment.center,
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const LandingPage(),
+                          ));
+                    }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.home_filled, color: Colors.black,),
-                        Text('Home', style: TextStyle(fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.primary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: () {
-                      Navigator.pushReplacement(
+                    TextButton(onPressed: (){
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
                             const DictionaryMode(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment
-                        .center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.menu_book_outlined, color: Colors.black,),
-                        Text('Dictionary Mode', style: TextStyle(
-                            fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => const DrugRequestPage(),));
-                    }, child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.mail_outline_rounded, color: Colors.black,),
-                        Text('Request Drug', style: TextStyle(
-                            fontSize: 9.0, color: Colors.black))
-                      ],
-                    )),
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const DrugRequestPage(),
+                              ));
+
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.primary,),
+                            Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                          ],
+                        )),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(onPressed: () {
-                      Navigator.pushReplacement(
+                    TextButton(onPressed: (){
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const AboutPage(),
                           ));
-                    }, child: const Column(mainAxisAlignment: MainAxisAlignment
-                        .center,
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.corporate_fare_outlined, color: Colors
-                            .black,),
-                        Text('About', style: TextStyle(
-                            fontSize: 9.0, color: Colors.black))
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                       ],
                     )),
                   ],
@@ -251,10 +265,10 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
               ),
               const SizedBox(width: 52,)
             ],
-
           ),
         ),
         extendBody: true,
+        extendBodyBehindAppBar: true,
         drawer: const Padding(
           padding: EdgeInsets.only(top: 56.0),
           child:
@@ -263,24 +277,32 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
         ),
 
         appBar: AppBar(
+          shape:  const OutlineInputBorder(
+        borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(25),
+        bottomRight: Radius.circular(25),
+      ),
+        borderSide: BorderSide(
+          color: Colors.white,
+        )),
           leading: IconButton(onPressed: () {
-            Navigator.pushReplacement(
+            Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const AdrsOptionsPage(),
                 ));
           },
-              icon: const Icon(Icons.arrow_back, color: Colors.white,)),
-          backgroundColor: Colors.black,
-          title: const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              icon: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.primary,)),
+          backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+          title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   Text(
                     'DRUGITUDE',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),
                   ),
-                  Text('     ADRS Report Follow Up ',style: TextStyle(color: Colors.white, fontSize: 12),),
+                  Text('     ADRS Report Follow Up ',style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12),),
                 ],
               ),
 
@@ -288,7 +310,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
           ),
           actions: [
             IconButton(onPressed: () async {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const AdrsOptionsPage(),
@@ -298,10 +320,10 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
 
               // print('Results: $results');
             },
-                icon: const Icon(Icons.close_sharp, color: Colors.white,))
+                icon: Icon(Icons.close_sharp, color: Theme.of(context).colorScheme.primary,))
           ],
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body:
         Container(
           width: MediaQuery.of(context).size.width,
@@ -357,65 +379,65 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                   else if (snapshot.hasError){
                     return Center(
                       child: SizedBox(width: double.infinity,
-                        child: Card(color: Colors.black,
+                        child: Card(color:  Theme.of(context).colorScheme.surface,
                           child: Column(
                             children: [
-                              const Card(color: Colors.black,
+                              Card(color: Theme.of(context).colorScheme.surface,
                                   child: Column(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(2.0),
+                                        padding: const EdgeInsets.all(2.0),
                                         child: Text("Oops...",
-                                            style: TextStyle(color: Colors.white,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
+                                            style: TextStyle(color:  Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(2.0),
+                                        padding: const EdgeInsets.all(2.0),
                                         child: Text("Seems like we have stumbled upon some critical error.",
-                                            style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                            style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(2.0),
+                                        padding: const EdgeInsets.all(2.0),
                                         child: Text("What could have possibly gone wrong?",
-                                            style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                            style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                       ),
                                     ],
                                   )),
-                              const Expanded(child: RiveAnimation.asset('drugitudeError.riv')),
-                              const Card(color: Colors.black,
+                              const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
+                              Card(color:  Theme.of(context).colorScheme.surface,
                                   child: Column(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(5.0),
-                                        child: Text("1. Network Error", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text("1. NETWORK ERROR", style: TextStyle(color:  Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                       ),
                                       Text("Please check your internet connection and try again",
-                                          style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                     ],
                                   )),
-                              Card(color: Colors.black,
+                              Card(color: Theme.of(context).colorScheme.surface,
                                   child: Column(
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(5.0),
-                                        child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                                      Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                       ),
-                                      const Column(
+                                      Column(
                                         children: [
                                           Text("Please turn on your connection by turning Airplane Mode off. ",
-                                              style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                              style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                           Text("If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
-                                              style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                              style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                         ],
                                       ),
                                       SizedBox(width: 200, height: 30,
                                         child: ElevatedButton(
                                             onPressed: (){
                                               Navigator.pop(context);
-                                            }, child: const Row(
+                                            }, child: Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
-                                            Text('Close', style: TextStyle(fontSize: 15, color: Colors.black))
+                                            const Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
+                                            Text('Close', style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.primary))
                                           ],
                                         )),
                                       ),
@@ -435,13 +457,22 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                         title: Row(
                             children: [
                               Expanded(
-                                child: Card(color: Colors.blueGrey.shade900.withOpacity(0.6),margin: const EdgeInsets.all(15),
+                                child: Card(
+                                  shape: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      borderSide: BorderSide(color: Colors.white)
+                                  ),
+                                  color: Theme.of(context).colorScheme.surface.withOpacity(0.6),margin: const EdgeInsets.all(15),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment
                                         .center,
                                     children: [
                                       ExpansionTile(
-                                        collapsedIconColor: Colors.white,
+                                        backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+                                        shape: const OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(20),),
+                                            borderSide: BorderSide(color: Colors.white)
+                                        ),
                                         iconColor: Colors.green,
                                         title: Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -449,16 +480,16 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                             Text(
                                               'Report ID: ${dataADRSList?[index]
                                                   .reportId}' ,
-                                              style: const TextStyle(
-                                                  color: Colors.white,
+                                              style: TextStyle(
+                                                  color: Theme.of(context).colorScheme.primary,
                                                   fontSize: 16),),
                                         Row(
                                           children: [
                                             const Icon(Icons.calendar_month_rounded, size: 16,),
                                             Text(
                                                     '${dataADRSList?[index]
-                                                        .dateOfReport} ', style: const TextStyle(
-                                                      color: Colors.white,
+                                                        .dateOfReport} ', style: TextStyle(
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 16),),
                                           ],
                                         ),
@@ -468,7 +499,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                         children: [
                                           Column(
                                             children: [
-                                              const Padding(
+                                              Padding(
                                                 padding: EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Report on',
@@ -476,8 +507,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                                   style: TextStyle(
                                                       decoration: TextDecoration.underline,
                                                       decorationStyle: TextDecorationStyle.solid,
-                                                      decorationColor: Colors.white,
-                                                      color: Colors.white,
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight
                                                           .bold),),
@@ -488,8 +518,8 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                                   '${dataADRSList?[index]
                                                       .reportOn}',
                                                   textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      color: Colors.white,
+                                                  style: TextStyle(
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight
                                                           .bold),
@@ -500,7 +530,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
           
                                           Column(
                                             children: [
-                                              const Padding(
+                                              Padding(
                                                 padding: EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Institution Name',
@@ -508,8 +538,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                                   style: TextStyle(
                                                     decoration: TextDecoration.underline,
                                                       decorationStyle: TextDecorationStyle.solid,
-                                                      decorationColor: Colors.white,
-                                                      color: Colors.white,
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight
                                                           .bold),),),
@@ -519,8 +548,8 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                                   '${dataADRSList?[index]
                                                       .institutionName}',
                                                   textAlign: TextAlign.start,
-                                                  style: const TextStyle(
-                                                      color: Colors.white,
+                                                  style: TextStyle(
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight
                                                           .bold),),
@@ -529,7 +558,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                           ),
                                           Column(
                                             children: [
-                                              const Padding(
+                                              Padding(
                                                 padding: EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Report County Origin',
@@ -537,8 +566,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                                   style: TextStyle(
                                                     decoration: TextDecoration.underline,
                                                       decorationStyle: TextDecorationStyle.solid,
-                                                      decorationColor: Colors.white,
-                                                      color: Colors.white,
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight
                                                           .bold),),),
@@ -548,8 +576,8 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                                   '${dataADRSList?[index]
                                                       .institutionCounty}',
                                                   textAlign: TextAlign.start,
-                                                  style: const TextStyle(
-                                                      color: Colors.white,
+                                                  style: TextStyle(
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight
                                                           .bold),),
@@ -558,7 +586,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                           ),
                                           Column(
                                             children: [
-                                              const Padding(
+                                              Padding(
                                                 padding: EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Report Status',
@@ -566,8 +594,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                                   style: TextStyle(
                                                       decoration: TextDecoration.underline,
                                                       decorationStyle: TextDecorationStyle.solid,
-                                                      decorationColor: Colors.white,
-                                                      color: Colors.white,
+                                                      color: Theme.of(context).colorScheme.primary,
                                                       fontSize: 12,
                                                       fontWeight: FontWeight
                                                           .bold),),),
