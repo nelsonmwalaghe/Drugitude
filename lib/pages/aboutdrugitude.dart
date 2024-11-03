@@ -438,7 +438,7 @@ class _AboutPageState extends State<AboutPage> {
                   style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 15),
                   ),
                 ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 2),
                     child: Center(
                         child: SizedBox(
@@ -448,7 +448,9 @@ class _AboutPageState extends State<AboutPage> {
                               Expanded(
                                   child: RiveAnimation.asset(
                                       'assets/drugiconLoading.riv',)),
-                              Text('medicamento infinitum', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontStyle:FontStyle.italic )),
+                              Text('medicamento infinitum', textAlign: TextAlign.center,
+                                  style: TextStyle(color: Theme.of(context).colorScheme.primary,
+                                    fontStyle:FontStyle.italic, decoration: TextDecoration.underline)),
                             ],
                           ),
                         )),
