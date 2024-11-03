@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rive/rive.dart';
-import '../adverseDrugReactionReportModel/adverseDRsReportConfirmationAPIModel.dart';
-import '../adverseDrugReactionReportModel/adrsreportConfirmation.dart';
+import '../adverseDrugReactionReportModel/adversedrsreportconfirmationapimodel.dart';
+import '../adverseDrugReactionReportModel/adrsreportconfirmation.dart';
 import 'aboutDrugitude.dart';
 import 'adrsOptionsPage.dart';
 import 'dictionaryMode.dart';
@@ -377,75 +377,77 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                         ));
                 }
                   else if (snapshot.hasError){
-                    return Center(
-                      child: SizedBox(width: double.infinity,
-                        child: Card(color:  Theme.of(context).colorScheme.surface,
-                          child: Column(
+                    return AlertDialog.adaptive(scrollable: true,
+                      shape: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(25)
+                          )),
+                      title: Text("Oops...",
+                          style: TextStyle(color:  Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
+                      content: Column(
+                        children: [
+                          const SizedBox(height: 120,
+                              child: RiveAnimation.asset('assets/drugitudeError.riv')),
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text("Seems like we have stumbled upon some critical error."
+                                "\n"
+                                "What could have possibly gone wrong?",
+                                style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                          ),
+
+                          Column(
                             children: [
-                              Card(color: Theme.of(context).colorScheme.surface,
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text("Oops...",
-                                            style: TextStyle(color:  Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text("Seems like we have stumbled upon some critical error.",
-                                            style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(2.0),
-                                        child: Text("What could have possibly gone wrong?",
-                                            style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
-                                      ),
-                                    ],
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text("1. NETWORK ERROR", style: TextStyle(color:  Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                              ),
+                              Card(shape: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.all(Radius.circular(25)
                                   )),
-                              const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
-                              Card(color:  Theme.of(context).colorScheme.surface,
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text("1. NETWORK ERROR", style: TextStyle(color:  Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
-                                      ),
-                                      Text("Please check your internet connection and try again",
-                                          style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
-                                    ],
-                                  )),
-                              Card(color: Theme.of(context).colorScheme.surface,
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
-                                      ),
-                                      Column(
-                                        children: [
-                                          Text("Please turn on your connection by turning Airplane Mode off. ",
-                                              style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
-                                          Text("If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
-                                              style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
-                                        ],
-                                      ),
-                                      SizedBox(width: 200, height: 30,
-                                        child: ElevatedButton(
-                                            onPressed: (){
-                                              Navigator.pop(context);
-                                            }, child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
-                                            Text('Close', style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.primary))
-                                          ],
-                                        )),
-                                      ),
-                                    ],
-                                  )),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text("Please check your internet connection and try again",
+                                      style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                                ),
+                              ),
                             ],
                           ),
-                        ),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                              ),
+                              Text("Please turn on your connection by turning Airplane Mode off. "
+                                  "\n"
+                                  "If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
+                                  style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                              OutlinedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
+                                  ),
+                                  onPressed: (){
+                                    Navigator.pop(context);
+                                  }, child:  Row(mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.exit_to_app_sharp, color: Colors.red,),
+                                  Text('Close', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                                ],
+                              )
+                                // Row(
+                                //   mainAxisAlignment: MainAxisAlignment.center,
+                                //   children: [
+                                //     const
+                                //
+                                //
+                                //   ],
+                                // )
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     );
                   }
@@ -500,7 +502,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                           Column(
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.only(top: 8, bottom: 0),
+                                                padding: const EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Report on',
                                                   textAlign: TextAlign.center,
@@ -531,7 +533,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                           Column(
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.only(top: 8, bottom: 0),
+                                                padding: const EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Institution Name',
                                                   textAlign: TextAlign.start,
@@ -559,7 +561,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                           Column(
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.only(top: 8, bottom: 0),
+                                                padding: const EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Report County Origin',
                                                   textAlign: TextAlign.start,
@@ -587,7 +589,7 @@ class _AdrsReportconfirmationlistState extends State<AdrsReportconfirmationlist>
                                           Column(
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.only(top: 8, bottom: 0),
+                                                padding: const EdgeInsets.only(top: 8, bottom: 0),
                                                 child: Text(
                                                   'Report Status',
                                                   textAlign: TextAlign.start,

@@ -731,7 +731,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     borderRadius: BorderRadius.all(Radius.circular(25)
                                     )),
                                   backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
-                                  collapsedIconColor: Colors.white,
+                                  collapsedIconColor: Theme.of(context).colorScheme.primary,
                                   iconColor: Colors.green,
                                   title: Text('Drugs used in the last 3 months', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                                   // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
@@ -946,7 +946,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                   borderRadius: BorderRadius.all(Radius.circular(25)
                                   )),
                                 backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
-                                collapsedIconColor: Colors.white,
+                                collapsedIconColor: Theme.of(context).colorScheme.primary,
                                 iconColor: Colors.green,
                                 title: Text("Procedures to treat Reaction", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                                 // trailing: Icon(color: Colors.white,_customIcon ? Icons.arrow_drop_down_circle : Icons.arrow_drop_down),
@@ -1006,7 +1006,7 @@ class _AdrsReportFormWidgetState extends State<AdrsReportFormWidget> {
                                     borderRadius: BorderRadius.all(Radius.circular(25)
                                     )),
                                   backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.6),
-                                  collapsedIconColor: Colors.white,
+                                  collapsedIconColor: Theme.of(context).colorScheme.primary,
                                   iconColor: Colors.green,
                                   title: Text('Reporter Identification Data',style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                                   // trailing: Icon(color: Colors.white, _customIcon ? Icons.arrow_drop_down_circle  : Icons.arrow_drop_down),

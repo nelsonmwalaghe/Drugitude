@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../drugListCallModel/drugListPharmaceuticalGroupModel.dart';
+import '../drugListCallModel/druglistpharmaceuticalgroupmodel.dart';
 
 
 

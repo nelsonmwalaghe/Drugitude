@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../drugListCallModel/drugListModel.dart';
+import '../drugListCallModel/druglistmodel.dart';
 
 
 
@@ -19,7 +19,7 @@ class FetchDrug {
       data = json.decode(response.body);
       results = data.map((e) => DrugList.fromJson(e)).toList();
       if(query != null){
-        results = results.where((element) => element.inn_name.toLowerCase().contains(query.toLowerCase())).toList();
+        results = results.where((element) => element.innName.toLowerCase().contains(query.toLowerCase())).toList();
       }
     } else {}
     return results;

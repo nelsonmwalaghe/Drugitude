@@ -4,7 +4,7 @@ import 'package:drugitudeleviosa/pages/searchOptionsPage.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
 import '../apiServiceModels/gennameapimodel.dart';
-import '../drugListCallModel/drugListModel.dart';
+import '../drugListCallModel/druglistmodel.dart';
 import '../searchModels/dictionarymodeazsearch.dart';
 import 'aboutDrugitude.dart';
 import 'drugrequestpage.dart';
@@ -176,11 +176,11 @@ class _DictionaryMode extends State<DictionaryMode> {
             //     icon: 'drugitudeicon',
             // ),);
           },
-          child: Icon(Icons.search_outlined, color: Colors.black),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
         bottomNavigationBar: BottomAppBar(height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
-          shape: CircularNotchedRectangle(),
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
+          shape: const CircularNotchedRectangle(),
           shadowColor: Theme.of(context).colorScheme.primary,
           color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -206,7 +206,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
                     TextButton(onPressed: (){
@@ -269,8 +269,9 @@ class _DictionaryMode extends State<DictionaryMode> {
             ],
           ),
         ),
+        extendBody: true,
         appBar: AppBar(
-         shape:  OutlineInputBorder(
+         shape:  const OutlineInputBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(25),
                 bottomRight: Radius.circular(25),
@@ -369,127 +370,77 @@ class _DictionaryMode extends State<DictionaryMode> {
                         ),
                       ));
                 } else if (snapshot.hasError) {
-                  return Center(
-                    child: SizedBox(
-                      width: double.maxFinite,
-                      child: Card(
-                        color: Theme.of(context).colorScheme.surface,
-                        child: Column(
+                  return AlertDialog.adaptive(scrollable: true,
+                    shape: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(25)
+                        )),
+                    title: Text("Oops...",
+                        style: TextStyle(color:  Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
+                    content: Column(
+                      children: [
+                        const SizedBox(height: 120,
+                            child: RiveAnimation.asset('assets/drugitudeError.riv')),
+                        Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Text("Seems like we have stumbled upon some critical error."
+                              "\n"
+                              "What could have possibly gone wrong?",
+                              style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                        ),
+
+                        Column(
                           children: [
-                             Card(
-                                color: Theme.of(context).colorScheme.surface,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text("Oops...",
-                                          style: TextStyle(
-                                              color: Theme.of(context).colorScheme.primary,
-                                              fontSize: 25,
-                                              fontStyle: FontStyle.italic,
-                                              decorationStyle:
-                                              TextDecorationStyle.solid,
-                                              decoration:
-                                              TextDecoration.underline),
-                                          textAlign: TextAlign.center),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text(
-                                          "Seems like we have stumbled upon some critical error.",
-                                          style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                                          textAlign: TextAlign.center),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text(
-                                          "What could have possibly gone wrong?",
-                                          style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                                          textAlign: TextAlign.center),
-                                    ),
-                                  ],
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Text("1. NETWORK ERROR", style: TextStyle(color:  Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                            ),
+                            Card(shape: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.all(Radius.circular(25)
                                 )),
-                            Expanded(
-                                child: RiveAnimation.asset(
-                                    'assets/drugitudeError.riv')),
-                             Card(
-                                color: Theme.of(context).colorScheme.surface,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text("1. NETWORK ERROR",
-                                          style: TextStyle(
-                                              color: Theme.of(context).colorScheme.primary,
-                                              decorationStyle:
-                                              TextDecorationStyle.solid,
-                                              decoration:
-                                              TextDecoration.underline),
-                                          textAlign: TextAlign.center),
-                                    ),
-                                    Text(
-                                        "Please check your internet connection and try again",
-                                        style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                                        textAlign: TextAlign.center),
-                                  ],
-                                )),
-                            Card(
-                                color: Theme.of(context).colorScheme.surface,
-                                child: Column(
-                                  children: [
-                                     Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text("2. AIRPLANE MODE IS ON",
-                                          style: TextStyle(
-                                              color: Theme.of(context).colorScheme.primary,
-                                              decorationStyle:
-                                              TextDecorationStyle.solid,
-                                              decoration:
-                                              TextDecoration.underline),
-                                          textAlign: TextAlign.center),
-                                    ),
-                                     Column(
-                                      children: [
-                                        Text(
-                                            "Please turn on your connection by turning Airplane Mode off. ",
-                                            style:
-                                            TextStyle(color: Theme.of(context).colorScheme.primary),
-                                            textAlign: TextAlign.center),
-                                        Text(
-                                            "If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
-                                            style:
-                                            TextStyle(color: Theme.of(context).colorScheme.primary),
-                                            textAlign: TextAlign.center),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 200,
-                                      height: 30,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.exit_to_app_sharp,
-                                                size: 30,
-                                                color: Colors.green,
-                                              ),
-                                              Text('Close',
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      color: Theme.of(context).colorScheme.primary))
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                )),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text("Please check your internet connection and try again",
+                                    style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                              ),
+                            ),
                           ],
                         ),
-                      ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                            ),
+                            Text("Please turn on your connection by turning Airplane Mode off. "
+                                "\n"
+                                "If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
+                                style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                            OutlinedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
+                                ),
+                                onPressed: (){
+                                  Navigator.pop(context);
+                                }, child:  Row(mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(Icons.exit_to_app_sharp, color: Colors.red,),
+                                Text('Close', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
+                              ],
+                            )
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
+                              //   children: [
+                              //     const
+                              //
+                              //
+                              //   ],
+                              // )
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   );
                 }
@@ -513,7 +464,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                       Row(
                                         children: [
                                            Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: const EdgeInsets.only(
                                                 top: 25.0,
                                                 bottom: 0,
                                                 left: 8,
@@ -555,7 +506,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                               children: [
                                                  Padding(
                                                   padding:
-                                                  EdgeInsets.only(
+                                                  const EdgeInsets.only(
                                                       top: 0.0,
                                                       bottom: 0,
                                                       left: 8,
@@ -691,7 +642,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                                     children: [
                                                                       Padding(
                                                                         padding:
-                                                                        EdgeInsets
+                                                                        const EdgeInsets
                                                                             .only(
                                                                             top: 8,
                                                                             bottom: 2,
@@ -710,7 +661,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                                                 TextDecoration
                                                                                     .underline)),
                                                                       ),
-                                                                      Icon(
+                                                                      const Icon(
                                                                         Icons
                                                                             .security_sharp,
                                                                         size: 15,
@@ -760,7 +711,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                 fontWeight: FontWeight.bold)),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             top: 8.0,
                                             bottom: 0,
                                             left: 8,
@@ -780,7 +731,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                             left: 8,
                                             right: 8),
                                         child: Text(
-                                          '${data?[index].inn_name}',
+                                          '${data?[index].innName}',
                                           textAlign: TextAlign.start,
                                           style:  TextStyle(
                                               color: Theme.of(context).colorScheme.primary,
@@ -788,15 +739,15 @@ class _DictionaryMode extends State<DictionaryMode> {
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                      Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                         color: Theme.of(context).colorScheme.secondary.withOpacity(0.6),
-                                        child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                        child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                           title: Text('More...',
                                             style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12),),
                                           children: [
-                                            Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                            Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                               color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-                                              child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                              child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                                 backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
                                                 trailing: Icon(_customIcon ? Icons.visibility_sharp : Icons.visibility_off),
                                                 title:   Text("Drug Image",
@@ -836,7 +787,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                              padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Active Substance',
                                                 overflow: TextOverflow.fade,
                                                 textAlign: TextAlign.start,
@@ -850,7 +801,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                 style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12, fontWeight: FontWeight.bold),),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Therapuetic Area',
                                                 style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,fontSize: 12),),
                                             ),
@@ -863,7 +814,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                     fontWeight: FontWeight.bold),),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Pharmacotherpuetic Group',
                                                   style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12, decoration: TextDecoration.underline)),
                                             ),
@@ -873,7 +824,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                   style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Approx Retail Price',
                                                   style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12, decoration: TextDecoration.underline)),
                                             ),
@@ -881,7 +832,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                 style: TextStyle(
                                                     color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
                                              Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Marketing Authorization Company',
                                                 style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,fontSize: 12),),
                                             ),
@@ -892,7 +843,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Authorization Status',
                                                   style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,fontSize: 12)),
                                             ),
@@ -902,15 +853,15 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                   style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)
                                               ),
                                             ),
-                                            Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                            Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                               color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-                                              child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                              child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                                 title: Text('Indication and Use',
                                                   style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12),),
                                                 children: [
 
                                                   Padding(
-                                                    padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                    padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                     child: Text('Indication and Use',
                                                         style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                   ),
@@ -924,7 +875,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                           fontWeight: FontWeight.bold),),
                                                   ),
                                                   Padding(
-                                                    padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                    padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                     child: Text('Contraindications, Warnings & Precautions',
                                                         style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                   ),
@@ -939,7 +890,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                   ),
 
                                                   Padding(
-                                                    padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                    padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                     child: Text('Mechanism of Action',
                                                         style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                   ),
@@ -954,7 +905,7 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                   ),
 
                                                   Padding(
-                                                    padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                    padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                     child: Text('Excipients List',
                                                         style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                   ),
@@ -968,14 +919,14 @@ class _DictionaryMode extends State<DictionaryMode> {
                                                           fontWeight: FontWeight.bold),),
                                                   ),
 
-                                                  Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                                  Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                                     color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-                                                    child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: BorderSide(color: Colors.white)),
+                                                    child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
                                                       title: Text('Additional Information',
                                                           style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12)),
                                                       children: [
                                                         Padding(
-                                                          padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                          padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                           child: Text('Additional information:',
                                                               style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)
                                                           ),

@@ -26,7 +26,7 @@ static Future<Database> createDatabase() async {
 static Future insertDrugs(DrugListDB drugListDB) async {
   var db = await createDatabase();
   return await db.insert("codex", {
-    "inn_name":drugListDB.inn_name,
+    "inn_name":drugListDB.innName,
     "category":drugListDB.category,
     "medicineName":drugListDB.medicineName,
     "therapeuticArea":drugListDB.therapeuticArea,

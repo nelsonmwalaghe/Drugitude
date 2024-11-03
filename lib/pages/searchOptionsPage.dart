@@ -341,7 +341,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                     children: [
                       Center(
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             'Search by:',
                             style: TextStyle(color: Theme.of(context).colorScheme.primary),
@@ -361,7 +361,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                 },
                                 style: ButtonStyle(
                                   backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
-                                  fixedSize: WidgetStatePropertyAll(Size(110, 30)),
+                                  fixedSize: const WidgetStatePropertyAll(Size(110, 30)),
                                 ),
                                 child: Row(
                                   children: [
@@ -393,7 +393,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                 },
                                 style: ButtonStyle(
                                   backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
-                                  fixedSize: WidgetStatePropertyAll(Size(160, 30)),
+                                  fixedSize: const WidgetStatePropertyAll(Size(160, 30)),
                                 ),
                                 child: Row(
                                   children: [
@@ -427,7 +427,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                 },
                                 style: ButtonStyle(
                                   backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
-                                  fixedSize: WidgetStatePropertyAll(Size(190, 30)),
+                                  fixedSize: const WidgetStatePropertyAll(Size(190, 30)),
                                 ),
                                 child: Row(
                                   children: [
@@ -461,7 +461,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                 },
                                 style: ButtonStyle(
                                   backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
-                                  fixedSize: WidgetStatePropertyAll(Size(230, 30)),
+                                  fixedSize: const WidgetStatePropertyAll(Size(230, 30)),
                                 ),
                                 child: Row(
                                   children: [
@@ -475,7 +475,7 @@ class _SearchOptionsState extends State<SearchOptions> {
                                   ],
                                 )),
                             Text(
-                                style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 11),
+                                style: TextStyle(color: Theme.of(context).colorScheme.primary),
                                 'Refers to a group of drugs that share a similar chemical structure, or have the same mechanism of action, the same related mode of action or target the same illness or related illnesses.',
                                 overflow: TextOverflow.fade,
                                 textAlign: TextAlign.center),

@@ -121,7 +121,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
             showSuggestions(context);
 
           },
-          icon: const Icon(Icons.close))
+          icon: Icon(Icons.close, color: Theme.of(context).colorScheme.primary))
     ];
   }
 
@@ -131,7 +131,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
     return IconButton(onPressed: () {
       Navigator.pop(context);
     },
-        icon: const Icon(Icons.arrow_back_ios));
+        icon: Icon(Icons.arrow_back_ios, color: Theme.of(context).colorScheme.primary));
   }
 
   @override
@@ -165,158 +165,168 @@ class DictionaryDBBrandSearch extends SearchDelegate {
               // else if (snapshot.hasData) {}
 
               else if (snapshot.hasData && snapshot.data!.isEmpty){
-                return  Center(
-                  child: SizedBox(width: double.infinity,
-                    child: Card(color: Colors.black,
-                      child: Column(
-                        children: [
-                          const Card(color: Colors.black,
+                return
+                  AlertDialog.adaptive(scrollable: true,
+                    shape: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(25)
+                        )),
+                    title: Text("Oops...",
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid, decoration: TextDecoration.underline), textAlign: TextAlign.center),
+                    content: Column(
+                      children:[
+                        Column(
+                          children: [
+                            const SizedBox(height: 120,
+                                child: RiveAnimation.asset('assets/drugitudenodata.riv')),
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Text("We can't seem to find what you are looking for."
+                                  "\n"
+                                  "What could have possibly gone wrong?",
+                                  style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Text("1. TYPO", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                            ),
+                            Card(shape: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.all(Radius.circular(25)
+                                )),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text("Happens to even the best of us. "
+                                    "\n"
+                                    "Please spellcheck the Inquiry in search box above and try again. If all is correct then...",
+                                    style: TextStyle(color: Theme.of(context).colorScheme.primary,),textAlign: TextAlign.center),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Text("2. INQUIRY MISSING IN LIBRARY", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+                            ),
+                            Card(shape: const OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.all(Radius.circular(25)
+                                )),
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                    child: Text("Oops...",
-                                        style: TextStyle(color: Colors.white,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                    child: Text("We can't seem to find what you are looking for.",
-                                        style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                    child: Text("What could have possibly gone wrong?",
-                                        style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text("Our Codex probably doesn't have the information you are looking for. "
+                                        "\n"
+                                        "Please feel free to request for the Information you need through our Request Portal below.",
+                                        style: TextStyle(color: Theme.of(context).colorScheme.primary,),textAlign: TextAlign.center),
                                   ),
                                 ],
-                              )),
-                          const Expanded(child: RiveAnimation.asset('assets/drugitudenodata.riv')),
-                          const Card(color: Colors.black,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text("1. TYPO", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
-                                  ),
-                                  Text("Happens to the best of us. Please Spell check the Inquiry in search box above and try again. If all is correct then...",
-                                      style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                ],
-                              )),
-
-
-                          Card(color: Colors.black,
-                              child: Column(
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text("2. INQUIRY MISSING IN LIBRARY", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
-                                  ),
-                                  const Column(
-                                    children: [
-                                      Text("Our Codex probably doesn't have the information you are looking for. ",
-                                          style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                      Text("Please feel free to request for the Information you need through our Request Portal",
-                                          style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                    ],
-                                  ),
-                                  SizedBox(width: 200, height: 30,
-                                    child: ElevatedButton(
-                                        onPressed: (){
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                const DrugRequestPage(),
-                                              ));
-                                        }, child: const Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.mail_outline_rounded, size: 30, color: Colors.green,),
-                                        Text('Request Drug', style: TextStyle(fontSize: 15, color: Colors.black))
-                                      ],
-                                    )),
-                                  ),
-                                ],
-                              )),
-                        ],
-                      ),
+                              ),
+                            ),
+                            OutlinedButton(
+                              style: ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
+                              ),
+                              onPressed: (){
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                      const DrugRequestPage(),
+                                    ));
+                              }, child:  Row(mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(Icons.mail_outline_rounded, color: Colors.green,),
+                                Text('Request Drug', style: TextStyle(color: Theme.of(context).colorScheme.primary,)),
+                              ],
+                            ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                );
+                  );
               }
-              else if (snapshot.hasError){
-                return Center(
-                  child: SizedBox(width: double.infinity,
-                    child: Card(color: Colors.black,
-                      child: Column(
-                        children: [
-                          const Card(color: Colors.black,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                    child: Text("Oops...",
-                                        style: TextStyle(color: Colors.white,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                    child: Text("Seems like we have stumbled upon some critical error.",
-                                        style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                    child: Text("What could have possibly gone wrong?",
-                                        style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                  ),
-                                ],
-                              )),
-                          const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
-                          const Card(color: Colors.black,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text("1. NETWORK ERROR", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
-                                  ),
-                                  Text("Please check your internet connection and try again",
-                                      style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                ],
-                              )),
-                          Card(color: Colors.black,
-                              child: Column(
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Colors.white, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
-                                  ),
-                                  const Column(
-                                    children: [
-                                      Text("Please turn on your connection by turning Airplane Mode off. ",
-                                          style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                      Text("If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
-                                          style: TextStyle(color: Colors.white),textAlign: TextAlign.center),
-                                    ],
-                                  ),
-                                  SizedBox(width: 200, height: 30,
-                                    child: ElevatedButton(
-                                        onPressed: (){
-                                          Navigator.pop(context);
-                                        }, child: const Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
-                                        Text('Close', style: TextStyle(fontSize: 15, color: Colors.black))
-                                      ],
-                                    )),
-                                  ),
-                                ],
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              }
+              // else if (snapshot.hasError){
+              //   return Center(
+              //     child: SizedBox(width: double.infinity,
+              //       child: Card(color:  Theme.of(context).colorScheme.surface,
+              //         child: Column(
+              //           children: [
+              //             Card(color: Theme.of(context).colorScheme.surface,
+              //                 child: Column(
+              //                   children: [
+              //                     Padding(
+              //                       padding: const EdgeInsets.all(2.0),
+              //                       child: Text("Oops...",
+              //                           style: TextStyle(color:  Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
+              //                     ),
+              //                     Padding(
+              //                       padding: const EdgeInsets.all(2.0),
+              //                       child: Text("Seems like we have stumbled upon some critical error.",
+              //                           style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+              //                     ),
+              //                     Padding(
+              //                       padding: const EdgeInsets.all(2.0),
+              //                       child: Text("What could have possibly gone wrong?",
+              //                           style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+              //                     ),
+              //                   ],
+              //                 )),
+              //             const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
+              //             Card(color:  Theme.of(context).colorScheme.surface,
+              //                 child: Column(
+              //                   children: [
+              //                     Padding(
+              //                       padding: const EdgeInsets.all(5.0),
+              //                       child: Text("1. NETWORK ERROR", style: TextStyle(color:  Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+              //                     ),
+              //                     Text("Please check your internet connection and try again",
+              //                         style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+              //                   ],
+              //                 )),
+              //             Card(color: Theme.of(context).colorScheme.surface,
+              //                 child: Column(
+              //                   children: [
+              //                     Padding(
+              //                       padding: const EdgeInsets.all(5.0),
+              //                       child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
+              //                     ),
+              //                     Column(
+              //                       children: [
+              //                         Text("Please turn on your connection by turning Airplane Mode off. ",
+              //                             style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+              //                         Text("If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
+              //                             style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+              //                       ],
+              //                     ),
+              //                     SizedBox(width: 200, height: 30,
+              //                       child: ElevatedButton(
+              //                           onPressed: (){
+              //                             Navigator.pop(context);
+              //                           }, child: Row(
+              //                         mainAxisAlignment: MainAxisAlignment.center,
+              //                         children: [
+              //                           const Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
+              //                           Text('Close', style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.primary))
+              //                         ],
+              //                       )),
+              //                     ),
+              //                   ],
+              //                 )),
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   );
+              // }
               return ListView.builder(
                 itemCount: data?.length,
                 itemBuilder: (context, index) {
@@ -325,9 +335,9 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                           children: [
                             Expanded(
                               child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade900.withOpacity(0.6),
-                                  borderRadius: BorderRadius.circular(10),
+                                decoration: BoxDecoration(border: Border.all(color: Colors.white),
+                                  color:Theme.of(context).colorScheme.surface.withOpacity(0.9),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                                 child:
                                 Center(
@@ -335,8 +345,8 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                     children: [
                                       Row(
                                         children: [
-                                          const Padding(
-                                            padding: EdgeInsets.only(
+                                          Padding(
+                                            padding: const EdgeInsets.only(
                                                 top: 25.0,
                                                 bottom: 0,
                                                 left: 8,
@@ -344,7 +354,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                             child: Text(
                                               'Category:',
                                               style: TextStyle(
-                                                  color: Colors.white54,
+                                                  color: Theme.of(context).colorScheme.primary,
                                                   fontSize: 12),
                                             ),
                                           ),
@@ -356,8 +366,8 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                 right: 8),
                                             child: Text(
                                               '${data?[index]['category']}',
-                                              style: const TextStyle(
-                                                  color: Colors.white,
+                                              style: TextStyle(
+                                                  color: Theme.of(context).colorScheme.primary,
                                                   fontSize: 12),
                                             ),
                                           ),
@@ -376,9 +386,9 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                               mainAxisAlignment:
                                               MainAxisAlignment.start,
                                               children: [
-                                                const Padding(
+                                                Padding(
                                                   padding:
-                                                  EdgeInsets.only(
+                                                  const EdgeInsets.only(
                                                       top: 0.0,
                                                       bottom: 0,
                                                       left: 8,
@@ -386,7 +396,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                   child: Text(
                                                       'Manufacturer Verified',
                                                       style: TextStyle(
-                                                          color: Colors.white54,
+                                                          color: Theme.of(context).colorScheme.primary,
                                                           fontSize: 12)),
                                                 ),
                                                 Padding(
@@ -424,11 +434,10 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                                       MainAxisAlignment
                                                                           .start,
                                                                       children: [
-                                                                        const Text(
+                                                                        Text(
                                                                             'Manufacturer Verified',
                                                                             style: TextStyle(
-                                                                                color: Colors
-                                                                                    .black,
+                                                                                color: Theme.of(context).colorScheme.primary,
                                                                                 fontWeight:
                                                                                 FontWeight
                                                                                     .bold,
@@ -475,11 +484,10 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                                     MainAxisAlignment
                                                                         .start,
                                                                     children: [
-                                                                      const Text(
+                                                                      Text(
                                                                           'Manufacturer Verified',
                                                                           style: TextStyle(
-                                                                              color: Colors
-                                                                                  .black,
+                                                                              color: Theme.of(context).colorScheme.primary,
                                                                               fontWeight:
                                                                               FontWeight
                                                                                   .bold,
@@ -509,14 +517,14 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                                           "additional information and verification from Manufacturer. "
                                                                           "Information from other sources include drug literature, which is usually used to cover the basics of the drug,"
                                                                           " and their resources are referenced in additional information tile."),
-                                                                  const Row(
+                                                                  Row(
                                                                     mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .start,
                                                                     children: [
                                                                       Padding(
                                                                         padding:
-                                                                        EdgeInsets
+                                                                        const EdgeInsets
                                                                             .only(
                                                                             top: 8,
                                                                             bottom: 2,
@@ -525,8 +533,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                                         child: Text(
                                                                             'Please Note',
                                                                             style: TextStyle(
-                                                                                color: Colors
-                                                                                    .black,
+                                                                                color: Theme.of(context).colorScheme.primary,
                                                                                 fontWeight:
                                                                                 FontWeight
                                                                                     .bold,
@@ -536,7 +543,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                                                 TextDecoration
                                                                                     .underline)),
                                                                       ),
-                                                                      Icon(
+                                                                      const Icon(
                                                                         Icons
                                                                             .security_sharp,
                                                                         size: 15,
@@ -560,7 +567,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                             ),
                                                           ),
                                                     ),
-                                                    icon: const Icon(Icons.help_outline_outlined, size: 16, color: Colors.grey,)
+                                                    icon: Icon(Icons.help_outline_outlined, size: 16, color: Theme.of(context).colorScheme.primary,)
                                                 )
                                               ],
                                             ),
@@ -572,25 +579,27 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                         padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                         child: Text('${data?[index]['medicineName']}',
                                             textAlign: TextAlign.start,
-                                            style: const TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold)),
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 40, fontWeight: FontWeight.bold)),
                                       ),
-                                      const Padding(
-                                        padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                         child: Text('Active Ingredient',
-                                          style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary,),),
                                       ),
                                       // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
                                       Padding(
                                         padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                         child: Text('${data?[index]['inn_name']}',
                                           textAlign: TextAlign.start,
-                                          style: const TextStyle(
-                                              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                          style: TextStyle(
+                                              color: Theme.of(context).colorScheme.primary, fontSize: 20, fontWeight: FontWeight.bold),),
                                       ),
-                                      Card(color: Colors.black.withOpacity(0.6),
-                                        child: ExpansionTile(
-                                          title: const Text('More..',
-                                            style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                      Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                        color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                        child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                          backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                          title: Text('More...',
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12),),
                                           children: [
                                             Image.network(
                                                 data![index]['productImageUrl'],
@@ -617,155 +626,159 @@ class DictionaryDBBrandSearch extends SearchDelegate {
                                                   }
                                                 }
                                             ),
-                                            const Padding(
-                                              padding: EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Active Substance',
                                                 overflow: TextOverflow.fade,
                                                 textAlign: TextAlign.start,
-                                                style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,),),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                               child: Text(data[index]['activeSubstance'],
                                                 overflow: TextOverflow.fade,
                                                 textAlign: TextAlign.start,
-                                                style: const TextStyle(color: Colors.white, fontSize: 12),),
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),),
                                             ),
-                                            const Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Therapuetic Area',
-                                                style: TextStyle(color: Colors.white54,fontSize: 12),),
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                               child: Text(data[index]['therapeuticArea'],
                                                 textAlign: TextAlign.start,
-                                                style: const TextStyle(
-                                                    color: Colors.white,
+                                                style: TextStyle(
+                                                    color: Theme.of(context).colorScheme.primary,
                                                     fontWeight: FontWeight.bold),),
                                             ),
-                                            const Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Pharmacotherpuetic Group',
-                                                  style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                  style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,)),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                               child: Text(data[index]['humanPharmacotherapeuticGroup'],
-                                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                                                  style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)),
                                             ),
-                                            const Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Approx Retail Price',
-                                                  style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                  style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,)),
                                             ),
                                             Text(data[index]['approxRetailPrice'],
-                                                style: const TextStyle(
-                                                    color: Colors.white, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
-                                            const Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                style: TextStyle(
+                                                    color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),textAlign: TextAlign.center),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Marketing Authorization Company',
-                                                style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                               child: Text(data[index]['marketingAuthorisationHolderorCompanyName'],
-                                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+                                                  style:  TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)
                                               ),
                                             ),
-                                            const Padding(
-                                              padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                               child: Text('Authorization Status',
-                                                  style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                  style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                               child: Text(data[index]['authorisationStatus'],
-                                                  style: const TextStyle(color: Colors.white, fontSize: 12)
+                                                  style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline, fontWeight: FontWeight.bold)
                                               ),
                                             ),
-                                            ExpansionTile(
-                                              title: const Text('Indication and Use',
-                                                style: TextStyle(color: Colors.white54, fontSize: 12),),
+                                            ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                              backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                              title: Text('Indication and Use',
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                                               children: [
 
-                                                const Padding(
-                                                  padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                   child: Text('Indication and Use',
-                                                      style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                      style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                                   child: Text(data[index]['conditionOrIndication'],
                                                     overflow: TextOverflow.fade,
                                                     textAlign: TextAlign.start,
-                                                    style: const TextStyle(fontSize: 12,
-                                                        color: Colors.white,
+                                                    style: TextStyle(
+                                                        color: Theme.of(context).colorScheme.primary,
                                                         fontWeight: FontWeight.bold),),
                                                 ),
-                                                const Padding(
-                                                  padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                   child: Text('Contraindications, Warnings & Precautions',
-                                                      style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                      style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                                   child: Text(data[index]['contraindicationOrWarningsOrPrecautions'],
                                                     overflow: TextOverflow.fade,
                                                     textAlign: TextAlign.start,
-                                                    style: const TextStyle(fontSize: 12,
-                                                        color: Colors.white,
+                                                    style: TextStyle(
+                                                        color: Theme.of(context).colorScheme.primary,
                                                         fontWeight: FontWeight.bold),),
                                                 ),
 
-                                                const Padding(
-                                                  padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                   child: Text('Mechanism of Action',
-                                                      style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                      style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                                   child: Text(data[index]['moaPhamacology'],
                                                     overflow: TextOverflow.fade,
                                                     textAlign: TextAlign.start,
-                                                    style: const TextStyle(fontSize: 12,
-                                                        color: Colors.white,
+                                                    style: TextStyle(
+                                                        color: Theme.of(context).colorScheme.primary,
                                                         fontWeight: FontWeight.bold),),
                                                 ),
 
-                                                const Padding(
-                                                  padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                   child: Text('Excipients List',
-                                                      style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                      style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
                                                   child: Text(data[index]['excipientsList'],
                                                     overflow: TextOverflow.fade,
                                                     textAlign: TextAlign.start,
-                                                    style: const TextStyle(fontSize: 12,
-                                                        color: Colors.white,
+                                                    style: TextStyle(
+                                                        color: Theme.of(context).colorScheme.primary,
                                                         fontWeight: FontWeight.bold),),
                                                 ),
 
 
-                                                ExpansionTile(
-                                                  title: const Text('Additional Information',
-                                                      style: TextStyle(color: Colors.white54, fontSize: 12)),
+                                                ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                                  backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                                  title: Text('Additional Information',
+                                                      style: TextStyle(color: Theme.of(context).colorScheme.primary)),
                                                   children: [
-                                                    const Padding(
-                                                      padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 8, right: 8),
                                                       child: Text('Additional information:',
-                                                          style: TextStyle(color: Colors.white54, fontSize: 12)
+                                                          style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration:TextDecoration.underline)
                                                       ),
                                                     ),
                                                     Padding(
                                                       padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                      child: Text('ATC-Code: ${data[index]['atccode']}, url: ${data[index]['url']}',
+                                                      child: Text('ATC-Code: ${data[index]['atccode']}, '
+                                                      "\n"
+                                                          'URL: ${data[index]['url']}',
                                                           overflow: TextOverflow.fade,
                                                           textAlign: TextAlign.start,
-                                                          style: const TextStyle(fontSize: 12,
-                                                              color: Colors.white,
+                                                          style: TextStyle(fontSize: 12,
+                                                              color: Theme.of(context).colorScheme.primary,
                                                               fontWeight: FontWeight.bold)
                                                       ),
                                                     ),
@@ -1089,7 +1102,7 @@ class DictionaryDBBrandSearch extends SearchDelegate {
           // title: Text(suggestion),
           title: RichText(
             text: TextSpan(text: queryText,
-                style: const TextStyle(color: Colors.black,
+                style: TextStyle(color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.bold, fontSize: 18,
                 ),
 

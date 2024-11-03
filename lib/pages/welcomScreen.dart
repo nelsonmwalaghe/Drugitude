@@ -37,9 +37,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary),
                       ],
                     ),),
-                  SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
                   Text("or", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
-                  SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
                   OutlinedButton(
                     style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
                     onPressed:() {
@@ -56,8 +56,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ],
               ),
             ),
-            SizedBox(height: 80),
-        Flexible(flex: 2,
+            const SizedBox(height: 80),
+        const Flexible(flex: 2,
                 child: Text('Thank you for choosing Drugitude', style: TextStyle(),)),
         //     Flexible(flex: 2,
         //   child: SizedBox(
@@ -75,7 +75,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         // ),
         //     Flexible(flex: 2,
         //         child: Text('Drugitude', style: TextStyle(color: Colors.white),)),
-             SizedBox(height: 10),
+             const SizedBox(height: 10),
             Flexible(flex: 3,
               child: OutlinedButton(
 

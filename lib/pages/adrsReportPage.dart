@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/theme_provider.dart';
 import 'adrsOptionsPage.dart';
-import '../adverseDrugReactionReportModel/adverseDrugReactionFormWidget.dart';
+import '../adverseDrugReactionReportModel/adversedrugreactionformwidget.dart';
 import 'aboutDrugitude.dart';
 import 'dictionaryMode.dart';
 import 'drugdictionarydb.dart';

@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import '../apiServiceModels/therapeuticAreaApiModel.dart';
-import '../drugListCallModel/drugListTherapueticAreaModel.dart';
+import '../apiServiceModels/therapeuticareaapimodel.dart';
+import '../drugListCallModel/druglisttherapueticareamodel.dart';
 import '../searchModels/therapueticareasearch.dart';
 import 'drugrequestpage.dart';
 

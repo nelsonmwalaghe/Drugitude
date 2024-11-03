@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../drugListCallModel/drugListTherapueticAreaModel.dart';
+import '../drugListCallModel/druglisttherapueticareamodel.dart';
 
-// import '../drugList_call_model/drugListModel.dart';
-// import '../drugList_call_model/drugListbrandNamemodel.dart';
+// import '../drugList_call_model/druglistmodel.dart';
+// import '../drugList_call_model/druglistbrandnamemodel.dart';
 // // Note This is innName
 // // data - innName
 // // fetchurl - innName

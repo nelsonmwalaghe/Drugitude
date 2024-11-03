@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 
 
 
-class ApiDrugCodex_service{
+class ApiDrugCodexservice{
   late Box dictionarybox;
   List dictionaryDrug = [];
 
@@ -48,7 +48,7 @@ class ApiDrugCodex_service{
       //   // //       .toList();
       //   // }
       // }
-    } catch (SocketException) {
+    } catch (socketException) {
       print('No Internet');
     }
     // return resultsDictionaryDrug;

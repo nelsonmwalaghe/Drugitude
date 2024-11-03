@@ -1,7 +1,7 @@
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
-import '../apiServiceModels/pharmaceuticalGroupApiModel.dart';
-import '../drugListCallModel/drugListPharmaceuticalGroupModel.dart';
+import '../apiServiceModels/pharmaceuticalgroupapimodel.dart';
+import '../drugListCallModel/druglistpharmaceuticalgroupmodel.dart';
 import '../searchModels/pharmaceuticalgroupsearch.dart';
 import 'drugrequestpage.dart';
 

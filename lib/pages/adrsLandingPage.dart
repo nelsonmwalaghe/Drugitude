@@ -281,7 +281,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                 color: Colors.white,
               )),
           title: Padding(
-            padding: EdgeInsets.only(left: 0, right: 20),
+            padding: const EdgeInsets.only(left: 0, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -322,7 +322,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'ADVERSE DRUG REACTIONS REPORT PORTAL',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),
@@ -334,7 +334,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                       textAlign: TextAlign.center,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 16.0, bottom: 0, left: 8, right: 8),
+                      padding: const EdgeInsets.only(top: 16.0, bottom: 0, left: 8, right: 8),
                       child: Text(
                         '"You need not be certain...Just be suspicious!"',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 17, decoration: TextDecoration.underline),
@@ -342,42 +342,42 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Submission of a report does not constitute an admission that medical personnel or manufacturer or the product caused or contributed to the event.',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.justify,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Patient’s identity is held in strict confidence and program staff is not expected to and will not disclose reporter’s identity in response to any public request.',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.justify,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Information supplied by you will contribute to the improvement of drug safety and therapy in the East Africa Region.',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.justify,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Completed Reports will be sent to the National Pharmacy and Poisons Board of the country case is reported ',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.center,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 5, bottom: 0, left: 8, right: 8),
+                      padding: const EdgeInsets.only(top: 5, bottom: 0, left: 8, right: 8),
                       child: Text(
                         'PLEASE NOTE!',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20), textAlign: TextAlign.center,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 5, bottom: 0, left: 8, right: 8),
+                      padding: const EdgeInsets.only(top: 5, bottom: 0, left: 8, right: 8),
                       child: Text(
                         'ADRs reports are quite vast and detailed. Precision is expected. With this in mind, we suggest that the reporter should familiarize themselves with the information requested for in the various entry fields, gather the necessary data and proceed accordingly.',
                         style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 14), textAlign: TextAlign.center,
@@ -398,7 +398,7 @@ class _AdrsLandingPageState extends State<AdrsLandingPage> {
                               },
                               style: ButtonStyle(
                                 backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
-                                fixedSize: WidgetStatePropertyAll(Size(130, 30)),
+                                fixedSize: const WidgetStatePropertyAll(Size(130, 30)),
                               ),
                               child: Row(mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

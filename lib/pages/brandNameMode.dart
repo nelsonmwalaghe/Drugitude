@@ -1,7 +1,7 @@
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
-import '../apiServiceModels/brandnameapiModel.dart';
-import '../drugListCallModel/drugListbrandNamemodel.dart';
+import '../apiServiceModels/brandnameapimodel.dart';
+import '../drugListCallModel/druglistbrandnamemodel.dart';
 import '../searchModels/brandNameSearch.dart';
 import 'drugrequestpage.dart';
 

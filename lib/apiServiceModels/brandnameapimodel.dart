@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../drugListCallModel/drugListbrandNamemodel.dart';
+import '../drugListCallModel/druglistbrandnamemodel.dart';
 
 
 

@@ -50,7 +50,7 @@ class FetchDrugDayDrug {
     //   // //       .toList();
     //   // }
     // }
-  } catch (SocketException) {
+  } catch (socketException) {
       print('No Internet');
     }
     // return resultsDayDrug;

@@ -40,9 +40,9 @@ class _ModeChoiceState extends State<ModeChoice>
                           Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary),
                         ],
                       ),),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     Text("or", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     OutlinedButton(
                       style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
                       onPressed:() {
@@ -80,76 +80,108 @@ class _ModeChoiceState extends State<ModeChoice>
               //         child: Text('Drugitude', style: TextStyle(color: Colors.white),)),
               const SizedBox(height: 10),
               Flexible(flex: 2,
-                child: Column(
-                  children: [
-          
-                     Text('1. ONLINE MODE', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,),),
-                     Text('This press and play option always requires strong and fast internet connection. It is light and fast, requiring no initial setup.', style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center,),
-                    const Center( child:
-                    SizedBox(width: 192, height: 100,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: RiveAnimation.asset('assets/cheetah_run_4.riv'),),
-                          // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
-                        ],
-                      ),
-                    ),),
-                    OutlinedButton(
-                        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
-                        onPressed: () {
-                          setState(() {
-                            var box = Hive.box(SETTINGS_BOX);
-                            box.put("welcome_shown", true);
-                          });
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const LandingPage(),
-                              ));
-                          // onPressed: () async {
-                          //   var box = Hive.box(SETTINGS_BOX);
-                          //   box.put("welcome_shown", true);}
-                        },
-                        child: Text('Enter Online Mode', style: TextStyle(color: Theme.of(context).colorScheme.primary))),
-                  ],
+                child: Card(
+                  shape: OutlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                      borderRadius: const BorderRadius.all(Radius.circular(25)
+                      )),
+                  color: Theme.of(context).colorScheme.surface,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:8.0, bottom: 8.0),
+                    child: Column(
+                      children: [
+
+                         Row(mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                             Text('1. ONLINE MODE', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline,),),
+                             const SizedBox(width: 10,),
+                             const Icon(Icons.wifi_sharp, size: 18,)
+                           ],
+                         ),
+                         Text('This press and play option always requires strong and fast internet connection. It is light and fast, requiring no initial setup.', style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center,),
+                        const Center( child:
+                        SizedBox(width: 192, height: 100,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: RiveAnimation.asset('assets/cheetah_run_4.riv'),),
+                              // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                            ],
+                          ),
+                        ),),
+                        OutlinedButton(
+                            style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                            onPressed: () {
+                              setState(() {
+                                var box = Hive.box(SETTINGS_BOX);
+                                box.put("welcome_shown", true);
+                              });
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LandingPage(),
+                                  ));
+                              // onPressed: () async {
+                              //   var box = Hive.box(SETTINGS_BOX);
+                              //   box.put("welcome_shown", true);}
+                            },
+                            child: Text('Enter Online Mode', style: TextStyle(color: Theme.of(context).colorScheme.primary))),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 5),
               Flexible(flex: 2,
-                child: Column(
-                  children: [
-          
-                    Text('2. OFFLINE MODE', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),),
-                    Text('Requires an initial short automated set up (approx 2 minutes) with access to the internet, to ensure fast response to future app core functions without internet connection.', style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center,),
-                    Center( child:
-                    SizedBox(width: 192, height: 100,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: RiveAnimation.asset('assets/turtle_run2.riv', ),),
-                          // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
-                        ],
-                      ),
-                    ),),
-                    OutlinedButton(
-                        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
-                        onPressed: () {
-                          setState(() {
-                            var box = Hive.box(SETTINGS_BOX);
-                            box.put("welcome_shown", true);
-                          });
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const DictionaryDB(),
-                              ));
-                          // onPressed: () async {
-                          //   var box = Hive.box(SETTINGS_BOX);
-                          //   box.put("welcome_shown", true);}
-                        },
-                        child: Text('Enter Offline Mode', style: TextStyle(color: Theme.of(context).colorScheme.primary))),
-                  ],
+                child: Card(
+                  shape: OutlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+                      borderRadius: const BorderRadius.all(Radius.circular(25)
+                      )),
+                  color: Theme.of(context).colorScheme.surface,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                    child: Column(
+                      children: [
+
+                        Row(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('2. OFFLINE MODE', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),),
+                          const SizedBox(width: 10,),
+                            const Icon(Icons.wifi_off_sharp, size: 18,)
+                          ],
+                        ),
+                        Text('Requires an initial short automated set up (approx 2 minutes) with access to the internet, to ensure fast response to future app core functions without internet connection.', style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center,),
+                        const Center( child:
+                        SizedBox(width: 192, height: 100,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: RiveAnimation.asset('assets/turtle_run2.riv', ),),
+                              // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                            ],
+                          ),
+                        ),),
+                        OutlinedButton(
+                            style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
+                            onPressed: () {
+                              setState(() {
+                                var box = Hive.box(SETTINGS_BOX);
+                                box.put("welcome_shown", true);
+                              });
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const DictionaryDB(),
+                                  ));
+                              // onPressed: () async {
+                              //   var box = Hive.box(SETTINGS_BOX);
+                              //   box.put("welcome_shown", true);}
+                            },
+                            child: Text('Enter Offline Mode', style: TextStyle(color: Theme.of(context).colorScheme.primary))),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               Row(mainAxisAlignment: MainAxisAlignment.end,

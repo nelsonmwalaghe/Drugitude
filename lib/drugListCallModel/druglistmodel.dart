@@ -13,7 +13,7 @@ class DrugList {
   String category;
   String medicineName;
   String therapeuticArea;
-  String inn_name;
+  String innName;
   String activeSubstance;
   String activeSubstanceStrengthPerDose;
   String dosageForm;
@@ -39,7 +39,7 @@ class DrugList {
     required this.category,
     required this.medicineName,
     required this.therapeuticArea,
-    required this.inn_name,
+    required this.innName,
     required this.activeSubstance,
     required this.activeSubstanceStrengthPerDose,
     required this.dosageForm,
@@ -66,7 +66,7 @@ class DrugList {
     category: json["category"],
     medicineName: json["medicineName"],
     therapeuticArea: json["therapeuticArea"],
-    inn_name: json["inn_name"],
+    innName: json["inn_name"],
     activeSubstance: json["activeSubstance"],
     activeSubstanceStrengthPerDose: json["activeSubstanceStrengthPerDose"],
     dosageForm: json["dosageForm"],
@@ -93,7 +93,7 @@ class DrugList {
     "category": category,
     "medicineName": medicineName,
     "therapeuticArea": therapeuticArea,
-    "inn_name": inn_name,
+    "inn_name": innName,
     "activeSubstance": activeSubstance,
     "activeSubstanceStrengthPerDose": activeSubstanceStrengthPerDose,
     "dosageForm": dosageForm,

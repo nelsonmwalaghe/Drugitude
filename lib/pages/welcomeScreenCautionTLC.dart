@@ -29,7 +29,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                  SizedBox(width: MediaQuery.of(context).size.width,
                       child: Column(
                         children: [
-                          SizedBox(height: 10,),
+                          const SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -43,9 +43,9 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                     Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary),
                                   ],
                                 ),),
-                              SizedBox(width: 10,),
+                              const SizedBox(width: 10,),
                               Text("or", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
-                              SizedBox(width: 10,),
+                              const SizedBox(width: 10,),
                               OutlinedButton(
                                 style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
                                 onPressed:() {
@@ -61,10 +61,10 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                 ),),
                             ],
                           ),
-                          SizedBox(height: 20,),
+                          const SizedBox(height: 20,),
                           Text('DRUGITUDE IS DESIGNED TO BE USED BY MEDICAL & ALLIED HEALTH PROFESSIONALS ONLY. ',
                             style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),textAlign: TextAlign.center,),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text('The content we provide via Drugitude is provided for general information purposes only. It is not set up to provide specific advice on which you should rely.\n'
                               '\n'
                               'In particular, Drugitude (and the information which may be accessed through it) is not a substitute for professional medical care by a qualified doctor or other healthcare professional.\n'
@@ -73,7 +73,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                               '\n'
                               'If you are a healthcare professional then this information (including any professional reference material) is intended to support, not replace, your own knowledge, experience and judgement.',
                             style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.start,),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text('PLEASE READ AND ACCEPT OUR TERMS AND CONDITIONS.',
                             style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center,),
                         ],
@@ -111,7 +111,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                   children: [
                                     Padding(
                                       padding:
-                                      EdgeInsets
+                                      const EdgeInsets
                                           .only(
                                           top: 0.0,
                                           bottom: 10,
@@ -129,7 +129,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                     ),
                                     Padding(
                                       padding:
-                                      EdgeInsets
+                                      const EdgeInsets
                                           .only(
                                           top: 0.0,
                                           bottom: 2,
@@ -154,7 +154,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                     ),
                                     Padding(
                                       padding:
-                                      EdgeInsets
+                                      const EdgeInsets
                                           .only(
                                           top: 0.0,
                                           bottom: 10,
@@ -209,7 +209,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -243,7 +243,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -283,7 +283,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -325,7 +325,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -367,7 +367,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -399,7 +399,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -435,7 +435,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -480,7 +480,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -521,7 +521,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -554,7 +554,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -594,7 +594,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -640,7 +640,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -672,7 +672,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                                       children: [
                                         Padding(
                                           padding:
-                                          EdgeInsets
+                                          const EdgeInsets
                                               .only(
                                               top: 8,
                                               bottom: 2,
@@ -743,7 +743,7 @@ class _WelcomeScreenTLCState extends State<WelcomeScreenTLC>
                       // Theme.of(context).colorScheme.secondary,
                     ),)
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Flexible(flex: 3,
                   child: Row(mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

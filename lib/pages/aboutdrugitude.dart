@@ -448,7 +448,7 @@ class _AboutPageState extends State<AboutPage> {
                               Expanded(
                                   child: RiveAnimation.asset(
                                       'assets/drugiconLoading.riv',)),
-                              // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                              Text('medicamento infinitum', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontStyle:FontStyle.italic )),
                             ],
                           ),
                         )),
@@ -496,7 +496,7 @@ class _AboutPageState extends State<AboutPage> {
                                     Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary),
                                   ],
                                 ),),
-                              SizedBox(width: 20,),
+                              const SizedBox(width: 20,),
                               OutlinedButton(
                                 style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),),
                                 onPressed:() {
@@ -517,7 +517,7 @@ class _AboutPageState extends State<AboutPage> {
                             children: [
                               Link(
                                 target: LinkTarget.blank,
-                                uri: Uri.parse('https://play.google.com/apps/internaltest/4701330612071211376'),
+                                uri: Uri.parse('https://play.google.com/store/apps/details?id=com.ridcoltd.dev_drugitude'),
                                 builder: (context, followLink) => Padding(
                                   padding: const EdgeInsets.only(left: 4.0),
                                   child: OutlinedButton(

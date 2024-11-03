@@ -291,7 +291,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                 color: Colors.white,
               )),
           title: Padding(
-            padding: EdgeInsets.only(left: 0, right: 20),
+            padding: const EdgeInsets.only(left: 0, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -324,7 +324,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Card(shape: OutlineInputBorder(
+                Card(shape: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
               borderRadius: BorderRadius.all(Radius.circular(25)
               )),
@@ -332,7 +332,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Text(
                           'ADVERSE DRUG REACTIONS REPORT PORTAL',
                           style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline),
@@ -354,7 +354,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                                 },
                                 style: ButtonStyle(
                                     backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
-                                  fixedSize: WidgetStatePropertyAll(Size(200, 30)),
+                                  fixedSize: const WidgetStatePropertyAll(Size(200, 30)),
                                 ),
                                 child: Row(mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -385,7 +385,7 @@ class _AdrsOptionsPageState extends State<AdrsOptionsPage> {
                                 },
                                 style: ButtonStyle(
                                     backgroundColor: WidgetStatePropertyAll(Theme.of(context).colorScheme.secondary),
-                                  fixedSize: WidgetStatePropertyAll(Size(300, 30)),
+                                  fixedSize: const WidgetStatePropertyAll(Size(300, 30)),
                                 ),
                                 child: Row(mainAxisAlignment: MainAxisAlignment.center,
                                   children: [

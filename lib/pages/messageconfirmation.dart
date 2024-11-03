@@ -143,149 +143,138 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
     return SafeArea(
       child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.white,
           elevation: 8,
-          shape: const CircleBorder(side: BorderSide(color: Colors.black)),
+          shape: CircleBorder(side: BorderSide(color: Theme.of(context).colorScheme.secondary,)),
           onPressed: () async {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const SearchOptions(),
                 ));
+            // await NotificationService.showNotification(
+            //   interval: 5,
+            //     title: "Drugitude",
+            //     body: "Drug of the Day",
+            //     summary: "Daily Dose of New Drug Information",
+            //   scheduled: true,
+            //   repeatNotif: true
+            //   );
+
+
+            // AwesomeNotifications().createNotification(content: NotificationContent(
+            //     id: 1, channelKey: 'Basic Channel',
+            // title: 'Drugitude',
+            //   body: 'Check out the Drug of the Day',
+            //     icon: 'drugitudeicon',
+            // ),);
           },
-          child: const Icon(Icons.search_outlined),
+          child: const Icon(Icons.search_outlined, color: Colors.black),
         ),
-        bottomNavigationBar: BottomAppBar(
-          height: 54.0,
-          notchMargin: BorderSide.strokeAlignOutside,
-          elevation: 8,
-          padding: const EdgeInsets.only(left: 0, right: 0, bottom: 0, top: 0),
+        bottomNavigationBar: BottomAppBar(height: 54.0,
+          notchMargin: BorderSide.strokeAlignOutside,elevation: 8,padding:  const EdgeInsets.only(left: 0,right: 0, bottom: 0, top: 0),
           shape: const CircularNotchedRectangle(),
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          shadowColor: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.95),
+          child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const LandingPage(),
+                          ));
+                    }, child:  Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.home_filled, color: Theme.of(context).colorScheme.primary,),
+                        Text('Home', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                      ],
+                    )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
+                child: Row(
+                  children: [
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                            const DictionaryMode(),
+                          ));
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.menu_book_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('Dictionary Mode', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                      ],
+                    )),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
                     TextButton(
-                        onPressed: () {
+                        onPressed: (){
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const LandingPage(),
+                                builder: (context) =>
+                                const DrugRequestPage(),
                               ));
+
                         },
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.home_filled,
-                              color: Colors.black,
-                            ),
-                            Text('Home',
-                                style: TextStyle(
-                                    fontSize: 9.0, color: Colors.black))
+                            Icon(Icons.mail_outline_rounded, color: Theme.of(context).colorScheme.primary,),
+                            Text('Request Drug', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
                           ],
                         )),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
+                padding: const EdgeInsets.only(left:0.0, right:5, bottom: 0, top: 0),
                 child: Row(
                   children: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                              const DictionaryMode(),
-                            ));
-                        },
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.menu_book_outlined,
-                              color: Colors.black,
-                            ),
-                            Text('Dictionary Mode',
-                                style: TextStyle(
-                                    fontSize: 9.0, color: Colors.black))
-                          ],
-                        )),
+                    TextButton(onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AboutPage(),
+                          ));
+                    }, child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.corporate_fare_outlined, color: Theme.of(context).colorScheme.primary,),
+                        Text('About', style: TextStyle(fontSize: 9.0, color: Theme.of(context).colorScheme.primary))
+                      ],
+                    )),
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
-                child: Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const DrugRequestPage(),
-                              ));
-                        },
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.mail_outline_rounded,
-                              color: Colors.black,
-                            ),
-                            Text('Request Drug',
-                                style: TextStyle(
-                                    fontSize: 9.0, color: Colors.black))
-                          ],
-                        )),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 0.0, right: 5, bottom: 0, top: 0),
-                child: Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AboutPage(),
-                              ));
-                        },
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.corporate_fare_outlined,
-                              color: Colors.black,
-                            ),
-                            Text('About',
-                                style: TextStyle(
-                                    fontSize: 9.0, color: Colors.black))
-                          ],
-                        )),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                width: 52,
-              )
+              const SizedBox(width: 52,)
             ],
           ),
         ),
+        extendBody: true,
         appBar: AppBar(
+          shape: const OutlineInputBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              borderSide: BorderSide(width: 2,
+                  color: Colors.white,
+                  strokeAlign: double.maxFinite)),
           leading: IconButton(
               onPressed: () {
                 Navigator.pushReplacement(
@@ -294,23 +283,23 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                       builder: (context) => const LandingPage(),
                     ));
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
               )),
-          backgroundColor: Colors.black.withOpacity(0.8),
-          title: const Row(
+          backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
+          title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   Text(
                     'DRUGITUDE',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 20),
                   ),
                   Text(
                     '           Messages & Alerts ',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
+                    style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12),
                   ),
                 ],
               ),
@@ -326,14 +315,14 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
 
                   // print('Results: $results');
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.search,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.primary,
                 ))
           ],
         ),
         extendBodyBehindAppBar: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -365,123 +354,68 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                       ));
                 } else if (snapshot.hasError) {
                   return Center(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Card(
-                        color: Colors.black,
+                    child: SizedBox(width: double.infinity,
+                      child: Card(color:  Theme.of(context).colorScheme.surface,
                         child: Column(
                           children: [
-                            const Card(
-                                color: Colors.black,
+                            Card(color: Theme.of(context).colorScheme.surface,
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.all(2.0),
+                                      padding: const EdgeInsets.all(2.0),
                                       child: Text("Oops...",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 25,
-                                              fontStyle: FontStyle.italic,
-                                              decorationStyle:
-                                              TextDecorationStyle.solid,
-                                              decorationColor: Colors.white,
-                                              decoration:
-                                              TextDecoration.underline),
-                                          textAlign: TextAlign.center),
+                                          style: TextStyle(color:  Theme.of(context).colorScheme.primary,fontSize: 25,fontStyle: FontStyle.italic, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline), textAlign: TextAlign.center),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text(
-                                          "Seems like we have stumbled upon some critical error.",
-                                          style: TextStyle(color: Colors.white),
-                                          textAlign: TextAlign.center),
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Text("Seems like we have stumbled upon some critical error.",
+                                          style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(2.0),
-                                      child: Text(
-                                          "What could have possibly gone wrong?",
-                                          style: TextStyle(color: Colors.white),
-                                          textAlign: TextAlign.center),
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Text("What could have possibly gone wrong?",
+                                          style: TextStyle(color:  Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                     ),
                                   ],
                                 )),
-                            const Expanded(
-                                child: RiveAnimation.asset(
-                                    'assets/drugitudeError.riv')),
-                            const Card(
-                                color: Colors.black,
+                            const Expanded(child: RiveAnimation.asset('assets/drugitudeError.riv')),
+                            Card(color:  Theme.of(context).colorScheme.surface,
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text("1. NETWORK ERROR",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              decorationStyle:
-                                              TextDecorationStyle.solid,
-                                              decorationColor: Colors.white,
-                                              decoration:
-                                              TextDecoration.underline),
-                                          textAlign: TextAlign.center),
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text("1. NETWORK ERROR", style: TextStyle(color:  Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                     ),
-                                    Text(
-                                        "Please check your internet connection and try again",
-                                        style: TextStyle(color: Colors.white),
-                                        textAlign: TextAlign.center),
+                                    Text("Please check your internet connection and try again",
+                                        style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                   ],
                                 )),
-                            Card(
-                                color: Colors.black,
+                            Card(color: Theme.of(context).colorScheme.surface,
                                 child: Column(
                                   children: [
-                                    const Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text("2. AIRPLANE MODE IS ON",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              decorationStyle:
-                                              TextDecorationStyle.solid,
-                                              decorationColor: Colors.white,
-                                              decoration:
-                                              TextDecoration.underline),
-                                          textAlign: TextAlign.center),
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text("2. AIRPLANE MODE IS ON", style: TextStyle(color: Theme.of(context).colorScheme.primary, decorationStyle: TextDecorationStyle.solid,decorationColor: Colors.white, decoration: TextDecoration.underline),textAlign: TextAlign.center),
                                     ),
-                                    const Column(
+                                    Column(
                                       children: [
-                                        Text(
-                                            "Please turn on your connection by turning Airplane Mode off. ",
-                                            style:
-                                            TextStyle(color: Colors.white),
-                                            textAlign: TextAlign.center),
-                                        Text(
-                                            "If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
-                                            style:
-                                            TextStyle(color: Colors.white),
-                                            textAlign: TextAlign.center),
+                                        Text("Please turn on your connection by turning Airplane Mode off. ",
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
+                                        Text("If you have checked all above options and still find this error, please contact our Administrator via email: drugitude@ridcoltd.co.ke",
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary),textAlign: TextAlign.center),
                                       ],
                                     ),
-                                    SizedBox(
-                                      width: 200,
-                                      height: 30,
+                                    SizedBox(width: 200, height: 30,
                                       child: ElevatedButton(
-                                          onPressed: () {
+                                          onPressed: (){
                                             Navigator.pop(context);
-                                          },
-                                          child: const Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: [
-                                              Icon(
-                                                Icons.exit_to_app_sharp,
-                                                size: 30,
-                                                color: Colors.green,
-                                              ),
-                                              Text('Close',
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      color: Colors.black))
-                                            ],
-                                          )),
+                                          }, child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          const Icon(Icons.exit_to_app_sharp, size: 30, color: Colors.green,),
+                                          Text('Close', style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.primary))
+                                        ],
+                                      )),
                                     ),
                                   ],
                                 )),
@@ -495,410 +429,390 @@ class _MessageConfirmationState extends State<MessageConfirmation> {
                   itemCount: data?.length,
                   itemBuilder: (context, index) {
                     return Card(
-                        color: Colors.black.withOpacity(0.2),
+                        shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                        color: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
                         borderOnForeground: false,
                         child: ListTile(
                             title: Row(children: [
                               Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade900.withOpacity(0.2),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Row(mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 5.0,),
-                                              child: Text(
-                                                ' ${data?[index].priority.toString()}',
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 12),
-                                              ),
+                                child: Center(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0,),
+                                            child: Text(
+                                              ' ${data?[index].priority.toString()}',
+                                              style: TextStyle(
+                                                  color: Theme.of(context).colorScheme.primary,
+                                                  fontSize: 12),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 5.0,
-                                                  bottom: 0,
-                                                  left: 2,),
-                                              child: Padding(
-                                                padding:
-                                                const EdgeInsets.only(
-                                                    top: 0.0,
-                                                    bottom: 0,
-                                                    left: 0,
-                                                    right: 0),
-                                                child: CircleAvatar(backgroundColor: Colors.transparent,
-                                                    radius: 5,
-                                                    child: Image.asset(
-                                                        "assets/${data?[index].priority}.png")),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 3.0,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5.0,
+                                                bottom: 0,
+                                                left: 2,),
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsets.only(
+                                                  top: 0.0,
                                                   bottom: 0,
                                                   left: 0,
                                                   right: 0),
-                                              child: IconButton(
-                                                  icon: const Icon(
-                                                    Icons.help_outline_outlined,
-                                                    color: Colors.grey,
-                                                    size: 15,),
-                                                  onPressed: () => showDialog<String>(
-                                                      context: context,
-                                                      builder: (context) =>
-                                                          SingleChildScrollView(physics: const ClampingScrollPhysics(),
-                                                            child: AlertDialog(scrollable: true,
-                                                              title: const Text(
-                                                                  'Message Hierarchy'),
-                                                              content: Column(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding:
-                                                                    const EdgeInsets
-                                                                        .only(
-                                                                        top: 0.0,
-                                                                        bottom: 0,
-                                                                        left: 0,
-                                                                        right: 8),
-                                                                    child: Row(
-                                                                      mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                      children: [
-                                                                        const Text(
-                                                                            'HIGH PRIORITY',
-                                                                            style: TextStyle(
-                                                                                color: Colors
-                                                                                    .black,
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .bold,
-                                                                                fontSize:
-                                                                                12,
-                                                                                decoration:
-                                                                                TextDecoration
-                                                                                    .underline)),
-                                                                        Padding(
-                                                                          padding:
-                                                                          const EdgeInsets
-                                                                              .only(
-                                                                              top:
-                                                                              0.0,
-                                                                              bottom:
-                                                                              2,
-                                                                              left: 5,
-                                                                              right:
-                                                                              0),
-                                                                          child: CircleAvatar(
-                                                                              radius: 5,
-                                                                              child: Image
-                                                                                  .asset(
-                                                                                  "assets/HIGH PRIORITY.png")),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  const Text(
-                                                                      "Highest Level of Alert. Consists of Emergency information of high Priority, including Drug Withdrawals and Callbacks."),
-                                                                  Padding(
-                                                                    padding:
-                                                                    const EdgeInsets
-                                                                        .only(
-                                                                        top: 8.0,
-                                                                        bottom: 2,
-                                                                        left: 0,
-                                                                        right: 8),
-                                                                    child: Row(
-                                                                      mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                      children: [
-                                                                        const Text(
-                                                                            'ADMINISTRATIVE',
-                                                                            style: TextStyle(
-                                                                                color: Colors
-                                                                                    .black,
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .bold,
-                                                                                fontSize:
-                                                                                12,
-                                                                                decoration:
-                                                                                TextDecoration
-                                                                                    .underline)),
-                                                                        Padding(
-                                                                          padding:
-                                                                          const EdgeInsets
-                                                                              .only(
-                                                                              top:
-                                                                              0.0,
-                                                                              bottom:
-                                                                              2,
-                                                                              left: 5,
-                                                                              right:
-                                                                              0),
-                                                                          child: CircleAvatar(
-                                                                              radius: 5,
-                                                                              child: Image
-                                                                                  .asset(
-                                                                                  "assets/ADMINISTRATIVE.png")),
-                                                                        ),
-
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  const Text(
-                                                                      "Intermediate Level of Alert. Consists of Government Information, specifically from the Ministry of Health and Pharmacy & Poisons Board (PPB)."),
-                                                                  Row(
+                                              child: CircleAvatar(backgroundColor: Colors.transparent,
+                                                  radius: 5,
+                                                  child: Image.asset(
+                                                      "assets/${data?[index].priority}.png")),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 3.0,
+                                                bottom: 0,
+                                                left: 0,
+                                                right: 0),
+                                            child: IconButton(
+                                                icon: Icon(
+                                                  Icons.help_outline_outlined,
+                                                  color: Theme.of(context).colorScheme.primary,
+                                                  size: 15,),
+                                                onPressed: () => showDialog<String>(
+                                                    context: context,
+                                                    builder: (context) =>
+                                                        SingleChildScrollView(physics: const ClampingScrollPhysics(),
+                                                          child: AlertDialog(scrollable: true,
+                                                            title: const Text(
+                                                                'Message Hierarchy'),
+                                                            content: Column(
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                  const EdgeInsets
+                                                                      .only(
+                                                                      top: 0.0,
+                                                                      bottom: 0,
+                                                                      left: 0,
+                                                                      right: 8),
+                                                                  child: Row(
                                                                     mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .start,
                                                                     children: [
-                                                                      const Padding(
-                                                                        padding: EdgeInsets
-                                                                      .only(
-                                                                      top: 6,
-                                                                      bottom: 2,
-                                                                      left: 0,
-                                                                      right: 5),
-                                                                        child: Text(
-                                                                            'IN APP MESSAGE',
-                                                                            style: TextStyle(
-                                                                                color: Colors
-                                                                                    .black,
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .bold,
-                                                                                fontSize:
-                                                                                12,
-                                                                                decoration:
-                                                                                TextDecoration
-                                                                                    .underline)),
-                                                                      ),
+                                                                      Text(
+                                                                          'HIGH PRIORITY',
+                                                                          style: TextStyle(
+                                                                              color: Theme.of(context).colorScheme.primary,
+                                                                              fontWeight:
+                                                                              FontWeight
+                                                                                  .bold,
+                                                                              fontSize:
+                                                                              12,
+                                                                              decoration:
+                                                                              TextDecoration
+                                                                                  .underline)),
                                                                       Padding(
                                                                         padding:
                                                                         const EdgeInsets
                                                                             .only(
-                                                                            top: 6.0,
-                                                                            bottom: 2,
-                                                                            left: 2,
-                                                                            right: 0),
+                                                                            top:
+                                                                            0.0,
+                                                                            bottom:
+                                                                            2,
+                                                                            left: 5,
+                                                                            right:
+                                                                            0),
                                                                         child: CircleAvatar(
                                                                             radius: 5,
                                                                             child: Image
                                                                                 .asset(
-                                                                                "assets/IN APP MESSAGE.png")),
+                                                                                "assets/HIGH PRIORITY.png")),
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  const Text(
-                                                                      "Low Level Alert. Consists of Drugitude Application's information and messages from its developers"),
-                                                                   Row(
+                                                                ),
+                                                                const Text(
+                                                                    "Highest Level of Alert. Consists of Emergency information of high Priority, including Drug Withdrawals and Callbacks."),
+                                                                Padding(
+                                                                  padding:
+                                                                  const EdgeInsets
+                                                                      .only(
+                                                                      top: 8.0,
+                                                                      bottom: 2,
+                                                                      left: 0,
+                                                                      right: 8),
+                                                                  child: Row(
                                                                     mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .start,
                                                                     children: [
-                                                                      const Padding(
-                                                                        padding:
-                                                                        EdgeInsets
-                                                                            .only(
-                                                                            top: 6,
-                                                                            bottom: 2,
-                                                                            left: 0,
-                                                                            right: 5),
-                                                                        child: Text(
-                                                                            'INFORMATIVE',
-                                                                            style: TextStyle(
-                                                                                color: Colors
-                                                                                    .black,
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .bold,
-                                                                                fontSize:
-                                                                                12,
-                                                                                decoration:
-                                                                                TextDecoration
-                                                                                    .underline)),
-                                                                      ),
+                                                                      Text(
+                                                                          'ADMINISTRATIVE',
+                                                                          style: TextStyle(
+                                                                              color:Theme.of(context).colorScheme.primary,
+                                                                              fontWeight:
+                                                                              FontWeight
+                                                                                  .bold,
+                                                                              fontSize:
+                                                                              12,
+                                                                              decoration:
+                                                                              TextDecoration
+                                                                                  .underline)),
                                                                       Padding(
                                                                         padding:
-                                                                         const EdgeInsets
+                                                                        const EdgeInsets
                                                                             .only(
-                                                                            top: 6.0,
-                                                                            bottom: 2,
-                                                                            left: 2,
-                                                                            right: 0),
+                                                                            top:
+                                                                            0.0,
+                                                                            bottom:
+                                                                            2,
+                                                                            left: 5,
+                                                                            right:
+                                                                            0),
                                                                         child: CircleAvatar(
                                                                             radius: 5,
                                                                             child: Image
                                                                                 .asset(
-                                                                                "assets/INFORMATIVE.png")),
+                                                                                "assets/ADMINISTRATIVE.png")),
                                                                       ),
+
                                                                     ],
                                                                   ),
-                                                                  const Text(
-                                                                      "Medical Information that serve as C.M.E's (Continuous Medical Education) targeting various medical topics"),
-                                                                ],
-                                                              ),
-                                                              actions: <Widget>[
-                                                                TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            context,
-                                                                            'Cancel'),
-                                                                    child: const Text('Ok'))
-                                                              ],
-                                                            ),
-                                                          ),
-                                                )),
-                                            )
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 0.0,
-                                              bottom: 0,
-                                              left: 2,
-                                              right: 2),
-                                          child: Text(
-                                            '${data?[index].datetimeofmessage}',
-                                            textAlign: TextAlign.start,
-                                            style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 0.0,
-                                              bottom: 0,
-                                              left: 2,
-                                              right: 2),
-                                          child: Text(
-                                              '${data?[index].title}',
-                                              textAlign: TextAlign.start,
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  decoration:
-                                                  TextDecoration.underline,
-                                                  decorationColor: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold)),
-                                        ),
-                                        // const Padding(
-                                        //   padding: EdgeInsets.only(
-                                        //       top: 8.0,
-                                        //       bottom: 0,
-                                        //       left: 8,
-                                        //       right: 8),
-                                        //   child: Text(
-                                        //     'Date of Message',
-                                        //     style: TextStyle(
-                                        //         color: Colors.white54,
-                                        //         fontSize: 12),
-                                        //   ),
-                                        // ),
-                                        // Text('(International Non Proprietary Name)', style: TextStyle(color: Colors.white54))
-                                        Card(
-                                          color: Colors.black,
-                                          child: ExpansionTile(
-                                            title: const Text('more..',
-                                              style: TextStyle(color: Colors.white54, fontSize: 12),),
-                                            children: [
-                                              Padding(
-                                                  padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                  child: SizedBox(width: MediaQuery.of(context).size.width,
-                                                      child: Image.network(
-                                                          data![index].image,
-
-                                                          frameBuilder: (context, child, frame, wasSynchronouslyLoaded)
-                                                          {
-                                                            return child;
-                                                          },
-                                                          loadingBuilder: (context, child, loadingProgress) {
-                                                            if (loadingProgress == null)
-                                                            {
-                                                              return child;
-                                                            } else {
-                                                              return const Center( child:
-                                                              SizedBox(width: 192, height: 192,
-                                                                child: Column(
+                                                                ),
+                                                                const Text(
+                                                                    "Intermediate Level of Alert. Consists of Government Information, specifically from the Ministry of Health and Pharmacy & Poisons Board (PPB)."),
+                                                                Row(
+                                                                  mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
                                                                   children: [
-                                                                    Expanded(
-                                                                      child: RiveAnimation.asset('assets/drugiconLoading.riv'),),
-                                                                    // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                                                                    Padding(
+                                                                      padding: const EdgeInsets
+                                                                    .only(
+                                                                    top: 6,
+                                                                    bottom: 2,
+                                                                    left: 0,
+                                                                    right: 5),
+                                                                      child: Text(
+                                                                          'IN APP MESSAGE',
+                                                                          style: TextStyle(
+                                                                              color: Theme.of(context).colorScheme.primary,
+                                                                              fontWeight:
+                                                                              FontWeight
+                                                                                  .bold,
+                                                                              fontSize:
+                                                                              12,
+                                                                              decoration:
+                                                                              TextDecoration
+                                                                                  .underline)),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding:
+                                                                      const EdgeInsets
+                                                                          .only(
+                                                                          top: 6.0,
+                                                                          bottom: 2,
+                                                                          left: 2,
+                                                                          right: 0),
+                                                                      child: CircleAvatar(
+                                                                          radius: 5,
+                                                                          child: Image
+                                                                              .asset(
+                                                                              "assets/IN APP MESSAGE.png")),
+                                                                    ),
                                                                   ],
                                                                 ),
-                                                              ),);
-                                                            }
-                                                          }
-                                                      )
-                                                  )
-                                              ),
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text('Origin',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(color: Colors.white54, fontSize: 12),),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
-                                                child: Text(data[index].sourceorigin,
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(color: Colors.white, fontSize: 16),),
-                                              ),
-                                              const Padding(
-                                                padding: EdgeInsets.only(top: 8.0, bottom: 0, left: 2, right: 2),
-                                                child: Text('Author',
-                                                  overflow: TextOverflow.fade,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(color: Colors.white54,fontSize: 12),),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 2, right: 2),
-                                                child: Text(data[index].author,
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight: FontWeight.bold),),
-                                              ),
-                                              Card(
-                                               child: ExpansionTile(
-                                                 title: const Text('Message',
-                                                     textAlign: TextAlign.left,
-                                                     style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-                                                 backgroundColor: Colors.white,
-                                                 children: [
-                                                   Padding(
-                                                     padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 2, right: 2),
-                                                     child: Text(data[index].messagebody,
-                                                         textAlign: TextAlign.start,
-                                                         style: const TextStyle(color: Colors.black, fontSize: 12 )),
-                                                   ),
-                                                 ],
-                                               ),
-                                              ),
-
-
-
-                                            ],
-                                          ),
+                                                                const Text(
+                                                                    "Low Level Alert. Consists of Drugitude Application's information and messages from its developers"),
+                                                                 Row(
+                                                                  mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding:
+                                                                      const EdgeInsets
+                                                                          .only(
+                                                                          top: 6,
+                                                                          bottom: 2,
+                                                                          left: 0,
+                                                                          right: 5),
+                                                                      child: Text(
+                                                                          'INFORMATIVE',
+                                                                          style: TextStyle(
+                                                                              color: Theme.of(context).colorScheme.primary,
+                                                                              fontWeight:
+                                                                              FontWeight
+                                                                                  .bold,
+                                                                              fontSize:
+                                                                              12,
+                                                                              decoration:
+                                                                              TextDecoration
+                                                                                  .underline)),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding:
+                                                                       const EdgeInsets
+                                                                          .only(
+                                                                          top: 6.0,
+                                                                          bottom: 2,
+                                                                          left: 2,
+                                                                          right: 0),
+                                                                      child: CircleAvatar(
+                                                                          radius: 5,
+                                                                          child: Image
+                                                                              .asset(
+                                                                              "assets/INFORMATIVE.png")),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                const Text(
+                                                                    "Medical Information that serve as C.M.E's (Continuous Medical Education) targeting various medical topics"),
+                                                              ],
+                                                            ),
+                                                            actions: <Widget>[
+                                                              TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          context,
+                                                                          'Cancel'),
+                                                                  child: const Text('Ok'))
+                                                            ],
+                                                          ),
+                                                        ),
+                                              )),
+                                          )
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 0.0,
+                                            bottom: 0,
+                                            left: 2,
+                                            right: 2),
+                                        child: Text(
+                                          '${data?[index].datetimeofmessage}',
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                              color: Theme.of(context).colorScheme.primary,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold),
                                         ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 0.0,
+                                            bottom: 0,
+                                            left: 2,
+                                            right: 2),
+                                        child: Text(
+                                            '${data?[index].title}',
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                                color: Theme.of(context).colorScheme.primary,
+                                                decoration:
+                                                TextDecoration.underline,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold)),
+                                      ),
 
-                                      ],
-                                    ),
+                                      Card( shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                        color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                        child: ExpansionTile( shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                          backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                          title: Text('more..',
+                                            style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12),),
+                                          children: [
+                                            Padding(
+                                                padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                                child: SizedBox(width: MediaQuery.of(context).size.width,
+                                                    child: Image.network(
+                                                        data![index].image,
+
+                                                        frameBuilder: (context, child, frame, wasSynchronouslyLoaded)
+                                                        {
+                                                          return child;
+                                                        },
+                                                        loadingBuilder: (context, child, loadingProgress) {
+                                                          if (loadingProgress == null)
+                                                          {
+                                                            return child;
+                                                          } else {
+                                                            return const Center( child:
+                                                            SizedBox(width: 192, height: 192,
+                                                              child: Column(
+                                                                children: [
+                                                                  Expanded(
+                                                                    child: RiveAnimation.asset('assets/drugiconLoading.riv'),),
+                                                                  // Text('Loading...', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 15, fontStyle:FontStyle.italic )),
+                                                                ],
+                                                              ),
+                                                            ),);
+                                                          }
+                                                        }
+                                                    )
+                                                )
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                              child: Text('Origin',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12,decoration: TextDecoration.underline),),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 8, right: 8),
+                                              child: Text(data[index].sourceorigin,
+                                                overflow: TextOverflow.fade,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16),),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 8.0, bottom: 0, left: 2, right: 2),
+                                              child: Text('Author',
+                                                overflow: TextOverflow.fade,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(color: Theme.of(context).colorScheme.primary,fontSize: 12,decoration: TextDecoration.underline),),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 2, right: 2),
+                                              child: Text(data[index].author,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Theme.of(context).colorScheme.primary,
+                                                    fontWeight: FontWeight.bold),),
+                                            ),
+                                            Card(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                              color: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                             child: ExpansionTile(shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20),borderSide: const BorderSide(color: Colors.white)),
+                                               backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+                                               title: Text('Message',
+                                                   textAlign: TextAlign.left,
+                                                   style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)),
+                                               children: [
+                                                 Padding(
+                                                   padding: const EdgeInsets.only(top: 0.0, bottom: 0, left: 2, right: 2),
+                                                   child: Text(data[index].messagebody,
+                                                       textAlign: TextAlign.start,
+                                                       style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 12 )),
+                                                 ),
+                                                 const SizedBox(height: 20)
+                                               ],
+                                             ),
+                                            ),
 
 
+
+                                          ],
+                                        ),
+                                      ),
+
+                                    ],
                                   ),
+
+
                                 ),
                               )
                             ])));
